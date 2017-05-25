@@ -1,5 +1,5 @@
-#baseURL = "http://ducphanduyagentp.github.io/blog"
-baseURL = "http://localhost"
+baseURL = "http://ducphanduyagentp.github.io/blog/"
+#baseURL = "http://localhost/"
 languageCode = "en-us"
 title = "simpleguy"
 theme = "hyde"
