@@ -1,4 +1,9 @@
-baseURL = "http://simpleguy.tech"
+baseURL = "http://simpleguy.tech/"
 languageCode = "en-us"
 title = "simpleguy"
 theme = "hyde"
+
+[params]
+    disqusShortname = "simpleguy"
+    description = "I'm a simple guy."
+    author = "simpleguy"
