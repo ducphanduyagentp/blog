@@ -3,17 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://simpleguy.tech/post/routing-t%E1%BA%A1i-nh%C3%A0/</loc>
+    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://simpleguy.tech/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://simpleguy.tech/post/</loc>
+    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/tags/routing-and-switching/</loc>
+    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/categories/routing-and-switching/</loc>
+    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://simpleguy.tech/tags/</loc>
+    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/categories/vietnamese/</loc>
+    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/</loc>
+    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
     <priority>0</priority>
   </url>
   

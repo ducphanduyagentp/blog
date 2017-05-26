@@ -10,5 +10,23 @@
 	<atom:link href="http://simpleguy.tech/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Routing And Switching</title>
+      <link>http://simpleguy.tech/categories/routing-and-switching/</link>
+      <pubDate>Fri, 26 May 2017 11:43:11 +0700</pubDate>
+      
+      <guid>http://simpleguy.tech/categories/routing-and-switching/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vietnamese</title>
+      <link>http://simpleguy.tech/categories/vietnamese/</link>
+      <pubDate>Fri, 26 May 2017 11:43:11 +0700</pubDate>
+      
+      <guid>http://simpleguy.tech/categories/vietnamese/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
