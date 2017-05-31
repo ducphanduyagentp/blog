@@ -8,4 +8,3 @@ title = "Routing tại nhà"
 
 +++
 
-This is the content
