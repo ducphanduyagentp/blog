@@ -1,0 +1,15 @@
+{{ partial "head.html" . }}
+<body class="{{ .Site.Params.themeColor }} {{if .Site.Params.layoutReverse}}layout-reverse{{end}}">
+
+{{ partial "sidebar.html" . }}
+
+    <div class="content container">
+<ul id="all-tags">
+  {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+    <li><a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></li>
+  {{ end }}
+</ul>
+</div>
+
+  </body>
+</html>

@@ -1,9 +1,14 @@
 baseURL = "http://simpleguy.tech/"
 languageCode = "en-us"
 title = "simpleguy"
-theme = "hyde"
+staticDir = "static"
+buildDraft = true
 
 [params]
-    disqusShortname = "simpleguy"
+    disqusShortname = "asimpleguy"
     description = "I'm a simple guy."
     author = "simpleguy"
+
+[taxonomies]
+    category = "categories"
+    tag = "tags"

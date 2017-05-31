@@ -1,0 +1,16 @@
+{{ partial "head.html" . }}
+<body class="{{ .Site.Params.themeColor }} {{if .Site.Params.layoutReverse}}layout-reverse{{end}}">
+
+{{ partial "sidebar.html" . }}
+
+    <div class="content container">
+<ul>
+    {{ $data := .Data }}
+    {{ range $key, $value := .Data.Terms }}
+      <li><a href="{{ $data.Plural }}/{{ $key | urlize }}">{{ $key }}</a> {{ len $value }}</li>
+    {{ end }}
+   </ul>
+</div>
+
+  </body>
+</html>
