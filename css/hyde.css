@@ -248,3 +248,43 @@ a.sidebar-nav-item:focus {
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536;
 }
+
+#tags {
+  display: inline-block;  
+}
+
+#categories {
+  display: inline-block;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#tags li, #categories li{
+  padding: 2px;
+  margin: 5px;
+  font-size: 75%;
+  text-align: center;
+}
+
+#tags li {
+  background-color: #268bd2;
+  border: solid 1px;
+  border-radius: 2px;
+}
+
+#tags li a {
+  color: white;
+}
+
+#tags li a::before{
+  content: '#';
+}
+
+#tags a:hover, #categories a:hover {
+  text-decoration: none;
+}
