@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>simpleguy</title>
+    <title>simpleguy.tech</title>
     <link>http://simpleguy.tech/</link>
-    <description>Recent content on simpleguy</description>
+    <description>Recent content on simpleguy.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Sep 2017 23:48:01 -0400</lastBuildDate>
