@@ -5,6 +5,8 @@ Tags = ["ctf", "reverse engineering", "exploit development", "pwn"]
 Categories = ["CTF"]
 +++
 
+![header](/img/csaw-ctf-qualification-2017/scoreboard.png)
+
 Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não ([quangltm](https://pwneris.me) và anh [tuanit96](http://www.hardtobelieve.me/)), mình đã quẩy được vài bài khá cơ bản.
 
 ## Pwn 75 - Pilot

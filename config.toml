@@ -1,6 +1,6 @@
 baseURL = "http://simpleguy.tech/"
 languageCode = "en-us"
-title = "simpleguy"
+title = "simpleguy.tech"
 staticDir = "static"
 buildDraft = true
 
