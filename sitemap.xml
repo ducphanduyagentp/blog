@@ -3,8 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://simpleguy.tech/post/routing-tai-nha/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <loc>http://simpleguy.tech/post/csaw-ctf-qualification-2017/</loc>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
   </url>
   
   <url>
@@ -13,44 +13,50 @@
   </url>
   
   <url>
-    <loc>http://simpleguy.tech/tags/networking/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <loc>http://simpleguy.tech/categories/ctf/</loc>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://simpleguy.tech/categories/networking/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <loc>http://simpleguy.tech/tags/ctf/</loc>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://simpleguy.tech/tags/nssa-241/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <loc>http://simpleguy.tech/tags/exploit-development/</loc>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/post/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/tags/pwn/</loc>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/tags/reverse-engineering/</loc>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/tags/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://simpleguy.tech/categories/vietnamese/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/</loc>
-    <lastmod>2017-05-26T11:43:11+07:00</lastmod>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   

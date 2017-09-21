@@ -6,18 +6,19 @@
     <description>Recent content on simpleguy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 May 2017 11:43:11 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 20 Sep 2017 23:48:01 -0400</lastBuildDate>
     
 	<atom:link href="http://simpleguy.tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Routing tại nhà</title>
-      <link>http://simpleguy.tech/post/routing-tai-nha/</link>
-      <pubDate>Fri, 26 May 2017 11:43:11 +0700</pubDate>
+      <title>CSAW CTF Qualification 2017</title>
+      <link>http://simpleguy.tech/post/csaw-ctf-qualification-2017/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/post/routing-tai-nha/</guid>
-      <description></description>
+      <guid>http://simpleguy.tech/post/csaw-ctf-qualification-2017/</guid>
+      <description>Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não (quangltm và anh tuanit96), mình đã quẩy được vài bài khá cơ bản.
+Pwn 75 - Pilot Bài này là một bài buffer overflow cơ bản. Đầu tiên mình xem thông tin file này:</description>
     </item>
     
   </channel>

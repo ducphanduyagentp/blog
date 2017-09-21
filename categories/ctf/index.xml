@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on simpleguy</title>
-    <link>http://simpleguy.tech/post/</link>
-    <description>Recent content in Posts on simpleguy</description>
+    <title>Ctf on simpleguy</title>
+    <link>http://simpleguy.tech/categories/ctf/</link>
+    <description>Recent content in Ctf on simpleguy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Sep 2017 23:48:01 -0400</lastBuildDate>
     
-	<atom:link href="http://simpleguy.tech/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://simpleguy.tech/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

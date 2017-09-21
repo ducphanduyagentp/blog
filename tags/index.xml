@@ -6,26 +6,44 @@
     <description>Recent content in Tags on simpleguy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 May 2017 11:43:11 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 20 Sep 2017 23:48:01 -0400</lastBuildDate>
     
 	<atom:link href="http://simpleguy.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Networking</title>
-      <link>http://simpleguy.tech/tags/networking/</link>
-      <pubDate>Fri, 26 May 2017 11:43:11 +0700</pubDate>
+      <title>Ctf</title>
+      <link>http://simpleguy.tech/tags/ctf/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/tags/networking/</guid>
+      <guid>http://simpleguy.tech/tags/ctf/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Nssa 241</title>
-      <link>http://simpleguy.tech/tags/nssa-241/</link>
-      <pubDate>Fri, 26 May 2017 11:43:11 +0700</pubDate>
+      <title>Exploit Development</title>
+      <link>http://simpleguy.tech/tags/exploit-development/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/tags/nssa-241/</guid>
+      <guid>http://simpleguy.tech/tags/exploit-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pwn</title>
+      <link>http://simpleguy.tech/tags/pwn/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/pwn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reverse Engineering</title>
+      <link>http://simpleguy.tech/tags/reverse-engineering/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/reverse-engineering/</guid>
       <description></description>
     </item>
     
