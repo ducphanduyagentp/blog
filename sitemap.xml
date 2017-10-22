@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://simpleguy.tech/post/csaw-ctf-qualification-2017/</loc>
+    <loc>http://simpleguy.tech/post/csaw-ctf-17-pwn75-pilot/</loc>
     <lastmod>2017-09-20T23:48:01-04:00</lastmod>
   </url>
   
@@ -13,13 +13,19 @@
   </url>
   
   <url>
-    <loc>http://simpleguy.tech/tags/ctf/</loc>
+    <loc>http://simpleguy.tech/tags/csaw-ctf-17/</loc>
     <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/categories/ctf/</loc>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/tags/ctf/</loc>
     <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>

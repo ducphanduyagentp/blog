@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="http://simpleguy.tech/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet"
-  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>
     hljs.initHighlightingOnLoad();
@@ -132,11 +132,11 @@ pilot: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, 
 [0x004008b0]&gt; 
 </code></pre>
 
-<p>Nhìn có vẻ rất ghê vì binary đã bị stripped. Tuy nhiên mình tìm thấy tool này: <a href="https://github.com/danigargu/syms2elf">syms2elf</a>. Tool này có thể dùng với radare2 hoặc IDA, có chức năng thêm lại symbol table vào binary đã bị stripped, giúp cho việc debug trong gdb đỡ thốn gấp vạn lần. Do bài này có cấu trúc khá đơn giản nên mình không cần dùng đến tool này vẫn làm được, nhưng nó có ích rất nhiều cho những bài phức tạp phía sau. Mình export binary ra bằng dòng lệnh <code>$syms2elf pilot_unstripped</code> và mở gdb lên debug trực tiếp luôn, 1 phần là cũng do lười :P</p>
+<p>Nhìn có vẻ rất ghê vì binary đã bị stripped. Tuy nhiên mình tìm thấy tool này: <a href="https://github.com/danigargu/syms2elf">syms2elf</a>. Tool này có thể dùng với radare2 hoặc IDA, có chức năng thêm lại symbol table vào binary đã bị stripped, giúp cho việc debug trong gdb đỡ thốn gấp vạn lần. Sau khi rename vài hàm quan trọng như main, mình export binary ra bằng dòng lệnh <code>$syms2elf pilot_unstripped</code>. Giờ thì mình đã có thể mở binary lên và debug như binary chưa bị stripped một cách khá thoải mái.</p>
 
 <p>Đặt breakpoint tại vị trí gọi hàm read trong main ở <code>0x00400ae0</code>:</p>
 
-<pre><code class="language-bash">pwndbg&gt; r
+<pre><code class="language-nasm">pwndbg&gt; r
 Starting program: /root/workspace/ctfs/2017/csaw/pwn/pilot/pilot_unstripped 
 [*]Welcome DropShip Pilot...
 [*]I am your assitant A.I....
@@ -220,9 +220,48 @@ $
 
 <h2 id="re-100-tablez">RE 100 - tablez</h2>
 
+<pre><code class="language-bash">➜  tablez git:(master) ✗ file tablez 
+tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped
+</code></pre>
+
+<p>Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem hàm main thì thấy 1 đoạn khá đáng ngờ
+<img src="img/csaw-ctf-qualification-2017/re100-1.png" alt="re100-1" /></p>
+
+<p>Lui xuống dưới 1 đoạn thì thấy input nhập vào được so sánh với chính buffer ở local_c0h
+<img src="img/csaw-ctf-qualification-2017/re100-2.png" alt="re100-2" /></p>
+
+<p>Trong quá trình làm bài, mình có sử dụng tính răng rename biến của r2 để việc theo dõi luồng thực thi được dễ dàng hơn, ví dụ như:</p>
+
+<pre><code class="language-bash">[0x000008a0]&gt; s main
+[0x000008a0]&gt; afvn local_90h input_buffer
+[0x000008a0]&gt; afvn local_c0h to_cmp
+[0x000008a0]&gt; pdf
+</code></pre>
+
+<p>Khi in lại hàm main ra thì sẽ thấy như sau:
+<img src="img/csaw-ctf-qualification-2017/re100-3.png" alt="re100-3" /></p>
+
+<h2 id="misc-100-twitch-plays-pwnable">Misc 100 - Twitch Plays Pwnable</h2>
+
+<p>Bài này là bài bựa nhất trong cả đề. Đại khái là họ stream một cái shell lên twitch. Để điều khiển shell đó thì người xem twitch sẽ vote phím nào được ấn trên bàn phím bằng cách gõ vào phần chat. Để lấy được flag bài này thì số người đó phải exploit 1 binary bị buffer overflow. Mình thì không rảnh nhảy vào vote nên chỉ xem xong cướp flag thôi =)) Điều bựa là mỗi khi flag được lấy ra thành công thì sau vài phút, cái máy tính được stream sẽ tự động reboot và ai không lấy kịp flag thì lại ngồi chờ =))</p>
+
+<p><img src="img/csaw-ctf-qualification-2017/misc100.jpg" alt="misc100" /></p>
+
 <h2 id="forensics-200-best-router">Forensics 200 - best_router</h2>
 
+<p>Bài này khá vớ vẩn. Download file đính kèm về giải nén ra thì ta sẽ được một file <code>.img</code>, là một file image của rasberry pi. Mình dùng lệnh sau để mount file này trên linux, từ đó sẽ đọc được dữ liệu trong file như cấu trúc của một linux filesystem thông thường:</p>
+
+<pre><code class="language-bash">sudo mount disk.img ./mnt
+</code></pre>
+
+<p>(Lúc làm bài này mình làm theo hướng dẫn ở <a href="https://www.linuxquestions.org/questions/linux-general-1/how-to-mount-img-file-882386/#post4365399">đây</a>, thi xong mình xóa xừ nó file kia đi rồi nên không nhớ cụ thể câu lệnh là gì nữa :P )</p>
+
+<p>Mở lên và truy cập vào thư mục <code>/var/www/html</code> sẽ thấy được mã nguồn của trang web cần đăng nhập: <code>http://forensics.chal.csaw.io:3287/</code>
+Trên windows, file này có thể được mở bằng phần mềm chuyên dụng cho forensics như Autopsy. Bài này do ngu người không để ý có cái trang web kia nên mình tìm thấy mật khẩu rồi mãi không biết dùng làm gì :D</p>
+
 <h2 id="re-400-realism">RE 400 - realism</h2>
+
+<p>Đây là lần đầu tiên trong 1 CTF mà mình dám động tới một bài 400. Trước khi được thông não, mình thường còn chẳng xem đề bài mấy bài này vì nghĩ chỉ có rất khủng mới làm được. Lần này khi mở lên thấy bài này hơn 30 người làm được sau ngày đầu tiên, mình nghĩ rằng đây không phải bài khó nên quyết định thử sức. Đây là một quyết định vừa đúng lại vừa có phần hơi ngu người vì làm mình bỏ lỡ mất bài pwn 200 khá ngon ăn.</p>
 
 			</div>
 			<div id="meta-data">
