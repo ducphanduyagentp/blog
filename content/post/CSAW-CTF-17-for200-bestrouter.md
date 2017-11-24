@@ -1,8 +1,8 @@
 ---
 title: "[CSAW CTF 17] Forensics 200: Bestrouter"
 date: 2017-10-22T16:23:20-04:00
-Tags: ["ctf", "forensics", "csaw-ctf-17"]
-Categories: ["CTF"]
+Tags: ["csaw-ctf-17"]
+Categories: ["CTF", "forensics"]
 ---
 
 Bài này khá vớ vẩn. Download file đính kèm về giải nén ra thì ta sẽ được một file `.img`, là một file image của rasberry pi. Mình dùng lệnh sau để mount file này trên linux, từ đó sẽ đọc được dữ liệu trong file như cấu trúc của một linux filesystem thông thường:

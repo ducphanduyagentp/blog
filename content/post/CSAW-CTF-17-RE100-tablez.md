@@ -1,64 +1,136 @@
 ---
 title: "[CSAW CTF 17] RE100: Tablez"
 date: 2017-10-22T16:34:52-04:00
-draft: true
+Tags: ["csaw-ctf-17"]
+Categories: ["CTF", "reversing"]
+Languages: ["Vietnamese", "English"]
 ---
 
+[English version below](#english-tablez)
+##### Vietnamese
+
 ```r
-➜  tablez git:(master) ✗ file tablez 
+➜  file tablez 
 tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped
 ```
-Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem hàm main thì thấy 1 đoạn khá đáng ngờ
-<!-- ![re100-1](/img/csaw-ctf-qualification-2017/re100-1.png) -->
+
+Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
+
+1. Dữ liệu được hardcoded từ `0x000008ba` tới `0x00000908`
+2. Input được nhập vào biến `local_90h` ở `0x00000924`
+3. Một vòng lặp gọi hàm `sym.get_tbl_entry` với tham số là input. Kết quả hàm này trả về được dùng để thay thế các ký tự trên input buffer.
+4. input buffer sau khi bị biến đổi qua vòng lặp ở 3 sẽ được so sánh với dữ liệu hardcoded ở 1 bằng hàm strncmp (`0x000009f7`). `0x26` ký tự đầu tiên sẽ được so sánh.
+
+Hàm `sym.get_tbl_entry` hoạt động như sau:
+
+```C
+for (int i = 0; i <= 0xfe; i++) {
+  if (trans_tbl[i * 2] == input[i]) {
+    return trans_tbl[i * 2 + 1];
+  }
+}
+return 0;
+```
+với `trans_tbl` là một biến toàn cục đã được viết trước.
+
+Như vậy, cách làm của mình như sau:
+
+1. Lấy dữ liệu từ bản trans_tbl và dự liệu hardcode trong hàm main ra (mình gọi là password).
+Để lấy dữ liệu từ bảng `obj.trans_tbl`: `pr 0xff@ obj.trans_tbl > data.bin`
+(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)
+2. Với mỗi ký tự trong password, bruteforce tất cả các ký tự ASCII để tìm một ký tự c sao cho c sau khi qua hàm `get_tbl_entry` sẽ biến đổi thành ký tự ở vị trí tương ứng trong password.
+
+Solution:
 ```python
-|           0x000008ba      48b827b3739d.  movabs rax, -0x4e18ee0a628c4cd9
-|           0x000008c4      48bab3be99b3.  movabs rdx, 0x30f4f9f9b399beb3
-|           0x000008ce      48898540ffff.  mov qword [local_c0h], rax
-|           0x000008d5      48899548ffff.  mov qword [local_b8h], rdx
-|           0x000008dc      48b81b719973.  movabs rax, -0x4e669adc8c668ee5
-|           0x000008e6      48ba651111be.  movabs rdx, -0x6d866dc41eeee9b
-|           0x000008f0      48898550ffff.  mov qword [local_b0h], rax
-|           0x000008f7      48899558ffff.  mov qword [local_a8h], rdx
-|           0x000008fe      c78560ffffff.  mov dword [local_a0h], 0x65059923
-|           0x00000908      66c78564ffff.  mov word [local_9ch], 0xce
+from pwn import *
+from string import printable
+
+def get_char(c):
+    global trans_tbl
+    for i in range(0xfe + 1):
+        if trans_tbl[i * 2] == c:
+            return trans_tbl[i * 2 + 1]
+    return 0
+
+trans_tbl = open('trans_tbl').read()
+password = ''
+password += p64(0xb1e711f59d73b327)
+password += p64(0x30f4f9f9b399beb3)
+password += p64(0xb19965237399711b)
+password += p64(0xf9279923be111165)
+password += p64(0x65059923)
+password = password.strip('\x00')
+
+flag = ''
+for i in range(len(password)):
+    for c in printable:
+        if get_char(c) == password[i]:
+            flag += c
+            break
+print flag
 ```
 
-Đoạn mã trên thực hiện copy hàng loạt các bytes được hard-code lên buffer bắt đầu từ local_c0h. Lui xuống dưới 1 đoạn thì thấy input nhập vào được so sánh với chính buffer này.
+<a name="english-tablez"></a>
 
-```python
-0x000009de      488d8d40ffff.  lea rcx, qword [local_c0h]
-0x000009e5      488d8570ffff.  lea rax, qword [local_90h]
-0x000009ec      ba26000000     mov edx, 0x26               ; '&'
-0x000009f1      4889ce         mov rsi, rcx
-0x000009f4      4889c7         mov rdi, rax
-0x000009f7      e8f4fcffff     call sym.imp.strncmp        ; int strncmp(const char *s1, const char *s2, size_t n)
-0x000009fc      85c0           test eax, eax
-0x000009fe      7513           jne 0xa13
-0x00000a00      488d3dda0000.  lea rdi, qword str.CORRECT__3 ; 0xae1 ; "CORRECT <3"
-0x00000a07      e8f4fcffff     call sym.imp.puts           ; int puts(const char *s)
-```
-<!-- ![re100-2](/img/csaw-ctf-qualification-2017/re100-2.png) -->
-
-Trong quá trình làm bài, mình có sử dụng tính năng rename biến của r2 để việc theo dõi luồng thực thi được dễ dàng hơn, ví dụ như:
+##### English
 
 ```r
-[0x000008a0]> s main
-[0x000008a0]> afvn local_90h input_buffer # Rename local_90h to input_buffer
-[0x000008a0]> afvn local_c0h to_cmp # Rename local_c0h to to_cmp
-[0x000008a0]> pdf
+➜  file tablez 
+tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped
 ```
 
-Khi in lại hàm main ra thì sẽ thấy như sau:
-```python
-|      |`-> 0x000009de      488d8d40ffff.  lea rcx, qword [to_cmp]
-|      |    0x000009e5      488d8570ffff.  lea rax, qword [input_buffer]
-|      |    0x000009ec      ba26000000     mov edx, 0x26               ; '&'
-|      |    0x000009f1      4889ce         mov rsi, rcx
-|      |    0x000009f4      4889c7         mov rdi, rax
-|      |    0x000009f7      e8f4fcffff     call sym.imp.strncmp        ; int strncmp(const char *s1, const char *s2, size_t n)
-|      |    0x000009fc      85c0           test eax, eax
-|      |,=< 0x000009fe      7513           jne 0xa13
-|      ||   0x00000a00      488d3dda0000.  lea rdi, qword str.CORRECT__3 ; 0xae1 ; "CORRECT <3"
-|      ||   0x00000a07      e8f4fcffff     call sym.imp.puts           ; int puts(const char *s)
+Fortunately, this binary is not stripped. After examining the main function, there are several noticeable points:
+
+1. There is hardcoded data, seen from `0x000008ba` to `0x00000908`
+2. The input buffer is `local_90h`, seen at `0x00000924`
+3. A loop calls to `sym.get_tbl_entry` with the input buffer as the parameter. The returned results are used to replace data on the input buffer.
+4. The input buffer after being transformed in #3 is compared to the hardcoded data in #1 using strncmp (`0x000009f7`). The first `0x26` characters are compared.
+
+Pseudo code for `sym.get_tbl_entry`:
+
+```C
+for (int i = 0; i <= 0xfe; i++) {
+  if (trans_tbl[i * 2] == input[i]) {
+    return trans_tbl[i * 2 + 1];
+  }
+}
+return 0;
 ```
-<!-- ![re100-3](/img/csaw-ctf-qualification-2017/re100-3.png) -->
+with `trans_tbl` is an initialized global variable.
+
+My solution:
+
+1. Extract data from `trans_tbl` and the hardcoded data at the beginning of main (called password).
+To extract data from `obj.trans_tbl` using r2: `pr 0xff@ obj.trans_tbl > data.bin`
+(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)
+2. For each character in the password, bruteforce all ASCII characters to find a character c such that c after being transformed by `get_tbl_entry` will be the corressponding character in the password.
+
+Solution:
+```python
+from pwn import *
+from string import printable
+
+def get_char(c):
+    global trans_tbl
+    for i in range(0xfe + 1):
+        if trans_tbl[i * 2] == c:
+            return trans_tbl[i * 2 + 1]
+    return 0
+
+trans_tbl = open('trans_tbl').read()
+password = ''
+password += p64(0xb1e711f59d73b327)
+password += p64(0x30f4f9f9b399beb3)
+password += p64(0xb19965237399711b)
+password += p64(0xf9279923be111165)
+password += p64(0x65059923)
+password = password.strip('\x00')
+
+flag = ''
+for i in range(len(password)):
+    for c in printable:
+        if get_char(c) == password[i]:
+            flag += c
+            break
+print flag
+```
