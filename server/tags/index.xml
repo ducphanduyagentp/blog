@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on simpleguy.tech</title>
+    <link>http://simpleguy.tech/tags/</link>
+    <description>Recent content in Tags on simpleguy.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Oct 2017 16:23:20 -0400</lastBuildDate>
+    
+	<atom:link href="http://simpleguy.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Csaw Ctf 17</title>
+      <link>http://simpleguy.tech/tags/csaw-ctf-17/</link>
+      <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/csaw-ctf-17/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ctf</title>
+      <link>http://simpleguy.tech/tags/ctf/</link>
+      <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exploit Development</title>
+      <link>http://simpleguy.tech/tags/exploit-development/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/exploit-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Forensics</title>
+      <link>http://simpleguy.tech/tags/forensics/</link>
+      <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/forensics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pwn</title>
+      <link>http://simpleguy.tech/tags/pwn/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/pwn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reverse Engineering</title>
+      <link>http://simpleguy.tech/tags/reverse-engineering/</link>
+      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/tags/reverse-engineering/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

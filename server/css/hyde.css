@@ -249,9 +249,14 @@ a.sidebar-nav-item:focus {
   color: #8f5536;
 }
 
-#tags, #categories, #projects {
+#tags {
   display: inline-block;  
 }
+
+#categories {
+  display: inline-block;
+}
+
 
 ul {
   list-style-type: none;
@@ -259,25 +264,27 @@ ul {
   padding: 0;
 }
 
-#tags li, #categories li, #projects li{
+#tags li, #categories li{
   padding: 2px;
   margin: 5px;
   font-size: 75%;
   text-align: center;
+}
+
+#tags li {
   background-color: #268bd2;
   border: solid 1px;
   border-radius: 2px;
-  display: inline-flex;
 }
 
-#tags li a, #projects li a, #categories li a {
+#tags li a {
   color: white;
 }
 
-#tags li a::before, #projects li a::before, #categories li a::before {
+#tags li a::before{
   content: '#';
 }
 
-#tags a:hover, #categories a:hover, #projects a:hover {
+#tags a:hover, #categories a:hover {
   text-decoration: none;
 }

@@ -5,7 +5,6 @@ staticDir = "static"
 buildDraft = true
 pygmentsOptions = "nowrap=True"
 pygmentsCodefences = true
-pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
 pygmentsStyle = "monokai"
 
@@ -17,3 +16,4 @@ pygmentsStyle = "monokai"
 [taxonomies]
     category = "categories"
     tag = "tags"
+    project = "projects"

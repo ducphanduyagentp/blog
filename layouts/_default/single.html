@@ -9,6 +9,7 @@
 			      {{ .Content }}
 			</div>
 			<div id="meta-data">
+				{{ if .Params.tags }}
 				<ul id="tags">
 					Tags:
 					{{ range .Params.tags }}
@@ -16,12 +17,27 @@
 					{{ end }}
 				</ul>
 				<p></p>
+				{{ end }}
+
+				{{ if .Params.categories }}
 				<ul id="categories">
 					Topics:
 					{{ range .Params.categories }}
 					<li><a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
 					{{ end }}
 				</ul>
+				<p></p>
+				{{ end }}
+
+				{{ if .Params.projects }}
+				<ul id="projects">
+					Projects:
+					{{ range .Params.projects }}
+					<li><a href="{{ "/projects/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+					{{ end }}
+				</ul>
+				{{ end }}
+				
 			</div>
 			{{ if and (.Site.Params.disqusShortname) (ne .Site.Params.disqusShortname "") }}
 				<h2>Comments</h2>
