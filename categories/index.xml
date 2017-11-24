@@ -13,9 +13,18 @@
     <item>
       <title>Ctf</title>
       <link>http://simpleguy.tech/categories/ctf/</link>
-      <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
+      <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
       
       <guid>http://simpleguy.tech/categories/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Forensics</title>
+      <link>http://simpleguy.tech/categories/forensics/</link>
+      <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/categories/forensics/</guid>
       <description></description>
     </item>
     
@@ -40,7 +49,7 @@
     <item>
       <title>Reversing</title>
       <link>http://simpleguy.tech/categories/reversing/</link>
-      <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
+      <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
       
       <guid>http://simpleguy.tech/categories/reversing/</guid>
       <description></description>

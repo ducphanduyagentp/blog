@@ -6,10 +6,21 @@
     <description>Recent content on simpleguy.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Oct 2017 16:34:38 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 22 Oct 2017 16:34:52 -0400</lastBuildDate>
     
 	<atom:link href="http://simpleguy.tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[CSAW CTF 17] RE100: Tablez</title>
+      <link>http://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</link>
+      <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
+      
+      <guid>http://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</guid>
+      <description>English version below
+Vietnamese ➜ file tablez tablez:ELF 64-bit LSB shared object,x86-64,version 1(SYSV),dynamically linked,interpreter /lib64/ld-linux-x86-64.so.2,forGNU/Linux 3.2.0,BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503,not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
+ Dữ liệu được hardcoded từ 0x000008ba tới 0x00000908 Input được nhập vào biến local_90h ở 0x00000924 Một vòng lặp gọi hàm sym.</description>
+    </item>
     
     <item>
       <title>[CSAW CTF 17] Misc100: Twitch</title>
