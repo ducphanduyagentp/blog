@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on simpleguy.tech</title>
-    <link>http://simpleguy.tech/post/</link>
-    <description>Recent content in Posts on simpleguy.tech</description>
+    <title>Pwn on simpleguy.tech</title>
+    <link>http://simpleguy.tech/categories/pwn/</link>
+    <description>Recent content in Pwn on simpleguy.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Oct 2017 16:34:38 -0400</lastBuildDate>
     
-	<atom:link href="http://simpleguy.tech/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://simpleguy.tech/categories/pwn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>http://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/</guid>
       <description>English version here
 Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là họ stream một cái shell lên twitch. Để điều khiển shell đó thì người xem twitch sẽ vote phím nào được ấn trên bàn phím bằng cách gõ vào phần chat. Để lấy được flag bài này thì số người đó phải exploit 1 binary bị buffer overflow. Mình thì không rảnh nhảy vào vote nên chỉ xem xong cướp flag thôi =)) Điều bựa là mỗi khi flag được lấy ra thành công thì sau vài phút, cái máy tính được stream sẽ tự động reboot và ai không lấy kịp flag thì lại ngồi chờ =))</description>
-    </item>
-    
-    <item>
-      <title>[CSAW CTF 17] Forensics 200: Bestrouter</title>
-      <link>http://simpleguy.tech/post/csaw-ctf-17-for200-bestrouter/</link>
-      <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
-      
-      <guid>http://simpleguy.tech/post/csaw-ctf-17-for200-bestrouter/</guid>
-      <description>Bài này khá vớ vẩn. Download file đính kèm về giải nén ra thì ta sẽ được một file .img, là một file image của rasberry pi. Mình dùng lệnh sau để mount file này trên linux, từ đó sẽ đọc được dữ liệu trong file như cấu trúc của một linux filesystem thông thường:
-sudo mount disk.img ./mnt  (Lúc làm bài này mình làm theo hướng dẫn ở đây, thi xong mình xóa xừ nó file kia đi rồi nên không nhớ cụ thể câu lệnh là gì nữa :P )</description>
     </item>
     
     <item>
