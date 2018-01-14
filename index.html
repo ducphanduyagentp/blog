@@ -523,10 +523,15 @@ This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux
 </span><span style="">-rwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">84824</span><span style=""> Dec </span><span style="color:#ae81ff">16</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">:47 isit42
 </span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">654</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 isit42.c.un</span></code></pre>
 </div>
-<p>hijack.c:</p>
+<p>To produce the expected result when running the binary, we&rsquo;ll need to make a shared object and specify it in the <code>LD_PRELOAD</code> environment variable. In this shared object, we can rewrite the <code>rand()</code> function used in the binary <code>isit42</code> so that it always return 42.</p>
+
+<p><code>hijack.c</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span><span style=""> </span><span style="color:#a6e22e">rand</span><span style="">()</span><span style=""> </span><span style="">{</span><span style="">
 </span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">42</span><span style="">;</span><span style="">
 </span><span style=""></span><span style="">}</span></code></pre>
+</div>
+<p>Compile the above code to a shared object:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">gcc -o libc.so.6 -shared -fPIC hijack.c</span></code></pre>
 </div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@419cb8f6de23:~$ </span><span style="">LD_PRELOAD</span><span style=""></span><span style="color:#f92672">=</span><span style="">./libc.so.6 ./isit42 
 </span><span style="">Starting up ... </span><span style="color:#66d9ef">done</span><span style="">.
 </span><span style="">Calling rand</span><span style="color:#f92672">()</span><span style=""> to </span><span style="color:#66d9ef">select</span><span style=""> a random number.
