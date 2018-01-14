@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</loc>
+    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/</loc>
+    <lastmod>2017-10-22T16:34:38-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://simpleguy.tech/post/csaw-ctf-17-for200-bestrouter/</loc>
     <lastmod>2017-10-22T16:23:20-04:00</lastmod>
   </url>
@@ -19,61 +29,60 @@
   
   <url>
     <loc>http://simpleguy.tech/tags/csaw-ctf-17/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://simpleguy.tech/tags/ctf/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
+    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/categories/ctf/</loc>
+    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/categories/forensics/</loc>
     <lastmod>2017-10-22T16:23:20-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://simpleguy.tech/tags/exploit-development/</loc>
-    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://simpleguy.tech/tags/forensics/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
+    <loc>http://simpleguy.tech/categories/misc/</loc>
+    <lastmod>2017-10-22T16:34:38-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/post/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
+    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://simpleguy.tech/tags/pwn/</loc>
-    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
+    <loc>http://simpleguy.tech/projects/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://simpleguy.tech/tags/reverse-engineering/</loc>
-    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
+    <loc>http://simpleguy.tech/categories/pwn/</loc>
+    <lastmod>2017-10-22T16:34:38-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://simpleguy.tech/categories/reversing/</loc>
+    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/tags/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
+    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://simpleguy.tech/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
+    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
     <priority>0</priority>
   </url>
   

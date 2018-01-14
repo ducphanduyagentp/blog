@@ -254,9 +254,9 @@ a.sidebar-nav-item:focus {
 }
 
 ul {
-  list-style-type: none;
+  list-style-type: disc;
   margin: 0;
-  padding: 0;
+  padding-bottom: 10px;
 }
 
 #tags li, #categories li, #projects li{

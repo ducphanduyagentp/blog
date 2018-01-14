@@ -1,0 +1,233 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en-us" lang="en-us" >
+
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"> <meta name="generator" content="Hugo 0.29" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> 
+  <title>[CSAW CTF 17] RE100: Tablez &middot; simpleguy.tech</title>
+  
+
+  
+  <link rel="stylesheet" href="http://simpleguy.tech/css/poole.css">
+  <link rel="stylesheet" href="http://simpleguy.tech/css/syntax.css">
+  <link rel="stylesheet" href="http://simpleguy.tech/css/hyde.css">
+  <link rel="stylesheet" href="http://simpleguy.tech/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="simpleguy.tech" />
+</head>
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://simpleguy.tech/"><h1>simpleguy.tech</h1></a>
+      <p class="lead">
+       I&#39;m a simple guy. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+      <li><a href="/tags">Tags</a>  </li>
+      <li><a href="/categories">Categories</a>  </li>
+      <li><a href="/projects">Projects</a>  </li>
+      <p></p>
+      <span class="sidebar-nav-item fa fa-github">
+        <a href="https://github.com/ducphanduyagentp"> github.com/ducphanduyagentp</a>
+      </span>
+      <span class="sidebar-nav-item fa fa-twitter">
+        <a href="https://twitter.com/@flyingpassword"> @flyingpassword</a>
+      </span>
+    </ul>
+      
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>[CSAW CTF 17] RE100: Tablez</h1>
+			  <span class="post-date">Sun, Oct 22, 2017</span>
+			      
+
+<p><a href="#english-tablez">English version below</a></p>
+
+<h5 id="vietnamese">Vietnamese</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  file tablez 
+</span><span style="">tablez</span><span style="color:#f92672">:</span><span style=""> ELF </span><span style="color:#ae81ff">64</span><span style="color:#f92672">-</span><span style="">bit LSB shared object</span><span style="">,</span><span style=""> x86</span><span style="color:#ae81ff">-64</span><span style="">,</span><span style=""> version </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="">(</span><span style="">SYSV</span><span style="">),</span><span style=""> dynamically linked</span><span style="">,</span><span style=""> interpreter </span><span style="color:#f92672">/</span><span style="">lib64</span><span style="color:#f92672">/</span><span style="">ld</span><span style="color:#f92672">-</span><span style="">linux</span><span style="color:#f92672">-</span><span style="">x86</span><span style="color:#ae81ff">-64.</span><span style="">so.2</span><span style="">,</span><span style=""> </span><span style="color:#66d9ef">for</span><span style=""> GNU</span><span style="color:#f92672">/</span><span style="">Linux </span><span style="color:#ae81ff">3.2.0</span><span style="">,</span><span style=""> BuildID</span><span style="">[</span><span style="">sha1</span><span style="">]</span><span style="color:#f92672">=</span><span style="color:#ae81ff">72</span><span style="">adea86090fb7deeb319e95681fd2c669dcc503</span><span style="">,</span><span style=""> not stripped</span></code></pre>
+</div>
+<p>Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:</p>
+
+<ol>
+<li>Dữ liệu được hardcoded từ <code>0x000008ba</code> tới <code>0x00000908</code></li>
+<li>Input được nhập vào biến <code>local_90h</code> ở <code>0x00000924</code></li>
+<li>Một vòng lặp gọi hàm <code>sym.get_tbl_entry</code> với tham số là input. Kết quả hàm này trả về được dùng để thay thế các ký tự trên input buffer.</li>
+<li>input buffer sau khi bị biến đổi qua vòng lặp ở 3 sẽ được so sánh với dữ liệu hardcoded ở 1 bằng hàm strncmp (<code>0x000009f7</code>). <code>0x26</code> ký tự đầu tiên sẽ được so sánh.</li>
+</ol>
+
+<p>Hàm <code>sym.get_tbl_entry</code> hoạt động như sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">for</span><span style=""> </span><span style="">(</span><span style="color:#66d9ef">int</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">&lt;=</span><span style=""> </span><span style="color:#ae81ff">0xfe</span><span style="">;</span><span style=""> </span><span style="">i</span><span style="color:#f92672">++</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">  </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">(</span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">input</span><span style="">[</span><span style="">i</span><span style="">])</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">];</span><span style="">
+</span><span style="">  </span><span style="">}</span><span style="">
+</span><span style=""></span><span style="">}</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span></code></pre>
+</div>
+<p>với <code>trans_tbl</code> là một biến toàn cục đã được viết trước.</p>
+
+<p>Như vậy, cách làm của mình như sau:</p>
+
+<ol>
+<li>Lấy dữ liệu từ bản trans_tbl và dự liệu hardcode trong hàm main ra (mình gọi là password).
+Để lấy dữ liệu từ bảng <code>obj.trans_tbl</code>: <code>pr 0xff@ obj.trans_tbl &gt; data.bin</code>
+(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)</li>
+<li>Với mỗi ký tự trong password, bruteforce tất cả các ký tự ASCII để tìm một ký tự c sao cho c sau khi qua hàm <code>get_tbl_entry</code> sẽ biến đổi thành ký tự ở vị trí tương ứng trong password.</li>
+</ol>
+
+<p>Solution:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span><span style=""> </span><span style="">pwn</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="color:#f92672">*</span><span style="">
+</span><span style=""></span><span style="color:#f92672">from</span><span style=""> </span><span style="">string</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="">printable</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">def</span><span style=""> </span><span style="color:#a6e22e">get_char</span><span style="">(</span><span style="">c</span><span style="">):</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">global</span><span style=""> </span><span style="">trans_tbl</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="color:#ae81ff">0xfe</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">):</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">c</span><span style="">:</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">]</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="">trans_tbl</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">open</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;trans_tbl&#39;</span><span style="">)</span><span style="color:#f92672">.</span><span style="">read</span><span style="">()</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb1e711f59d73b327</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x30f4f9f9b399beb3</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb19965237399711b</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xf9279923be111165</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x65059923</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">password</span><span style="color:#f92672">.</span><span style="">strip</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span><span style="">)</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="">flag</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="">len</span><span style="">(</span><span style="">password</span><span style="">)):</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">c</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">printable</span><span style="">:</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">get_char</span><span style="">(</span><span style="">c</span><span style="">)</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">password</span><span style="">[</span><span style="">i</span><span style="">]:</span><span style="">
+</span><span style="">            </span><span style="">flag</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">c</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">break</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="">flag</span></code></pre>
+</div>
+<p><a name="english-tablez"></a></p>
+
+<h5 id="english">English</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="">➜  file tablez 
+</span><span style="">tablez</span><span style="color:#f92672">:</span><span style=""> ELF </span><span style="color:#ae81ff">64</span><span style="color:#f92672">-</span><span style="">bit LSB shared object</span><span style="">,</span><span style=""> x86</span><span style="color:#ae81ff">-64</span><span style="">,</span><span style=""> version </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="">(</span><span style="">SYSV</span><span style="">),</span><span style=""> dynamically linked</span><span style="">,</span><span style=""> interpreter </span><span style="color:#f92672">/</span><span style="">lib64</span><span style="color:#f92672">/</span><span style="">ld</span><span style="color:#f92672">-</span><span style="">linux</span><span style="color:#f92672">-</span><span style="">x86</span><span style="color:#ae81ff">-64.</span><span style="">so.2</span><span style="">,</span><span style=""> </span><span style="color:#66d9ef">for</span><span style=""> GNU</span><span style="color:#f92672">/</span><span style="">Linux </span><span style="color:#ae81ff">3.2.0</span><span style="">,</span><span style=""> BuildID</span><span style="">[</span><span style="">sha1</span><span style="">]</span><span style="color:#f92672">=</span><span style="color:#ae81ff">72</span><span style="">adea86090fb7deeb319e95681fd2c669dcc503</span><span style="">,</span><span style=""> not stripped</span></code></pre>
+</div>
+<p>Fortunately, this binary is not stripped. After examining the main function, there are several noticeable points:</p>
+
+<ol>
+<li>There is hardcoded data, seen from <code>0x000008ba</code> to <code>0x00000908</code></li>
+<li>The input buffer is <code>local_90h</code>, seen at <code>0x00000924</code></li>
+<li>A loop calls to <code>sym.get_tbl_entry</code> with the input buffer as the parameter. The returned results are used to replace data on the input buffer.</li>
+<li>The input buffer after being transformed in #3 is compared to the hardcoded data in #1 using strncmp (<code>0x000009f7</code>). The first <code>0x26</code> characters are compared.</li>
+</ol>
+
+<p>Pseudo code for <code>sym.get_tbl_entry</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">for</span><span style=""> </span><span style="">(</span><span style="color:#66d9ef">int</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">&lt;=</span><span style=""> </span><span style="color:#ae81ff">0xfe</span><span style="">;</span><span style=""> </span><span style="">i</span><span style="color:#f92672">++</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">  </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">(</span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">input</span><span style="">[</span><span style="">i</span><span style="">])</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">];</span><span style="">
+</span><span style="">  </span><span style="">}</span><span style="">
+</span><span style=""></span><span style="">}</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">;</span></code></pre>
+</div>
+<p>with <code>trans_tbl</code> is an initialized global variable.</p>
+
+<p>My solution:</p>
+
+<ol>
+<li>Extract data from <code>trans_tbl</code> and the hardcoded data at the beginning of main (called password).
+To extract data from <code>obj.trans_tbl</code> using r2: <code>pr 0xff@ obj.trans_tbl &gt; data.bin</code>
+(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)</li>
+<li>For each character in the password, bruteforce all ASCII characters to find a character c such that c after being transformed by <code>get_tbl_entry</code> will be the corressponding character in the password.</li>
+</ol>
+
+<p>Solution:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span><span style=""> </span><span style="">pwn</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="color:#f92672">*</span><span style="">
+</span><span style=""></span><span style="color:#f92672">from</span><span style=""> </span><span style="">string</span><span style=""> </span><span style="color:#f92672">import</span><span style=""> </span><span style="">printable</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">def</span><span style=""> </span><span style="color:#a6e22e">get_char</span><span style="">(</span><span style="">c</span><span style="">):</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">global</span><span style=""> </span><span style="">trans_tbl</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="color:#ae81ff">0xfe</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">):</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style="">]</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">c</span><span style="">:</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">trans_tbl</span><span style="">[</span><span style="">i</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="color:#ae81ff">2</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">]</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">0</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="">trans_tbl</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">open</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;trans_tbl&#39;</span><span style="">)</span><span style="color:#f92672">.</span><span style="">read</span><span style="">()</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb1e711f59d73b327</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x30f4f9f9b399beb3</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xb19965237399711b</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0xf9279923be111165</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">p64</span><span style="">(</span><span style="color:#ae81ff">0x65059923</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">password</span><span style="color:#f92672">.</span><span style="">strip</span><span style="">(</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span><span style="">)</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="">flag</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">i</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">range</span><span style="">(</span><span style="">len</span><span style="">(</span><span style="">password</span><span style="">)):</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">c</span><span style=""> </span><span style="color:#f92672">in</span><span style=""> </span><span style="">printable</span><span style="">:</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">get_char</span><span style="">(</span><span style="">c</span><span style="">)</span><span style=""> </span><span style="color:#f92672">==</span><span style=""> </span><span style="">password</span><span style="">[</span><span style="">i</span><span style="">]:</span><span style="">
+</span><span style="">            </span><span style="">flag</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">c</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">break</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">print</span><span style=""> </span><span style="">flag</span></code></pre>
+</div>
+			</div>
+			<div id="meta-data">
+				
+				<ul id="tags">
+					Tags:
+					
+					<li><a href="/tags/csaw-ctf-17">csaw-ctf-17</a> </li>
+					
+				</ul>
+				<p></p>
+				
+
+				
+				<ul id="categories">
+					Topics:
+					
+					<li><a href="/categories/ctf">CTF</a> </li>
+					
+					<li><a href="/categories/reversing">reversing</a> </li>
+					
+				</ul>
+				<p></p>
+				
+
+				
+				
+			</div>
+			
+				<h2>Comments</h2>
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'asimpleguy'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+			
+		</div>
+
+  </body>
+</html>
