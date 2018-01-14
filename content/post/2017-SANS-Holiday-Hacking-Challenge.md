@@ -4,7 +4,7 @@ date: 2017-12-16T22:42:59-05:00
 Tags: ["SANS", "HHC"]
 Categories: ["pentest"]
 Languages: ["English"]
-featureimage: "img/sans-hhc17/ranking.png"
+thumbnail: "img/sans-hhc17/ranking.png"
 ---
 
 This year, I've had the chance to participate in SANS Holiday Hacking Challenge. The first time I did it was last year. I didn't think it was interesting with real pentesting stuffs until I read the writeups, so I decided to start early this year.
@@ -544,11 +544,19 @@ total 88
 -rw-r--r-- 1 root root   654 Dec 15 19:59 isit42.c.un
 ```
 
-hijack.c:
+To produce the expected result when running the binary, we'll need to make a shared object and specify it in the `LD_PRELOAD` environment variable. In this shared object, we can rewrite the `rand()` function used in the binary `isit42` so that it always return 42.
+
+`hijack.c`:
 ```c
 int rand() {
         return 42;
 }
+```
+
+Compile the above code to a shared object:
+
+```bash
+gcc -o libc.so.6 -shared -fPIC hijack.c
 ```
 
 ```bash
