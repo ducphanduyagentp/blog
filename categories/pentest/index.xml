@@ -17,11 +17,12 @@
       <pubDate>Sat, 16 Dec 2017 22:42:59 -0500</pubDate>
       
       <guid>http://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/</guid>
-      <description>Terminal Challenges
+      <description>This year, I&amp;rsquo;ve had the chance to participate in SANS Holiday Hacking Challenge. The first time I did it was last year. I didn&amp;rsquo;t think it was interesting with real pentesting stuffs until I read the writeups, so I decided to start early this year.
+Terminal Challenges
 Finding Great Book Pages
+Things I&amp;rsquo;ve learned
 
-Terminal Challenges WINTER WONDER LANDING Linux command hijacking Click on the terminal, we are presented with the object: to find elftalkd.
-|\ &amp;#39; / -- (*) -- &amp;gt;*&amp;lt; &amp;gt;0&amp;lt;@&amp;lt; &amp;gt;&amp;gt;&amp;gt;@&amp;lt;&amp;lt;* &amp;gt;@&amp;gt;*&amp;lt;0&amp;lt;&amp;lt;&amp;lt; &amp;gt;*&amp;gt;&amp;gt;@&amp;lt;&amp;lt;&amp;lt;@&amp;lt;&amp;lt; &amp;gt;@&amp;gt;&amp;gt;0&amp;lt;&amp;lt;&amp;lt;*&amp;lt;&amp;lt;@&amp;lt; &amp;gt;*&amp;gt;&amp;gt;0&amp;lt;&amp;lt;@&amp;lt;&amp;lt;&amp;lt;@&amp;lt;&amp;lt;&amp;lt; &amp;gt;@&amp;gt;&amp;gt;*&amp;lt;&amp;lt;@&amp;lt;&amp;gt;*&amp;lt;&amp;lt;0&amp;lt;*&amp;lt; \*/ &amp;gt;0&amp;gt;&amp;gt;*&amp;lt;&amp;lt;@&amp;lt;&amp;gt;0&amp;gt;&amp;lt;&amp;lt;*&amp;lt;@&amp;lt;&amp;lt; ___\\U//___ &amp;gt;*&amp;gt;&amp;gt;@&amp;gt;&amp;lt;0&amp;lt;&amp;lt;*&amp;gt;&amp;gt;@&amp;gt;&amp;lt;*&amp;lt;0&amp;lt;&amp;lt; |\\ | | \\| &amp;gt;@&amp;gt;&amp;gt;0&amp;lt;*&amp;lt;0&amp;gt;&amp;gt;@&amp;lt;&amp;lt;0&amp;lt;&amp;lt;&amp;lt;*&amp;lt;@&amp;lt;&amp;lt; | \\| | _(UU)_ &amp;gt;((*))_&amp;gt;0&amp;gt;&amp;lt;*&amp;lt;0&amp;gt;&amp;lt;@&amp;lt;&amp;lt;&amp;lt;0&amp;lt;*&amp;lt; |\ \| || / //||.*.*.*.|&amp;gt;&amp;gt;@&amp;lt;&amp;lt;*&amp;lt;&amp;lt;@&amp;gt;&amp;gt;&amp;lt;0&amp;lt;&amp;lt;&amp;lt; |\\_|_|&amp;amp;&amp;amp;_// ||*.*.*.*|_\\db//_ &amp;#34;&amp;#34;&amp;#34;&amp;#34;|&amp;#39;.&amp;#39;.&amp;#39;.|~~|.*.*.*|____|_ |&amp;#39;.&amp;#39;.&amp;#39;.| ^^^^^^|____|&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;| ~~~~~~~~ &amp;#39;&amp;#34;&amp;#34;&amp;#34;&amp;#34;`------&amp;#39;My name is Bushy Evergreen, and I have a problem foryou.</description>
+Terminal Challenges WINTER WONDER LANDING Linux command hijacking Click on the terminal, we are presented with the object: to find elftalkd.</description>
     </item>
     
   </channel>

