@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blue Team on simpleguy.tech</title>
+    <link>http://simpleguy.tech/categories/blue-team/</link>
+    <description>Recent content in Blue Team on simpleguy.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Dec 2017 23:15:24 -0500</lastBuildDate>
+    
+	<atom:link href="http://simpleguy.tech/categories/blue-team/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>UB Lockdown V3</title>
+      <link>http://simpleguy.tech/post/ub-lockdown-v3/</link>
+      <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
+      
+      <guid>http://simpleguy.tech/post/ub-lockdown-v3/</guid>
+      <description>Vietnamese version below
+English The weekend before Thanksgiving, I had the chance to play at Lockdown v3, an incident response competition held at University of Buffalo by UBNetDef.
+Overview  This is a defense-only competition There are 6 people per team. Each team is given access to an infrastructure with basic components of an enterprise network:  Windows and Linux client machines Web server(s) Active Directory/DNS server(s) FTP server Mail server Databases A router.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,193 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en-us" lang="en-us" >
+
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"> <meta name="generator" content="Hugo 0.29" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> 
+  <title>UB Lockdown V3 &middot; simpleguy.tech</title>
+  
+
+  
+  <link rel="stylesheet" href="http://simpleguy.tech/css/poole.css">
+  <link rel="stylesheet" href="http://simpleguy.tech/css/syntax.css">
+  <link rel="stylesheet" href="http://simpleguy.tech/css/hyde.css">
+  <link rel="stylesheet" href="http://simpleguy.tech/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="simpleguy.tech" />
+</head>
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://simpleguy.tech/"><h1>simpleguy.tech</h1></a>
+      <p class="lead">
+       I&#39;m a simple guy. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+      <li><a href="/tags">Tags</a>  </li>
+      <li><a href="/categories">Categories</a>  </li>
+      <li><a href="/projects">Projects</a>  </li>
+      <p></p>
+      <span class="sidebar-nav-item fa fa-github">
+        <a href="https://github.com/ducphanduyagentp"> github.com/ducphanduyagentp</a>
+      </span>
+      <span class="sidebar-nav-item fa fa-twitter">
+        <a href="https://twitter.com/@flyingpassword"> @flyingpassword</a>
+      </span>
+    </ul>
+      
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>UB Lockdown V3</h1>
+			  <span class="post-date">Mon, Dec 4, 2017</span>
+			      
+
+<p><a href="#vietnamese-lockdownv3">Vietnamese version below</a></p>
+
+<h5 id="english">English</h5>
+
+<p>The weekend before Thanksgiving, I had the chance to play at Lockdown v3, an incident response competition held at University of Buffalo by <a href="https://lockdown.ubnetdef.org">UBNetDef</a>.</p>
+
+<h3 id="overview">Overview</h3>
+
+<ul>
+<li>This is a defense-only competition</li>
+<li>There are 6 people per team.</li>
+<li>Each team is given access to an infrastructure with basic components of an enterprise network:
+
+<ul>
+<li>Windows and Linux client machines</li>
+<li>Web server(s)</li>
+<li>Active Directory/DNS server(s)</li>
+<li>FTP server</li>
+<li>Mail server</li>
+<li>Databases</li>
+<li>A router. In this competition, it is a pfSense router.</li>
+</ul></li>
+<li>While blue teams (competitors) trying to defend the infrastructure under the attack of red team, blue teams have to complete technical and business tasks (called <strong>injects</strong>) within a certain amount of time. This increase significantly the pressure of the competition since the scoring are <sup>50</sup>&frasl;<sub>50</sub> for up-time and injects.</li>
+<li>During the competition, there are meeting between team captain and C-level people for information inquiry about the work progress.</li>
+<li>Blue teams are required to turn in an incident response report as the final inject at the end of the competition.</li>
+</ul>
+
+<h3 id="competition-time">Competition Time</h3>
+
+<p>My responsibilities in a nutshell:
+- Keep the web servers up and running and maintain the communication between the web application and the databases.
+- Keep the Linux clients ping-able from the scoring engine.
+- Keep things clean and properly configured.
+- Record red-team activities for incident reporting.</p>
+
+<p>I started out by changing the default passwords on all the machines that I was on. Firstly, I changed password of the root users and users that are used to login to other machines to avoid password reuse. However, I <strong>stopped changing the passwords</strong> when I realized that there were so many users and I couldn&rsquo;t figure out a way to automate this process without hard-coding it. I didn&rsquo;t even proceed to audit those users. This is a huge mistake.</p>
+
+<p>I tried to deploy my firewall script on the machines serveral times. It didn&rsquo;t work perfectly. I ended up taking them down, leaving the machines without firewall. They did not get hit hard until the end of the competition, when red team tried to burn the scoreboard. Still, it is another big mistake where I could have avoided by better preparation.</p>
+
+<p>Here are some of my findings before red team burning the scoreboard:</p>
+
+<ul>
+<li>Backdoor in ~/.bashrc that filters out red-team activities from the output of commands like <code>netstat, ps</code>.</li>
+<li>Reverse shell backdoor in <code>/root</code></li>
+<li>Backdoor ssh-key that allow red-team to login without password.</li>
+</ul>
+
+<p>Towards the end of the competition, red-team attempted to delete the host routing table on the Linux clients, making it un-ping-able from the scoring engine. The solution was to rebuild the routing table. It took me a while as I didn&rsquo;t expect to work with host routing table. This is a new thing that I&rsquo;ve learned during the competition.</p>
+
+<h3 id="lesson-learned">Lesson Learned</h3>
+
+<p>tl;dr:</p>
+
+<ul>
+<li>Firewalls ftw.</li>
+<li>Don&rsquo;t rush. Know what you do.</li>
+<li>Have a plan, stick with it.</li>
+<li>Look carefully.</li>
+<li>Change default credentials. There is a potato out there died for each of the unchanged credentials.</li>
+</ul>
+
+<ol>
+<li><strong>IF YOU HAVE A PLAN, STICK WITH IT. IF NOT, MAKE ONE, AND STICK WITH IT</strong>: I had a plan. I even told myself that I would be panicking during the competition and that&rsquo;s what the 5-minute plan was for. I ended up carrying out portions of the plans in no order. That made me panic even worse towards the end of the competition.</li>
+<li>It is easy to overlook obvious things when being under pressure. I skipped things that I was supposed to investigate: ansible scripts, redundant services that are actually backdoors, .bashrc, aliases, all kind of things in this planet.</li>
+
+<li><p>There is a lot going on this kind of competition and even in real life situation. For me, it is often difficult to distinguish between malicious and non-malicious files/processes/configurations/etc during the competition and at that time, I did not know what to do with those things and proceeded to do research on things that I could have spent time learning before the competition. I think one of the best way to truly understand something is to build it from scratch and install components and monitor the changes in the systems. In that way, I can figure out different &ldquo;states&rdquo; of the systems, and whether something is malicious or not.</p></li>
+
+<li><p><strong>CHANGE DEFAULT PASSWORDS</strong>: Just change it. If there&rsquo;s too much work, try to find a way to automate the process.</p></li>
+
+<li><p>Have a working firewall script. My scripts break on all the competitions that I have ever been to.</p></li>
+
+<li><p>The scored web application communicates with the databases. When the databases are down, we lose points for the web application as well. This means it&rsquo;s not about just defending separate machines, but keeping the communication between the components is also critical.</p></li>
+
+<li><p>Monitoring file integrity is critical.</p></li>
+
+<li><p>Check for PAM backdoor.</p></li>
+</ol>
+
+<p><a name="vietnamese-lockdownv3"></a></p>
+
+<h5 id="vietnamese">Vietnamese</h5>
+
+<p>Work in progress.</p>
+
+			</div>
+			<div id="meta-data">
+				
+				<ul id="tags">
+					Tags:
+					
+					<li><a href="/tags/lockdown">lockdown</a> </li>
+					
+				</ul>
+				<p></p>
+				
+
+				
+				<ul id="categories">
+					Topics:
+					
+					<li><a href="/categories/incident-response">Incident Response</a> </li>
+					
+					<li><a href="/categories/blue-team">Blue Team</a> </li>
+					
+				</ul>
+				<p></p>
+				
+
+				
+				
+			</div>
+			
+				<h2>Comments</h2>
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'asimpleguy'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+			
+		</div>
+
+  </body>
+</html>
