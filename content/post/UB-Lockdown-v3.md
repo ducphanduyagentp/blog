@@ -27,6 +27,7 @@ The weekend before Thanksgiving, I had the chance to play at Lockdown v3, an inc
 ### Competition Time
 
 My responsibilities in a nutshell:
+
 - Keep the web servers up and running and maintain the communication between the web application and the databases.
 - Keep the Linux clients ping-able from the scoring engine.
 - Keep things clean and properly configured.
