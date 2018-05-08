@@ -1,6 +1,6 @@
 baseURL = "https://simpleguy.tech/"
 languageCode = "en-us"
-title = "simpleguy.tech"
+title = "Dig deeper-Try harder-Repeat"
 staticDir = "static"
 buildDraft = true
 pygmentsOptions = "nowrap=True"
