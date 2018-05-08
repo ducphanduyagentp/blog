@@ -1,4 +1,4 @@
-baseURL = "http://simpleguy.tech/"
+baseURL = "https://simpleguy.tech/"
 languageCode = "en-us"
 title = "simpleguy.tech"
 staticDir = "static"
