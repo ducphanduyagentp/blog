@@ -2,84 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on simpleguy.tech</title>
-    <link>http://simpleguy.tech/categories/</link>
+    <link>https://simpleguy.tech/categories/</link>
     <description>Recent content in Categories on simpleguy.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Dec 2017 23:15:24 -0500</lastBuildDate>
     
-	<atom:link href="http://simpleguy.tech/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://simpleguy.tech/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blue Team</title>
-      <link>http://simpleguy.tech/categories/blue-team/</link>
+      <link>https://simpleguy.tech/categories/blue-team/</link>
       <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
       
-      <guid>http://simpleguy.tech/categories/blue-team/</guid>
+      <guid>https://simpleguy.tech/categories/blue-team/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ctf</title>
-      <link>http://simpleguy.tech/categories/ctf/</link>
+      <link>https://simpleguy.tech/categories/ctf/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/categories/ctf/</guid>
+      <guid>https://simpleguy.tech/categories/ctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Forensics</title>
-      <link>http://simpleguy.tech/categories/forensics/</link>
+      <link>https://simpleguy.tech/categories/forensics/</link>
       <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/categories/forensics/</guid>
+      <guid>https://simpleguy.tech/categories/forensics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Incident Response</title>
-      <link>http://simpleguy.tech/categories/incident-response/</link>
+      <link>https://simpleguy.tech/categories/incident-response/</link>
       <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
       
-      <guid>http://simpleguy.tech/categories/incident-response/</guid>
+      <guid>https://simpleguy.tech/categories/incident-response/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Misc</title>
-      <link>http://simpleguy.tech/categories/misc/</link>
+      <link>https://simpleguy.tech/categories/misc/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/categories/misc/</guid>
+      <guid>https://simpleguy.tech/categories/misc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pentest</title>
-      <link>http://simpleguy.tech/categories/pentest/</link>
+      <link>https://simpleguy.tech/categories/pentest/</link>
       <pubDate>Sat, 16 Dec 2017 22:42:59 -0500</pubDate>
       
-      <guid>http://simpleguy.tech/categories/pentest/</guid>
+      <guid>https://simpleguy.tech/categories/pentest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pwn</title>
-      <link>http://simpleguy.tech/categories/pwn/</link>
+      <link>https://simpleguy.tech/categories/pwn/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/categories/pwn/</guid>
+      <guid>https://simpleguy.tech/categories/pwn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reversing</title>
-      <link>http://simpleguy.tech/categories/reversing/</link>
+      <link>https://simpleguy.tech/categories/reversing/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/categories/reversing/</guid>
+      <guid>https://simpleguy.tech/categories/reversing/</guid>
       <description></description>
     </item>
     

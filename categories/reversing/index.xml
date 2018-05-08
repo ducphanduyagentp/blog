@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reversing on simpleguy.tech</title>
-    <link>http://simpleguy.tech/categories/reversing/</link>
+    <link>https://simpleguy.tech/categories/reversing/</link>
     <description>Recent content in Reversing on simpleguy.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Oct 2017 16:34:52 -0400</lastBuildDate>
     
-	<atom:link href="http://simpleguy.tech/categories/reversing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://simpleguy.tech/categories/reversing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[CSAW CTF 17] RE100: Tablez</title>
-      <link>http://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</link>
+      <link>https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</guid>
+      <guid>https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</guid>
       <description>English version below
 Vietnamese ➜ file tablez tablez:ELF 64-bit LSB shared object,x86-64,version 1(SYSV),dynamically linked,interpreter /lib64/ld-linux-x86-64.so.2,forGNU/Linux 3.2.0,BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503,not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
  Dữ liệu được hardcoded từ 0x000008ba tới 0x00000908 Input được nhập vào biến local_90h ở 0x00000924 Một vòng lặp gọi hàm sym.</description>
@@ -24,20 +24,20 @@ Vietnamese ➜ file tablez tablez:ELF 64-bit LSB shared object,x86-64,version 1(
     
     <item>
       <title>[CSAW CTF 17] Misc100: Twitch</title>
-      <link>http://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/</link>
+      <link>https://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/</guid>
+      <guid>https://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/</guid>
       <description>English version here
 Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là họ stream một cái shell lên twitch. Để điều khiển shell đó thì người xem twitch sẽ vote phím nào được ấn trên bàn phím bằng cách gõ vào phần chat. Để lấy được flag bài này thì số người đó phải exploit 1 binary bị buffer overflow. Mình thì không rảnh nhảy vào vote nên chỉ xem xong cướp flag thôi =)) Điều bựa là mỗi khi flag được lấy ra thành công thì sau vài phút, cái máy tính được stream sẽ tự động reboot và ai không lấy kịp flag thì lại ngồi chờ =))</description>
     </item>
     
     <item>
       <title>[CSAW CTF 17] pwn75: pilot</title>
-      <link>http://simpleguy.tech/post/csaw-ctf-17-pwn75-pilot/</link>
+      <link>https://simpleguy.tech/post/csaw-ctf-17-pwn75-pilot/</link>
       <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
       
-      <guid>http://simpleguy.tech/post/csaw-ctf-17-pwn75-pilot/</guid>
+      <guid>https://simpleguy.tech/post/csaw-ctf-17-pwn75-pilot/</guid>
       <description>English version here
 Vietnamese Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não (quangltm và anh tuanit96), mình đã quẩy được vài bài khá cơ bản.
 Đây là bài đầu tiên mình owned trong giờ thi. Bài này là một bài buffer overflow cơ bản.</description>
