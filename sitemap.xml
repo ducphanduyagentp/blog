@@ -57,6 +57,12 @@
   </url>
   
   <url>
+    <loc>https://simpleguy.tech/</loc>
+    <lastmod>2017-12-16T22:42:59-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://simpleguy.tech/categories/forensics/</loc>
     <lastmod>2017-10-22T16:23:20-04:00</lastmod>
     <priority>0</priority>
@@ -124,12 +130,6 @@
   <url>
     <loc>https://simpleguy.tech/tags/</loc>
     <lastmod>2017-10-22T16:34:52-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://simpleguy.tech/</loc>
-    <lastmod>2017-12-16T22:42:59-05:00</lastmod>
     <priority>0</priority>
   </url>
   
