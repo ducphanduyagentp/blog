@@ -1,19 +1,48 @@
 baseURL = "https://simpleguy.tech/"
 languageCode = "en-us"
-title = "Dig deeper-Try harder-Repeat"
+title = "Simple Guy"
 staticDir = "static"
 buildDraft = true
-pygmentsOptions = "nowrap=True"
-pygmentsCodefences = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsStyle = "monokai"
 
 [params]
     disqusShortname = "asimpleguy"
+    Subtitle = "Dig deeper - Try harder - Repeat"
     description = "I'm a simple guy."
-    author = "simpleguy"
+    twitter = "flyingpassword"
+    linkedin = "ducphanduy"
+    github = "ducphanduyagentp"
+    disqus = "asimpleguy"
+
+[params.author]
+    firstName = "Duc"
+    lastName = "Phan"
+    disqus = "asimpleguy"
 
 [taxonomies]
     category = "categories"
     tag = "tags"
     project = "projects"
+
+[[menu.main]]
+    Name = "About me"
+    URL = "/about"
+    Identifier = "about"
+    Weight = 10
+
+[[menu.main]]
+    Name = "Projects"
+    URL = "/projects"
+    Identifier = "projects"
+    Weight = 20
+
+[[menu.main]]
+    Name = "Tags"
+    URL = "/tags"
+    Identifier = "tags"
+    Weight = 30
+
+[[menu.main]]
+    Name = "Categories"
+    URL = "/categories"
+    Identifier = "categories"
+    Weight = 40

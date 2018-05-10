@@ -25,7 +25,7 @@ This year, I've had the chance to participate in SANS Holiday Hacking Challenge.
 
 Click on the terminal, we are presented with the object: to find elftalkd.
 
-```bash
+```
                                  |
                                \ ' /
                              -- (*) --

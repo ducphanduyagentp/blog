@@ -1,0 +1,24 @@
+{{ if .Site.Menus.main }}
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        {{ range .Site.Menus.main }}
+        {{ $currentNode := . }}
+        <li class="menu-list-item">
+            {{ .Pre }}
+            <a class="home current js-ajax-link" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/{{ .Site.Params.twitter }}" title="{{ .Site.Title }} on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/{{ .Site.Params.linkedin }}" title="{{ .Site.Title }} on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/{{ .Site.Params.github }}" title="{{ .Site.Title }} on GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
+</div>
+{{ end }}
