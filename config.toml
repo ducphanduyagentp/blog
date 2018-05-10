@@ -25,24 +25,24 @@ buildDraft = true
 
 [[menu.main]]
     Name = "About me"
-    URL = "/about"
+    URL = "/about/"
     Identifier = "about"
     Weight = 10
 
 [[menu.main]]
     Name = "Projects"
-    URL = "/projects"
+    URL = "/projects/"
     Identifier = "projects"
     Weight = 20
 
 [[menu.main]]
     Name = "Tags"
-    URL = "/tags"
+    URL = "/tags/"
     Identifier = "tags"
     Weight = 30
 
 [[menu.main]]
     Name = "Categories"
-    URL = "/categories"
+    URL = "/categories/"
     Identifier = "categories"
     Weight = 40

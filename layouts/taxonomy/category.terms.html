@@ -1,13 +1,25 @@
 {{ partial "header.html" . }}
-<body class="{{ .Site.Params.themeColor }} {{if .Site.Params.layoutReverse}}layout-reverse{{end}}">
 
-    <div class="content container">
-<ul id="all-tags">
-  {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-    <li><a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></li>
-  {{ end }}
-</ul>
-</div>
+	<header id="header" class="header{{ if .Site.Params.cover }} has-cover{{ end }}">
+		<div class="inner">
+			<a class="header-title" href="{{ .Site.BaseURL }}">
+				<h1 class="header-name">{{ .Site.Title }}</h1>
+				{{ if .Site.Params.Subtitle }}
+					<span class="header-description">{{ .Site.Params.Subtitle }}</span>
+				{{ end }}
+			</a>
+		</div>
+		{{ if .Site.Params.cover }}
+		<div class="header-cover blured-image" style="background-color: #19a0d7; background-image: url(/images/cover.low.jpg)" data-src="{{ .Site.Params.cover }}"></div>
+		{{ end }}
+	</header>
 
-  </body>
-</html>
+  <div class="content container">
+    <ul id="all-categories">
+      {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        <li><a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+
+{{ partial "footer.html" . }}
