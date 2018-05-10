@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dig deeper-Try harder-Repeat</title>
+    <title>Simple Guy</title>
     <link>https://simpleguy.tech/</link>
-    <description>Recent content on Dig deeper-Try harder-Repeat</description>
+    <description>Recent content on Simple Guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Dec 2017 22:42:59 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 10 May 2018 16:34:51 -0400</lastBuildDate>
     
 	<atom:link href="https://simpleguy.tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About me</title>
+      <link>https://simpleguy.tech/about/</link>
+      <pubDate>Thu, 10 May 2018 16:34:51 -0400</pubDate>
+      
+      <guid>https://simpleguy.tech/about/</guid>
+      <description> About me </description>
+    </item>
     
     <item>
       <title>2017 SANS Holiday Hacking Challenge</title>
@@ -43,7 +52,7 @@ Overview  This is a defense-only competition There are 6 people per team. Each t
       
       <guid>https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/</guid>
       <description>English version below
-Vietnamese ➜ file tablez tablez:ELF 64-bit LSB shared object,x86-64,version 1(SYSV),dynamically linked,interpreter /lib64/ld-linux-x86-64.so.2,forGNU/Linux 3.2.0,BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503,not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
+Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
  Dữ liệu được hardcoded từ 0x000008ba tới 0x00000908 Input được nhập vào biến local_90h ở 0x00000924 Một vòng lặp gọi hàm sym.</description>
     </item>
     
