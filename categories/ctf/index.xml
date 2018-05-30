@@ -6,10 +6,21 @@
     <description>Recent content in Ctf on Simple Guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Oct 2017 16:34:52 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 22 May 2018 15:08:38 -0400</lastBuildDate>
     
 	<atom:link href="https://simpleguy.tech/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GRIMM HAX Combined Challenge</title>
+      <link>https://simpleguy.tech/post/grimm-hax-combined-challenge/</link>
+      <pubDate>Tue, 22 May 2018 15:08:38 -0400</pubDate>
+      
+      <guid>https://simpleguy.tech/post/grimm-hax-combined-challenge/</guid>
+      <description>GRIMM HAX Combined Challenge Welcome, Bobby (100pts) Accessing the website at http://www.haxcorp.grimm-co.com/, we are provided with a login page with username as password. The objective of this level is to login as admin. Seeing this as a warmup level, I immediately try the following classic SQL injection
+And we are in. The flag is GRIMM-BOBBY-TABLES-WOULD-BE-PROUD.
+Oh How the Tables have Turned (100pts) From the description of the challenge, I predicted that this is another SQL injection to find the flag in a different table in the database, especially when we are presented with a search functionality.</description>
+    </item>
     
     <item>
       <title>[CSAW CTF 17] RE100: Tablez</title>

