@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Simple Guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 May 2018 15:08:38 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 29 Jun 2018 19:48:43 +0700</lastBuildDate>
     
 	<atom:link href="https://simpleguy.tech/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>H1-702 CTF 2018</title>
+      <link>https://simpleguy.tech/post/h1-702-ctf-2018/</link>
+      <pubDate>Fri, 29 Jun 2018 19:48:43 +0700</pubDate>
+      
+      <guid>https://simpleguy.tech/post/h1-702-ctf-2018/</guid>
+      <description>It&amp;rsquo;s this time of the year again and I have the chance to play the CTF held by Hackerone. It has a lot of mobile hacking challenge, and at the same time, I wanted to dive into this. What a good time to learn!
+Mobile Challenge 1 Let&amp;rsquo;s open up the apk in jadx. The first part of the flag is revealed in the MainActivity: flag{so_much
+... void doSomething() { Log.</description>
+    </item>
     
     <item>
       <title>GRIMM HAX Combined Challenge</title>
