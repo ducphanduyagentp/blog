@@ -101,7 +101,7 @@ Mobile Challenge 1 Let&rsquo;s open up the apk in jadx. The first part of the fl
         },
         "datePublished": "2018-06-29",
         "dateModified": "2018-06-29",
-        "wordCount": 3805,
+        "wordCount": 3803,
         
     }
     </script>
@@ -192,7 +192,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <header class="post-header">
                 
                     <span class="post-meta">
-                        <span class="post-date">29 Jun 2018</span> <span class="reading-time">| <span class="estimated-reading-time">18 min.</span> (<span class="word-count">3805</span> words)</span></span>
+                        <span class="post-date">29 Jun 2018</span> <span class="reading-time">| <span class="estimated-reading-time">18 min.</span> (<span class="word-count">3803</span> words)</span></span>
                     </span>
                 <div class="clear"></div>
                 
@@ -669,9 +669,12 @@ if __name__ == '__main__':
 
 <p>At first, I didn&rsquo;t know where to start because I have not tried to pwn an apk application before. Looking at tools to scan for vulnerabilities in APKs, I found QARK, a pretty neat tool from LinkedIn that can be used to quickly scan for common vulnerabilities in an android application, using mostly static analysis.</p>
 
-<p>At the same time, I read the setup instruction and kinda had a sense of what I have to do:
-- The flag file is at <code>/data/local/tmp/challenge4</code>
-- The owner of the file is root, the owner group is the same group as the vulnerable application.</p>
+<p>At the same time, I read the setup instruction and kinda had a sense of what I have to do:</p>
+
+<ul>
+<li>The flag file is at <code>/data/local/tmp/challenge4</code></li>
+<li>The owner of the file is root, the owner group is the same group as the vulnerable application.</li>
+</ul>
 
 <p>Since we have to exploit the application, my guess was that we need to somehow use the vulnerable app&rsquo;s permission to read the flag file. When the scan from QARK finish, I skimmed through the report and noticed this</p>
 
