@@ -18,8 +18,7 @@
       
       <guid>https://simpleguy.tech/post/h1-702-ctf-2018/</guid>
       <description>It&amp;rsquo;s this time of the year again and I have the chance to play the CTF held by Hackerone. It has a lot of mobile hacking challenge, and at the same time, I wanted to dive into this. What a good time to learn!
-Mobile Challenge 1 Let&amp;rsquo;s open up the apk in jadx. The first part of the flag is revealed in the MainActivity: flag{so_much
-... void doSomething() { Log.</description>
+Update 1: I totally forgot the fifth part of the flag in the first challenge while I was writing this. That&amp;rsquo;s what it&amp;rsquo;s like rushing a post :)</description>
     </item>
     
     <item>

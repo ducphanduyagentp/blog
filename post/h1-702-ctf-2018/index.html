@@ -22,8 +22,7 @@
     <meta name="twitter:title" content="H1-702 CTF 2018" />
     
     <meta name="twitter:description" content="It&rsquo;s this time of the year again and I have the chance to play the CTF held by Hackerone. It has a lot of mobile hacking challenge, and at the same time, I wanted to dive into this. What a good time to learn!
-Mobile Challenge 1 Let&rsquo;s open up the apk in jadx. The first part of the flag is revealed in the MainActivity: flag{so_much
-... void doSomething() { Log." />
+Update 1: I totally forgot the fifth part of the flag in the first challenge while I was writing this. That&rsquo;s what it&rsquo;s like rushing a post :)" />
     <meta name="twitter:url" content="https://simpleguy.tech/post/h1-702-ctf-2018/" />
     
 
@@ -101,7 +100,7 @@ Mobile Challenge 1 Let&rsquo;s open up the apk in jadx. The first part of the fl
         },
         "datePublished": "2018-06-29",
         "dateModified": "2018-06-29",
-        "wordCount": 3803,
+        "wordCount": 3875,
         
     }
     </script>
@@ -192,7 +191,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <header class="post-header">
                 
                     <span class="post-meta">
-                        <span class="post-date">29 Jun 2018</span> <span class="reading-time">| <span class="estimated-reading-time">18 min.</span> (<span class="word-count">3803</span> words)</span></span>
+                        <span class="post-date">29 Jun 2018</span> <span class="reading-time">| <span class="estimated-reading-time">19 min.</span> (<span class="word-count">3875</span> words)</span></span>
                     </span>
                 <div class="clear"></div>
                 
@@ -204,6 +203,8 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                   
 
 <p>It&rsquo;s this time of the year again and I have the chance to play the CTF held by Hackerone. It has a lot of mobile hacking challenge, and at the same time, I wanted to dive into this. What a good time to learn!</p>
+
+<p>Update 1: I totally forgot the fifth part of the flag in the first challenge while I was writing this. That&rsquo;s what it&rsquo;s like rushing a post :)</p>
 
 <h1 id="mobile-challenge-1">Mobile Challenge 1</h1>
 
@@ -275,7 +276,13 @@ public class FourthPart {
 
 <p><img src="/img/h1702/1.2.png" alt="mobile-1" /></p>
 
-<p>Putting all of these together, we get <code>flag{so_much_static_analysis_much_wow}</code></p>
+<p>I tried putting all these together but it was not the flag. I then noticed some weird functions in the native lib.</p>
+
+<p><img src="/img/h1702/1.3.png" alt="mobile-1" /></p>
+
+<p>Grabbing the characters in the order of the functions on the left yeild <code>_and_cool}</code>. That&rsquo;s probably the last part of the flag.</p>
+
+<p>Putting all of these together, we get <code>flag{so_much_static_analysis_much_wow_and_cool}</code></p>
 
 <!-- 
 - Unpack the APK using apktool
@@ -284,6 +291,7 @@ public class FourthPart {
     - Part 2 in native lib
     - Part 3 in strings.xml
     - Part 4 in a function 
+    - Part 5 in functions in native lib with weird names
 -->
 
 <h1 id="mobile-challenge-2">Mobile Challenge 2</h1>
