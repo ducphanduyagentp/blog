@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Simple Guy</title>
-    <link>https://simpleguy.tech/categories/</link>
-    <description>Recent content in Categories on Simple Guy</description>
+    <title>Categories on Protego Totalum Security - Protect people&#39;s faith</title>
+    <link>https://protegototalum.faith/categories/</link>
+    <description>Recent content in Categories on Protego Totalum Security - Protect people&#39;s faith</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Dec 2017 23:15:24 -0500</lastBuildDate>
     
-	<atom:link href="https://simpleguy.tech/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://protegototalum.faith/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blue Team</title>
-      <link>https://simpleguy.tech/categories/blue-team/</link>
+      <link>https://protegototalum.faith/categories/blue-team/</link>
       <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
       
-      <guid>https://simpleguy.tech/categories/blue-team/</guid>
+      <guid>https://protegototalum.faith/categories/blue-team/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ctf</title>
-      <link>https://simpleguy.tech/categories/ctf/</link>
+      <link>https://protegototalum.faith/categories/ctf/</link>
       <pubDate>Tue, 22 May 2018 15:08:38 -0400</pubDate>
       
-      <guid>https://simpleguy.tech/categories/ctf/</guid>
+      <guid>https://protegototalum.faith/categories/ctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Forensics</title>
-      <link>https://simpleguy.tech/categories/forensics/</link>
+      <link>https://protegototalum.faith/categories/forensics/</link>
       <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
       
-      <guid>https://simpleguy.tech/categories/forensics/</guid>
+      <guid>https://protegototalum.faith/categories/forensics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Incident Response</title>
-      <link>https://simpleguy.tech/categories/incident-response/</link>
+      <link>https://protegototalum.faith/categories/incident-response/</link>
       <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
       
-      <guid>https://simpleguy.tech/categories/incident-response/</guid>
+      <guid>https://protegototalum.faith/categories/incident-response/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Misc</title>
-      <link>https://simpleguy.tech/categories/misc/</link>
+      <link>https://protegototalum.faith/categories/misc/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
       
-      <guid>https://simpleguy.tech/categories/misc/</guid>
+      <guid>https://protegototalum.faith/categories/misc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pentest</title>
-      <link>https://simpleguy.tech/categories/pentest/</link>
+      <link>https://protegototalum.faith/categories/pentest/</link>
       <pubDate>Tue, 22 May 2018 15:08:38 -0400</pubDate>
       
-      <guid>https://simpleguy.tech/categories/pentest/</guid>
+      <guid>https://protegototalum.faith/categories/pentest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pwn</title>
-      <link>https://simpleguy.tech/categories/pwn/</link>
+      <link>https://protegototalum.faith/categories/pwn/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
       
-      <guid>https://simpleguy.tech/categories/pwn/</guid>
+      <guid>https://protegototalum.faith/categories/pwn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reversing</title>
-      <link>https://simpleguy.tech/categories/reversing/</link>
+      <link>https://protegototalum.faith/categories/reversing/</link>
       <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
       
-      <guid>https://simpleguy.tech/categories/reversing/</guid>
+      <guid>https://protegototalum.faith/categories/reversing/</guid>
       <description></description>
     </item>
     

@@ -7,9 +7,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
-    <meta property="og:title" content=" [CSAW CTF 17] Misc100: Twitch &middot;  Simple Guy" />
-    <meta property="og:site_name" content="Simple Guy" />
-    <meta property="og:url" content="https://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/" />
+    <meta property="og:title" content=" [CSAW CTF 17] Misc100: Twitch &middot;  Protego Totalum Security - Protect people&#39;s faith" />
+    <meta property="og:site_name" content="Protego Totalum Security - Protect people&#39;s faith" />
+    <meta property="og:url" content="https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/" />
 
     
     <meta property="og:type" content="article" />
@@ -24,10 +24,10 @@
     
     <meta name="twitter:description" content="English version here
 Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là họ stream một cái shell lên twitch. Để điều khiển shell đó thì người xem twitch sẽ vote phím nào được ấn trên bàn phím bằng cách gõ vào phần chat. Để lấy được flag bài này thì số người đó phải exploit 1 binary bị buffer overflow. Mình thì không rảnh nhảy vào vote nên chỉ xem xong cướp flag thôi =)) Điều bựa là mỗi khi flag được lấy ra thành công thì sau vài phút, cái máy tính được stream sẽ tự động reboot và ai không lấy kịp flag thì lại ngồi chờ =))" />
-    <meta name="twitter:url" content="https://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/" />
+    <meta name="twitter:url" content="https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/" />
     
 
-    <title> [CSAW CTF 17] Misc100: Twitch &middot;  Simple Guy</title>
+    <title> [CSAW CTF 17] Misc100: Twitch &middot;  Protego Totalum Security - Protect people&#39;s faith</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="preload" href="/js/main.js" as="script" />
@@ -52,11 +52,11 @@ Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là h�
     
 
     
-    <link href="https://simpleguy.tech/index.xml" rel="alternate" type="application/rss+xml" title="Simple Guy" />
+    <link href="https://protegototalum.faith/index.xml" rel="alternate" type="application/rss+xml" title="Protego Totalum Security - Protect people&#39;s faith" />
     
 
     
-    <link rel="canonical" href="https://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/" />
+    <link rel="canonical" href="https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/" />
 
     
     <script type="application/ld+json">
@@ -65,7 +65,7 @@ Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là h�
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/"
+          "@id": "https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/"
         },
         "headline": "[CSAW CTF 17] Misc100: Twitch",
         "description": "",
@@ -82,9 +82,9 @@ Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là h�
         },
         "publisher": {
           "@type": "Organization",
-          "@id": "https://simpleguy.tech/",
-          "name": "Simple Guy",
-          "url": "https://simpleguy.tech/",
+          "@id": "https://protegototalum.faith/",
+          "name": "Protego Totalum Security - Protect people&#39;s faith",
+          "url": "https://protegototalum.faith/",
           "logo": {
             "@type": "ImageObject",
             "url": "https:",
@@ -112,16 +112,16 @@ Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là h�
         
         
         var disqus_shortname = 'asimpleguy';
-        var disqus_identifier = 'https:\/\/simpleguy.tech\/post\/csaw-ctf-17-misc100-twitch\/';
+        var disqus_identifier = 'https:\/\/protegototalum.faith\/post\/csaw-ctf-17-misc100-twitch\/';
         var disqus_title = '[CSAW CTF 17] Misc100: Twitch';
-        var disqus_url = 'https:\/\/simpleguy.tech\/post\/csaw-ctf-17-misc100-twitch\/';
+        var disqus_url = 'https:\/\/protegototalum.faith\/post\/csaw-ctf-17-misc100-twitch\/';
         
     </script>
     
 
     <script type="text/javascript">
         var config = {
-            baseUrl: "https:\/\/simpleguy.tech\/"
+            baseUrl: "https:\/\/protegototalum.faith\/"
         };
     </script>
 
@@ -132,13 +132,12 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 
 </head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', 'UA-119018152-1');
+  gtag('config', 'UA-119018152-2');
 </script>
 
 <body class="home-template">
@@ -149,26 +148,26 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
     <div id="ajax-container">
         <nav id="nav" class="nav">
             <div class="nav-logo">
-                <a href="https://simpleguy.tech/">
+                <a href="https://protegototalum.faith/">
                     
-                    Simple Guy
+                    Protego Totalum Security - Protect people&#39;s faith
                     
                 </a>
             </div>
             <div id="main-menu" class="nav-menu">
                 
                 
-                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Protego Totalum Security - Protect people&#39;s faith on Twitter"><i class="fa fa-twitter"></i></a>
                 
                 
-                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security - Protect people&#39;s faith on LinkedIn"><i class="fa fa-linkedin"></i></a>
                 
                 
-                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Protego Totalum Security - Protect people&#39;s faith on GitHub"><i class="fa fa-github"></i></a>
                 
                 <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
                 <form id="search-form" method="get" role="search" action="https://google.com/search">
-                    <input type="hidden" name="as_sitesearch" value="https://simpleguy.tech/">
+                    <input type="hidden" name="as_sitesearch" value="https://protegototalum.faith/">
                     <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
                     <input type="submit" value="Search">
                 </form>
@@ -222,7 +221,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                   <div class="post-tags">
             
             
-                <a href="https://simpleguy.tech/tags/csaw-ctf-17">csaw-ctf-17</a>
+                <a href="https://protegototalum.faith/tags/csaw-ctf-17">csaw-ctf-17</a>
             
             
                   </div>
@@ -231,7 +230,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                         <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
                             <span>Reddit</span>
                         </a>
-                        <a class="fa fa-twitter" href="https://twitter.com/share?text=%5bCSAW%20CTF%2017%5d%20Misc100%3a%20Twitch&url=https%3a%2f%2fsimpleguy.tech%2fpost%2fcsaw-ctf-17-misc100-twitch%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=%5bCSAW%20CTF%2017%5d%20Misc100%3a%20Twitch&url=https%3a%2f%2fprotegototalum.faith%2fpost%2fcsaw-ctf-17-misc100-twitch%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                             <span>Twitter</span>
                         </a>
                     </div>
@@ -253,7 +252,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 
             <nav class="post-nav">
                 
-                    <a class="post-nav-item post-nav-next" href="https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/">
+                    <a class="post-nav-item post-nav-next" href="https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/">
                         <section class="post-nav-teaser">
                             <span class="post-nav-icon"><i class="fa fa-chevron-left"></i></span>
                             <span class="post-nav-info">
@@ -263,7 +262,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                     </a>
                 
                 
-                    <a class="post-nav-item post-nav-prev" href="https://simpleguy.tech/post/csaw-ctf-17-for200-bestrouter/">
+                    <a class="post-nav-item post-nav-prev" href="https://protegototalum.faith/post/csaw-ctf-17-for200-bestrouter/">
                         <section class="post-nav-teaser">
                             <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
                             <span class="post-nav-info">
@@ -282,7 +281,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <div id="body-class" style="display: none;"></div>
                 <footer id="footer">
                     <section class="credits">
-                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Simple Guy
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Protego Totalum Security - Protect people&#39;s faith
                     </span>
                     </section>
                 </footer>
@@ -322,9 +321,9 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
         </li>
         
         <li class="menu-list-item menu-list-social">
-            <a href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
-            <a href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+            <a href="https://twitter.com/flyingpassword" title="Protego Totalum Security - Protect people&#39;s faith on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security - Protect people&#39;s faith on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Protego Totalum Security - Protect people&#39;s faith on GitHub"><i class="fa fa-github"></i></a>
         </li>
     </div>
 

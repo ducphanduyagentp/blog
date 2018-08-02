@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sans on Simple Guy</title>
-    <link>https://simpleguy.tech/tags/sans/</link>
-    <description>Recent content in Sans on Simple Guy</description>
+    <title>Sans on Protego Totalum Security - Protect people&#39;s faith</title>
+    <link>https://protegototalum.faith/tags/sans/</link>
+    <description>Recent content in Sans on Protego Totalum Security - Protect people&#39;s faith</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Dec 2017 22:42:59 -0500</lastBuildDate>
     
-	<atom:link href="https://simpleguy.tech/tags/sans/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://protegototalum.faith/tags/sans/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2017 SANS Holiday Hacking Challenge</title>
-      <link>https://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/</link>
+      <link>https://protegototalum.faith/post/2017-sans-holiday-hacking-challenge/</link>
       <pubDate>Sat, 16 Dec 2017 22:42:59 -0500</pubDate>
       
-      <guid>https://simpleguy.tech/post/2017-sans-holiday-hacking-challenge/</guid>
+      <guid>https://protegototalum.faith/post/2017-sans-holiday-hacking-challenge/</guid>
       <description>This year, I&amp;rsquo;ve had the chance to participate in SANS Holiday Hacking Challenge. The first time I did it was last year. I didn&amp;rsquo;t think it was interesting with real pentesting stuffs until I read the writeups, so I decided to start early this year.
 Terminal Challenges
 Finding Great Book Pages

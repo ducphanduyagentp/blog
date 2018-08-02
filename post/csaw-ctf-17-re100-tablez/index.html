@@ -7,9 +7,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
-    <meta property="og:title" content=" [CSAW CTF 17] RE100: Tablez &middot;  Simple Guy" />
-    <meta property="og:site_name" content="Simple Guy" />
-    <meta property="og:url" content="https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/" />
+    <meta property="og:title" content=" [CSAW CTF 17] RE100: Tablez &middot;  Protego Totalum Security - Protect people&#39;s faith" />
+    <meta property="og:site_name" content="Protego Totalum Security - Protect people&#39;s faith" />
+    <meta property="og:url" content="https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/" />
 
     
     <meta property="og:type" content="article" />
@@ -25,10 +25,10 @@
     <meta name="twitter:description" content="English version below
 Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
  Dữ liệu được hardcoded từ 0x000008ba tới 0x00000908 Input được nhập vào biến local_90h ở 0x00000924 Một vòng lặp gọi hàm sym." />
-    <meta name="twitter:url" content="https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/" />
+    <meta name="twitter:url" content="https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/" />
     
 
-    <title> [CSAW CTF 17] RE100: Tablez &middot;  Simple Guy</title>
+    <title> [CSAW CTF 17] RE100: Tablez &middot;  Protego Totalum Security - Protect people&#39;s faith</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="preload" href="/js/main.js" as="script" />
@@ -53,11 +53,11 @@ Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version
     
 
     
-    <link href="https://simpleguy.tech/index.xml" rel="alternate" type="application/rss+xml" title="Simple Guy" />
+    <link href="https://protegototalum.faith/index.xml" rel="alternate" type="application/rss+xml" title="Protego Totalum Security - Protect people&#39;s faith" />
     
 
     
-    <link rel="canonical" href="https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/" />
+    <link rel="canonical" href="https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/" />
 
     
     <script type="application/ld+json">
@@ -66,7 +66,7 @@ Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://simpleguy.tech/post/csaw-ctf-17-re100-tablez/"
+          "@id": "https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/"
         },
         "headline": "[CSAW CTF 17] RE100: Tablez",
         "description": "",
@@ -83,9 +83,9 @@ Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version
         },
         "publisher": {
           "@type": "Organization",
-          "@id": "https://simpleguy.tech/",
-          "name": "Simple Guy",
-          "url": "https://simpleguy.tech/",
+          "@id": "https://protegototalum.faith/",
+          "name": "Protego Totalum Security - Protect people&#39;s faith",
+          "url": "https://protegototalum.faith/",
           "logo": {
             "@type": "ImageObject",
             "url": "https:",
@@ -113,16 +113,16 @@ Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version
         
         
         var disqus_shortname = 'asimpleguy';
-        var disqus_identifier = 'https:\/\/simpleguy.tech\/post\/csaw-ctf-17-re100-tablez\/';
+        var disqus_identifier = 'https:\/\/protegototalum.faith\/post\/csaw-ctf-17-re100-tablez\/';
         var disqus_title = '[CSAW CTF 17] RE100: Tablez';
-        var disqus_url = 'https:\/\/simpleguy.tech\/post\/csaw-ctf-17-re100-tablez\/';
+        var disqus_url = 'https:\/\/protegototalum.faith\/post\/csaw-ctf-17-re100-tablez\/';
         
     </script>
     
 
     <script type="text/javascript">
         var config = {
-            baseUrl: "https:\/\/simpleguy.tech\/"
+            baseUrl: "https:\/\/protegototalum.faith\/"
         };
     </script>
 
@@ -133,13 +133,12 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 
 </head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', 'UA-119018152-1');
+  gtag('config', 'UA-119018152-2');
 </script>
 
 <body class="home-template">
@@ -150,26 +149,26 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
     <div id="ajax-container">
         <nav id="nav" class="nav">
             <div class="nav-logo">
-                <a href="https://simpleguy.tech/">
+                <a href="https://protegototalum.faith/">
                     
-                    Simple Guy
+                    Protego Totalum Security - Protect people&#39;s faith
                     
                 </a>
             </div>
             <div id="main-menu" class="nav-menu">
                 
                 
-                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Protego Totalum Security - Protect people&#39;s faith on Twitter"><i class="fa fa-twitter"></i></a>
                 
                 
-                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security - Protect people&#39;s faith on LinkedIn"><i class="fa fa-linkedin"></i></a>
                 
                 
-                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Protego Totalum Security - Protect people&#39;s faith on GitHub"><i class="fa fa-github"></i></a>
                 
                 <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
                 <form id="search-form" method="get" role="search" action="https://google.com/search">
-                    <input type="hidden" name="as_sitesearch" value="https://simpleguy.tech/">
+                    <input type="hidden" name="as_sitesearch" value="https://protegototalum.faith/">
                     <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
                     <input type="submit" value="Search">
                 </form>
@@ -346,7 +345,7 @@ print flag
                   <div class="post-tags">
             
             
-                <a href="https://simpleguy.tech/tags/csaw-ctf-17">csaw-ctf-17</a>
+                <a href="https://protegototalum.faith/tags/csaw-ctf-17">csaw-ctf-17</a>
             
             
                   </div>
@@ -355,7 +354,7 @@ print flag
                         <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
                             <span>Reddit</span>
                         </a>
-                        <a class="fa fa-twitter" href="https://twitter.com/share?text=%5bCSAW%20CTF%2017%5d%20RE100%3a%20Tablez&url=https%3a%2f%2fsimpleguy.tech%2fpost%2fcsaw-ctf-17-re100-tablez%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=%5bCSAW%20CTF%2017%5d%20RE100%3a%20Tablez&url=https%3a%2f%2fprotegototalum.faith%2fpost%2fcsaw-ctf-17-re100-tablez%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                             <span>Twitter</span>
                         </a>
                     </div>
@@ -377,7 +376,7 @@ print flag
 
             <nav class="post-nav">
                 
-                    <a class="post-nav-item post-nav-next" href="https://simpleguy.tech/post/ub-lockdown-v3/">
+                    <a class="post-nav-item post-nav-next" href="https://protegototalum.faith/post/ub-lockdown-v3/">
                         <section class="post-nav-teaser">
                             <span class="post-nav-icon"><i class="fa fa-chevron-left"></i></span>
                             <span class="post-nav-info">
@@ -387,7 +386,7 @@ print flag
                     </a>
                 
                 
-                    <a class="post-nav-item post-nav-prev" href="https://simpleguy.tech/post/csaw-ctf-17-misc100-twitch/">
+                    <a class="post-nav-item post-nav-prev" href="https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/">
                         <section class="post-nav-teaser">
                             <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
                             <span class="post-nav-info">
@@ -406,7 +405,7 @@ print flag
                 <div id="body-class" style="display: none;"></div>
                 <footer id="footer">
                     <section class="credits">
-                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Simple Guy
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Protego Totalum Security - Protect people&#39;s faith
                     </span>
                     </section>
                 </footer>
@@ -446,9 +445,9 @@ print flag
         </li>
         
         <li class="menu-list-item menu-list-social">
-            <a href="https://twitter.com/flyingpassword" title="Simple Guy on Twitter"><i class="fa fa-twitter"></i></a>
-            <a href="https://linkedin.com/in/ducphanduy" title="Simple Guy on LinkedIn"><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/ducphanduyagentp" title="Simple Guy on GitHub"><i class="fa fa-github"></i></a>
+            <a href="https://twitter.com/flyingpassword" title="Protego Totalum Security - Protect people&#39;s faith on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security - Protect people&#39;s faith on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Protego Totalum Security - Protect people&#39;s faith on GitHub"><i class="fa fa-github"></i></a>
         </li>
     </div>
 
