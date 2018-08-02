@@ -1,13 +1,13 @@
 baseURL = "https://protegototalum.faith/"
 languageCode = "en-us"
-title = "Protego Totalum Security - Protect people's faith"
+title = "Protego Totalum Security"
 staticDir = "static"
 buildDraft = true
 
 [params]
     disqusShortname = "asimpleguy"
-    Subtitle = "Dig deeper - Try harder - Repeat"
-    description = "I'm a simple guy."
+    Subtitle = "Protect People's Faith"
+    description = "Dig deeper. Try harder. Repeat"
     twitter = "flyingpassword"
     linkedin = "ducphanduy"
     github = "ducphanduyagentp"
