@@ -6,10 +6,20 @@
     <description>Recent content on Protego Totalum Security</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Jun 2018 19:48:43 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 30 Dec 2018 10:01:14 +0700</lastBuildDate>
     
 	<atom:link href="https://protegototalum.faith/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>35C3 CTF</title>
+      <link>https://protegototalum.faith/post/35c3-ctf/</link>
+      <pubDate>Sun, 30 Dec 2018 10:01:14 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/post/35c3-ctf/</guid>
+      <description>This is my first time participating in C3 CTF. Although I wasn&amp;rsquo;t able to solve many challenges within the time of the CTF, I still find the challenges really awesome and exciting. I wanted to solve pwnable challenges with the hope to learn more about exploit development of real applications, but ended up solving 2 RE ones. Here is my writeup for them :)
+RE - Corebot This challenge is a 32-bit Windows binary.</description>
+    </item>
     
     <item>
       <title>H1-702 CTF 2018</title>

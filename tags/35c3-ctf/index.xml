@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>35c3 Ctf on Protego Totalum Security</title>
+    <link>https://protegototalum.faith/tags/35c3-ctf/</link>
+    <description>Recent content in 35c3 Ctf on Protego Totalum Security</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Dec 2018 10:01:14 +0700</lastBuildDate>
+    
+	<atom:link href="https://protegototalum.faith/tags/35c3-ctf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>35C3 CTF</title>
+      <link>https://protegototalum.faith/post/35c3-ctf/</link>
+      <pubDate>Sun, 30 Dec 2018 10:01:14 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/post/35c3-ctf/</guid>
+      <description>This is my first time participating in C3 CTF. Although I wasn&amp;rsquo;t able to solve many challenges within the time of the CTF, I still find the challenges really awesome and exciting. I wanted to solve pwnable challenges with the hope to learn more about exploit development of real applications, but ended up solving 2 RE ones. Here is my writeup for them :)
+RE - Corebot This challenge is a 32-bit Windows binary.</description>
+    </item>
+    
+  </channel>
+</rss>

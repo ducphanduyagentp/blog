@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://protegototalum.faith/post/35c3-ctf/</loc>
+    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://protegototalum.faith/post/h1-702-ctf-2018/</loc>
     <lastmod>2018-06-29T19:48:43+07:00</lastmod>
   </url>
@@ -48,14 +53,19 @@
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/categories/blue-team/</loc>
+    <loc>https://protegototalum.faith/tags/35c3-ctf/</loc>
+    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://protegototalum.faith/tags/blue-team/</loc>
     <lastmod>2017-12-04T23:15:24-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/categories/</loc>
-    <lastmod>2017-12-04T23:15:24-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -66,13 +76,13 @@
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/categories/ctf/</loc>
-    <lastmod>2018-05-22T15:08:38-04:00</lastmod>
+    <loc>https://protegototalum.faith/tags/ctf/</loc>
+    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/categories/forensics/</loc>
+    <loc>https://protegototalum.faith/tags/forensics/</loc>
     <lastmod>2017-10-22T16:23:20-04:00</lastmod>
     <priority>0</priority>
   </url>
@@ -84,32 +94,32 @@
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/categories/incident-response/</loc>
+    <loc>https://protegototalum.faith/tags/incident-response/</loc>
     <lastmod>2017-12-04T23:15:24-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/tags/lockdown/</loc>
-    <lastmod>2017-12-04T23:15:24-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://protegototalum.faith/categories/misc/</loc>
+    <loc>https://protegototalum.faith/tags/misc/</loc>
     <lastmod>2017-10-22T16:34:38-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/categories/pentest/</loc>
+    <loc>https://protegototalum.faith/tags/mobile/</loc>
+    <lastmod>2018-06-29T19:48:43+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://protegototalum.faith/tags/pentest/</loc>
     <lastmod>2018-05-22T15:08:38-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/post/</loc>
-    <lastmod>2018-06-29T19:48:43+07:00</lastmod>
+    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -120,19 +130,19 @@
   
   <url>
     <loc>https://protegototalum.faith/</loc>
-    <lastmod>2018-06-29T19:48:43+07:00</lastmod>
+    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/categories/pwn/</loc>
+    <loc>https://protegototalum.faith/tags/pwn/</loc>
     <lastmod>2017-10-22T16:34:38-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/categories/reversing/</loc>
-    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
+    <loc>https://protegototalum.faith/tags/reversing/</loc>
+    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -144,7 +154,13 @@
   
   <url>
     <loc>https://protegototalum.faith/tags/</loc>
-    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
+    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://protegototalum.faith/tags/ub-lockdown/</loc>
+    <lastmod>2017-12-04T23:15:24-05:00</lastmod>
     <priority>0</priority>
   </url>
   

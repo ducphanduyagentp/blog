@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Protego Totalum Security</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Oct 2017 16:34:52 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 30 Dec 2018 10:01:14 +0700</lastBuildDate>
     
 	<atom:link href="https://protegototalum.faith/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>35c3 Ctf</title>
+      <link>https://protegototalum.faith/tags/35c3-ctf/</link>
+      <pubDate>Sun, 30 Dec 2018 10:01:14 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/35c3-ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blue Team</title>
+      <link>https://protegototalum.faith/tags/blue-team/</link>
+      <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/blue-team/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Csaw Ctf 17</title>
@@ -17,6 +35,24 @@
       <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
       
       <guid>https://protegototalum.faith/tags/csaw-ctf-17/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ctf</title>
+      <link>https://protegototalum.faith/tags/ctf/</link>
+      <pubDate>Sun, 30 Dec 2018 10:01:14 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Forensics</title>
+      <link>https://protegototalum.faith/tags/forensics/</link>
+      <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/forensics/</guid>
       <description></description>
     </item>
     
@@ -30,11 +66,56 @@
     </item>
     
     <item>
-      <title>Lockdown</title>
-      <link>https://protegototalum.faith/tags/lockdown/</link>
+      <title>Incident Response</title>
+      <link>https://protegototalum.faith/tags/incident-response/</link>
       <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
       
-      <guid>https://protegototalum.faith/tags/lockdown/</guid>
+      <guid>https://protegototalum.faith/tags/incident-response/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Misc</title>
+      <link>https://protegototalum.faith/tags/misc/</link>
+      <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/misc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mobile</title>
+      <link>https://protegototalum.faith/tags/mobile/</link>
+      <pubDate>Fri, 29 Jun 2018 19:48:43 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pentest</title>
+      <link>https://protegototalum.faith/tags/pentest/</link>
+      <pubDate>Tue, 22 May 2018 15:08:38 -0400</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/pentest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pwn</title>
+      <link>https://protegototalum.faith/tags/pwn/</link>
+      <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/pwn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reversing</title>
+      <link>https://protegototalum.faith/tags/reversing/</link>
+      <pubDate>Sun, 30 Dec 2018 10:01:14 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/reversing/</guid>
       <description></description>
     </item>
     
@@ -44,6 +125,15 @@
       <pubDate>Sat, 16 Dec 2017 22:42:59 -0500</pubDate>
       
       <guid>https://protegototalum.faith/tags/sans/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ub Lockdown</title>
+      <link>https://protegototalum.faith/tags/ub-lockdown/</link>
+      <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/ub-lockdown/</guid>
       <description></description>
     </item>
     

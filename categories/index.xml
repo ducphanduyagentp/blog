@@ -6,82 +6,9 @@
     <description>Recent content in Categories on Protego Totalum Security</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Dec 2017 23:15:24 -0500</lastBuildDate>
     
 	<atom:link href="https://protegototalum.faith/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Blue Team</title>
-      <link>https://protegototalum.faith/categories/blue-team/</link>
-      <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/blue-team/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ctf</title>
-      <link>https://protegototalum.faith/categories/ctf/</link>
-      <pubDate>Tue, 22 May 2018 15:08:38 -0400</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/ctf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Forensics</title>
-      <link>https://protegototalum.faith/categories/forensics/</link>
-      <pubDate>Sun, 22 Oct 2017 16:23:20 -0400</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/forensics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Incident Response</title>
-      <link>https://protegototalum.faith/categories/incident-response/</link>
-      <pubDate>Mon, 04 Dec 2017 23:15:24 -0500</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/incident-response/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Misc</title>
-      <link>https://protegototalum.faith/categories/misc/</link>
-      <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/misc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pentest</title>
-      <link>https://protegototalum.faith/categories/pentest/</link>
-      <pubDate>Tue, 22 May 2018 15:08:38 -0400</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/pentest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pwn</title>
-      <link>https://protegototalum.faith/categories/pwn/</link>
-      <pubDate>Sun, 22 Oct 2017 16:34:38 -0400</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/pwn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Reversing</title>
-      <link>https://protegototalum.faith/categories/reversing/</link>
-      <pubDate>Sun, 22 Oct 2017 16:34:52 -0400</pubDate>
-      
-      <guid>https://protegototalum.faith/categories/reversing/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

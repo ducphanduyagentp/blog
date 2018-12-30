@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+   
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
+    <meta property="og:title" content=" 35C3 CTF &middot;  Protego Totalum Security" />
+    <meta property="og:site_name" content="Protego Totalum Security" />
+    <meta property="og:url" content="https://protegototalum.faith/post/35c3-ctf/" />
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2018-12-30T10:01:14&#43;07:00" />
+    <meta property="og:article:tag" content="35C3 CTF" />
+    <meta property="og:article:tag" content="CTF" />
+    <meta property="og:article:tag" content="reversing" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyingpassword" />
+    <meta name="twitter:creator" content="@flyingpassword" />
+    <meta name="twitter:title" content="35C3 CTF" />
+    
+    <meta name="twitter:description" content="This is my first time participating in C3 CTF. Although I wasn&rsquo;t able to solve many challenges within the time of the CTF, I still find the challenges really awesome and exciting. I wanted to solve pwnable challenges with the hope to learn more about exploit development of real applications, but ended up solving 2 RE ones. Here is my writeup for them :)
+RE - Corebot This challenge is a 32-bit Windows binary." />
+    <meta name="twitter:url" content="https://protegototalum.faith/post/35c3-ctf/" />
+    
+
+    <title> 35C3 CTF &middot;  Protego Totalum Security</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="/js/main.js" as="script" />
+    <link rel="preload" href="/css/main.css" as="style" />
+    
+    
+
+
+    
+    <meta name="description" content="Dig deeper. Try harder. Repeat" />
+    
+
+    
+    <meta name="p:domain_verify" content=""/>
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    
+
+    
+    <link href="https://protegototalum.faith/index.xml" rel="alternate" type="application/rss+xml" title="Protego Totalum Security" />
+    
+
+    
+    <link rel="canonical" href="https://protegototalum.faith/post/35c3-ctf/" />
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://protegototalum.faith/post/35c3-ctf/"
+        },
+        "headline": "35C3 CTF",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "Duc Phan",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://protegototalum.faith/",
+          "name": "Protego Totalum Security",
+          "url": "https://protegototalum.faith/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2018-12-30",
+        "dateModified": "2018-12-30",
+        "wordCount": 1847,
+        "keywords": ["35C3 CTF","CTF","reversing"] 
+    }
+    </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        
+        var disqus_shortname = 'asimpleguy';
+        var disqus_identifier = 'https:\/\/protegototalum.faith\/post\/35c3-ctf\/';
+        var disqus_title = '35C3 CTF';
+        var disqus_url = 'https:\/\/protegototalum.faith\/post\/35c3-ctf\/';
+        
+    </script>
+    
+
+    <script type="text/javascript">
+        var config = {
+            baseUrl: "https:\/\/protegototalum.faith\/"
+        };
+    </script>
+
+    <style>
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,figure,footer,header,main,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}a{background-color:transparent;-webkit-text-decoration-skip:objects}img{border-style:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:300;src:local("Merriweather Sans Light"),local(MerriweatherSans-Light),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowY_zIojJi0m4a5Z6tRh6itY.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:400;src:local("Merriweather Sans Regular"),local(MerriweatherSans-Regular),url(//fonts.gstatic.com/s/merriweathersans/v5/AKu1CjQ4qnV8MUltkAX3sL2aU247V0zTzydO4RoO9Ok.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:700;src:local("Merriweather Sans Bold"),local(MerriweatherSans-Bold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowQfd-b-I5PxxcmB4_-MNcqw.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:800;src:local("Merriweather Sans ExtraBold"),local(MerriweatherSans-ExtraBold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowWT7sFQ1Iz1BbpcuCPlgc9Q.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:300;src:local("Merriweather Sans Light Italic"),local(MerriweatherSans-LightItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVX9UU5BmOJGkLxUCVv5VXdc.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:400;src:local("Merriweather Sans Italic"),local(MerriweatherSans-Italic),url(//fonts.gstatic.com/s/merriweathersans/v5/3Mz4hOHzs2npRMG3B1ascf0KIgDhPIHb_R-SWdtqte8.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:700;src:local("Merriweather Sans Bold Italic"),local(MerriweatherSans-BoldItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVYM8pfYvjMoOxygpzLVILAs.woff) format("woff")}@font-face {font-family: 'Aldrich';font-style: normal;font-weight: 400;src: local('Aldrich Regular'), local('Aldrich-Regular'), url('//fonts.gstatic.com/s/aldrich/v8/j-NnyokbAnhXANS2iZ6Jew.woff2') format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;font-style:normal}[class^="icon-"]:before{font-family:"icons";font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-arrow-right:before{content:'\e807'}.icon-rss:before{content:'\e808'}body{font:300 1em / 1.5em 'Merriweather Sans',sans-serif;color:#595B66}a{color:inherit;text-decoration:none;font-weight:400}h1,h2{text-rendering:optimizeLegibility;color:#1F2026}h2 a{font-weight:inherit}h1{font-size:2em;line-height:1em;margin:2em 0 -.5em}h2{font-size:1.75em;line-height:1.143em;margin:2.286em 0 -.571em}p{margin:2em auto}i{font-weight:400;font-style:italic;color:#363740}img{display:block;max-width:100%;height:auto;margin:2.5em auto}body{background:#fff}.inner{max-width:48em;margin:0 auto;padding:0 1em}#wrapper{position:relative;box-sizing:border-box;width:100%;min-height:100vh;padding-bottom:6em;background:#F2F3F5}#push{transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav{position:relative;background:#fff;z-index:70;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav:after{clear:both;content:'';display:table}#nav .nav-logo{float:left;height:2em;padding:1em;max-width:50%}#nav .nav-logo img{width:auto;max-width:none;height:2em;margin:0;border-radius:5px}#nav .nav-menu{float:right}#nav .nav-menu:after{clear:both;content:'';display:table}#nav .nav-menu a{display:block;width:1em;height:1em;line-height:1em;padding:1.5em;text-align:center;float:left}#nav .nav-menu a i:before{margin:auto}.overlay{display:none;position:fixed;left:0;top:0;width:100%;height:100%;z-index:80;display:none}.overlay:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#1F2026;opacity:0;transform-style:preserve-3d}#header{position:relative;padding:4em 0}#header .inner{position:relative;z-index:2}#header .header-title{display:block;text-align:center}#header .header-name{font-family: Aldrich, sans-serif;font-weight:700;letter-spacing:-1px;display:block;line-height:1em;font-size:2em;text-decoration:none;color:#1F2026;padding:0;margin:0}#header.has-cover .header-name{color:#fff}#header .header-description{display:block;margin:1em auto 0;color:#9D9FA6;position:relative;font-weight:300}#header .header-description:after{content:'';position:absolute;height:1px;width:100px;margin-left:-50px;left:50%;top:-.5em;background:#D4D5D9}#header.has-cover .header-description{color:#fff}#header.has-cover .header-description:after{background:#fff}#header .header-cover{position:absolute;width:100%;height:100%;top:0;left:0;margin-top:-4em;padding:4em 0;background:no-repeat fixed center 100% / cover;z-index:1}#header .header-cover:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0.2)}#header .header-cover:after{content:'';position:absolute;width:100%;left:0;bottom:0;border-bottom:4px solid #19A0D7}#footer{position:absolute;width:100%;left:0;bottom:0;font-size:.75em;line-height:1.334em;background:#1F2026;color:#737580;z-index:20;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#footer a{color:#9D9FA6;font-weight:400}#footer .credits{text-align:center;font-size:.75em;line-height:1.334em;padding:2.667em;overflow:auto}#footer .credits span{display:block}#footer .credits .credits-theme{float:left}#footer .credits .credits-software{float:right}.post{position:relative;z-index:20}.post .post-image{display:block;margin:0;padding:0}.post .post-image img{display:block;width:100%;height:auto;margin:0;padding:0}.post .post-meta{display:block;font-size:.75em;line-height:1.334em;font-weight:400;margin-bottom:1.334em}.post .post-title{position:relative;color:#000;font-size:2em;line-height:1.375em;font-weight:800;text-indent:-1px;margin:.25em 0 .75em}.post .post-title:before{content:'';position:absolute;left:0;bottom:-.334em;width:1em;margin-bottom:-2px;border-bottom:4px solid #19A0D7}.post .post-title a{text-decoration:none;color:inherit;font-weight:inherit}#post-index{position:relative;max-width:1200px;margin:0 auto 4em;padding:.5em;z-index:10}@keyframes fade{0%{transform:translate3d(0,3em,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.post-list{position:relative}.post-list .post{float:left;width:33.3%;transform:translate3d(0,3em,0);transform-style:preserve-3d;opacity:0;animation:fade ease-out .5s forwards;animation-delay:1.4s}@media only screen and (max-width: 50em){.post-list .post{width:49.9%}}@media only screen and (max-width: 30em){.post-list .post{width:100%;float:none}}.post-list .post:nth-child(1){animation-delay:.1s}.post-list .post:nth-child(2){animation-delay:.2s}.post-list .post:nth-child(3){animation-delay:.3s}.post-list .post:nth-child(4){animation-delay:.4s}.post-list .post:nth-child(5){animation-delay:.5s}.post-list .post:nth-child(6){animation-delay:.6s}.post-list .post:nth-child(7){animation-delay:.7s}.post-list .post:nth-child(8){animation-delay:.8s}.post-list .post:nth-child(9){animation-delay:.9s}.post-list .post .inner{word-wrap:break-word;padding:2em;margin:.5em;max-width:none;background:#fff;box-sizing:border-box;transform:scale(1);transform-style:preserve-3d}@media only screen and (max-width: 50em){.post-list .post .inner{padding:1em}}.post-list .post .post-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:10}.post-list .post .post-image{position:relative;margin:-2em -2em 0;overflow:hidden;background:#19A0D7}@media only screen and (max-width: 50em){.post-list .post .post-image{margin:-1em -1em 0}}.post-list .post .post-image img{transform:scale(1);transform-style:preserve-3d;opacity:1}.post-list .post .post-image:after{content:'';position:absolute;left:-5%;bottom:-2.5em;width:110%;height:4em;background:#fff;border-top:4px solid #19A0D7;box-shadow:0 0 2em rgba(0,0,0,0.2);transform:rotate(5deg)}.post-list .post .post-title{font-size:1.5em;line-height:1.167em}.post-list .post .post-excerpt{margin:0}.post-list .post .post-more{display:block;margin-top:1.5em}.post-list .post .post-more a{display:inline-block;font-size:.875em;line-height:1.143em;font-weight:400;color:#363740}.post-list .post .post-more a i{color:#0e77a0}.pagination{min-height:3em;margin:4em auto 2em;padding:0;position:relative}.pagination .pagination-item{position:relative;display:block;height:3em;line-height:3em;padding:0 1em;text-align:center;text-decoration:none;font-weight:700;color:#363740;border:1px solid #19A0D7;border-radius:4em;z-index:60}.pagination .pagination-item i{position:relative}@media only screen and (max-width: 30em){.pagination .pagination-item{width:4em;height:4em;line-height:4em;margin-top:-.5em;padding:0!important}.pagination .pagination-item i{font-size:1.5em}.pagination .pagination-item>span{display:none}}.pagination .pagination-prev{float:right}.pagination .pagination-prev i{right:-.05em}.pagination .pagination-info{display:block;left:0;top:0;height:3em;line-height:3em;position:absolute;text-align:center;width:100%;z-index:50;color:#9D9FA6}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000}#loader{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid transparent;border-top-color:#19A0D7;animation:spin 2s linear infinite}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#0e77a0;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#D4D5D9;animation:spin 1.5s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-119018152-2');
+    </script>
+
+</head>
+
+
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
+            <div class="nav-logo">
+                <a href="https://protegototalum.faith/">
+                    
+                    Protego Totalum Security
+                    
+                </a>
+            </div>
+            <div id="main-menu" class="nav-menu">
+                
+                
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+                
+                
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                
+                
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+                
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
+                    <input type="hidden" name="as_sitesearch" value="https://protegototalum.faith/">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
+                </form>
+                
+                
+                
+                
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                   title="Main Menu"><i class="fa fa-navicon"></i></a>
+                
+            </div>
+        </nav>
+
+
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
+
+            <div id="push">
+
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">30 Dec 2018</span> <span class="reading-time">| <span class="estimated-reading-time">9 min.</span> (<span class="word-count">1847</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">35C3 CTF</h1>
+              </header>
+
+              <section class="post-content">
+                
+                  
+
+<p>This is my first time participating in C3 CTF. Although I wasn&rsquo;t able to solve many challenges within the time of the CTF, I still find the challenges really awesome and exciting. I wanted to solve pwnable challenges with the hope to learn more about exploit development of real applications, but ended up solving 2 RE ones. Here is my writeup for them :)</p>
+
+<h1 id="re-corebot">RE - Corebot</h1>
+
+<p>This challenge is a 32-bit Windows binary. When I tried running the binary for the first time, it was odd because it didn&rsquo;t prompt for any input and just printed out <code>NOPE.</code> However, the logic of the binary is pretty straight forward:</p>
+
+<ul>
+<li>There is a sequence of API calls to crypto-related functions such as:
+
+<ul>
+<li><code>CryptAcquireContext</code></li>
+<li><code>CryptImportKey</code></li>
+<li><code>CryptSetKeyParam</code></li>
+<li><code>CryptDecrypt</code></li>
+</ul></li>
+<li>There is a API call to <code>GetVolumeInformation</code> to get information of the partition that the binary is on. Only the serial number of the volume is relevant to the rest of the challenge.</li>
+<li>The binary performs some comparison at the end of the <code>_start</code> function after decrypting some data. It will print out <code>NOPE.</code> if the decrypted data doesn&rsquo;t starts with some predefined bytes (in this case, it is the flag prefix <code>35C3</code>)</li>
+</ul>
+
+<p>This reminds me a lot of level 4 of this year Flare-on challenge, which was also a windows binary involving some data decryption. Although this is much simpler, there are at least these 2 ways to solve this:</p>
+
+<ul>
+<li>Statically reverse engineer the encryption and figure out what is the correct input that satisfies the condition after some data is decrypted.</li>
+<li>Bruteforce the input.</li>
+</ul>
+
+<p>The problem now is to find what data affect the comparison since it doesn&rsquo;t prompt for any user input. It turned out that the binary use the serial number mentioned above to carry out the calculation. The serial number is a 32-bit integer. However, only the lower 16-bit (or 2 bytes) are used for the calculation</p>
+
+<p><img src="/img/35c3/corebot1.png" alt="corebot-1" /></p>
+
+<p>With only 2 bytes being used, I chose to bruteforce the data immediately. This time, I decided to use the <code>radare2</code> scripting engine <code>r2pipe</code> to solve this so that I can learn it at the same time. <code>r2pipe</code> is really awesome because it can actually carry out commands as if you were interacting with <code>radare2</code> to debug the binary. Since there is no user input, the data has to be modified during execution. The idea is to set a breakpoint right after the program get the serial number and modify the register accordingly.</p>
+
+<p>I am certain that my script can be further optimized, but it was good enough to solve the challenge in-time. There were a few problems that I encountered while writing the script:</p>
+
+<ul>
+<li>The code is unmapped before it was execute so I have to figure out the mapped addresses to set the necessary breakpoints.</li>
+<li>The script run fairly slowly because I have to open a whole new <code>radare2</code> process for every trial. I think there is a way to redirect the execution so that it doesn&rsquo;t have to run from scratch like that, but reuses the data it obtained before. I optimized it a little bit by running 2 threads and printing the output while it is running. I&rsquo;ve tried with more threads but it bugged out after a while. While it was still running, I looked for the flag string in the output and figured out the flag and the correct bytes to be <code>0x25c3</code>. The flag is <code>35C3_MalwareAuthorKryptoChef</code>.</li>
+</ul>
+
+<p>If you know of a way that I can further optimize this, I would love to know since this is my first time solving a challenge with <code>r2pipe</code>.</p>
+
+<p>Anyway, here&rsquo;s the script:</p>
+
+<pre><code class="language-python">from __future__ import print_function
+import r2pipe
+from multiprocessing.dummy import Pool as ThreadPool
+
+hook_1 = 0x19a
+hook_2 = 0x13f
+flags = []
+
+def r2Breakpoint(r2, addr):
+    r2.cmd('db {}'.format(addr))
+
+def solve(key):
+    r2 = r2pipe.open('corebot.exe', flags=['-2'])
+    r2.cmd('aaa')
+    r2.cmd('doo')
+    r2.cmd('dc')
+
+    # Figure out the mapped addresses
+    memmap = r2.cmd('dm').split('\n')
+    memmap = [x for x in memmap if 'corebot.exe' in x and '.text' in x][0]
+    memmap = memmap.split('-')[0]
+    memmap = int(memmap, 16)
+
+    # Then set the breakpoints
+    r2Breakpoint(r2, hex(memmap + hook_1))
+    r2Breakpoint(r2, hex(memmap + hook_2))
+    r2.cmd('dc')
+
+    # The breakpoint is hit. Modify the register here
+    eax = r2.cmd('dr?eax')
+    eax = int(eax, 16)
+    eax = (eax &gt;&gt; 16) &lt;&lt; 16
+    eax += key
+    seteax = 'dr eax={}'.format(hex(eax))
+    r2.cmd(seteax)
+    eax = r2.cmd('dr?eax')
+
+    # Continue running and hit the breakpoint where the output is going to be printed out.
+    # Fetch the output then print it out.
+    r2.cmd('dc')
+    buffer = r2.cmd('pv @esp+4')
+    flag = r2.cmd('pvz @{}'.format(buffer))
+    r2.cmd('q')
+    print(key, flag)
+    return str(key), flag
+
+def main():
+    pool = ThreadPool(2)
+    results = pool.map(solve, range(0x10000))
+    pool.close()
+    pool.join()
+    for r in results:
+        print(repr(r))
+    f = open('output.txt', 'wb')
+    f.write(''.join([' == '.join(x) for x in results]))
+    f.close()
+
+if __name__ == '__main__':
+    main()
+
+# 0x25c3
+</code></pre>
+
+<h1 id="re-0pack">RE - 0pack</h1>
+
+<p>This is not a hard challenge, but it&rsquo;s still a little bit tricky to solve. When I opened the binary in a disassembler, the functions were all <code>0</code> as described. Running the binary and giving it some dummy input resulted in the string <code>Awwww ಠ_ಠ</code> to be printed.</p>
+
+<p><img src="/img/35c3/0pack1.png" alt="0pack-1" /></p>
+
+<p>As expected, this is some kind of binary packing. I thought the binary will be calling the main function at some point. I gave it a shot by placing a breakpoint at the call to <code>__libc_start_main</code> with the hope that the address of the real main function would be revealed here. And it was. I realized this because of the reference to the prompt <code>Input password:</code></p>
+
+<pre><code>➜  0pack r2 -A -d 0pack.elf
+Process with PID 28177 started...
+= attach 28177 28177
+bin.baddr 0x557b2e3d6000
+Using 0x557b2e3d6000
+asm.bits 64
+[ WARNING : block size exceeding max block size at 0x557b2e3d6e7d
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d96cc
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d89e1
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d936b
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d7f52
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d9b93
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d67a8
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d752f
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x557b2e3d6759
+[+] Try changing it with e anal.bb.maxsize
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze function calls (aac)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Constructing a function name for fcn.* and sym.func.* functions (aan)
+[TOFIX: afta can't run in debugger mode.ions (afta)
+[x] Type matching analysis for all functions (afta)
+[x] Use -AA or aaaa to perform additional experimental analysis.
+= attach 28177 28177
+28177
+ -- Wrong argument
+[0x7f9f17df2090]&gt; db sym.imp.__
+sym.imp.__stack_chk_fail    sym.imp.__libc_start_main   sym.imp.__cxa_finalize      
+[0x7f9f17df2090]&gt; db sym.imp.__libc_start_main 
+[0x7f9f17df2090]&gt; dc
+hit breakpoint at: 557b2e3e8770
+[0x557b2e3e8770]&gt; dr
+rax = 0x0000001c
+rbx = 0x00000000
+rcx = 0x557b2e3e8e90
+rdx = 0x7fff8df34b88
+r8 = 0x557b2e3e8f00
+r9 = 0x7f9f17e019a0
+r10 = 0x557b2e3e87b0
+r11 = 0x00000000
+r12 = 0x557b2e3d6000
+r13 = 0x7fff8df34b80
+r14 = 0x00000000
+r15 = 0x557b2e3d6000
+rsi = 0x00000001
+rdi = 0x557b2e3e89a0
+rsp = 0x7fff8df34b68
+rbp = 0x00000000
+rip = 0x557b2e3e8770
+rflags = 0x00000202
+orax = 0xffffffffffffffff
+[0x557b2e3e8770]&gt; sr rdi;pd 30
+            ;-- rdi:
+            0x557b2e3e89a0      55             push rbp
+            0x557b2e3e89a1      4889e5         mov rbp, rsp
+            0x557b2e3e89a4      4881eca00000.  sub rsp, 0xa0
+            0x557b2e3e89ab      89bd6cffffff   mov dword [rbp - 0x94], edi
+            0x557b2e3e89b1      4889b560ffff.  mov qword [rbp - 0xa0], rsi
+            0x557b2e3e89b8      64488b042528.  mov rax, qword fs:[0x28] ; [0x28:8]=-1 ; '(' ; 40
+            0x557b2e3e89c1      488945f8       mov qword [rbp - 8], rax
+            0x557b2e3e89c5      31c0           xor eax, eax
+            0x557b2e3e89c7      c6857dffffff.  mov byte [rbp - 0x83], 1
+            0x557b2e3e89ce      48b8496e7075.  movabs rax, 0x6170207475706e49 ; 'Input pa'
+            0x557b2e3e89d8      48894590       mov qword [rbp - 0x70], rax
+            0x557b2e3e89dc      48b87373776f.  movabs rax, 0x203a64726f777373 ; 'ssword: '
+            0x557b2e3e89e6      48894598       mov qword [rbp - 0x68], rax
+            0x557b2e3e89ea      c645a000       mov byte [rbp - 0x60], 0
+            0x557b2e3e89ee      488d4590       lea rax, [rbp - 0x70]
+            0x557b2e3e89f2      4889c6         mov rsi, rax
+            0x557b2e3e89f5      488d3d180500.  lea rdi, [0x557b2e3e8f14] ; &quot;%s&quot;
+            0x557b2e3e89fc      b800000000     mov eax, 0
+            0x557b2e3e8a01      e85afdffff     call sym.imp.printf     ; int printf(const char *format)
+            0x557b2e3e8a06      488b15531620.  mov rdx, qword [0x557b2e5ea060] ; section..bss ; [0x557b2e5ea060:8]=0x7f9f17deba00
+            0x557b2e3e8a0d      488d4580       lea rax, [rbp - 0x80]
+            0x557b2e3e8a11      be0f000000     mov esi, 0xf            ; 15
+            0x557b2e3e8a16      4889c7         mov rdi, rax
+            0x557b2e3e8a19      e862fdffff     call sym.imp.fgets      ; char *fgets(char *s, int size, FILE *stream)
+            0x557b2e3e8a1e      bf0a000000     mov edi, 0xa
+            0x557b2e3e8a23      e818fdffff     call sym.imp.putchar    ; int putchar(int c)
+            0x557b2e3e8a28      0fb64580       movzx eax, byte [rbp - 0x80]
+            0x557b2e3e8a2c      88857effffff   mov byte [rbp - 0x82], al
+            0x557b2e3e8a32      4c89f8         mov rax, r15
+            0x557b2e3e8a35      480575240100   add rax, 0x12475
+[0x557b2e3e89a0]&gt; 
+</code></pre>
+
+<p>After a quick look at this function, I made the following observations:</p>
+
+<ul>
+<li><p>The function gets the input then perform byte-by-byte comparison of the input. This is an example of the comparison of 1 byte. If the comparison fails, it sets a variable to 0 but doesn&rsquo;t immediately stop the process. There are 14 such comparisons so the password is 14-byte long.</p>
+
+<pre><code>        0x557b2e3e8a28      0fb64580       movzx eax, byte [rbp - 0x80]
+        0x557b2e3e8a2c      88857effffff   mov byte [rbp - 0x82], al
+        0x557b2e3e8a32      4c89f8         mov rax, r15
+        0x557b2e3e8a35      480575240100   add rax, 0x12475
+        0x557b2e3e8a3b      0fb600         movzx eax, byte [rax]
+        0x557b2e3e8a3e      88857fffffff   mov byte [rbp - 0x81], al
+        0x557b2e3e8a44      0fb6857effff.  movzx eax, byte [rbp - 0x82]
+        0x557b2e3e8a4b      3a857fffffff   cmp al, byte [rbp - 0x81]
+    ,=&lt; 0x557b2e3e8a51      750e           jne 0x557b2e3e8a61
+    |   0x557b2e3e8a53      b800000000     mov eax, 0
+    |   0x557b2e3e8a58      e8cafeffff     call 0x557b2e3e8927
+    |   0x557b2e3e8a5d      84c0           test al, al
+   ,==&lt; 0x557b2e3e8a5f      7407           je 0x557b2e3e8a68
+   |`-&gt; 0x557b2e3e8a61      c6857dffffff.  mov byte [rbp - 0x83], 0
+   `--&gt; 0x557b2e3e8a68      0fb64581       movzx eax, byte [rbp - 0x7f]
+</code></pre></li>
+
+<li><p>In each comparison, a function at <code>0x557b2e3e8927</code> is called. This function calls another function which involves the <code>cpuid</code> instruction, so my guess was that it detects virtual machines.</p>
+
+<pre><code>[0x5555b0c259a0]&gt; pd 24 @0x5555b0c258e0
+|           0x5555b0c258e0      55             push rbp
+|           0x5555b0c258e1      4889e5         mov rbp, rsp
+|           0x5555b0c258e4      0f31           rdtsc
+|           0x5555b0c258e6      8945e8         mov dword [rbp - 0x18], eax
+|           0x5555b0c258e9      8955ec         mov dword [rbp - 0x14], edx
+|           0x5555b0c258ec      8b45e8         mov eax, dword [rbp - 0x18]
+\           0x5555b0c258ef      8b55ec         mov edx, dword [rbp - 0x14]
+            0x5555b0c258f2      48c1e220       shl rdx, 0x20
+            0x5555b0c258f6      4809d0         or rax, rdx
+            0x5555b0c258f9      488945f0       mov qword [rbp - 0x10], rax
+            0x5555b0c258fd      b800000000     mov eax, 0
+            0x5555b0c25902      0fa2           cpuid
+            0x5555b0c25904      0f31           rdtsc
+            0x5555b0c25906      8945e8         mov dword [rbp - 0x18], eax
+            0x5555b0c25909      8955ec         mov dword [rbp - 0x14], edx
+            0x5555b0c2590c      8b45e8         mov eax, dword [rbp - 0x18]
+            0x5555b0c2590f      8b55ec         mov edx, dword [rbp - 0x14]
+            0x5555b0c25912      48c1e220       shl rdx, 0x20
+            0x5555b0c25916      4809d0         or rax, rdx
+            0x5555b0c25919      488945f8       mov qword [rbp - 8], rax
+            0x5555b0c2591d      488b45f8       mov rax, qword [rbp - 8]
+            0x5555b0c25921      482b45f0       sub rax, qword [rbp - 0x10]
+            0x5555b0c25925      5d             pop rbp
+            0x5555b0c25926      c3             ret
+</code></pre></li>
+</ul>
+
+<p>I was able to go through all such comparisons manually and extract the password: <code>ThisIsATriumph</code>. I think my guess about the VM detection was correct since I was running the binary inside a VM and the extracted password didn&rsquo;t result in a &ldquo;winning-output&rdquo;. I submitted the flag and it was correct :)</p>
+
+              </section>
+
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+            
+                <a href="https://protegototalum.faith/tags/35c3-ctf">35C3 CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/ctf">CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/reversing">reversing</a>
+            
+            
+                  </div>
+                
+                    <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=35C3%20CTF&url=https%3a%2f%2fprotegototalum.faith%2fpost%2f35c3-ctf%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+            
+              </footer>
+
+            
+                <aside class="post-comments">
+    
+    
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    
+</aside>
+
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                
+                    <a class="post-nav-item post-nav-prev" href="https://protegototalum.faith/post/h1-702-ctf-2018/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">H1-702 CTF 2018</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
+
+                <div id="body-class" style="display: none;"></div>
+                <footer id="footer">
+                    <section class="credits">
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Protego Totalum Security
+                    </span>
+                    </section>
+                </footer>
+                
+
+                
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/about/">About me</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/projects/">Projects</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/tags/">Tags</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/categories/">Categories</a>
+        </li>
+        
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
+</div>
+
+
+                
+                <div class="overlay"></div>
+            </div>
+        </section>
+
+    <script async src="/js/main.js"></script>
+
+
+
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+</body>
+</html>
+
