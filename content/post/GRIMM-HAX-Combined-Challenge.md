@@ -1,7 +1,7 @@
 ---
 title: "GRIMM HAX Combined Challenge"
 date: 2018-05-22T15:08:38-04:00
-Categories: ["CTF", "pentest"]
+Tags: ["CTF", "pentest"]
 ---
 
 # GRIMM HAX Combined Challenge

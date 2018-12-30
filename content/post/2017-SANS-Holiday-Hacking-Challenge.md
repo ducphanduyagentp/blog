@@ -1,8 +1,7 @@
 ---
 title: "2017 SANS Holiday Hacking Challenge"
 date: 2017-12-16T22:42:59-05:00
-Tags: ["SANS", "HHC"]
-Categories: ["pentest"]
+Tags: ["SANS", "HHC", "pentest"]
 Languages: ["English"]
 thumbnail: "img/sans-hhc17/ranking.png"
 ---

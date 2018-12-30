@@ -1,8 +1,7 @@
 ---
 title: "UB Lockdown V3"
 date: 2017-12-04T23:15:24-05:00
-Tags: ["lockdown"]
-Categories: ["Incident Response", "Blue Team"]
+Tags: ["UB Lockdown", "blue team", "incident response"]
 ---
 
 [Vietnamese version below](#vietnamese-lockdownv3)

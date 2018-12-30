@@ -1,8 +1,7 @@
 ---
 title: "[CSAW CTF 17] pwn75: pilot"
 date: 2017-09-20T23:48:01-04:00
-Tags: ["csaw-ctf-17"]
-Categories: ["CTF", "reversing", "pwn"]
+Tags: ["CSAW CTF 17", "CTF", "reversing", "pwn"]
 Languages: ["Vietnamese", "English"]
 ---
 

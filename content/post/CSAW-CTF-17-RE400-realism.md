@@ -1,8 +1,7 @@
 ---
 title: "[CSAW CTF 17] RE400: Realism"
 date: 2017-10-22T15:18:22-04:00
-Tags: ["csaw-ctf-17"]
-Categories: ["CTF", "reversing"]
+Tags: ["CSAW CTF 17", "CTF", "reversing"]
 Language: ["English", "Vietnamese"]
 Draft: true
 ---

@@ -1,8 +1,7 @@
 ---
 title: "[CSAW CTF 17] RE100: Tablez"
 date: 2017-10-22T16:34:52-04:00
-Tags: ["csaw-ctf-17"]
-Categories: ["CTF", "reversing"]
+Tags: ["CSAW CTF 17", "CTF", "reversing"]
 Languages: ["Vietnamese", "English"]
 ---
 

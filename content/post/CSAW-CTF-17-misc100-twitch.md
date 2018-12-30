@@ -1,8 +1,7 @@
 ---
 title: "[CSAW CTF 17] Misc100: Twitch"
 date: 2017-10-22T16:34:38-04:00
-Tags: ["csaw-ctf-17"]
-Categories: ["CTF", "reversing", "pwn", "misc"]
+Tags: ["CSAW CTF 17", "CTF", "reversing", "pwn", "misc"]
 Languages: ["Vietnamese", "English"]
 ---
 

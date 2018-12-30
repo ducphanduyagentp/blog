@@ -1,8 +1,7 @@
 ---
 title: "[CSAW CTF 17] Forensics 200: Bestrouter"
 date: 2017-10-22T16:23:20-04:00
-Tags: ["csaw-ctf-17"]
-Categories: ["CTF", "forensics"]
+Tags: ["CSAW CTF 17", "CTF", "forensics"]
 Language: ["Vietnamese"]
 ---
 
