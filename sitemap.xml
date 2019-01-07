@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://protegototalum.faith/post/tetctf-19/</loc>
+    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://protegototalum.faith/post/35c3-ctf/</loc>
     <lastmod>2018-12-30T10:01:14+07:00</lastmod>
   </url>
@@ -62,7 +67,7 @@
   
   <url>
     <loc>https://protegototalum.faith/tags/ctf/</loc>
-    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -92,7 +97,7 @@
   
   <url>
     <loc>https://protegototalum.faith/post/</loc>
-    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -103,19 +108,19 @@
   
   <url>
     <loc>https://protegototalum.faith/</loc>
-    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/tags/pwn/</loc>
-    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
+    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/tags/reversing/</loc>
-    <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -128,6 +133,12 @@
   <url>
     <loc>https://protegototalum.faith/tags/</loc>
     <lastmod>2018-12-30T10:01:14+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://protegototalum.faith/tags/tetctf/</loc>
+    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
     <priority>0</priority>
   </url>
   

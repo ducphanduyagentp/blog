@@ -41,7 +41,7 @@
     <item>
       <title>Ctf</title>
       <link>https://protegototalum.faith/tags/ctf/</link>
-      <pubDate>Sun, 30 Dec 2018 10:01:14 +0700</pubDate>
+      <pubDate>Tue, 01 Jan 2019 13:34:45 +0700</pubDate>
       
       <guid>https://protegototalum.faith/tags/ctf/</guid>
       <description></description>
@@ -86,7 +86,7 @@
     <item>
       <title>Pwn</title>
       <link>https://protegototalum.faith/tags/pwn/</link>
-      <pubDate>Wed, 20 Sep 2017 23:48:01 -0400</pubDate>
+      <pubDate>Tue, 01 Jan 2019 13:34:45 +0700</pubDate>
       
       <guid>https://protegototalum.faith/tags/pwn/</guid>
       <description></description>
@@ -95,7 +95,7 @@
     <item>
       <title>Reversing</title>
       <link>https://protegototalum.faith/tags/reversing/</link>
-      <pubDate>Sun, 30 Dec 2018 10:01:14 +0700</pubDate>
+      <pubDate>Tue, 01 Jan 2019 13:34:45 +0700</pubDate>
       
       <guid>https://protegototalum.faith/tags/reversing/</guid>
       <description></description>
@@ -107,6 +107,15 @@
       <pubDate>Sat, 16 Dec 2017 22:42:59 -0500</pubDate>
       
       <guid>https://protegototalum.faith/tags/sans/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tetctf</title>
+      <link>https://protegototalum.faith/tags/tetctf/</link>
+      <pubDate>Tue, 01 Jan 2019 13:34:45 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/tags/tetctf/</guid>
       <description></description>
     </item>
     

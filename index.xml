@@ -6,10 +6,20 @@
     <description>Recent content on Protego Totalum Security</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Dec 2018 10:01:14 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jan 2019 13:34:45 +0700</lastBuildDate>
     
 	<atom:link href="https://protegototalum.faith/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TetCTF 19</title>
+      <link>https://protegototalum.faith/post/tetctf-19/</link>
+      <pubDate>Tue, 01 Jan 2019 13:34:45 +0700</pubDate>
+      
+      <guid>https://protegototalum.faith/post/tetctf-19/</guid>
+      <description>Web - IQTest2 (unsolved) Pwn - Easy webserver (unsolved) Pwn - Babysandbox Pwn - Babyheap Pwn - Babyfirst  Web 
+IQTest2  After looking at the source code, there is a path that we can polute the $level variable to pass. It has to pass several condition check:  if (isset($_COOKIE[&#39;saved&#39;]) &amp;amp;&amp;amp; !empty($_COOKIE[&#39;saved&#39;]) &amp;amp;&amp;amp; isset($_COOKIE[&#39;hash&#39;]) &amp;amp;&amp;amp; !empty($_COOKIE[&#39;hash&#39;])) { $saved = base64_decode($_COOKIE[&amp;quot;saved&amp;quot;]); $seed = urldecode(substr($saved, 5 )); } if( md5($GLOBALS[&#39;secret&#39;].</description>
+    </item>
     
     <item>
       <title>35C3 CTF</title>

