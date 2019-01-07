@@ -1,7 +1,7 @@
 ---
 title: "35C3 CTF"
 date: 2018-12-30T10:01:14+07:00
-Tags: ["35C3 CTF", "CTF", "reversing"]
+Tags: ["35C3-CTF", "CTF", "reversing"]
 Language: ["English"]
 ---
 

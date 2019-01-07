@@ -1,7 +1,7 @@
 ---
 title: "CSAW CTF 2017 Qualification"
 date: 2017-09-20T23:48:01-04:00
-Tags: ["CSAW CTF 17", "CTF", "reversing", "pwn"]
+Tags: ["CSAW-CTF-17", "CTF", "reversing", "pwn"]
 Languages: ["Vietnamese", "English"]
 ---
 
