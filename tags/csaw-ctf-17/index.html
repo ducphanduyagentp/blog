@@ -147,68 +147,16 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <article class="post post">
 
 	<div class="inner">
-		<a class="post-link" href="https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/"></a>
-		
-		<span class="post-meta">
-			<span class="post-date">22 Oct 2017</span>
-		</span>
-		<h2 class="post-title"><a href="https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/">[CSAW CTF 17] RE100: Tablez</a></h2>
-		<p class="post-excerpt">English version below
-Vietnamese ➜ file tablez tablez: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=72adea86090fb7deeb319e95681fd2c669dcc503, not stripped  Như vậy rất may mắn là binary này không bị stripped. Mở binary lên bằng r2 và xem qua hàm main thì có một số điểm đáng chú ý sau:
- Dữ liệu được hardcoded từ 0x000008ba tới 0x00000908 Input được nhập vào biến local_90h ở 0x00000924 Một vòng lặp gọi hàm sym.</p>
-		<span class="post-more"><a href="https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/">Read more <i class="fa fa-angle-right"></i></a></span>
-	</div>
-</article>
-
-			
-			  
-<article class="post post">
-
-	<div class="inner">
-		<a class="post-link" href="https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/"></a>
-		
-		<span class="post-meta">
-			<span class="post-date">22 Oct 2017</span>
-		</span>
-		<h2 class="post-title"><a href="https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/">[CSAW CTF 17] Misc100: Twitch</a></h2>
-		<p class="post-excerpt">English version here
-Vietnamese Bài này là bài bựa nhất trong cả đề. Đại khái là họ stream một cái shell lên twitch. Để điều khiển shell đó thì người xem twitch sẽ vote phím nào được ấn trên bàn phím bằng cách gõ vào phần chat. Để lấy được flag bài này thì số người đó phải exploit 1 binary bị buffer overflow. Mình thì không rảnh nhảy vào vote nên chỉ xem xong cướp flag thôi =)) Điều bựa là mỗi khi flag được lấy ra thành công thì sau vài phút, cái máy tính được stream sẽ tự động reboot và ai không lấy kịp flag thì lại ngồi chờ =))</p>
-		<span class="post-more"><a href="https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/">Read more <i class="fa fa-angle-right"></i></a></span>
-	</div>
-</article>
-
-			
-			  
-<article class="post post">
-
-	<div class="inner">
-		<a class="post-link" href="https://protegototalum.faith/post/csaw-ctf-17-for200-bestrouter/"></a>
-		
-		<span class="post-meta">
-			<span class="post-date">22 Oct 2017</span>
-		</span>
-		<h2 class="post-title"><a href="https://protegototalum.faith/post/csaw-ctf-17-for200-bestrouter/">[CSAW CTF 17] Forensics 200: Bestrouter</a></h2>
-		<p class="post-excerpt">Bài này khá vớ vẩn. Download file đính kèm về giải nén ra thì ta sẽ được một file .img, là một file image của rasberry pi. Mình dùng lệnh sau để mount file này trên linux, từ đó sẽ đọc được dữ liệu trong file như cấu trúc của một linux filesystem thông thường:
-sudo mount disk.img ./mnt  (Lúc làm bài này mình làm theo hướng dẫn ở đây, thi xong mình xóa xừ nó file kia đi rồi nên không nhớ cụ thể câu lệnh là gì nữa :P )</p>
-		<span class="post-more"><a href="https://protegototalum.faith/post/csaw-ctf-17-for200-bestrouter/">Read more <i class="fa fa-angle-right"></i></a></span>
-	</div>
-</article>
-
-			
-			  
-<article class="post post">
-
-	<div class="inner">
-		<a class="post-link" href="https://protegototalum.faith/post/csaw-ctf-17-pwn75-pilot/"></a>
+		<a class="post-link" href="https://protegototalum.faith/post/csaw-ctf-17-qual/"></a>
 		
 		<span class="post-meta">
 			<span class="post-date">20 Sep 2017</span>
 		</span>
-		<h2 class="post-title"><a href="https://protegototalum.faith/post/csaw-ctf-17-pwn75-pilot/">[CSAW CTF 17] pwn75: pilot</a></h2>
-		<p class="post-excerpt">English version here
+		<h2 class="post-title"><a href="https://protegototalum.faith/post/csaw-ctf-17-qual/">CSAW CTF 2017 Qualification</a></h2>
+		<p class="post-excerpt">pwn: pilot (75 pts.) English version here
 Vietnamese Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não (quangltm và anh tuanit96), mình đã quẩy được vài bài khá cơ bản.
 Đây là bài đầu tiên mình owned trong giờ thi. Bài này là một bài buffer overflow cơ bản.</p>
-		<span class="post-more"><a href="https://protegototalum.faith/post/csaw-ctf-17-pwn75-pilot/">Read more <i class="fa fa-angle-right"></i></a></span>
+		<span class="post-more"><a href="https://protegototalum.faith/post/csaw-ctf-17-qual/">Read more <i class="fa fa-angle-right"></i></a></span>
 	</div>
 </article>
 
@@ -234,7 +182,7 @@ Vietnamese Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, 
                 <div id="body-class" style="display: none;"></div>
                 <footer id="footer">
                     <section class="credits">
-                        <span class="credits-license"><i class="fa fa-copyright"></i>2018 Protego Totalum Security
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2019 Protego Totalum Security
                     </span>
                     </section>
                 </footer>

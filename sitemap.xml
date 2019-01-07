@@ -23,7 +23,7 @@
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/post/2017-sans-holiday-hacking-challenge/</loc>
+    <loc>https://protegototalum.faith/post/sans-hhc-2017/</loc>
     <lastmod>2017-12-16T22:42:59-05:00</lastmod>
   </url>
   
@@ -33,22 +33,7 @@
   </url>
   
   <url>
-    <loc>https://protegototalum.faith/post/csaw-ctf-17-re100-tablez/</loc>
-    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://protegototalum.faith/post/csaw-ctf-17-misc100-twitch/</loc>
-    <lastmod>2017-10-22T16:34:38-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://protegototalum.faith/post/csaw-ctf-17-for200-bestrouter/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://protegototalum.faith/post/csaw-ctf-17-pwn75-pilot/</loc>
+    <loc>https://protegototalum.faith/post/csaw-ctf-17-qual/</loc>
     <lastmod>2017-09-20T23:48:01-04:00</lastmod>
   </url>
   
@@ -71,19 +56,13 @@
   
   <url>
     <loc>https://protegototalum.faith/tags/csaw-ctf-17/</loc>
-    <lastmod>2017-10-22T16:34:52-04:00</lastmod>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/tags/ctf/</loc>
     <lastmod>2018-12-30T10:01:14+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://protegototalum.faith/tags/forensics/</loc>
-    <lastmod>2017-10-22T16:23:20-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -96,12 +75,6 @@
   <url>
     <loc>https://protegototalum.faith/tags/incident-response/</loc>
     <lastmod>2017-12-04T23:15:24-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://protegototalum.faith/tags/misc/</loc>
-    <lastmod>2017-10-22T16:34:38-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -136,7 +109,7 @@
   
   <url>
     <loc>https://protegototalum.faith/tags/pwn/</loc>
-    <lastmod>2017-10-22T16:34:38-04:00</lastmod>
+    <lastmod>2017-09-20T23:48:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
