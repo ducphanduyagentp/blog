@@ -3,7 +3,7 @@ title: "2017 SANS Holiday Hacking Challenge"
 date: 2017-12-16T22:42:59-05:00
 Tags: ["SANS", "HHC", "pentest"]
 Languages: ["English"]
-thumbnail: "img/sans-hhc17/ranking.png"
+thumbnail: "/img/sans-hhc17/ranking.png"
 ---
 
 This year, I've had the chance to participate in SANS Holiday Hacking Challenge. The first time I did it was last year. I didn't think it was interesting with real pentesting stuffs until I read the writeups, so I decided to start early this year.
