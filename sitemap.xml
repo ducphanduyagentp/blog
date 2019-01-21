@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/</loc>
+    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://protegototalum.faith/post/tetctf-19/</loc>
     <lastmod>2019-01-01T13:34:45+07:00</lastmod>
   </url>
@@ -67,7 +72,7 @@
   
   <url>
     <loc>https://protegototalum.faith/tags/ctf/</loc>
-    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
+    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -80,6 +85,12 @@
   <url>
     <loc>https://protegototalum.faith/tags/incident-response/</loc>
     <lastmod>2017-12-04T23:15:24-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://protegototalum.faith/tags/insomnihack-ctf/</loc>
+    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -97,7 +108,7 @@
   
   <url>
     <loc>https://protegototalum.faith/post/</loc>
-    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
+    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -108,13 +119,13 @@
   
   <url>
     <loc>https://protegototalum.faith/</loc>
-    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
+    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/tags/pwn/</loc>
-    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
+    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
     <priority>0</priority>
   </url>
   

