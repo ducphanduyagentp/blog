@@ -140,7 +140,7 @@ The decryption function is called a lot of times across the program. Setting bre
 
 #### 2.2.4. Adding everything up
 
-Now that we know the second type of packet is encrypted, we also have the data that the program generated. Opening up the files in a hex editor, we can see that it's an encrypted bitmap image.
+Now that we know the second type of packet is encrypted, we also have the data that the program generated. Opening up the files in a hex editor, we can see that it's an unencrypted bitmap image.
 
 ![bitmap1](/img/acebear-ctf-19/bitmap1.png)
 
@@ -183,7 +183,7 @@ Full solution can be found here: https://github.com/ducphanduyagentp/ourCTFs/tre
 
 There are several things that I can improve in the future and would have saved me a lot of time looking at this challenge:
 
-- A quick way to inject the DLL into the process. I spent many hours debugging `explorer.exe` inside x64dbg and just manually load the DLL everytime, which was really time-consuming.
+- A quick way to inject the DLL into the process. I spent many hours debugging `explorer.exe` inside x64dbg and just manually loaded the DLL every time, which was really time-consuming.
 - A quick way to patch the bytes used for anti-RE. I should probably learn idapython :)
 
 If you have any questions, please feel free to leave a comment below or reach out to me on Twitter. Thanks for reading!
