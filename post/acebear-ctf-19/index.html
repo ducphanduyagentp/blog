@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+   
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="YvLRi76QLISdw5rag4dXqmRRYvw91no7guPZf0-a6FY" />
+    <meta property="og:title" content=" AceBear CTF 19 &middot;  Protego Totalum Security" />
+    <meta property="og:site_name" content="Protego Totalum Security" />
+    <meta property="og:url" content="https://protegototalum.faith/post/acebear-ctf-19/" />
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2019-04-08T18:46:23-04:00" />
+    <meta property="og:article:tag" content="AceBear-CTF" />
+    <meta property="og:article:tag" content="CTF" />
+    <meta property="og:article:tag" content="reversing" />
+    <meta property="og:article:tag" content="pwn" />
+    <meta property="og:article:tag" content="malware-analysis" />
+    <meta property="og:article:tag" content="memory-forensic" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@flyingpassword" />
+    <meta name="twitter:creator" content="@flyingpassword" />
+    <meta name="twitter:title" content="AceBear CTF 19" />
+    
+    <meta name="twitter:description" content="I had a lot of fun and a hard time during this CTF, but the challenges are really awesome. I spent the whole time solving one challenge: Incident Response. In my opinion, this challenge closely resembles a real-life scenario and I&rsquo;m glad that I&rsquo;ve learned a lot out of it. So here goes the write up for it!
+Incident Response - Misc 1000 1. Memory forensics - Identifying the malicious program In this challenge, we&rsquo;re given a network capture and a memory dump of a Windows machine." />
+    <meta name="twitter:url" content="https://protegototalum.faith/post/acebear-ctf-19/" />
+    
+
+    <title> AceBear CTF 19 &middot;  Protego Totalum Security</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="/js/main.js" as="script" />
+    <link rel="preload" href="/css/main.css" as="style" />
+    
+    
+
+
+    
+    <meta name="description" content="Dig deeper. Try harder. Repeat" />
+    
+
+    
+    <meta name="p:domain_verify" content=""/>
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    
+
+    
+    <link href="https://protegototalum.faith/index.xml" rel="alternate" type="application/rss+xml" title="Protego Totalum Security" />
+    
+
+    
+    <link rel="canonical" href="https://protegototalum.faith/post/acebear-ctf-19/" />
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://protegototalum.faith/post/acebear-ctf-19/"
+        },
+        "headline": "AceBear CTF 19",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "Duc Phan",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://protegototalum.faith/",
+          "name": "Protego Totalum Security",
+          "url": "https://protegototalum.faith/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2019-04-08",
+        "dateModified": "2019-04-08",
+        "wordCount": 1970,
+        "keywords": ["AceBear-CTF","CTF","reversing","pwn","malware-analysis","memory-forensic"] 
+    }
+    </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        
+        var disqus_shortname = 'asimpleguy';
+        var disqus_identifier = 'https:\/\/protegototalum.faith\/post\/acebear-ctf-19\/';
+        var disqus_title = 'AceBear CTF 19';
+        var disqus_url = 'https:\/\/protegototalum.faith\/post\/acebear-ctf-19\/';
+        
+    </script>
+    
+
+    <script type="text/javascript">
+        var config = {
+            baseUrl: "https:\/\/protegototalum.faith\/"
+        };
+    </script>
+
+    <style>
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,figure,footer,header,main,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}a{background-color:transparent;-webkit-text-decoration-skip:objects}img{border-style:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:300;src:local("Merriweather Sans Light"),local(MerriweatherSans-Light),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowY_zIojJi0m4a5Z6tRh6itY.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:400;src:local("Merriweather Sans Regular"),local(MerriweatherSans-Regular),url(//fonts.gstatic.com/s/merriweathersans/v5/AKu1CjQ4qnV8MUltkAX3sL2aU247V0zTzydO4RoO9Ok.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:700;src:local("Merriweather Sans Bold"),local(MerriweatherSans-Bold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowQfd-b-I5PxxcmB4_-MNcqw.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:800;src:local("Merriweather Sans ExtraBold"),local(MerriweatherSans-ExtraBold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowWT7sFQ1Iz1BbpcuCPlgc9Q.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:300;src:local("Merriweather Sans Light Italic"),local(MerriweatherSans-LightItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVX9UU5BmOJGkLxUCVv5VXdc.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:400;src:local("Merriweather Sans Italic"),local(MerriweatherSans-Italic),url(//fonts.gstatic.com/s/merriweathersans/v5/3Mz4hOHzs2npRMG3B1ascf0KIgDhPIHb_R-SWdtqte8.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:700;src:local("Merriweather Sans Bold Italic"),local(MerriweatherSans-BoldItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVYM8pfYvjMoOxygpzLVILAs.woff) format("woff")}@font-face {font-family: 'Aldrich';font-style: normal;font-weight: 400;src: local('Aldrich Regular'), local('Aldrich-Regular'), url('//fonts.gstatic.com/s/aldrich/v8/j-NnyokbAnhXANS2iZ6Jew.woff2') format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;font-style:normal}[class^="icon-"]:before{font-family:"icons";font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-arrow-right:before{content:'\e807'}.icon-rss:before{content:'\e808'}body{font:300 1em / 1.5em 'Merriweather Sans',sans-serif;color:#595B66}a{color:inherit;text-decoration:none;font-weight:400}h1,h2{text-rendering:optimizeLegibility;color:#1F2026}h2 a{font-weight:inherit}h1{font-size:2em;line-height:1em;margin:2em 0 -.5em}h2{font-size:1.75em;line-height:1.143em;margin:2.286em 0 -.571em}p{margin:2em auto}i{font-weight:400;font-style:italic;color:#363740}img{display:block;max-width:100%;height:auto;margin:2.5em auto}body{background:#fff}.inner{max-width:48em;margin:0 auto;padding:0 1em}#wrapper{position:relative;box-sizing:border-box;width:100%;min-height:100vh;padding-bottom:6em;background:#F2F3F5}#push{transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav{position:relative;background:#fff;z-index:70;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav:after{clear:both;content:'';display:table}#nav .nav-logo{float:left;height:2em;padding:1em;max-width:50%}#nav .nav-logo img{width:auto;max-width:none;height:2em;margin:0;border-radius:5px}#nav .nav-menu{float:right}#nav .nav-menu:after{clear:both;content:'';display:table}#nav .nav-menu a{display:block;width:1em;height:1em;line-height:1em;padding:1.5em;text-align:center;float:left}#nav .nav-menu a i:before{margin:auto}.overlay{display:none;position:fixed;left:0;top:0;width:100%;height:100%;z-index:80;display:none}.overlay:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#1F2026;opacity:0;transform-style:preserve-3d}#header{position:relative;padding:4em 0}#header .inner{position:relative;z-index:2}#header .header-title{display:block;text-align:center}#header .header-name{font-family: Aldrich, sans-serif;font-weight:700;letter-spacing:-1px;display:block;line-height:1em;font-size:2em;text-decoration:none;color:#1F2026;padding:0;margin:0}#header.has-cover .header-name{color:#fff}#header .header-description{display:block;margin:1em auto 0;color:#9D9FA6;position:relative;font-weight:300}#header .header-description:after{content:'';position:absolute;height:1px;width:100px;margin-left:-50px;left:50%;top:-.5em;background:#D4D5D9}#header.has-cover .header-description{color:#fff}#header.has-cover .header-description:after{background:#fff}#header .header-cover{position:absolute;width:100%;height:100%;top:0;left:0;margin-top:-4em;padding:4em 0;background:no-repeat fixed center 100% / cover;z-index:1}#header .header-cover:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0.2)}#header .header-cover:after{content:'';position:absolute;width:100%;left:0;bottom:0;border-bottom:4px solid #19A0D7}#footer{position:absolute;width:100%;left:0;bottom:0;font-size:.75em;line-height:1.334em;background:#1F2026;color:#737580;z-index:20;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#footer a{color:#9D9FA6;font-weight:400}#footer .credits{text-align:center;font-size:.75em;line-height:1.334em;padding:2.667em;overflow:auto}#footer .credits span{display:block}#footer .credits .credits-theme{float:left}#footer .credits .credits-software{float:right}.post{position:relative;z-index:20}.post .post-image{display:block;margin:0;padding:0}.post .post-image img{display:block;width:100%;height:auto;margin:0;padding:0}.post .post-meta{display:block;font-size:.75em;line-height:1.334em;font-weight:400;margin-bottom:1.334em}.post .post-title{position:relative;color:#000;font-size:2em;line-height:1.375em;font-weight:800;text-indent:-1px;margin:.25em 0 .75em}.post .post-title:before{content:'';position:absolute;left:0;bottom:-.334em;width:1em;margin-bottom:-2px;border-bottom:4px solid #19A0D7}.post .post-title a{text-decoration:none;color:inherit;font-weight:inherit}#post-index{position:relative;max-width:1200px;margin:0 auto 4em;padding:.5em;z-index:10}@keyframes fade{0%{transform:translate3d(0,3em,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.post-list{position:relative}.post-list .post{float:left;width:33.3%;transform:translate3d(0,3em,0);transform-style:preserve-3d;opacity:0;animation:fade ease-out .5s forwards;animation-delay:1.4s}@media only screen and (max-width: 50em){.post-list .post{width:49.9%}}@media only screen and (max-width: 30em){.post-list .post{width:100%;float:none}}.post-list .post:nth-child(1){animation-delay:.1s}.post-list .post:nth-child(2){animation-delay:.2s}.post-list .post:nth-child(3){animation-delay:.3s}.post-list .post:nth-child(4){animation-delay:.4s}.post-list .post:nth-child(5){animation-delay:.5s}.post-list .post:nth-child(6){animation-delay:.6s}.post-list .post:nth-child(7){animation-delay:.7s}.post-list .post:nth-child(8){animation-delay:.8s}.post-list .post:nth-child(9){animation-delay:.9s}.post-list .post .inner{word-wrap:break-word;padding:2em;margin:.5em;max-width:none;background:#fff;box-sizing:border-box;transform:scale(1);transform-style:preserve-3d}@media only screen and (max-width: 50em){.post-list .post .inner{padding:1em}}.post-list .post .post-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:10}.post-list .post .post-image{position:relative;margin:-2em -2em 0;overflow:hidden;background:#19A0D7}@media only screen and (max-width: 50em){.post-list .post .post-image{margin:-1em -1em 0}}.post-list .post .post-image img{transform:scale(1);transform-style:preserve-3d;opacity:1}.post-list .post .post-image:after{content:'';position:absolute;left:-5%;bottom:-2.5em;width:110%;height:4em;background:#fff;border-top:4px solid #19A0D7;box-shadow:0 0 2em rgba(0,0,0,0.2);transform:rotate(5deg)}.post-list .post .post-title{font-size:1.5em;line-height:1.167em}.post-list .post .post-excerpt{margin:0}.post-list .post .post-more{display:block;margin-top:1.5em}.post-list .post .post-more a{display:inline-block;font-size:.875em;line-height:1.143em;font-weight:400;color:#363740}.post-list .post .post-more a i{color:#0e77a0}.pagination{min-height:3em;margin:4em auto 2em;padding:0;position:relative}.pagination .pagination-item{position:relative;display:block;height:3em;line-height:3em;padding:0 1em;text-align:center;text-decoration:none;font-weight:700;color:#363740;border:1px solid #19A0D7;border-radius:4em;z-index:60}.pagination .pagination-item i{position:relative}@media only screen and (max-width: 30em){.pagination .pagination-item{width:4em;height:4em;line-height:4em;margin-top:-.5em;padding:0!important}.pagination .pagination-item i{font-size:1.5em}.pagination .pagination-item>span{display:none}}.pagination .pagination-prev{float:right}.pagination .pagination-prev i{right:-.05em}.pagination .pagination-info{display:block;left:0;top:0;height:3em;line-height:3em;position:absolute;text-align:center;width:100%;z-index:50;color:#9D9FA6}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000}#loader{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid transparent;border-top-color:#19A0D7;animation:spin 2s linear infinite}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#0e77a0;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#D4D5D9;animation:spin 1.5s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119018152-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-119018152-2');
+    </script>
+
+</head>
+
+
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
+            <div class="nav-logo">
+                <a href="https://protegototalum.faith/">
+                    
+                    Protego Totalum Security
+                    
+                </a>
+            </div>
+            <div id="main-menu" class="nav-menu">
+                
+                
+                    <a class="nav-social" target="_blank" href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+                
+                
+                    <a class="nav-social" target="_blank" href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+                
+                
+                <a class="nav-social" target="_blank" href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+                
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
+                    <input type="hidden" name="as_sitesearch" value="https://protegototalum.faith/">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
+                </form>
+                
+                
+                
+                
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                   title="Main Menu"><i class="fa fa-navicon"></i></a>
+                
+            </div>
+        </nav>
+
+
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
+
+            <div id="push">
+
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">8 Apr 2019</span> <span class="reading-time">| <span class="estimated-reading-time">10 min.</span> (<span class="word-count">1970</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">AceBear CTF 19</h1>
+              </header>
+
+              <section class="post-content">
+                
+                  
+
+<p>I had a lot of fun and a hard time during this CTF, but the challenges are really awesome. I spent the whole time solving one challenge: Incident Response. In my opinion, this challenge closely resembles a real-life scenario and I&rsquo;m glad that I&rsquo;ve learned a lot out of it. So here goes the write up for it!</p>
+
+<h1 id="incident-response-misc-1000">Incident Response - Misc 1000</h1>
+
+<h2 id="1-memory-forensics-identifying-the-malicious-program">1. Memory forensics - Identifying the malicious program</h2>
+
+<p>In this challenge, we&rsquo;re given a network capture and a memory dump of a Windows machine. Opening up the network capture, we can see that the majority of it is network activity between <code>192.168.182.136</code> (a local IP address) and <code>13.229.248.109</code> on port <code>443</code>. These activities are identified as SSL because it&rsquo;s on port 443 but there are some data that doesn&rsquo;t seem to be SSL/TLS, for example: ASCII data at the beginning of packet #13, and there are patterns in most of other packets. This made me think that it&rsquo;s not really SSL/TLS traffic but custom encrypted data.</p>
+
+<p><img src="/img/acebear-ctf-19/pcap-1.png" alt="pcap-1" /></p>
+
+<p>A useful tool for memory forensics is Volatility. Based on the information gathered from the pcap, we can think of looking at network connections in the dump to identify which process was making it.</p>
+
+<pre><code class="language-bash">$ vol.py -f WIN-2VTHJA77HMB-20190313-143547.raw --profile=Win7SP1x86 netscan
+...
+0x7f8a98d8         TCPv4    192.168.182.136:49158          13.229.248.109:443   ESTABLISHED      1964     explorer.exe   
+</code></pre>
+
+<p>There goes the IP address of the C2 server, and it&rsquo;s definitely strange that <code>explorer.exe</code> was making internet connections. This highly indicates that <code>explorer.exe</code> was injected with malicious code. We can dump the memory of <code>explorer.exe</code> to find the malicious code if it&rsquo;s direct injection, or we can examine the DLLs loaded by <code>explorer.exe</code> if it&rsquo;s DLL injection. Listing the DLLs, we can see a very suspicious one in an uncommon location</p>
+
+<pre><code>$ vol.py -f WIN-2VTHJA77HMB-20190313-143547.raw --profile=Win7SP1x86 dlllist -p 1964
+...
+0x6eb30000    0x25000        0x1 C:\Users\misc\AppData\Local\Temp\FileProcess.dll
+...
+</code></pre>
+
+<p>We can then dump these DLLs using the following command:</p>
+
+<pre><code>$ vol.py -f WIN-2VTHJA77HMB-20190313-143547.raw --profile=Win7SP1x86 dlldump -p 1964 -D explorer_dll/
+</code></pre>
+
+<p>Now it&rsquo;s time for some reverse engineering :)</p>
+
+<h2 id="2-reverse-engineering-the-dll">2. Reverse engineering the DLL</h2>
+
+<p>This is probably the hardest part. Now that we&rsquo;ve identified the malicious code, we need to figure out how it encrypts the data, and the flag is probably in the decrypted data. From the network capture, we can see that traffic mostly comes from the client so there is exfiltration going on. These are good hints to identify possible API imports in the DLL:</p>
+
+<ul>
+<li><code>CryptDecrypt</code>, <code>CryptEncrypt</code> and other crypto APIs</li>
+<li><code>socket</code>, <code>connect</code>, <code>send</code> to communicate over the network</li>
+</ul>
+
+<h3 id="2-1-first-glance-static-analysis">2.1. First glance - static analysis</h3>
+
+<p>Opening the binary in IDA, we can already see some of these imports. We arrive at the <code>DllMain</code> function and there&rsquo;s the call to <code>loc_6EB32960</code>. However, this is not a function and IDA failed to identify this as a function. This is the first time that I&rsquo;ve ever dealt with anti-disassembly and it&rsquo;s quite interesting to know how this works. If you go to the code being called above and keep going down a little bit, you&rsquo;ll see an instruction highlighted in red at <code>6EB32A25</code>. The strange thing is right before that, there a jump to <code>6EB32A25 + 1</code>, so this can&rsquo;t be the correct disassembly.</p>
+
+<p><img src="/img/acebear-ctf-19/anti-disassembly-1.png" alt="anti-disassembly-1" /></p>
+
+<p>Hitting P to create a function at <code>6EB32960</code> failed, so to fix this, I undefined the instruction highlighted in red, click on <code>6EB32A26</code> (<code>6EB32A25 + 1</code>), pressed C to define this as code and patched the only byte left as nop. Now we can go back to the function prologue and hit P again to define a function. Worked like a charm! At that point, I still wasn&rsquo;t sure if this would impact the code being run, but it&rsquo;s nice to be able to see the code in graph mode, so I went on and fix all the remaining failed disassembly using this method. There are a few places with random bytes (indicated by the <code>db</code> instruction) that you can also nop out to fix the disassembly.</p>
+
+<p>There&rsquo;s a few things worth noting in this start function:</p>
+
+<ul>
+<li>There are stack strings which looks like base64, but decrypting it yields no readable ascii.
+<img src="/img/acebear-ctf-19/base64.png" alt="base64" /></li>
+<li>It gathers some system information and writing it to <code>sysinfo</code>.</li>
+<li>It creates 3 threads of functions at the following locations: <code>6EB31AE0</code> (Thread1), <code>6EB31D70</code> (Thread2) and <code>6EB32230</code> (Thread3)
+
+<ul>
+<li><code>Thread1</code> contains more stack strings and call APIs such as <code>GetDC</code>, <code>GetCompatibleBitmap</code>, <code>BitBlt</code>, which indicates that it may be taking screenshots.</li>
+<li><code>Thread2</code> makes networking APIs call such as <code>htons</code>, <code>socket</code>, <code>connect</code>, <code>send</code>.</li>
+<li><code>Thread3</code> also makes networking APIs call including <code>inet_addr</code>. This can be where the C2 IP address is saved.</li>
+</ul></li>
+</ul>
+
+<p>Diving more into these functions, I figured out more important functions:</p>
+
+<ul>
+<li><code>sub_6EB31050</code>: basically sprintf</li>
+<li><code>sub_6EB31090</code>: Write a screenshot to a file.</li>
+<li><code>sub_6EB31360</code>: A base64 encode/decode function.</li>
+<li><code>sub_6EB31560</code>: Get the current process name</li>
+<li><code>sub_6EB31620</code>: A decryption function</li>
+<li><code>sub_6EB31820</code>: Send file over the network</li>
+<li><code>sub_6EB32180</code>: Run a reverse shell</li>
+<li><code>sub_6EB32360</code>: The action is taken based on global boolean variables.
+
+<ul>
+<li>Get the IP address of the C2 server and save it into a global variable at <code>6EB518A0</code>. Get the screen sizes and also store it in global variables.</li>
+<li>Open directories containing &ldquo;AppData&rdquo; in the path.</li>
+<li>Perform some cryptographic operations.</li>
+</ul></li>
+</ul>
+
+<p>How did I discover those functions? I basically looking at return values from API calls that are stored in global variables and how those global variables are used. For example:</p>
+
+<ul>
+<li><code>Thread3</code> opens a socket and saves it to a global variable at <code>6EB50948</code>. Right after that, a function is called and it uses this socket along with the <code>OpenProcessA</code> API with the parameter to <code>C:\Windows\System32\cmd.exe</code> (as a stack string).</li>
+<li>Global boolean variables are used in if statements to make decisions about the actions being performed. Also notes to increment of some variables because they are used as counters across the threads to also make decisions about actions.</li>
+</ul>
+
+<p>The descriptions provided above are really superficial because I also made guesses, but they captures the basic actions being performed.</p>
+
+<p>Now let&rsquo;s put together the pieces.</p>
+
+<h3 id="2-2-putting-them-all-together-dynamic-analysis">2.2. Putting them all together - Dynamic Analysis</h3>
+
+<p>The tools that I used for dynamic analysis include Procmon, Process Explorer and x64dbg. Debugging the DLLs can be a little bit difficult because it only runs inside <code>explorer.exe</code>. After trying several ways to inject the DLL into <code>explorer.exe</code> without any luck, I ended up using the <code>AppInit_DLLs</code> registry key to load it when <code>explorer.exe</code> is run.</p>
+
+<h4 id="2-2-1-file-system-activities">2.2.1. File system activities</h4>
+
+<p>Monitoring file system activities, we can see the folders and files that it&rsquo;s trying to access. There&rsquo;s a noticeable amount of activities in <code>C:\Users\&lt;username&gt;\AppData\Roaming\Microsoft\Explorer\</code> and it&rsquo;s because it couldn&rsquo;t find the path. The <code>Explorer</code> folder wasn&rsquo;t there! This is related to the function all at the very beginning of the DLL. <code>sub_6EB32360</code> is called to initialized data such as IP addresses and directory to write data to. For some reasons, the function failed to initialized the data as intended because all the boolean variables that I&rsquo;ve mentioned previously couldn&rsquo;t be set. Setting breakpoints at <code>CreateFile</code> and <code>WriteFile</code> can reveal the same information in the debugger (which is the actual way that I figured this out.) So I just created the folder myself. If the initialization were successful, a file named <code>sysinfo</code> would have been in the folder, but it was never in there.</p>
+
+<p><img src="/img/acebear-ctf-19/procmon1.png" alt="procmon1" /></p>
+
+<p>After that, it runs that initialization function again and finally creates 3 threads with the 3 functions that we&rsquo;ve found in static analysis. As mentioned before, <code>Thread1</code> is responsible for taking screenshots and saving them to files. The filenames are unix timestamps, which can also be observed in the pcap. More details are in the next section.</p>
+
+<p><strong>Note:</strong> If you encounter the same issue, you will need to create the folder manually. Otherwise, you won&rsquo;t be able to observe the network traffic because there is no data to be sent.</p>
+
+<h4 id="2-2-2-networking-activities">2.2.2. Networking activities</h4>
+
+<p>Observing more closely, around the call to <code>send</code> in <code>Thread2</code>, we can see the string &ldquo;1&rdquo; being copied and a function call to <code>sub_6EB31820</code>. Inside <code>sub_6EB31820</code>, we can also see API calls to <code>send</code> and the string &ldquo;2&rdquo;. Going back to the pcap, we can see packets starting with &ldquo;1&rdquo; and &ldquo;2&rdquo;, so these indicate the data type being sent.</p>
+
+<p><img src="/img/acebear-ctf-19/sendfile.png" alt="sendfile" /></p>
+
+<p>There are 2 significant counters that are used: A <code>SentFileCounter</code> at <code>6EB51458</code> and a <code>CurrentFileCounter</code> at <code>6EB51460</code>. <code>CurrentFileCounter</code> is incremented in <code>Thread1</code> every time a screenshot is taken, and <code>SentFileCounter</code> is incremented whenever a file is sent in <code>Thread2</code>. When does the data get sent? The data only get sent when the <code>CurrentFileCounter</code> is at least 5. If the <code>SentFileCounter</code> reaches <code>0x12C</code>, a reverse shell is spawned by <code>Thread3</code>.</p>
+
+<p><img src="/img/acebear-ctf-19/filecount.png" alt="filecount" /></p>
+
+<p><img src="/img/acebear-ctf-19/sentfilecount.png" alt="sentfilecount" /></p>
+
+<p>It is worth noting that there are 2 separated sockets being used: 1 is for the reverse shell in <code>Thread3</code> and 1 is for sending the screenshots. Setting breakpoints on <code>htons</code>, <code>inet_addr</code>, <code>socket</code>, <code>connect</code> and <code>send</code> will reveal the information being sent over the network. Following are the 2 types of packets being sent that we&rsquo;ve observed before: one starts with &ldquo;1&rdquo; and one starts with &ldquo;2&rdquo;.</p>
+
+<p><img src="/img/acebear-ctf-19/send2.png" alt="send2" /></p>
+
+<p><img src="/img/acebear-ctf-19/send1.png" alt="send1" /></p>
+
+<p>The first packet is the unencrypted filename that we can tell from procmon in the previous section. We still have no idea what the second packet is, but the first few bytes are similar to many of those in the pcap, so this highly indicates that the same encryption key is used.</p>
+
+<h4 id="2-2-3-cryptographic-functions">2.2.3. Cryptographic functions</h4>
+
+<p>The decryption function is called a lot of times across the program. Setting breakpoints at <code>CryptDecrypt</code> will just reveal the decrypted data. While debugging, I did notice special strings being passed around.</p>
+
+<p><img src="/img/acebear-ctf-19/decrypt1.png" alt="decrypt1" /></p>
+
+<p><img src="/img/acebear-ctf-19/decrypt2.png" alt="decrypt2" /></p>
+
+<p><img src="/img/acebear-ctf-19/decrypt3.png" alt="decrypt3" /></p>
+
+<p><img src="/img/acebear-ctf-19/decrypt4.png" alt="decrypt4" /></p>
+
+<p><img src="/img/acebear-ctf-19/ip1.png" alt="ip1" /></p>
+
+<p><img src="/img/acebear-ctf-19/string1.png" alt="string1" /></p>
+
+<h4 id="2-2-4-adding-everything-up">2.2.4. Adding everything up</h4>
+
+<p>Now that we know the second type of packet is encrypted, we also have the data that the program generated. Opening up the files in a hex editor, we can see that it&rsquo;s an encrypted bitmap image.</p>
+
+<p><img src="/img/acebear-ctf-19/bitmap1.png" alt="bitmap1" /></p>
+
+<p>It turns out that the program uses XOR encryption to encrypt the data. The encryption can be observed inside <code>sub_6EB31820</code> and also by XOR-ing the first few bytes of the encrypted and unencrypted data. The key is stored in a global variable at <code>6EB51920</code>.</p>
+
+<p><img src="/img/acebear-ctf-19/xor1.png" alt="xor1" /></p>
+
+<p><img src="/img/acebear-ctf-19/xor2.png" alt="xor2" /></p>
+
+<p><img src="/img/acebear-ctf-19/xor3.png" alt="xor3" /></p>
+
+<p>Also notice that there is a huge buffer in this function, which is used to store the data being sent over the network.</p>
+
+<p><img src="/img/acebear-ctf-19/databuffer.png" alt="databuffer" /></p>
+
+<p>Now we just need to observe the memory that stores the key and we are able to get it.</p>
+
+<p><img src="/img/acebear-ctf-19/xorkey.png" alt="databuffer" /></p>
+
+<p>Notice that the length of sent data is 1028 but the buffer is only 1024, so there is a 4-byte header before the actual data starts. In addition, only the first 8 bytes of the key is used. The job now is to parse all the packets sent to the server from the pcap, identifying the packets of type 2 that we need to decrypt and concat them together and XOR-decrypt them.</p>
+
+<p>My solution was not able to properly decrypt the packets, but the images still showed up and it was sufficient to see the flag. The images were  staggered so I made another script to (somewhat) fix the images. They are still really bad but I was lucky enough to see that flag :D</p>
+
+<p>Here is the image before fixing:</p>
+
+<p><img src="/img/acebear-ctf-19/imagebefore.png" alt="imagebefore" /></p>
+
+<p>And here&rsquo;s the image after fixing:</p>
+
+<p><img src="/img/acebear-ctf-19/imageafter.png" alt="imageafter" /></p>
+
+<p>There&rsquo;s the flag: <code>AceBear{M3m0ry_f0r3nsic_&amp;_M4lwa3r_an4lysis_i5_cool}</code></p>
+
+<p>Also if you look carefully, there&rsquo;s an URL in the picture in Internet Explorer. I tried going to the URL but it was already down at that point: <code>http://mi5cfl4g.chung96vn.cf/fl4g_mi5c</code></p>
+
+<p>Full solution can be found here: <a href="https://github.com/ducphanduyagentp/ourCTFs/tree/master/2019/acebear-ctf-19/misc/incident-response">https://github.com/ducphanduyagentp/ourCTFs/tree/master/2019/acebear-ctf-19/misc/incident-response</a></p>
+
+<h2 id="future-improvements">Future improvements</h2>
+
+<p>There are several things that I can improve in the future and would have saved me a lot of time looking at this challenge:</p>
+
+<ul>
+<li>A quick way to inject the DLL into the process. I spent many hours debugging <code>explorer.exe</code> inside x64dbg and just manually load the DLL everytime, which was really time-consuming.</li>
+<li>A quick way to patch the bytes used for anti-RE. I should probably learn idapython :)</li>
+</ul>
+
+<p>If you have any questions, please feel free to leave a comment below or reach out to me on Twitter. Thanks for reading!</p>
+
+<!--
+- Anti debug, trap debugger
+- From pcap identify c2 server IP
+- From image use volatility to show connections to see if any process is making suspicious network connections
+    - explorer.exe
+- Process injection: show all DLL. There is one off
+- Dump dll
+- DLL has anti-reversing to break linear disassembly
+    - Not so many so patch by hand
+- After patching, need to find way to debug
+    - Load explorer.exe in x64dbg and load the DLL everytime
+        - So time consuming
+    - Use AppInit_DLLs
+        - It'll break things so turn it on when launching explorer.exe then turn it off immediately
+    - Only one instance at a time
+- Indicators for its activities
+    - GetDC, BitBlt: Taking screenshots
+    - WriteFile
+    - htons, connect, socket, send: Making network connections
+    - CryptDecrypt, CryptDeriveKey
+    - CreateThread: 3 main functions
+- DLL functionalities
+    - Take screenshots every 5 seconds. Store it in C:\Users\me\AppData\Microsoft\Explorer\
+    - Crypto functions to decrypt storage path
+    - Base64 strings but data is encrypted
+    - Suspicious strings identified
+    - APIs: htons, socket, connect, send, CryptDecrypt, CryptDeriveKey, GetDC, BitBlt
+    - Injecting into other processes doesn't work. Probably works for only explorer.exe
+- Hard to get it to produce network activities because there's no domain and long wait time
+    - Get 5 images every time then sleeps for 10 seconds
+    - Only sends data if more than 0x12C images have been taken and deleted
+    - Folder was not there at the beginning so I didn't know what happened
+- Lesson learned
+    - Debug smarter. Wasted too much time and effort to manually inject the DLL to explorer.exe
+    - Patch binary faster
+-->
+
+              </section>
+
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+            
+                <a href="https://protegototalum.faith/tags/acebear-ctf/">AceBear-CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/ctf/">CTF</a>
+            
+                <a href="https://protegototalum.faith/tags/reversing/">reversing</a>
+            
+                <a href="https://protegototalum.faith/tags/pwn/">pwn</a>
+            
+                <a href="https://protegototalum.faith/tags/malware-analysis/">malware-analysis</a>
+            
+                <a href="https://protegototalum.faith/tags/memory-forensic/">memory-forensic</a>
+            
+            
+                  </div>
+                
+                    <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text=AceBear%20CTF%2019&url=https%3a%2f%2fprotegototalum.faith%2fpost%2facebear-ctf-19%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+            
+              </footer>
+
+            
+                <aside class="post-comments">
+    
+    
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    
+</aside>
+
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                
+                    <a class="post-nav-item post-nav-prev" href="https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">Insomnihack Teaser CTF 2019</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
+
+                <div id="body-class" style="display: none;"></div>
+                <footer id="footer">
+                    <section class="credits">
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2019 Protego Totalum Security
+                    </span>
+                    </section>
+                </footer>
+                
+
+                
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/about/">About me</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/projects/">Projects</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/tags/">Tags</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/categories/">Categories</a>
+        </li>
+        
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/flyingpassword" title="Protego Totalum Security on Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/ducphanduy" title="Protego Totalum Security on LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ducphanduyagentp" title="Protego Totalum Security on GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
+</div>
+
+
+                
+                <div class="overlay"></div>
+            </div>
+        </section>
+
+    <script async src="/js/main.js"></script>
+
+
+
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+</body>
+</html>
+

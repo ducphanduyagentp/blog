@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Acebear Ctf on Protego Totalum Security</title>
+    <link>https://protegototalum.faith/tags/acebear-ctf/</link>
+    <description>Recent content in Acebear Ctf on Protego Totalum Security</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Apr 2019 18:46:23 -0400</lastBuildDate>
+    
+	<atom:link href="https://protegototalum.faith/tags/acebear-ctf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AceBear CTF 19</title>
+      <link>https://protegototalum.faith/post/acebear-ctf-19/</link>
+      <pubDate>Mon, 08 Apr 2019 18:46:23 -0400</pubDate>
+      
+      <guid>https://protegototalum.faith/post/acebear-ctf-19/</guid>
+      <description>I had a lot of fun and a hard time during this CTF, but the challenges are really awesome. I spent the whole time solving one challenge: Incident Response. In my opinion, this challenge closely resembles a real-life scenario and I&amp;rsquo;m glad that I&amp;rsquo;ve learned a lot out of it. So here goes the write up for it!
+Incident Response - Misc 1000 1. Memory forensics - Identifying the malicious program In this challenge, we&amp;rsquo;re given a network capture and a memory dump of a Windows machine.</description>
+    </item>
+    
+  </channel>
+</rss>

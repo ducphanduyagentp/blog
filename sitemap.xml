@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://protegototalum.faith/post/acebear-ctf-19/</loc>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://protegototalum.faith/post/insomnihack-teaser-ctf-2019/</loc>
     <lastmod>2019-01-20T19:21:38-05:00</lastmod>
   </url>
@@ -54,6 +59,12 @@
   </url>
   
   <url>
+    <loc>https://protegototalum.faith/tags/acebear-ctf/</loc>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://protegototalum.faith/tags/blue-team/</loc>
     <lastmod>2017-12-04T23:15:24-05:00</lastmod>
     <priority>0</priority>
@@ -72,7 +83,7 @@
   
   <url>
     <loc>https://protegototalum.faith/tags/ctf/</loc>
-    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -95,6 +106,18 @@
   </url>
   
   <url>
+    <loc>https://protegototalum.faith/tags/malware-analysis/</loc>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://protegototalum.faith/tags/memory-forensic/</loc>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://protegototalum.faith/tags/mobile/</loc>
     <lastmod>2018-06-29T19:48:43+07:00</lastmod>
     <priority>0</priority>
@@ -108,7 +131,7 @@
   
   <url>
     <loc>https://protegototalum.faith/post/</loc>
-    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -119,19 +142,19 @@
   
   <url>
     <loc>https://protegototalum.faith/</loc>
-    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/tags/pwn/</loc>
-    <lastmod>2019-01-20T19:21:38-05:00</lastmod>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://protegototalum.faith/tags/reversing/</loc>
-    <lastmod>2019-01-01T13:34:45+07:00</lastmod>
+    <lastmod>2019-04-08T18:46:23-04:00</lastmod>
     <priority>0</priority>
   </url>
   
