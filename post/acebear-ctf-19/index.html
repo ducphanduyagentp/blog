@@ -106,7 +106,7 @@ Incident Response - Misc 1000 1. Memory forensics - Identifying the malicious pr
         },
         "datePublished": "2019-04-08",
         "dateModified": "2019-04-08",
-        "wordCount": 1970,
+        "wordCount": 1971,
         "keywords": ["AceBear-CTF","CTF","reversing","pwn","malware-analysis","memory-forensic"] 
     }
     </script>
@@ -198,7 +198,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <header class="post-header">
                 
                     <span class="post-meta">
-                        <span class="post-date">8 Apr 2019</span> <span class="reading-time">| <span class="estimated-reading-time">10 min.</span> (<span class="word-count">1970</span> words)</span></span>
+                        <span class="post-date">8 Apr 2019</span> <span class="reading-time">| <span class="estimated-reading-time">10 min.</span> (<span class="word-count">1971</span> words)</span></span>
                     </span>
                 <div class="clear"></div>
                 
@@ -355,7 +355,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 
 <h4 id="2-2-4-adding-everything-up">2.2.4. Adding everything up</h4>
 
-<p>Now that we know the second type of packet is encrypted, we also have the data that the program generated. Opening up the files in a hex editor, we can see that it&rsquo;s an encrypted bitmap image.</p>
+<p>Now that we know the second type of packet is encrypted, we also have the data that the program generated. Opening up the files in a hex editor, we can see that it&rsquo;s an unencrypted bitmap image.</p>
 
 <p><img src="/img/acebear-ctf-19/bitmap1.png" alt="bitmap1" /></p>
 
@@ -398,7 +398,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <p>There are several things that I can improve in the future and would have saved me a lot of time looking at this challenge:</p>
 
 <ul>
-<li>A quick way to inject the DLL into the process. I spent many hours debugging <code>explorer.exe</code> inside x64dbg and just manually load the DLL everytime, which was really time-consuming.</li>
+<li>A quick way to inject the DLL into the process. I spent many hours debugging <code>explorer.exe</code> inside x64dbg and just manually loaded the DLL every time, which was really time-consuming.</li>
 <li>A quick way to patch the bytes used for anti-RE. I should probably learn idapython :)</li>
 </ul>
 
