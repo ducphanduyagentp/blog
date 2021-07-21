@@ -20,7 +20,7 @@ title: ret2life                          # the main title
 tagline: From CTF write-ups to everyday life kind of things   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  bruh.
+  From CTF write-ups to everyday life kind of things
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://ret2.life'
@@ -75,7 +75,7 @@ theme_mode:   # [light|dark]
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg
+avatar: https://pbs.twimg.com/profile_images/1417881771534819331/0AuUptMd_400x400.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
