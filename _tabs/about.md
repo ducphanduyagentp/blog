@@ -4,5 +4,4 @@ icon: fas fa-info
 order: 4
 ---
 
-
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+Really I just want to write stuff here to share with people, be it learning or other experiences. I do vulnerability research with interests in browsers and kernel.
